@@ -1,0 +1,28 @@
+{
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "build:css": "tailwindcss -i ./styles/main.css -o ./css/site.css --minify",
+    "watch:css": "tailwindcss -i ./styles/main.css -o ./css/site.css --watch",
+    "assemble": "node assemble.mjs",
+    "build:img": "node tools/optimize-images.mjs",
+    "build:brand-img": "node tools/optimize-brand-images.mjs",
+    "check": "npm run build && git diff --exit-code -- index.html css/site.css",
+    "watch:html": "node --watch --watch-path=sections --watch-path=js assemble.mjs",
+    "build": "npm run assemble && npm run build:css",
+    "serve": "serve . -l 8080",
+    "start": "serve . -l ${PORT:-8080}",
+    "dev": "concurrently \"npm:watch:css\" \"npm:watch:html\" \"npm run serve\""
+  },
+  "dependencies": {
+    "serve": "^14.2.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "concurrently": "^9.1.2",
+    "esbuild": "^0.28.2",
+    "sharp": "^0.35.4",
+    "tailwindcss": "^4.3.3"
+  }
+}

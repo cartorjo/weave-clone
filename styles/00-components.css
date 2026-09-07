@@ -1,0 +1,100 @@
+/* ============================================================================
+   00-components.css — shared classes consumed by multiple already-migrated
+   section files (heading-xl in 7 files, text-size-large in 6, graph-paper in
+   5, etc — consolidating these here avoids repeating the same arbitrary-value
+   utility string across every consumer). Written with @apply so this file
+   stays "just Tailwind" too, not hand-rolled CSS properties — the only
+   exception is .graph-paper's repeating-gradient recipe, which has no utility
+   equivalent (see its own comment below).
+
+   Imported into `@layer components` (see main.css) — NOT unlayered. These
+   classes must LOSE to any utility class added alongside them on the same
+   element (e.g. a CTA can add `flex flex-col items-start
+   justify-end` next to `.btn-lemon`, which itself applies
+   `inline-flex items-center justify-center` — if this file were unlayered,
+   .btn-lemon's own properties would always win over the layered utility
+   regardless of source order, silently breaking the CTA's layout). Layer
+   order in main.css puts components below utilities, above base, matching
+   Tailwind's own convention for exactly this situation.
+
+   .text-size-medium and .label-mini-dim have zero markup consumers (by
+   design — see their own comments) but are kept as documented, available
+   parts of the type scale rather than deleted speculatively.
+   ========================================================================= */
+
+/* ---- Type utilities -------------------------------------------------- */
+
+/* Display XL (decisions A1): model names, tools/outcome/w2a/slider H2s,
+   footer statements. 94px / lh 0.85 / 400 / −0.32rem @1440. */
+.heading-xl {
+  @apply font-normal text-[6.52778rem] leading-[0.85] tracking-[-0.32rem] max-xs:text-[6.5rem];
+}
+
+/* Hero H1 display style — tighter tracking than element default (decisions A14) */
+.h1-hero {
+  @apply text-ink-strong font-normal text-[6.52778rem] leading-[0.85] tracking-[-0.3rem] max-xs:text-[9.4rem];
+}
+
+/* Section paragraphs: hero sub, tools sub-line, w2a top, models left paragraph
+   (decisions A2: models left ¶ uses THIS class, not .text-size-medium) */
+.text-size-large {
+  @apply text-[1.25rem] leading-[1.1] max-xs:text-[2.27596rem];
+}
+
+/* decisions A2 / audit §2.2: on this page "medium" = the p element default
+   (20.16px @1440). The models left paragraph must use .text-size-large instead. */
+.text-size-medium {
+  @apply text-[1.4rem] leading-[1.15];
+}
+
+.text-size-small {
+  @apply text-[1.05rem] leading-[1.15];
+}
+
+.text-size-xsmall {
+  @apply text-[0.83333rem] leading-[0.975rem];
+}
+
+/* tracked all-caps smallprint (legal line style) */
+.text-allcaps-tracked {
+  @apply text-[0.83333rem] leading-[0.97222rem] tracking-[0.125rem] uppercase;
+}
+
+/* mini node-card label (hero collage captions — real text, never baked art):
+   Inter 600 ~10px, uppercase, wide tracking; dim the second word with .is-dim */
+.label-mini {
+  @apply font-semibold text-[0.7rem] leading-none tracking-[0.104rem] uppercase text-ink;
+}
+
+.label-mini .is-dim,
+.label-mini-dim {
+  @apply text-label-dim;
+}
+
+/* ---- Buttons (tokens §5) ---------------------------------------------- */
+
+/* Generic lemon CTA base (nav CTA / footer CTA build on this and override
+   geometry + hover; transition colors only — the chrome hide/show scrub that
+   writes the nav CTA's yPercent inline (GSAP, in the not-yet-ported sections)
+   must never have a static transform/translate utility here to compose with). */
+.btn-lemon {
+  @apply inline-flex items-center justify-center bg-lemon text-ink-strong border-0 cursor-pointer no-underline;
+  @apply [transition:background-color_0.2s_var(--ease-out-quad),color_0.2s_var(--ease-out-quad)];
+  @apply hover:bg-bg-dark hover:text-btn-hover-text;
+}
+
+/* "Try" button on workflow cards (tokens §5.4) — flush bottom-left of card */
+.btn-try {
+  @apply inline-flex items-center justify-center bg-lemon text-bg-dark border-0;
+  @apply py-[0.65rem] px-[1.25rem] text-[1.3rem] cursor-pointer no-underline max-xs:text-[1.9943rem];
+  @apply [transition:all_0.25s_var(--ease-out-quad)] hover:bg-bg-dark hover:text-lemon;
+}
+
+/* Slider arrow button (tokens §5.5) — glyph is a per-section inline SVG
+   (simple → arrow, 2px white stroke); prev variant adds rotate(180deg) via
+   its own utility class in markup, not here. */
+.btn-arrow {
+  @apply inline-flex items-center justify-center w-[2.75rem] h-[2.75rem] max-w-[40px] max-h-[40px];
+  @apply bg-transparent border border-white rounded-[10px] cursor-pointer max-lg:rounded-[0.5rem];
+  @apply [transition:all_0.2s] hover:bg-[var(--arrow-hover)] active:scale-95 disabled:opacity-40;
+}

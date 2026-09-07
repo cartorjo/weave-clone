@@ -1,0 +1,7 @@
+.DS_Store
+node_modules/
+
+# Generated PNG masters are unreferenced by the site (JPG twins ship);
+# kept local-only — regenerate or copy from the design pipeline
+assets/generated/*.png
+assets/archive/

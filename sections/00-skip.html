@@ -1,0 +1,8 @@
+<!-- ASSEMBLY CONTRACT: sections/*.html concatenate in filename order (00 → 99).
+     This fragment is FIRST: it renders the skip link only (decisions §B5).
+     sections/01-header.html renders the site header OUTSIDE <main> (a banner
+     landmark must not live inside main, and the skip link must actually skip
+     the nav), then opens <main id="main">; sections 02–08 render INSIDE main;
+     sections/99-close.html closes it. Do not open or close <main> in any
+     other fragment. -->
+<a class="fixed top-2 left-2 z-[1001] -translate-y-[300%] rounded bg-white px-[1.4em] py-[0.9em] text-sm leading-none text-ink-strong no-underline shadow-[0_0_0_1px_var(--border-soft)] transition-transform focus:translate-y-0 focus-visible:translate-y-0" href="#main">Skip to content</a>
