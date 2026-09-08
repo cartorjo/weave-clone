@@ -17,24 +17,11 @@
    layered padding/margin utility sitewide (unlayered CSS always wins over
    layered, regardless of order), so e.g. `pt-[8rem]` silently computed to 0.
 
-   `components` holds shared classes still consumed by not-yet-migrated
-   section files (`.btn-lemon`, `.heading-xl`, etc — see 00-components.css;
-   `.container`/`.gutter` do NOT live here, see below) — same bug, second
-   instance: an already-migrated element like the banner CTA carries BOTH `.btn-lemon`
-   (display:inline-flex/align-items:center/justify-content:center) AND new
-   utility classes (`flex flex-col items-start justify-end`) for the SAME
-   properties. If `.btn-lemon` stayed unlayered, it would always win
-   regardless of source order and silently break the CTA's layout — putting
-   it in `components` (below `utilities`, same as Tailwind's own convention)
-   lets the utility classes win as intended.
-
-   Per-section custom CSS (Splide exceptions, graph-paper's per-section
-   masks, the cube, connectors — anything that must keep dominating
-   utilities, like a Splide active-state override beating a resting utility)
-   stays deliberately UNLAYERED. `.container`/`.gutter` also stay unlayered on
-   purpose (see the dedicated block below) since Tailwind's own scanner
-   generates a competing `.container` utility in the `utilities` layer that
-   must NOT win. */
+   `components` holds the editorial component classes (08-editorial.css and
+   09-page-templates.css, imported at the bottom) so explicit utilities in
+   markup can override them. `.container`/`.gutter` stay unlayered on purpose
+   (see the dedicated block below) since Tailwind's own scanner generates a
+   competing `.container` utility in the `utilities` layer that must NOT win. */
 @layer theme, base, components, utilities;
 
 /* DELIBERATE BEHAVIOR CHANGE: Tailwind's `hover:` variant compiles to
@@ -53,7 +40,6 @@
 
 @import "tailwindcss/theme.css" layer(theme);
 @import "tailwindcss/utilities.css" layer(utilities) source(none);
-@import "./00-components.css" layer(components);
 
 /* Scan the AUTHORING sources, not the generated output: every shipped page is
    assembled from sections/ + pages/ + partials/ (see assemble.mjs), so their
@@ -64,153 +50,113 @@
 @source "../partials";
 @source "../js";
 
-/* ---- Graph paper utility (decisions A6 — EXACT recipe) --------------------
-   Lines LIGHTER than the paper; 13.33px cell. The major-every-8-cells layer is
-   kept for structure but painted transparent (see --paper-line-major below —
-   the reference has no major comb). No utility equivalent exists for a
-   4-layer repeating-linear-gradient composite, so this stays raw CSS —
-   registered via @utility (Tailwind's own mechanism for a custom utility)
-   rather than a plain @layer components class, so `.graph-paper` sits in the
-   utilities layer alongside every other Tailwind utility. Must live here at
-   the top level: @utility cannot be nested inside the @layer(components)
-   wrapper that 00-components.css's @import applies.
-   Per-section washes (hero/tools/outcome) are layered by each section.
-   NO mask-image here on purpose: .graph-paper is applied to .hero_section
-   ITSELF, so a mask on this rule would clip the hero's H1 and cards, and a
-   scoped `.graph-paper:not(.hero_section)` (0,2,0) would outrank and destroy the
-   calibrated .tools_paper / .outcome_paper / .w2a_paper masks (0,1,0). The hero's
-   texture fade (A-BIS §1/§2) belongs on 02-hero's inset paper pseudo-element. */
-@utility graph-paper {
-  background-color: var(--paper);
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      var(--paper-line-major) 0 2px,
-      transparent 2px var(--paper-major-cell)
-    ),
-    repeating-linear-gradient(
-      90deg,
-      var(--paper-line-major) 0 2px,
-      transparent 2px var(--paper-major-cell)
-    ),
-    repeating-linear-gradient(
-      0deg,
-      var(--paper-line) 0 1px,
-      transparent 1px var(--paper-cell)
-    ),
-    repeating-linear-gradient(
-      90deg,
-      var(--paper-line) 0 1px,
-      transparent 1px var(--paper-cell)
-    );
-}
-
-/* ---- design tokens, migrated from css/00-base.css §3 ---------------------
-   @theme requires namespaced names (--color-lemon) to emit bg-lemon etc.
-   Every not-yet-migrated section file still says var(--lemon) by its bare
-   historical name — see the :root alias block right below this one. Once a
-   file's utilities are fully in markup and its old CSS is deleted, its bare
-   references disappear too; the alias only needs to outlive the LAST
-   unconverted consumer. Values copied verbatim from 00-base.css, unchanged. */
+/* ---- design tokens --------------------------------------------------------
+   The token system is calibrated for the user-relative 16px root (the old
+   1vw-scaled root rendered 1rem = 14.4px at ≥1440px; every value below is
+   re-pinned so the DESIGNED pixel geometry survives the accessibility fix).
+   @theme names emit utilities: --text-N → text-N, --spacing-N → padding,
+   margin and gap utilities, --color-N → text/bg/border color utilities,
+   --shadow-N → shadow-N, --ease-N → ease-N. */
 @theme {
-  /* This codebase's own 767/768 boundary already matches Tailwind's default
-     `md` (768px) exactly, so md:/max-md: need no override. Two more recurring
-     boundaries (991/992 and 479/480) don't have a default match — register
-     them once here so every migrated file uses named variants instead of
-     repeating max-[991px]:/max-[479px]: arbitrary breakpoints everywhere.
-     max-lg: → width<992px ≡ max-width:991px. max-xs: → width<480px ≡ max-width:479px. */
-  /* Keep breakpoint units consistent so responsive utilities sort correctly. */
+  --breakpoint-xs: 480px;
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  /* Desktop-nav switch — mirrored in js/01-header.js. */
+  --breakpoint-nav: 1280px;
+  /* Overrides Tailwind's default xl (1280px): ≥1440 is the site's recurring
+     wide-desktop boundary. */
+  --breakpoint-xl: 1440px;
   --breakpoint-2xl: 1536px;
   --container-content: 56rem;
-  --breakpoint-xs: 480px;
-  --breakpoint-lg: 992px;
-  /* Overrides Tailwind's default xl (1280px): nothing in this codebase wants
-     that value, while ≥1440 is the site's real recurring desktop boundary
-     (the .container max-width switch, the banner-text size clamp, and more
-     to come as later files migrate). */
-  --breakpoint-xl: 1440px;
 
+  /* Brand color system. --color-lemon is the decorative brand orange;
+     --color-accent-text is the same-hue text shade that passes AA on white
+     and paper. Hairlines are the 1px editorial rules. */
   --color-lemon: #f7911e;
-  /* Same-hue text shade: AA on both white and paper. Decorative orange stays unchanged. */
   --color-accent-text: #995a13;
-  --spacing-menu: min(20rem, 90vw);
-  --color-lemon-100: #f7911e;
   --color-ink: #00143d;
-  --color-ink-strong: #00143d;
-  --color-ink-inverse: #ffffff;
-  --color-stone: #666666;
-  --color-label-dim: #737373;
-  --color-heading-ghost: #acacac; /* superseded by decisions A10; kept for reference */
   --color-bg: #ffffff;
   --color-bg-dark: #00143d;
   --color-bg-dark-2: #000d29;
-  --color-banner-black: #00143d;
   --color-paper: #f5f0eb;
-  --color-surface-eggshell: #f5f0eb;
-  --color-surface-ash: #8fa8c8;
-  --color-chip-bg: #ffffff;
-  --color-btn-hover-text: #ffffff;
-  --color-grey-150: #f5f5f3;
-  --color-grey-200: #e5e5e2;
-  --color-border-soft: #c9c9c5;
-  --color-french-gray: #d4d4d0;
-  --color-leader-line: #d1d1cd;
+  --color-line: rgba(0, 20, 61, 0.18);
+  --color-line-light: rgba(255, 255, 255, 0.22);
 
-  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --ease-snap: cubic-bezier(0.77, 0, 0.175, 1);
+  /* Fluid editorial type scale (correct for the 16px root: floors equal the
+     vw term at 320px so type stays fluid on phones; caps restore the designed
+     ≥1440px sizes). Sub-tokens ride along in the emitted text-* utilities. */
+  --text-display-1: clamp(1.76rem, 8.8vw, 9.18rem);
+  --text-display-1--line-height: 0.86;
+  --text-display-1--letter-spacing: -0.078em;
+  --text-display-1--font-weight: 300;
+  --text-display-2: clamp(1.5rem, 7.5vw, 7.56rem);
+  --text-display-2--line-height: 0.86;
+  --text-display-2--letter-spacing: -0.078em;
+  --text-display-2--font-weight: 300;
+  --text-title: clamp(1.35rem, 2.6vw, 2.6rem);
+  --text-title--line-height: 0.98;
+  --text-title--letter-spacing: -0.055em;
+  --text-title--font-weight: 300;
+  --text-subtitle: clamp(1.2rem, 2.25vw, 2.3rem);
+  --text-subtitle--line-height: 1;
+  --text-subtitle--letter-spacing: -0.045em;
+  --text-subtitle--font-weight: 300;
+  --text-lede: clamp(1.1rem, 1.4vw, 1.35rem);
+  --text-lede--line-height: 1.4;
+  --text-body: 1rem;
+  --text-body--line-height: 1.5;
+  --text-caption: 0.8125rem;
+  --text-caption--line-height: 1.4;
+  --text-caption--font-weight: 600;
+  --text-eyebrow: 0.75rem;
+  --text-eyebrow--line-height: 1;
+  --text-eyebrow--letter-spacing: 0.12em;
+  --text-eyebrow--font-weight: 600;
+
+  --tracking-display: -0.078em;
+  --tracking-caps: 0.08em;
+  --tracking-caps-wide: 0.12em;
+  --leading-body: 1.5;
+
+  /* Spacing scale. --spacing-section is the shared vertical rhythm token
+     (≈36px at 320px → 130px at 1440px); cell/rule pads pair with the 1px
+     hairline grids. */
+  --spacing-section: clamp(2.25rem, 9vw, 8.1rem);
+  --spacing-3xs: 0.25rem;
+  --spacing-2xs: 0.5rem;
+  --spacing-xs: 0.75rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: clamp(1.8rem, 4vw, 3.6rem);
+  --spacing-xl: clamp(2.25rem, 8vw, 7.2rem);
+  --spacing-2xl: clamp(2.9rem, 9vw, 9rem);
+  --spacing-cell: 1.45rem;
+  --spacing-rule: 1.2rem;
+  --spacing-menu: min(20rem, 90vw);
+
+  /* Exactly two elevations. */
+  --shadow-raised: 0 8px 24px rgba(0, 20, 61, 0.08);
+  --shadow-overlay: 0 20px 48px rgba(0, 20, 61, 0.16);
+
+  /* One house easing. */
+  --ease-em: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Inter is the shipped brand face (self-hosted, css/00-fonts.css). */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
 }
 
 :root {
-  /* legacy bare aliases — every var(--lemon) etc. in not-yet-migrated section
-     files keeps resolving to the exact same value until that file is done. */
-  --lemon: var(--color-lemon);
-  --lemon-100: var(--color-lemon-100);
-  --accent: var(--lemon);
-  --accent-100: var(--lemon-100);
-  --ink: var(--color-ink);
-  --ink-strong: var(--color-ink-strong);
-  --ink-inverse: var(--color-ink-inverse);
-  --stone: var(--color-stone);
-  --label-dim: var(--color-label-dim);
-  --heading-ghost: var(--color-heading-ghost);
-  --bg: var(--color-bg);
-  --bg-dark: var(--color-bg-dark);
-  --bg-dark-2: var(--color-bg-dark-2);
-  --banner-black: var(--color-banner-black);
-  --paper: var(--color-paper);
-  --surface-eggshell: var(--color-surface-eggshell);
-  --surface-ash: var(--color-surface-ash);
-  --chip-bg: var(--color-chip-bg);
-  --btn-hover-text: var(--color-btn-hover-text);
-  --grey-150: var(--color-grey-150);
-  --grey-200: var(--color-grey-200);
-  --border-soft: var(--color-border-soft);
-  --french-gray: var(--color-french-gray);
-  --leader-line: var(--color-leader-line);
-
-  /* geometry / alpha / gradient tokens: no @theme namespace fits a composite
-     value (rgba alpha, gradient function, viewport-relative length) — these
-     stay exactly as plain custom properties, values unchanged. */
-  --overlay-media-50: rgba(0, 0, 0, 0.5);
-  --overlay-media-30: rgba(0, 0, 0, 0.3);
-  --overlay-white-30: rgba(255, 255, 255, 0.3);
-  --overlay-french-35: rgba(193, 205, 213, 0.35);
-  --overlay-french-60: rgba(193, 205, 213, 0.6);
-  --arrow-hover: rgba(55, 50, 53, 0.06);
-  --dark-fade-top: linear-gradient(#292929, transparent);
-
-  /* graph-paper geometry — decisions A6/A-BIS §1 exact measured values, see
-     css/00-base.css §7 for the full derivation history. Do not "round" these. */
-  --paper-line: rgba(255, 255, 255, 0.36);
-  --paper-line-major: rgba(255, 255, 255, 0);
-  --paper-cell: 13.333px;
-  --paper-major-cell: 106.664px;
-
+  /* Composite/geometry tokens with no fitting @theme namespace. */
   --gutter: 4.5vw;
-  --container-max: 93.6111rem;
-  --banner-h: 3.40278rem;
+  --container-max: 84rem; /* 1344px — the designed ~1348px content measure */
+  --header-h: 4.875rem; /* 78px */
+  --header-h-scrolled: 4.25rem; /* 68px */
+  --duration-fast: 180ms;
+  --duration-slow: 650ms; /* image zooms only */
+  /* Hairline color for the numbered fact grids; dark sections flip it to
+     --color-line-light (see .page-section--dark/--deep). */
+  --line-hairline: var(--color-line);
 }
 
 /* ---- reset (verbatim from css/00-base.css §1) -----------------------------
@@ -277,12 +223,18 @@
      inside an already-migrated section (e.g. the banner-text link) carries
      new utility classes (`text-inherit no-underline hover:text-[#dcdcc2]`)
      that must beat this `a { color; text-decoration }` default. */
+  /* Respect browser text-size preferences; layout must not shrink the rem unit. */
+  html {
+    font-size: 100%;
+  }
+
   body {
-    background-color: var(--bg);
-    color: var(--ink);
-    font-family: "Roboto", "Inter", Arial, sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
     font-weight: 400;
-    line-height: 1.4;
+    line-height: var(--leading-body, 1.5);
     min-height: 100vh;
   }
 
@@ -299,23 +251,8 @@
     font-weight: 400;
   }
 
-  /* h1 element default (tokens §2.2); decisions A14: negative tracking mandatory */
-  h1 {
-    color: var(--ink-strong);
-    font-size: 6.52778rem; /* 94px @1440 */
-    line-height: 0.85;
-    letter-spacing: -0.17rem;
-  }
-
-  /* p element default — the workflows-slider intro paragraph uses exactly this
-     (decisions A2 / audit §2.2: 1.4rem = 20.16px @1440, lh 1.15) */
-  p {
-    font-size: 1.4rem;
-    line-height: 1.15;
-  }
-
   a {
-    color: var(--ink);
+    color: var(--color-ink);
     text-decoration: underline;
   }
 }
@@ -342,21 +279,11 @@
    silently boxed the whole page to 480–992px on mid-size viewports. */
 .container {
   width: 100%;
-  max-width: none;
+  /* Unconditional cap: below ~1477px viewport the 4.5vw gutters keep content
+     narrower than the cap anyway, so no breakpoint gate is needed. */
+  max-width: var(--container-max);
   margin-left: auto;
   margin-right: auto;
-}
-
-@media (min-width: 1440px) {
-  .container {
-    max-width: var(--container-max); /* 1348px */
-  }
-}
-
-/* Respect browser text-size preferences; layout must not shrink the rem unit. */
-@layer base {
-  html { font-size: 100%; }
-  body { font-size: 1rem; }
 }
 
 /* ---- Per-section remainders — migration complete -------------------------
