@@ -1,0 +1,2103 @@
+{
+ "time": "batch7",
+ "axe": [
+  {
+   "route": "/",
+   "width": 1440,
+   "violations": []
+  },
+  {
+   "route": "/",
+   "width": 390,
+   "violations": []
+  },
+  {
+   "route": "/expertise/",
+   "width": 1440,
+   "violations": []
+  },
+  {
+   "route": "/expertise/",
+   "width": 390,
+   "violations": []
+  },
+  {
+   "route": "/portfolio/",
+   "width": 1440,
+   "violations": []
+  },
+  {
+   "route": "/portfolio/",
+   "width": 390,
+   "violations": []
+  },
+  {
+   "route": "/case-studies/",
+   "width": 1440,
+   "violations": []
+  },
+  {
+   "route": "/case-studies/",
+   "width": 390,
+   "violations": []
+  },
+  {
+   "route": "/case-studies/data2ai-platform/",
+   "width": 1440,
+   "violations": []
+  },
+  {
+   "route": "/case-studies/data2ai-platform/",
+   "width": 390,
+   "violations": []
+  },
+  {
+   "route": "/about-us/",
+   "width": 1440,
+   "violations": []
+  },
+  {
+   "route": "/about-us/",
+   "width": 390,
+   "violations": []
+  },
+  {
+   "route": "/branchen/",
+   "width": 1440,
+   "violations": []
+  },
+  {
+   "route": "/branchen/",
+   "width": 390,
+   "violations": []
+  },
+  {
+   "route": "/karriere/",
+   "width": 1440,
+   "violations": []
+  },
+  {
+   "route": "/karriere/",
+   "width": 390,
+   "violations": []
+  },
+  {
+   "route": "/kontakt/",
+   "width": 1440,
+   "violations": []
+  },
+  {
+   "route": "/kontakt/",
+   "width": 390,
+   "violations": []
+  },
+  {
+   "route": "/expertise/engineering/",
+   "width": 1440,
+   "violations": []
+  },
+  {
+   "route": "/expertise/engineering/",
+   "width": 390,
+   "violations": []
+  },
+  {
+   "route": "/expertise/technology/",
+   "width": 1440,
+   "violations": []
+  },
+  {
+   "route": "/expertise/technology/",
+   "width": 390,
+   "violations": []
+  },
+  {
+   "route": "/expertise/ai-daten/",
+   "width": 1440,
+   "violations": []
+  },
+  {
+   "route": "/expertise/ai-daten/",
+   "width": 390,
+   "violations": []
+  },
+  {
+   "route": "/portfolio/optimieren/",
+   "width": 1440,
+   "violations": []
+  },
+  {
+   "route": "/portfolio/optimieren/",
+   "width": 390,
+   "violations": []
+  },
+  {
+   "route": "/portfolio/transformieren/",
+   "width": 1440,
+   "violations": []
+  },
+  {
+   "route": "/portfolio/transformieren/",
+   "width": 390,
+   "violations": []
+  },
+  {
+   "route": "/portfolio/skalieren/",
+   "width": 1440,
+   "violations": []
+  },
+  {
+   "route": "/portfolio/skalieren/",
+   "width": 390,
+   "violations": []
+  },
+  {
+   "route": "/portfolio/verzahnen/",
+   "width": 1440,
+   "violations": []
+  },
+  {
+   "route": "/portfolio/verzahnen/",
+   "width": 390,
+   "violations": []
+  },
+  {
+   "route": "/404.html",
+   "width": 1440,
+   "violations": []
+  },
+  {
+   "route": "/404.html",
+   "width": 390,
+   "violations": []
+  }
+ ],
+ "layouts": [
+  {
+   "route": "/",
+   "width": 320,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/",
+   "width": 375,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/",
+   "width": 390,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/",
+   "width": 768,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/",
+   "width": 1024,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/",
+   "width": 1280,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/",
+   "width": 1440,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/",
+   "width": 1920,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/",
+   "width": 844,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/",
+   "width": 960,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/",
+   "width": 320,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/",
+   "width": 375,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/",
+   "width": 390,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/",
+   "width": 768,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/",
+   "width": 1024,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/",
+   "width": 1280,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/",
+   "width": 1440,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/",
+   "width": 1920,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/",
+   "width": 844,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/",
+   "width": 960,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/",
+   "width": 320,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/",
+   "width": 375,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/",
+   "width": 390,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/",
+   "width": 768,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/",
+   "width": 1024,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/",
+   "width": 1280,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/",
+   "width": 1440,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/",
+   "width": 1920,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/",
+   "width": 844,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/",
+   "width": 960,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/case-studies/",
+   "width": 320,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/case-studies/",
+   "width": 375,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/case-studies/",
+   "width": 390,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/case-studies/",
+   "width": 768,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/case-studies/",
+   "width": 1024,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/case-studies/",
+   "width": 1280,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/case-studies/",
+   "width": 1440,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/case-studies/",
+   "width": 1920,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/case-studies/",
+   "width": 844,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/case-studies/",
+   "width": 960,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/case-studies/data2ai-platform/",
+   "width": 320,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/case-studies/data2ai-platform/",
+   "width": 375,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/case-studies/data2ai-platform/",
+   "width": 390,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/case-studies/data2ai-platform/",
+   "width": 768,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/case-studies/data2ai-platform/",
+   "width": 1024,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/case-studies/data2ai-platform/",
+   "width": 1280,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/case-studies/data2ai-platform/",
+   "width": 1440,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/case-studies/data2ai-platform/",
+   "width": 1920,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/case-studies/data2ai-platform/",
+   "width": 844,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/case-studies/data2ai-platform/",
+   "width": 960,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/about-us/",
+   "width": 320,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/about-us/",
+   "width": 375,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/about-us/",
+   "width": 390,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/about-us/",
+   "width": 768,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/about-us/",
+   "width": 1024,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/about-us/",
+   "width": 1280,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/about-us/",
+   "width": 1440,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/about-us/",
+   "width": 1920,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/about-us/",
+   "width": 844,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/about-us/",
+   "width": 960,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/branchen/",
+   "width": 320,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/branchen/",
+   "width": 375,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/branchen/",
+   "width": 390,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/branchen/",
+   "width": 768,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/branchen/",
+   "width": 1024,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/branchen/",
+   "width": 1280,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/branchen/",
+   "width": 1440,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/branchen/",
+   "width": 1920,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/branchen/",
+   "width": 844,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/branchen/",
+   "width": 960,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/karriere/",
+   "width": 320,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/karriere/",
+   "width": 375,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/karriere/",
+   "width": 390,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/karriere/",
+   "width": 768,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/karriere/",
+   "width": 1024,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/karriere/",
+   "width": 1280,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/karriere/",
+   "width": 1440,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/karriere/",
+   "width": 1920,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/karriere/",
+   "width": 844,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/karriere/",
+   "width": 960,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/kontakt/",
+   "width": 320,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/kontakt/",
+   "width": 375,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/kontakt/",
+   "width": 390,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/kontakt/",
+   "width": 768,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/kontakt/",
+   "width": 1024,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/kontakt/",
+   "width": 1280,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/kontakt/",
+   "width": 1440,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/kontakt/",
+   "width": 1920,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/kontakt/",
+   "width": 844,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/kontakt/",
+   "width": 960,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/engineering/",
+   "width": 320,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/engineering/",
+   "width": 375,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/engineering/",
+   "width": 390,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/engineering/",
+   "width": 768,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/engineering/",
+   "width": 1024,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/engineering/",
+   "width": 1280,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/engineering/",
+   "width": 1440,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/engineering/",
+   "width": 1920,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/engineering/",
+   "width": 844,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/engineering/",
+   "width": 960,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/technology/",
+   "width": 320,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/technology/",
+   "width": 375,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/technology/",
+   "width": 390,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/technology/",
+   "width": 768,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/technology/",
+   "width": 1024,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/technology/",
+   "width": 1280,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/technology/",
+   "width": 1440,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/technology/",
+   "width": 1920,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/technology/",
+   "width": 844,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/technology/",
+   "width": 960,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/ai-daten/",
+   "width": 320,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/ai-daten/",
+   "width": 375,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/ai-daten/",
+   "width": 390,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/ai-daten/",
+   "width": 768,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/ai-daten/",
+   "width": 1024,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/ai-daten/",
+   "width": 1280,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/ai-daten/",
+   "width": 1440,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/ai-daten/",
+   "width": 1920,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/ai-daten/",
+   "width": 844,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/expertise/ai-daten/",
+   "width": 960,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/optimieren/",
+   "width": 320,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/optimieren/",
+   "width": 375,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/optimieren/",
+   "width": 390,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/optimieren/",
+   "width": 768,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/optimieren/",
+   "width": 1024,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/optimieren/",
+   "width": 1280,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/optimieren/",
+   "width": 1440,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/optimieren/",
+   "width": 1920,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/optimieren/",
+   "width": 844,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/optimieren/",
+   "width": 960,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/transformieren/",
+   "width": 320,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/transformieren/",
+   "width": 375,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/transformieren/",
+   "width": 390,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/transformieren/",
+   "width": 768,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/transformieren/",
+   "width": 1024,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/transformieren/",
+   "width": 1280,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/transformieren/",
+   "width": 1440,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/transformieren/",
+   "width": 1920,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/transformieren/",
+   "width": 844,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/transformieren/",
+   "width": 960,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/skalieren/",
+   "width": 320,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/skalieren/",
+   "width": 375,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/skalieren/",
+   "width": 390,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/skalieren/",
+   "width": 768,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/skalieren/",
+   "width": 1024,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/skalieren/",
+   "width": 1280,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/skalieren/",
+   "width": 1440,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/skalieren/",
+   "width": 1920,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/skalieren/",
+   "width": 844,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/skalieren/",
+   "width": 960,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/verzahnen/",
+   "width": 320,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/verzahnen/",
+   "width": 375,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/verzahnen/",
+   "width": 390,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/verzahnen/",
+   "width": 768,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/verzahnen/",
+   "width": 1024,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/verzahnen/",
+   "width": 1280,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/verzahnen/",
+   "width": 1440,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/verzahnen/",
+   "width": 1920,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/verzahnen/",
+   "width": 844,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/portfolio/verzahnen/",
+   "width": 960,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/404.html",
+   "width": 320,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/404.html",
+   "width": 375,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/404.html",
+   "width": 390,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/404.html",
+   "width": 768,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/404.html",
+   "width": 1024,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/404.html",
+   "width": 1280,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/404.html",
+   "width": 1440,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/404.html",
+   "width": 1920,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/404.html",
+   "width": 844,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  },
+  {
+   "route": "/404.html",
+   "width": 960,
+   "overflow": false,
+   "rootFont": "16px",
+   "clipped": []
+  }
+ ],
+ "header": [
+  {
+   "route": "/",
+   "width": 1280,
+   "gap": 24,
+   "headerLeft": 57.59375,
+   "contentLeft": 57.59375,
+   "navVisible": true
+  },
+  {
+   "route": "/",
+   "width": 1440,
+   "gap": 24,
+   "headerLeft": 64.796875,
+   "contentLeft": 64.796875,
+   "navVisible": true
+  },
+  {
+   "route": "/",
+   "width": 1920,
+   "gap": 24,
+   "headerLeft": 288,
+   "contentLeft": 288,
+   "navVisible": true
+  },
+  {
+   "route": "/expertise/",
+   "width": 1280,
+   "gap": 24,
+   "headerLeft": 57.59375,
+   "contentLeft": 57.59375,
+   "navVisible": true
+  },
+  {
+   "route": "/expertise/",
+   "width": 1440,
+   "gap": 24,
+   "headerLeft": 64.796875,
+   "contentLeft": 64.796875,
+   "navVisible": true
+  },
+  {
+   "route": "/expertise/",
+   "width": 1920,
+   "gap": 24,
+   "headerLeft": 288,
+   "contentLeft": 288,
+   "navVisible": true
+  },
+  {
+   "route": "/portfolio/",
+   "width": 1280,
+   "gap": 24,
+   "headerLeft": 57.59375,
+   "contentLeft": 57.59375,
+   "navVisible": true
+  },
+  {
+   "route": "/portfolio/",
+   "width": 1440,
+   "gap": 24,
+   "headerLeft": 64.796875,
+   "contentLeft": 64.796875,
+   "navVisible": true
+  },
+  {
+   "route": "/portfolio/",
+   "width": 1920,
+   "gap": 24,
+   "headerLeft": 288,
+   "contentLeft": 288,
+   "navVisible": true
+  },
+  {
+   "route": "/case-studies/",
+   "width": 1280,
+   "gap": 24,
+   "headerLeft": 57.59375,
+   "contentLeft": 57.59375,
+   "navVisible": true
+  },
+  {
+   "route": "/case-studies/",
+   "width": 1440,
+   "gap": 24,
+   "headerLeft": 64.796875,
+   "contentLeft": 64.796875,
+   "navVisible": true
+  },
+  {
+   "route": "/case-studies/",
+   "width": 1920,
+   "gap": 24,
+   "headerLeft": 288,
+   "contentLeft": 288,
+   "navVisible": true
+  },
+  {
+   "route": "/case-studies/data2ai-platform/",
+   "width": 1280,
+   "gap": 24,
+   "headerLeft": 57.59375,
+   "contentLeft": 57.59375,
+   "navVisible": true
+  },
+  {
+   "route": "/case-studies/data2ai-platform/",
+   "width": 1440,
+   "gap": 24,
+   "headerLeft": 64.796875,
+   "contentLeft": 64.796875,
+   "navVisible": true
+  },
+  {
+   "route": "/case-studies/data2ai-platform/",
+   "width": 1920,
+   "gap": 24,
+   "headerLeft": 288,
+   "contentLeft": 288,
+   "navVisible": true
+  },
+  {
+   "route": "/about-us/",
+   "width": 1280,
+   "gap": 24,
+   "headerLeft": 57.59375,
+   "contentLeft": 57.59375,
+   "navVisible": true
+  },
+  {
+   "route": "/about-us/",
+   "width": 1440,
+   "gap": 24,
+   "headerLeft": 64.796875,
+   "contentLeft": 64.796875,
+   "navVisible": true
+  },
+  {
+   "route": "/about-us/",
+   "width": 1920,
+   "gap": 24,
+   "headerLeft": 288,
+   "contentLeft": 288,
+   "navVisible": true
+  },
+  {
+   "route": "/branchen/",
+   "width": 1280,
+   "gap": 24,
+   "headerLeft": 57.59375,
+   "contentLeft": 57.59375,
+   "navVisible": true
+  },
+  {
+   "route": "/branchen/",
+   "width": 1440,
+   "gap": 24,
+   "headerLeft": 64.796875,
+   "contentLeft": 64.796875,
+   "navVisible": true
+  },
+  {
+   "route": "/branchen/",
+   "width": 1920,
+   "gap": 24,
+   "headerLeft": 288,
+   "contentLeft": 288,
+   "navVisible": true
+  },
+  {
+   "route": "/karriere/",
+   "width": 1280,
+   "gap": 24,
+   "headerLeft": 57.59375,
+   "contentLeft": 57.59375,
+   "navVisible": true
+  },
+  {
+   "route": "/karriere/",
+   "width": 1440,
+   "gap": 24,
+   "headerLeft": 64.796875,
+   "contentLeft": 64.796875,
+   "navVisible": true
+  },
+  {
+   "route": "/karriere/",
+   "width": 1920,
+   "gap": 24,
+   "headerLeft": 288,
+   "contentLeft": 288,
+   "navVisible": true
+  },
+  {
+   "route": "/kontakt/",
+   "width": 1280,
+   "gap": 24,
+   "headerLeft": 57.59375,
+   "contentLeft": 57.59375,
+   "navVisible": true
+  },
+  {
+   "route": "/kontakt/",
+   "width": 1440,
+   "gap": 24,
+   "headerLeft": 64.796875,
+   "contentLeft": 64.796875,
+   "navVisible": true
+  },
+  {
+   "route": "/kontakt/",
+   "width": 1920,
+   "gap": 24,
+   "headerLeft": 288,
+   "contentLeft": 288,
+   "navVisible": true
+  },
+  {
+   "route": "/expertise/engineering/",
+   "width": 1280,
+   "gap": 24,
+   "headerLeft": 57.59375,
+   "contentLeft": 57.59375,
+   "navVisible": true
+  },
+  {
+   "route": "/expertise/engineering/",
+   "width": 1440,
+   "gap": 24,
+   "headerLeft": 64.796875,
+   "contentLeft": 64.796875,
+   "navVisible": true
+  },
+  {
+   "route": "/expertise/engineering/",
+   "width": 1920,
+   "gap": 24,
+   "headerLeft": 288,
+   "contentLeft": 288,
+   "navVisible": true
+  },
+  {
+   "route": "/expertise/technology/",
+   "width": 1280,
+   "gap": 24,
+   "headerLeft": 57.59375,
+   "contentLeft": 57.59375,
+   "navVisible": true
+  },
+  {
+   "route": "/expertise/technology/",
+   "width": 1440,
+   "gap": 24,
+   "headerLeft": 64.796875,
+   "contentLeft": 64.796875,
+   "navVisible": true
+  },
+  {
+   "route": "/expertise/technology/",
+   "width": 1920,
+   "gap": 24,
+   "headerLeft": 288,
+   "contentLeft": 288,
+   "navVisible": true
+  },
+  {
+   "route": "/expertise/ai-daten/",
+   "width": 1280,
+   "gap": 24,
+   "headerLeft": 57.59375,
+   "contentLeft": 57.59375,
+   "navVisible": true
+  },
+  {
+   "route": "/expertise/ai-daten/",
+   "width": 1440,
+   "gap": 24,
+   "headerLeft": 64.796875,
+   "contentLeft": 64.796875,
+   "navVisible": true
+  },
+  {
+   "route": "/expertise/ai-daten/",
+   "width": 1920,
+   "gap": 24,
+   "headerLeft": 288,
+   "contentLeft": 288,
+   "navVisible": true
+  },
+  {
+   "route": "/portfolio/optimieren/",
+   "width": 1280,
+   "gap": 24,
+   "headerLeft": 57.59375,
+   "contentLeft": 57.59375,
+   "navVisible": true
+  },
+  {
+   "route": "/portfolio/optimieren/",
+   "width": 1440,
+   "gap": 24,
+   "headerLeft": 64.796875,
+   "contentLeft": 64.796875,
+   "navVisible": true
+  },
+  {
+   "route": "/portfolio/optimieren/",
+   "width": 1920,
+   "gap": 24,
+   "headerLeft": 288,
+   "contentLeft": 288,
+   "navVisible": true
+  },
+  {
+   "route": "/portfolio/transformieren/",
+   "width": 1280,
+   "gap": 24,
+   "headerLeft": 57.59375,
+   "contentLeft": 57.59375,
+   "navVisible": true
+  },
+  {
+   "route": "/portfolio/transformieren/",
+   "width": 1440,
+   "gap": 24,
+   "headerLeft": 64.796875,
+   "contentLeft": 64.796875,
+   "navVisible": true
+  },
+  {
+   "route": "/portfolio/transformieren/",
+   "width": 1920,
+   "gap": 24,
+   "headerLeft": 288,
+   "contentLeft": 288,
+   "navVisible": true
+  },
+  {
+   "route": "/portfolio/skalieren/",
+   "width": 1280,
+   "gap": 24,
+   "headerLeft": 57.59375,
+   "contentLeft": 57.59375,
+   "navVisible": true
+  },
+  {
+   "route": "/portfolio/skalieren/",
+   "width": 1440,
+   "gap": 24,
+   "headerLeft": 64.796875,
+   "contentLeft": 64.796875,
+   "navVisible": true
+  },
+  {
+   "route": "/portfolio/skalieren/",
+   "width": 1920,
+   "gap": 24,
+   "headerLeft": 288,
+   "contentLeft": 288,
+   "navVisible": true
+  },
+  {
+   "route": "/portfolio/verzahnen/",
+   "width": 1280,
+   "gap": 24,
+   "headerLeft": 57.59375,
+   "contentLeft": 57.59375,
+   "navVisible": true
+  },
+  {
+   "route": "/portfolio/verzahnen/",
+   "width": 1440,
+   "gap": 24,
+   "headerLeft": 64.796875,
+   "contentLeft": 64.796875,
+   "navVisible": true
+  },
+  {
+   "route": "/portfolio/verzahnen/",
+   "width": 1920,
+   "gap": 24,
+   "headerLeft": 288,
+   "contentLeft": 288,
+   "navVisible": true
+  },
+  {
+   "route": "/404.html",
+   "width": 1280,
+   "gap": 24,
+   "headerLeft": 57.59375,
+   "contentLeft": 57.59375,
+   "navVisible": true
+  },
+  {
+   "route": "/404.html",
+   "width": 1440,
+   "gap": 24,
+   "headerLeft": 64.796875,
+   "contentLeft": 64.796875,
+   "navVisible": true
+  },
+  {
+   "route": "/404.html",
+   "width": 1920,
+   "gap": 24,
+   "headerLeft": 288,
+   "contentLeft": 288,
+   "navVisible": true
+  }
+ ],
+ "behaviors": [
+  {
+   "route": "/",
+   "skip": "skip-link",
+   "skipTarget": {
+    "id": "main",
+    "tag": "MAIN"
+   },
+   "megaOpen": true,
+   "panelLinkCount": 5,
+   "escaped": {
+    "open": false,
+    "refocused": true
+   },
+   "exclusive": [
+    false,
+    true
+   ]
+  },
+  {
+   "route": "/",
+   "mobile": {
+    "open": true,
+    "links": 14
+   }
+  },
+  {
+   "route": "/branchen/",
+   "skip": "skip-link",
+   "skipTarget": {
+    "id": "main",
+    "tag": "MAIN"
+   },
+   "megaOpen": true,
+   "panelLinkCount": 5,
+   "escaped": {
+    "open": false,
+    "refocused": true
+   },
+   "exclusive": [
+    false,
+    true
+   ]
+  },
+  {
+   "route": "/branchen/",
+   "mobile": {
+    "open": true,
+    "links": 14
+   }
+  }
+ ],
+ "noJs": [
+  {
+   "route": "/",
+   "h1": true,
+   "filtersHidden": true,
+   "jsOnlyCount": 1,
+   "projects": 6,
+   "megaPanelReachable": true
+  },
+  {
+   "route": "/expertise/",
+   "h1": true,
+   "filtersHidden": true,
+   "jsOnlyCount": 0,
+   "projects": 0,
+   "megaPanelReachable": true
+  },
+  {
+   "route": "/portfolio/",
+   "h1": true,
+   "filtersHidden": true,
+   "jsOnlyCount": 0,
+   "projects": 0,
+   "megaPanelReachable": true
+  },
+  {
+   "route": "/case-studies/",
+   "h1": true,
+   "filtersHidden": true,
+   "jsOnlyCount": 2,
+   "projects": 10,
+   "megaPanelReachable": true
+  },
+  {
+   "route": "/case-studies/data2ai-platform/",
+   "h1": true,
+   "filtersHidden": true,
+   "jsOnlyCount": 0,
+   "projects": 0,
+   "megaPanelReachable": true
+  },
+  {
+   "route": "/about-us/",
+   "h1": true,
+   "filtersHidden": true,
+   "jsOnlyCount": 0,
+   "projects": 0,
+   "megaPanelReachable": true
+  },
+  {
+   "route": "/branchen/",
+   "h1": true,
+   "filtersHidden": true,
+   "jsOnlyCount": 0,
+   "projects": 0,
+   "megaPanelReachable": true
+  },
+  {
+   "route": "/karriere/",
+   "h1": true,
+   "filtersHidden": true,
+   "jsOnlyCount": 0,
+   "projects": 0,
+   "megaPanelReachable": true
+  },
+  {
+   "route": "/kontakt/",
+   "h1": true,
+   "filtersHidden": true,
+   "jsOnlyCount": 0,
+   "projects": 0,
+   "megaPanelReachable": true
+  },
+  {
+   "route": "/expertise/engineering/",
+   "h1": true,
+   "filtersHidden": true,
+   "jsOnlyCount": 0,
+   "projects": 0,
+   "megaPanelReachable": true
+  },
+  {
+   "route": "/expertise/technology/",
+   "h1": true,
+   "filtersHidden": true,
+   "jsOnlyCount": 0,
+   "projects": 0,
+   "megaPanelReachable": true
+  },
+  {
+   "route": "/expertise/ai-daten/",
+   "h1": true,
+   "filtersHidden": true,
+   "jsOnlyCount": 0,
+   "projects": 0,
+   "megaPanelReachable": true
+  },
+  {
+   "route": "/portfolio/optimieren/",
+   "h1": true,
+   "filtersHidden": true,
+   "jsOnlyCount": 0,
+   "projects": 0,
+   "megaPanelReachable": true
+  },
+  {
+   "route": "/portfolio/transformieren/",
+   "h1": true,
+   "filtersHidden": true,
+   "jsOnlyCount": 0,
+   "projects": 0,
+   "megaPanelReachable": true
+  },
+  {
+   "route": "/portfolio/skalieren/",
+   "h1": true,
+   "filtersHidden": true,
+   "jsOnlyCount": 0,
+   "projects": 0,
+   "megaPanelReachable": true
+  },
+  {
+   "route": "/portfolio/verzahnen/",
+   "h1": true,
+   "filtersHidden": true,
+   "jsOnlyCount": 0,
+   "projects": 0,
+   "megaPanelReachable": true
+  },
+  {
+   "route": "/404.html",
+   "h1": true,
+   "filtersHidden": true,
+   "jsOnlyCount": 0,
+   "projects": 0,
+   "megaPanelReachable": true
+  }
+ ],
+ "console": [],
+ "anchors": [
+  {
+   "route": "/#industries",
+   "found": true,
+   "topVisible": true
+  },
+  {
+   "route": "/#career",
+   "found": true,
+   "topVisible": true
+  },
+  {
+   "route": "/#contact",
+   "found": true,
+   "topVisible": true
+  },
+  {
+   "route": "/#faq",
+   "found": true,
+   "topVisible": true
+  },
+  {
+   "route": "/portfolio/#delivery-model",
+   "found": true,
+   "topVisible": true
+  },
+  {
+   "route": "/about-us/#delivery",
+   "found": true,
+   "topVisible": true
+  },
+  {
+   "route": "/expertise/#engineering",
+   "found": true,
+   "topVisible": true
+  },
+  {
+   "route": "/expertise/#technology",
+   "found": true,
+   "topVisible": true
+  }
+ ],
+ "images": [
+  {
+   "route": "/",
+   "broken": [],
+   "total": 10
+  },
+  {
+   "route": "/expertise/",
+   "broken": [],
+   "total": 4
+  },
+  {
+   "route": "/portfolio/",
+   "broken": [],
+   "total": 4
+  },
+  {
+   "route": "/case-studies/",
+   "broken": [],
+   "total": 13
+  },
+  {
+   "route": "/case-studies/data2ai-platform/",
+   "broken": [],
+   "total": 3
+  },
+  {
+   "route": "/about-us/",
+   "broken": [],
+   "total": 3
+  },
+  {
+   "route": "/branchen/",
+   "broken": [],
+   "total": 3
+  },
+  {
+   "route": "/karriere/",
+   "broken": [],
+   "total": 3
+  },
+  {
+   "route": "/kontakt/",
+   "broken": [],
+   "total": 2
+  },
+  {
+   "route": "/expertise/engineering/",
+   "broken": [],
+   "total": 3
+  },
+  {
+   "route": "/expertise/technology/",
+   "broken": [],
+   "total": 3
+  },
+  {
+   "route": "/expertise/ai-daten/",
+   "broken": [],
+   "total": 4
+  },
+  {
+   "route": "/portfolio/optimieren/",
+   "broken": [],
+   "total": 3
+  },
+  {
+   "route": "/portfolio/transformieren/",
+   "broken": [],
+   "total": 3
+  },
+  {
+   "route": "/portfolio/skalieren/",
+   "broken": [],
+   "total": 3
+  },
+  {
+   "route": "/portfolio/verzahnen/",
+   "broken": [],
+   "total": 3
+  },
+  {
+   "route": "/404.html",
+   "broken": [],
+   "total": 2
+  }
+ ],
+ "badLinks": [
+  "/kontakt/?interesse=Karriere%20bei%20Emposo",
+  "/kontakt/?interesse=Transformation%20%2F%20AI-Use-Case",
+  "/kontakt/?interesse=Optimierung%20einer%20bestehenden%20Leistung",
+  "/kontakt/?interesse=Skalierung%20eines%20Programms"
+ ]
+}
