@@ -1,5 +1,5 @@
-/* Header behaviour: close the responsive menu after navigation, add a subtle
-   scroll state, and identify the section a visitor is currently reading. */
+/* Header behaviour: close the responsive menu after navigation and add a
+   subtle scroll state. Opening/closing is native <details>. */
 (function () {
   'use strict';
   if (!window.__onReady) return;
@@ -44,45 +44,5 @@
     };
     updateHeader();
     window.addEventListener('scroll', updateHeader, { passive: true });
-
-    var sectionLinks = Array.prototype.slice.call(document.querySelectorAll('[data-section-link]'));
-    var sections = [];
-    var seen = {};
-    sectionLinks.forEach(function (link) {
-      var id = (link.getAttribute('href') || '').replace(/^#/, '');
-      var section = id && document.getElementById(id);
-      if (section && !seen[id]) {
-        seen[id] = true;
-        sections.push(section);
-      }
-    });
-    sections.sort(function (a, b) {
-      if (a === b) return 0;
-      return a.compareDocumentPosition(b) & 4 ? -1 : 1;
-    });
-
-    function setActive(id) {
-      sectionLinks.forEach(function (link) {
-        var active = link.getAttribute('href') === '#' + id;
-        if (active) {
-          link.setAttribute('aria-current', 'location');
-        } else {
-          link.removeAttribute('aria-current');
-        }
-      });
-    }
-
-    function updateActiveSection() {
-      if (!sections.length) return;
-      var threshold = window.innerHeight * 0.46;
-      var active = null;
-      sections.forEach(function (section) {
-        if (section.getBoundingClientRect().top <= threshold) active = section.id;
-      });
-      setActive(active);
-    }
-
-    updateActiveSection();
-    window.addEventListener('scroll', updateActiveSection, { passive: true });
   });
 })();
