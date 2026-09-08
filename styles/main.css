@@ -157,6 +157,9 @@
   /* Hairline color for the numbered fact grids; dark sections flip it to
      --color-line-light (see .page-section--dark/--deep). */
   --line-hairline: var(--color-line);
+  /* Accent used AS TEXT: the AA-safe shade on light surfaces; dark sections
+     flip it to the brand orange (which passes on navy). */
+  --accent-ink: var(--color-accent-text);
 }
 
 /* ---- reset (verbatim from css/00-base.css §1) -----------------------------

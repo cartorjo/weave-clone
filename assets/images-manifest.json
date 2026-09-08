@@ -1,0 +1,452 @@
+{
+ "cloud": {
+  "kind": "brand",
+  "variants": {
+   "avif-1600": {
+    "width": 1600,
+    "height": 900,
+    "bytes": 157002
+   },
+   "webp-1600": {
+    "width": 1600,
+    "height": 900,
+    "bytes": 231420
+   },
+   "avif-900": {
+    "width": 900,
+    "height": 506,
+    "bytes": 63259
+   },
+   "webp-900": {
+    "width": 900,
+    "height": 506,
+    "bytes": 91562
+   },
+   "jpg-1600": {
+    "width": 1600,
+    "height": 900,
+    "bytes": 243951
+   }
+  }
+ },
+ "data": {
+  "kind": "brand",
+  "variants": {
+   "avif-1600": {
+    "width": 1600,
+    "height": 927,
+    "bytes": 86878
+   },
+   "webp-1600": {
+    "width": 1600,
+    "height": 927,
+    "bytes": 125528
+   },
+   "avif-900": {
+    "width": 900,
+    "height": 521,
+    "bytes": 31466
+   },
+   "webp-900": {
+    "width": 900,
+    "height": 521,
+    "bytes": 44366
+   },
+   "jpg-1600": {
+    "width": 1600,
+    "height": 927,
+    "bytes": 138084
+   }
+  }
+ },
+ "energy": {
+  "kind": "brand",
+  "variants": {
+   "avif-1600": {
+    "width": 1600,
+    "height": 1067,
+    "bytes": 76511
+   },
+   "webp-1600": {
+    "width": 1600,
+    "height": 1067,
+    "bytes": 106114
+   },
+   "avif-900": {
+    "width": 900,
+    "height": 600,
+    "bytes": 35619
+   },
+   "webp-900": {
+    "width": 900,
+    "height": 600,
+    "bytes": 47590
+   },
+   "jpg-1600": {
+    "width": 1600,
+    "height": 1067,
+    "bytes": 152194
+   }
+  }
+ },
+ "engineering": {
+  "kind": "brand",
+  "variants": {
+   "avif-1600": {
+    "width": 1600,
+    "height": 900,
+    "bytes": 95460
+   },
+   "webp-1600": {
+    "width": 1600,
+    "height": 900,
+    "bytes": 157642
+   },
+   "avif-900": {
+    "width": 900,
+    "height": 506,
+    "bytes": 47793
+   },
+   "webp-900": {
+    "width": 900,
+    "height": 506,
+    "bytes": 73688
+   },
+   "jpg-1600": {
+    "width": 1600,
+    "height": 900,
+    "bytes": 198670
+   }
+  }
+ },
+ "pharma": {
+  "kind": "brand",
+  "variants": {
+   "avif-1600": {
+    "width": 1600,
+    "height": 1067,
+    "bytes": 46381
+   },
+   "webp-1600": {
+    "width": 1600,
+    "height": 1067,
+    "bytes": 73496
+   },
+   "avif-900": {
+    "width": 900,
+    "height": 600,
+    "bytes": 20731
+   },
+   "webp-900": {
+    "width": 900,
+    "height": 600,
+    "bytes": 32572
+   },
+   "jpg-1600": {
+    "width": 1600,
+    "height": 1067,
+    "bytes": 118709
+   }
+  }
+ },
+ "technology": {
+  "kind": "brand",
+  "variants": {
+   "avif-1600": {
+    "width": 1600,
+    "height": 1067,
+    "bytes": 59326
+   },
+   "webp-1600": {
+    "width": 1600,
+    "height": 1067,
+    "bytes": 76208
+   },
+   "avif-900": {
+    "width": 900,
+    "height": 600,
+    "bytes": 28286
+   },
+   "webp-900": {
+    "width": 900,
+    "height": 600,
+    "bytes": 34986
+   },
+   "jpg-1600": {
+    "width": 1600,
+    "height": 1067,
+    "bytes": 120751
+   }
+  }
+ },
+ "validation": {
+  "kind": "brand",
+  "variants": {
+   "avif-1600": {
+    "width": 1600,
+    "height": 1068,
+    "bytes": 60237
+   },
+   "webp-1600": {
+    "width": 1600,
+    "height": 1068,
+    "bytes": 84174
+   },
+   "avif-900": {
+    "width": 900,
+    "height": 601,
+    "bytes": 26361
+   },
+   "webp-900": {
+    "width": 900,
+    "height": 601,
+    "bytes": 37004
+   },
+   "jpg-1600": {
+    "width": 1600,
+    "height": 1068,
+    "bytes": 132346
+   }
+  }
+ },
+ "ai-engineering": {
+  "kind": "generated",
+  "variants": {
+   "avif-1586": {
+    "width": 1586,
+    "height": 992,
+    "bytes": 48137
+   },
+   "webp-1586": {
+    "width": 1586,
+    "height": 992,
+    "bytes": 71002
+   },
+   "avif-900": {
+    "width": 900,
+    "height": 563,
+    "bytes": 20900
+   },
+   "webp-900": {
+    "width": 900,
+    "height": 563,
+    "bytes": 30548
+   },
+   "jpg-1586": {
+    "width": 1586,
+    "height": 992,
+    "bytes": 91041
+   }
+  }
+ },
+ "ai-governance": {
+  "kind": "generated",
+  "variants": {
+   "avif-1536": {
+    "width": 1536,
+    "height": 1024,
+    "bytes": 55105
+   },
+   "webp-1536": {
+    "width": 1536,
+    "height": 1024,
+    "bytes": 78878
+   },
+   "avif-900": {
+    "width": 900,
+    "height": 600,
+    "bytes": 25205
+   },
+   "webp-900": {
+    "width": 900,
+    "height": 600,
+    "bytes": 35936
+   },
+   "jpg-1536": {
+    "width": 1536,
+    "height": 1024,
+    "bytes": 110711
+   }
+  }
+ },
+ "cloud-platforms": {
+  "kind": "generated",
+  "variants": {
+   "avif-1536": {
+    "width": 1536,
+    "height": 1024,
+    "bytes": 26903
+   },
+   "webp-1536": {
+    "width": 1536,
+    "height": 1024,
+    "bytes": 39470
+   },
+   "avif-900": {
+    "width": 900,
+    "height": 600,
+    "bytes": 12351
+   },
+   "webp-900": {
+    "width": 900,
+    "height": 600,
+    "bytes": 17122
+   },
+   "jpg-1536": {
+    "width": 1536,
+    "height": 1024,
+    "bytes": 61983
+   }
+  }
+ },
+ "cybersecurity": {
+  "kind": "generated",
+  "variants": {
+   "avif-1536": {
+    "width": 1536,
+    "height": 1024,
+    "bytes": 41183
+   },
+   "webp-1536": {
+    "width": 1536,
+    "height": 1024,
+    "bytes": 65438
+   },
+   "avif-900": {
+    "width": 900,
+    "height": 600,
+    "bytes": 17935
+   },
+   "webp-900": {
+    "width": 900,
+    "height": 600,
+    "bytes": 26686
+   },
+   "jpg-1536": {
+    "width": 1536,
+    "height": 1024,
+    "bytes": 93699
+   }
+  }
+ },
+ "data-analytics": {
+  "kind": "generated",
+  "variants": {
+   "avif-1536": {
+    "width": 1536,
+    "height": 1024,
+    "bytes": 50500
+   },
+   "webp-1536": {
+    "width": 1536,
+    "height": 1024,
+    "bytes": 80862
+   },
+   "avif-900": {
+    "width": 900,
+    "height": 600,
+    "bytes": 23481
+   },
+   "webp-900": {
+    "width": 900,
+    "height": 600,
+    "bytes": 35432
+   },
+   "jpg-1536": {
+    "width": 1536,
+    "height": 1024,
+    "bytes": 106674
+   }
+  }
+ },
+ "hero-system": {
+  "kind": "generated",
+  "variants": {
+   "avif-1122": {
+    "width": 1122,
+    "height": 1402,
+    "bytes": 52216
+   },
+   "webp-1122": {
+    "width": 1122,
+    "height": 1402,
+    "bytes": 77260
+   },
+   "avif-900": {
+    "width": 900,
+    "height": 1125,
+    "bytes": 38312
+   },
+   "webp-900": {
+    "width": 900,
+    "height": 1125,
+    "bytes": 57140
+   },
+   "jpg-1122": {
+    "width": 1122,
+    "height": 1402,
+    "bytes": 107311
+   }
+  }
+ },
+ "programme-delivery": {
+  "kind": "generated",
+  "variants": {
+   "avif-1536": {
+    "width": 1536,
+    "height": 1024,
+    "bytes": 36049
+   },
+   "webp-1536": {
+    "width": 1536,
+    "height": 1024,
+    "bytes": 55816
+   },
+   "avif-900": {
+    "width": 900,
+    "height": 600,
+    "bytes": 17004
+   },
+   "webp-900": {
+    "width": 900,
+    "height": 600,
+    "bytes": 24684
+   },
+   "jpg-1536": {
+    "width": 1536,
+    "height": 1024,
+    "bytes": 85089
+   }
+  }
+ },
+ "responsible-ai": {
+  "kind": "generated",
+  "variants": {
+   "avif-1536": {
+    "width": 1536,
+    "height": 1024,
+    "bytes": 26744
+   },
+   "webp-1536": {
+    "width": 1536,
+    "height": 1024,
+    "bytes": 37648
+   },
+   "avif-900": {
+    "width": 900,
+    "height": 600,
+    "bytes": 11701
+   },
+   "webp-900": {
+    "width": 900,
+    "height": 600,
+    "bytes": 16002
+   },
+   "jpg-1536": {
+    "width": 1536,
+    "height": 1024,
+    "bytes": 52739
+   }
+  }
+ }
+}
