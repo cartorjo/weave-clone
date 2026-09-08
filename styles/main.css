@@ -55,13 +55,14 @@
 @import "tailwindcss/utilities.css" layer(utilities) source(none);
 @import "./00-components.css" layer(components);
 
+/* Scan the AUTHORING sources, not the generated output: every shipped page is
+   assembled from sections/ + pages/ + partials/ (see assemble.mjs), so their
+   class union covers all generated documents, including future page dirs. */
 @source "../sections";
-@source "../index.html";
+@source "../pages";
+@source "../pages.mjs";
+@source "../partials";
 @source "../js";
-@source "../expertise";
-@source "../portfolio";
-@source "../case-studies";
-@source "../about-us";
 
 /* ---- Graph paper utility (decisions A6 — EXACT recipe) --------------------
    Lines LIGHTER than the paper; 13.33px cell. The major-every-8-cells layer is
