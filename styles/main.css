@@ -58,6 +58,10 @@
 @source "../sections";
 @source "../index.html";
 @source "../js";
+@source "../expertise";
+@source "../portfolio";
+@source "../case-studies";
+@source "../about-us";
 
 /* ---- Graph paper utility (decisions A6 — EXACT recipe) --------------------
    Lines LIGHTER than the paper; 13.33px cell. The major-every-8-cells layer is
@@ -114,6 +118,11 @@
      them once here so every migrated file uses named variants instead of
      repeating max-[991px]:/max-[479px]: arbitrary breakpoints everywhere.
      max-lg: → width<992px ≡ max-width:991px. max-xs: → width<480px ≡ max-width:479px. */
+  /* Keep breakpoint units consistent so responsive utilities sort correctly. */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-2xl: 1536px;
+  --container-content: 56rem;
   --breakpoint-xs: 480px;
   --breakpoint-lg: 992px;
   /* Overrides Tailwind's default xl (1280px): nothing in this codebase wants
@@ -123,6 +132,9 @@
   --breakpoint-xl: 1440px;
 
   --color-lemon: #f7911e;
+  /* Same-hue text shade: AA on both white and paper. Decorative orange stays unchanged. */
+  --color-accent-text: #995a13;
+  --spacing-menu: min(20rem, 90vw);
   --color-lemon-100: #f7911e;
   --color-ink: #00143d;
   --color-ink-strong: #00143d;
@@ -340,28 +352,10 @@
   }
 }
 
-/* ---- root scaling (verbatim from css/00-base.css §2) ---------------------
-   Not part of @layer base: nothing else targets html/body's font-size, so
-   there is no utility this would need to lose to. 1rem = 1vw fluid; clamps
-   to 14.4px at ≥1440, 1.8vw at ≤600. No Tailwind utility expresses
-   viewport-fluid root scaling — keep this exactly as-is. */
-html,
-body {
-  font-size: 1vw;
-}
-
-@media (min-width: 1440px) {
-  html,
-  body {
-    font-size: 14.4px;
-  }
-}
-
-@media (max-width: 600px) {
-  html,
-  body {
-    font-size: 1.8vw;
-  }
+/* Respect browser text-size preferences; layout must not shrink the rem unit. */
+@layer base {
+  html { font-size: 100%; }
+  body { font-size: 1rem; }
 }
 
 /* ---- Per-section remainders — migration complete -------------------------
@@ -370,4 +364,7 @@ body {
    equivalent: @keyframes bodies, Splide vendor-class exceptions, and (for
    00-base-remainder) skip-link, focus, and reduced-motion rules. */
 @import "./00-base-remainder.css";
-@import "./08-editorial.css";
+/* Legacy component rules sit below explicit accessibility utilities. Full
+   component/token cleanup remains Batch C; layout container stays unlayered. */
+@import "./08-editorial.css" layer(components);
+@import "./09-page-templates.css" layer(components);
