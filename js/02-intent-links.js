@@ -11,19 +11,26 @@
     var hint = document.querySelector('[data-contact-hint]');
     if (!select) return;
 
+    function preselect(interest) {
+      var known = Array.prototype.slice.call(select.options).some(function (candidate) {
+        return candidate.value === interest;
+      });
+      if (!known) return;
+      select.value = interest;
+      if (hint) {
+        hint.textContent = 'Wir haben „' + interest + '“ für Ihre Anfrage vorausgewählt.';
+        hint.hidden = false;
+      }
+    }
+
+    /* Cross-page intent: /kontakt/?interesse=… carries the visitor's chosen
+       path into the form. Without JS the form still works, just unpreselected. */
+    var fromQuery = new URLSearchParams(window.location.search).get('interesse');
+    if (fromQuery) preselect(fromQuery);
+
     Array.prototype.slice.call(document.querySelectorAll('[data-contact-interest]')).forEach(function (link) {
       link.addEventListener('click', function () {
-        var interest = link.getAttribute('data-contact-interest');
-        var option = Array.prototype.slice.call(select.options).some(function (candidate) {
-          return candidate.value === interest;
-        });
-        if (!option) return;
-
-        select.value = interest;
-        if (hint) {
-          hint.textContent = 'Wir haben „' + interest + '“ für Ihre Anfrage vorausgewählt.';
-          hint.hidden = false;
-        }
+        preselect(link.getAttribute('data-contact-interest'));
       });
     });
   });

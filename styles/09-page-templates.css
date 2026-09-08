@@ -226,6 +226,7 @@
 .fact-grid > * + * { padding-left: var(--spacing-cell); }
 .fact-grid > *:last-child { border-right: 0; }
 .fact-grid--tall { --fact-min: 24rem; }
+.fact-grid--flush { --fact-min: 0; }
 .fact-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .fact-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .fact-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -486,8 +487,8 @@
 .case-card__discipline { font-size: 0.69rem; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; }
 .case-card__number { color: var(--color-lemon); }
 .case-card__discipline { color: rgba(0,20,61,0.62); text-align: right; }
-.case-card h2 { font-size: clamp(1.05rem, 3.1vw, 2.97rem); font-weight: 300; letter-spacing: -0.06em; line-height: 0.93; margin-top: clamp(1rem, 5vw, 5.22rem); max-width: 14ch; }
-.case-card--wide h2 { max-width: 18ch; }
+.case-card :is(h2, h3) { font-size: clamp(1.05rem, 3.1vw, 2.97rem); font-weight: 300; letter-spacing: -0.06em; line-height: 0.93; margin-top: clamp(1rem, 5vw, 5.22rem); max-width: 14ch; }
+.case-card--wide :is(h2, h3) { max-width: 18ch; }
 .case-card p { font-size: 1rem; line-height: 1.38; margin-top: 1.035rem; max-width: 26.1rem; }
 .case-card__outcome { align-items: baseline; color: var(--color-lemon); display: flex; font-size: clamp(1.2rem, 4.3vw, 4.14rem); font-weight: 600; gap: 0.585rem; letter-spacing: -0.09em; line-height: 0.82; margin-top: auto; padding-top: 1.8rem; }
 .case-card__outcome span { color: var(--color-ink); font-size: 0.72rem; font-weight: 600; letter-spacing: 0; line-height: 1.18; max-width: 10.8rem; }
@@ -717,7 +718,7 @@
   .case-card,
   .case-card--wide,
   .case-card:nth-child(5n) { grid-column: auto; min-height: 18rem; }
-  .case-card h2 { margin-top: 2.52rem; }
+  .case-card :is(h2, h3) { margin-top: 2.52rem; }
   .case-study-hero__facts { grid-template-columns: 1fr; }
   .case-flow article { gap: 0.9rem; grid-template-columns: 1fr; }
   .case-flow p { grid-column: auto; }
