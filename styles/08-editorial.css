@@ -72,7 +72,7 @@
   .hero-network.is-connection-playing .flow-route--02 { animation-delay: 0.16s; }
   .hero-network.is-connection-playing .flow-route--03 { animation-delay: 0.29s; }
   .hero-network.is-connection-playing .flow-route--04 { animation-delay: 0.42s; }
-  .hero-network.is-connection-settled .flow-pulse { animation: flow-pulse 5.8s var(--ease-em) 550ms infinite; }
+  .hero-network.is-connection-settled .flow-pulse { animation: flow-pulse 5.8s var(--ease-em) 550ms 4; }
   .hero-network.is-connection-settled .flow-pulse--lilac { animation-delay: 3.15s; }
 }
 
@@ -90,7 +90,7 @@
 .journeys__heading { align-items: end; display: grid; gap: clamp(1.4rem, 7vw, 7.2rem); grid-template-columns: minmax(0, 1.25fr) minmax(14.4rem, 0.55fr); }
 .journeys__heading > p { font-size: 1.15rem; line-height: 1.38; max-width: 24.3rem; }
 .journey-grid { border-top: 1px solid var(--color-line); display: grid; grid-template-columns: repeat(3, 1fr); margin-top: clamp(1.4rem, 7vw, 6.3rem); }
-.journey-card { color: var(--color-ink); display: flex; flex-direction: column; min-height: clamp(5.6rem, 28vw, 24.3rem); padding: 1.305rem 1.8rem 1.62rem 0; text-decoration: none; transition: background-color var(--duration-fast) var(--ease-em), color var(--duration-fast) var(--ease-em), padding var(--duration-fast) var(--ease-em); }
+.journey-card { color: var(--color-ink); display: flex; flex-direction: column; min-height: clamp(5.6rem, 28vw, 24.3rem); padding: 1.305rem 1.8rem 1.62rem 0; text-decoration: none; transition: background-color var(--duration-fast) var(--ease-em), color var(--duration-fast) var(--ease-em); }
 .journey-card + .journey-card { border-left: 1px solid var(--color-line); padding-left: 1.8rem; }
 .journey-card__number,
 .journey-card__label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; }
@@ -101,7 +101,7 @@
 .journey-card__link { align-items: center; display: flex; font-size: 0.78rem; font-weight: 600; gap: 0.72rem; letter-spacing: 0.07em; margin-top: auto; text-transform: uppercase; }
 .journey-card__link span { font-size: 1.35em; transition: transform var(--duration-fast) var(--ease-em); }
 @media (hover: hover) {
-  .journey-card:hover { background: var(--color-ink); color: #fff; padding-bottom: 1.98rem; padding-top: 1.665rem; }
+  .journey-card:hover { background: var(--color-ink); color: #fff; }
   .journey-card:hover .journey-card__label { color: rgba(255, 255, 255, 0.62); }
   .journey-card:hover .journey-card__link span { transform: translateX(0.3rem); }
 }
@@ -122,8 +122,8 @@
 .services { background: var(--color-ink); color: #fff; }
 .section-heading { display: grid; gap: 2.7rem; max-width: 65.7rem; }
 .service-list { border-top: 1px solid var(--color-line-light); margin-top: clamp(1.8rem, 9vw, 8.1rem); }
-.service-item { align-items: start; border-bottom: 1px solid var(--color-line-light); color: #fff; display: grid; gap: clamp(0.8rem, 4vw, 4.5rem); grid-template-columns: 4.05rem minmax(0, 1fr) auto; padding: clamp(0.6rem, 3vw, 2.7rem) 0; text-decoration: none; transition: padding var(--duration-fast) var(--ease-em), color var(--duration-fast) ease; }
-.service-item:hover, .service-item:focus-visible { color: var(--color-lemon); padding-left: 0.9rem; }
+.service-item { align-items: start; border-bottom: 1px solid var(--color-line-light); color: #fff; display: grid; gap: clamp(0.8rem, 4vw, 4.5rem); grid-template-columns: 4.05rem minmax(0, 1fr) auto; padding: clamp(0.6rem, 3vw, 2.7rem) 0; text-decoration: none; transition: transform var(--duration-fast) var(--ease-em), color var(--duration-fast) ease; }
+.service-item:hover, .service-item:focus-visible { color: var(--color-lemon); transform: translateX(0.9rem); }
 .service-item__number { color: rgba(255,255,255,0.6); font-size: 0.8rem; letter-spacing: 0.08em; padding-top: 0.54rem; }
 .service-item h3 { font-size: clamp(1.05rem, 4vw, 3.69rem); font-weight: 300; letter-spacing: -0.06em; line-height: 0.92; }
 .service-item p { color: rgba(255,255,255,0.67); font-size: 1.08rem; line-height: 1.35; margin-top: 0.9rem; max-width: 32.4rem; transition: color var(--duration-fast) ease; }
@@ -147,7 +147,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .industries__network.is-network-drawing .industry-network__route { animation: industry-route-draw 900ms var(--ease-em) both; animation-delay: var(--draw-delay); stroke-dasharray: 1; }
-  .industries__network .industry-network__connection.is-active .industry-network__flow { animation: industry-network-flow 3.6s var(--ease-em) 800ms infinite; }
+  .industries__network .industry-network__connection.is-active .industry-network__flow { animation: industry-network-flow 3.6s var(--ease-em) 800ms 4; }
 }
 
 @keyframes industry-route-draw {
@@ -246,7 +246,13 @@
 .contact-form { display: grid; gap: 1.26rem 1.08rem; grid-template-columns: 1fr 1fr; }
 .contact-form label { color: rgba(255,255,255,0.75); display: grid; font-size: 0.75rem; font-weight: 600; gap: 0.63rem; letter-spacing: 0.08em; text-transform: uppercase; }
 .contact-form input, .contact-form select, .contact-form textarea { appearance: none; background: transparent; border: 0; border-bottom: 1px solid rgba(255,255,255,0.45); border-radius: 0; color: #fff; font-size: 1.2rem; font-weight: 400; letter-spacing: 0; outline: none; padding: 0.585rem 0; text-transform: none; transition: border-color var(--duration-fast) ease; width: 100%; }
-.contact-form select { background: var(--color-ink); }
+.contact-form select {
+  background-color: var(--color-ink);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23ffffff' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-position: right 0.2rem center;
+  background-repeat: no-repeat;
+  padding-right: 1.6rem;
+}
 .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--color-lemon); }
 .contact-form__hint { border-left: 2px solid var(--color-lemon); color: rgba(255,255,255,0.78); font-size: 0.94rem; grid-column: 1 / -1; line-height: 1.35; padding-left: 0.81rem; }
 .contact-form__message { grid-column: 1 / -1; }

@@ -44,11 +44,21 @@
       });
       window.__lenis = lenis;
 
+      var rafId = null;
       var raf = function (time) {
         lenis.raf(time);
-        window.requestAnimationFrame(raf);
+        rafId = window.requestAnimationFrame(raf);
       };
-      window.requestAnimationFrame(raf);
+      rafId = window.requestAnimationFrame(raf);
+
+      // Honour a LIVE change of the motion preference, not just its value at
+      // load: destroy the smoother and fall back to native scrolling.
+      mq.reduced.addEventListener('change', function (event) {
+        if (!event.matches || !window.__lenis) return;
+        window.cancelAnimationFrame(rafId);
+        window.__lenis.destroy();
+        window.__lenis = null;
+      });
     }
 
     // ---- skip link: make the #main jump play nice with Lenis ----

@@ -148,6 +148,17 @@ export default [
     scripts: ['00-core', '01-header'],
   },
   {
+    // serve-handler (and most static hosts) deliver /404.html for missing
+    // paths with the correct 404 status.
+    out: '404.html',
+    title: 'Seite nicht gefunden | Emposo',
+    description: 'Die angeforderte Seite existiert nicht. Diese Wege führen zurück zu Expertise, Portfolio, Case Studies und Kontakt.',
+    nav: 'none',
+    bodyClass: 'subpage wrap-anywhere',
+    content: 'pages/404.html',
+    scripts: ['00-core', '01-header'],
+  },
+  {
     out: 'portfolio/verzahnen/index.html',
     title: 'Wir verzahnen | Portfolio | Emposo',
     description: 'Branchenwissen und Technologie-Expertise verbinden: Business-Mehrwert im Betrieb statt getrennter Perspektiven.',

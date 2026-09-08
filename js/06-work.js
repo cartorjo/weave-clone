@@ -48,6 +48,12 @@
       });
     });
 
+    // The filter UI is meaningless without this script: it ships hidden
+    // (.js-only) and is revealed only once the handlers are attached.
+    Array.prototype.slice.call(document.querySelectorAll('.js-only')).forEach(function (el) {
+      el.classList.remove('js-only');
+    });
+
     Array.prototype.slice.call(document.querySelectorAll('[data-project-filter]')).forEach(function (link) {
       link.addEventListener('click', function () {
         selectFilter('outcome', link.getAttribute('data-project-filter'));

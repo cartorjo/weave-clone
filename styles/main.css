@@ -254,9 +254,13 @@
     font-weight: 400;
     /* Display type must never break mid-word (the body-level wrap-anywhere
        guard is for long user-ish content, not headlines): hyphenate German
-       compounds natively instead — "beherrsch-bar", not "beherrschb/ar". */
+       compounds natively instead — "beherrsch-bar", not "beherrschb/ar".
+       Short words wrap whole; only 8+ letter words may hyphenate. */
     overflow-wrap: normal;
     hyphens: auto;
+    -webkit-hyphenate-limit-before: 4;
+    -webkit-hyphenate-limit-after: 4;
+    hyphenate-limit-chars: 8 4 4;
   }
 
   a {
