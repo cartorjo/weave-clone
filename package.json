@@ -8,7 +8,7 @@
     "assemble": "node assemble.mjs",
     "build:img": "node tools/optimize-images.mjs",
     "build:brand-img": "node tools/optimize-brand-images.mjs",
-    "check": "npm run build && git diff --exit-code -- index.html css/site.css expertise portfolio case-studies about-us branchen karriere kontakt",
+    "check": "npm run build && git diff --exit-code -- index.html 404.html css/site.css expertise portfolio case-studies about-us branchen karriere kontakt",
     "watch:html": "node --watch --watch-path=sections --watch-path=pages --watch-path=partials --watch-path=js assemble.mjs",
     "build": "npm run assemble && npm run build:css",
     "serve": "serve . -l 8080",
