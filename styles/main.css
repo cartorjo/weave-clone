@@ -249,6 +249,11 @@
   h5,
   h6 {
     font-weight: 400;
+    /* Display type must never break mid-word (the body-level wrap-anywhere
+       guard is for long user-ish content, not headlines): hyphenate German
+       compounds natively instead — "beherrsch-bar", not "beherrschb/ar". */
+    overflow-wrap: normal;
+    hyphens: auto;
   }
 
   a {
