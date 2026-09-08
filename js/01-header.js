@@ -7,7 +7,8 @@
   window.__onReady(function () {
     var menu = document.getElementById('mobile-menu');
     var header = document.querySelector('[data-site-header]');
-    var wideNav = window.matchMedia('(min-width: 1440px)');
+    /* Keep in sync with --breakpoint-nav in styles/main.css. */
+    var wideNav = window.matchMedia('(min-width: 1280px)');
 
     if (menu) {
       menu.addEventListener('click', function (event) {
@@ -23,6 +24,14 @@
     navGroups.forEach(function (group) {
       group.addEventListener('click', function (event) {
         if (event.target.closest('a')) group.open = false;
+      });
+      /* Only one mega panel open at a time (details name= isn't available on
+         the iOS 16 floor; without JS two open panels degrade gracefully). */
+      group.addEventListener('toggle', function () {
+        if (!group.open) return;
+        navGroups.forEach(function (other) {
+          if (other !== group) other.open = false;
+        });
       });
       group.addEventListener('keydown', function (event) {
         if (event.key === 'Escape') {

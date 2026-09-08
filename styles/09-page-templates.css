@@ -8,83 +8,6 @@
    sections independent.
    -------------------------------------------------------------------------- */
 
-/* Navigation: the sitemap calls for direct routes plus compact, useful
-   subnavigation for the two category pages. Native <details> keeps this
-   keyboard-operable without introducing a menu dependency. */
-.site-nav { align-items: center; }
-.site-nav a[aria-current="page"] { color: var(--color-lemon); }
-.site-nav__group { position: relative; }
-.site-nav__group > summary {
-  align-items: center;
-  color: var(--color-ink);
-  cursor: pointer;
-  display: flex;
-  font-size: 0.78rem;
-  font-weight: 600;
-  gap: 0.45rem;
-  letter-spacing: 0.07em;
-  list-style: none;
-  text-transform: uppercase;
-  transition: color var(--duration-fast) ease;
-}
-.site-nav__group > summary::-webkit-details-marker { display: none; }
-.site-nav__group > summary::after {
-  border-bottom: 1px solid currentColor;
-  border-right: 1px solid currentColor;
-  content: "";
-  height: 0.38rem;
-  margin-top: -0.18rem;
-  transform: rotate(45deg);
-  transition: transform var(--duration-fast) ease;
-  width: 0.38rem;
-}
-.site-nav__group[open] > summary,
-.site-nav__group.is-current > summary,
-.site-nav__group > summary:hover { color: var(--color-lemon); }
-.site-nav__group[open] > summary::after { transform: rotate(225deg) translate(-0.12rem, -0.12rem); }
-.site-nav__panel {
-  background: #fff;
-  border: 1px solid var(--color-line);
-  box-shadow: var(--shadow-overlay);
-  display: grid;
-  left: -1.125rem;
-  min-width: 15.3rem;
-  padding: 0.495rem;
-  position: absolute;
-  top: calc(100% + 1.305rem);
-  z-index: 60;
-}
-.site-nav__panel a {
-  align-items: center;
-  color: var(--color-ink);
-  display: flex;
-  font-size: 0.73rem;
-  gap: 0.675rem;
-  justify-content: space-between;
-  letter-spacing: 0.055em;
-  padding: 0.765rem 0.72rem;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-.site-nav__panel a::after { color: var(--color-lemon); content: "↗"; font-size: 1.05rem; }
-.site-nav__panel a:hover,
-.site-nav__panel a:focus-visible { background: var(--color-paper); color: var(--color-ink); }
-.site-nav__panel a + a { border-top: 1px solid var(--color-line); }
-
-.skip-link {
-  background: #fff;
-  color: var(--color-ink);
-  left: 0.75rem;
-  padding: 0.8rem 1rem;
-  position: fixed;
-  text-decoration: none;
-  top: 0.75rem;
-  transform: translateY(-180%);
-  transition: transform var(--duration-fast) ease;
-  z-index: 100;
-}
-.skip-link:focus { transform: translateY(0); }
-
 .subpage { background: #fff; }
 .subpage main { overflow: clip; }
 .page-hero {
@@ -732,4 +655,10 @@
   .about-facts strong { margin-top: 2.16rem; }
   .location-list { grid-template-columns: 1fr; }
   .location-list div:nth-child(odd) { margin-right: 0; }
+}
+
+/* Link row inside a portfolio mode entry (overview page). */
+.portfolio-mode__more { grid-column: 3; }
+@media (max-width: 900px) {
+  .portfolio-mode__more { grid-column: 2; }
 }

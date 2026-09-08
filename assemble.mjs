@@ -38,10 +38,19 @@ const inlinePartials = (html) =>
   html.replace(/<!-- partial:([a-z0-9-]+) -->/g, (_, name) => partial(name).trim());
 
 const stampNav = (html, page) => {
-  const current = page.navExact === false ? 'aria-current="true"' : 'aria-current="page"';
+  // page.nav: the item that IS this page (aria-current="page", or "true"
+  // when navExact:false marks a same-section sibling like a case detail).
+  // page.navGroup: the megamenu group an inner page belongs to — the group
+  // and its Übersicht link get ancestor state (is-current / aria-current="true").
+  const exact = page.navExact === false ? 'aria-current="true"' : 'aria-current="page"';
   return html
-    .replace(/\{\{CUR:([a-z-]+):([^}]*)\}\}/g, (_, key, payload) => (key === page.nav ? payload : ''))
-    .replace(/\{\{CURATTR:([a-z-]+)\}\}/g, (_, key) => (key === page.nav ? ` ${current}` : ''));
+    .replace(/\{\{CUR:([a-z-]+):([^}]*)\}\}/g, (_, key, payload) =>
+      key === page.nav || key === page.navGroup ? payload : '')
+    .replace(/\{\{CURATTR:([a-z-]+)\}\}/g, (_, key) => {
+      if (key === page.nav) return ` ${exact}`;
+      if (key === page.navGroup) return ' aria-current="true"';
+      return '';
+    });
 };
 
 for (const page of pages) {

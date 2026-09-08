@@ -297,7 +297,6 @@
    equivalent: @keyframes bodies, Splide vendor-class exceptions, and (for
    00-base-remainder) skip-link, focus, and reduced-motion rules. */
 @import "./00-base-remainder.css";
-/* Legacy component rules sit below explicit accessibility utilities. Full
-   component/token cleanup remains Batch C; layout container stays unlayered. */
+@import "./07-header.css" layer(components);
 @import "./08-editorial.css" layer(components);
 @import "./09-page-templates.css" layer(components);
