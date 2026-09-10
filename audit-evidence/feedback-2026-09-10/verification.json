@@ -1,0 +1,122 @@
+{
+  "checkedAt": "2026-09-10T08:20:43.194Z",
+  "site": "Emposo September 2026 feedback",
+  "build": {
+    "command": "npm run check",
+    "passed": true,
+    "documents": 34,
+    "checks": [
+      "Build",
+      "Local links",
+      "Anchor targets",
+      "Responsive image files",
+      "One H1 per page",
+      "Unique IDs",
+      "Resolved templates",
+      "Superseded branding and arrows"
+    ]
+  },
+  "patchHygiene": {
+    "command": "git diff --check",
+    "passed": true
+  },
+  "browser": {
+    "engine": "Installed Google Chrome via Puppeteer",
+    "audit": "axe WCAG 2 A/AA and WCAG 2.1 A/AA",
+    "runs": [
+      {
+        "name": "report",
+        "viewports": [
+          1440,
+          390
+        ],
+        "documents": 33,
+        "pageViewportChecks": 66,
+        "failures": [],
+        "behaviors": [
+          {
+            "test": "mobile menu / Escape",
+            "pass": true
+          },
+          {
+            "test": "industry filter",
+            "pass": true
+          },
+          {
+            "test": "combined filters / empty state",
+            "pass": true
+          },
+          {
+            "test": "filter deep link",
+            "pass": true
+          },
+          {
+            "test": "career contact intent",
+            "pass": true
+          },
+          {
+            "test": "desktop menu / Escape",
+            "pass": true
+          },
+          {
+            "test": "reduced motion",
+            "pass": true
+          },
+          {
+            "test": "no JavaScript project links",
+            "pass": true
+          }
+        ],
+        "errors": []
+      },
+      {
+        "name": "review",
+        "viewports": [
+          320,
+          768,
+          1280,
+          1440
+        ],
+        "documents": 9,
+        "pageViewportChecks": 36,
+        "failures": [],
+        "behaviors": [
+          {
+            "test": "mobile menu / Escape",
+            "pass": true
+          },
+          {
+            "test": "industry filter",
+            "pass": true
+          },
+          {
+            "test": "combined filters / empty state",
+            "pass": true
+          },
+          {
+            "test": "filter deep link",
+            "pass": true
+          },
+          {
+            "test": "career contact intent",
+            "pass": true
+          },
+          {
+            "test": "desktop menu / Escape",
+            "pass": true
+          },
+          {
+            "test": "reduced motion",
+            "pass": true
+          },
+          {
+            "test": "no JavaScript project links",
+            "pass": true
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "limitations": "Automated checks cover the recorded viewports and interactions; they do not establish complete accessibility conformance."
+  }
+}

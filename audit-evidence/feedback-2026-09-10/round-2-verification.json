@@ -1,0 +1,41 @@
+{
+  "checkedAt": "2026-09-10T12:05:00.000Z",
+  "scope": "Second pass on the September 2026 feedback: color completion, hover states, stats icons + count-up, 7 discipline detail pages, /zertifizierungen/, dead-code removal",
+  "build": {
+    "command": "npm run check",
+    "passed": true,
+    "documents": 42,
+    "checks": [
+      "Build",
+      "Local links",
+      "Anchor targets",
+      "Responsive image files",
+      "One H1 per page",
+      "Unique IDs",
+      "Resolved templates",
+      "Superseded branding and arrows"
+    ]
+  },
+  "patchHygiene": {
+    "command": "git diff --check",
+    "passed": true
+  },
+  "browser": {
+    "engine": "Claude in Chrome (live session) plus headless Chrome via cached puppeteer-core, against npx serve on localhost",
+    "checks": [
+      {"test": "count-up ends on exact authored strings (2014 / 250+ / 2.900+ / 4)", "pass": true, "note": "confirmed visually in a foregrounded tab; rAF pauses while a tab is backgrounded, so automation screenshots can catch mid-animation values"},
+      {"test": "reduced motion: stats stay static after scrolling into view (headless, prefers-reduced-motion: reduce)", "pass": true},
+      {"test": "stats icons render (4 outline SVGs, orange)", "pass": true},
+      {"test": "nav hover / current page shows orange underline", "pass": true},
+      {"test": "header CTA hover stays lemon background with ink text", "pass": true},
+      {"test": "footer arrow color = rgb(247,145,30)", "pass": true},
+      {"test": "no rgba(0,13,41) navy left in compiled stylesheet", "pass": true},
+      {"test": "expertise overview and group pages link all 8 discipline detail pages", "pass": true},
+      {"test": "discipline page: one H1, focus chips, related case cards, hero image", "pass": true},
+      {"test": "/zertifizierungen/ renders with ink breadcrumb", "pass": true},
+      {"test": "no horizontal overflow at 320px and 390px on /, /expertise/, /expertise/system-engineering/, /zertifizierungen/, /karriere/ (headless viewport)", "pass": true},
+      {"test": "console errors", "pass": true, "note": "none observed"}
+    ],
+    "limitations": "Spot checks on the changed surfaces at desktop and narrow widths; the round-1 axe/viewport matrix in verification.json still describes the full-site pass."
+  }
+}
