@@ -468,7 +468,7 @@
 }
 .about-statement__copy { border-top: 1px solid var(--color-line-light); padding-top: 0.9rem; }
 .about-statement__copy h2 { font-size: clamp(1.25rem, 5vw, 5.04rem); font-weight: 300; letter-spacing: -0.025em; line-height: 0.87; max-width: 12ch; }
-.about-statement__copy h2 em { color: var(--color-lemon); font-style: normal; font-weight: 600; }
+.about-statement__copy h2 em { color: inherit; font-style: normal; font-weight: 700; }
 .about-statement__copy p { color: rgba(255,255,255,0.72); font-size: 1.16rem; line-height: 1.42; margin-top: 1.8rem; max-width: 38.7rem; }
 .about-principles {
   border-top: 1px solid var(--color-line);

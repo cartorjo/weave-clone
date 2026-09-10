@@ -1,19 +1,20 @@
 /* ============================================================================
    07-countup.js — one-shot count-up for the homepage stat numbers
-   (.company-facts dt). Progressive enhancement only: the static markup keeps
+   (.company-facts__value). Progressive enhancement only: the static markup keeps
    the final values, and the animation is skipped without IntersectionObserver
    or under prefers-reduced-motion (checked live at trigger time).
    ========================================================================= */
 (function () {
   'use strict';
+  if (!window.__onReady) return;
 
   window.__onReady(function () {
-    var stats = document.querySelectorAll('.company-facts dt');
+    var stats = document.querySelectorAll('.company-facts__value');
     if (!stats.length || !('IntersectionObserver' in window)) return;
 
     // "2014", "250+", "2.900+", "4" — digits with optional German thousands
     // separators plus an optional suffix. Anything else stays untouched.
-    var pattern = /^(\d{1,3}(?:\.\d{3})*)(\+?)$/;
+    var pattern = /^(\d{1,3}(?:\.\d{3})+|\d+)(\+?)$/;
 
     function render(value, grouped) {
       var digits = String(value);
