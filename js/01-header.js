@@ -11,6 +11,15 @@
     var wideNav = window.matchMedia('(min-width: 1280px)');
 
     if (menu) {
+      menu.addEventListener('toggle', function () {
+        menu.querySelector('summary').setAttribute('aria-label', menu.open ? 'Menü schließen' : 'Menü öffnen');
+      });
+      menu.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+          menu.open = false;
+          menu.querySelector('summary').focus();
+        }
+      });
       menu.addEventListener('click', function (event) {
         if (event.target.closest('a')) menu.open = false;
       });

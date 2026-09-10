@@ -48,6 +48,11 @@
       });
     });
 
+    var industryFromQuery = new URLSearchParams(window.location.search).get('branche');
+    if (industryFromQuery && buttons.some(function (button) {
+      return button.getAttribute('data-filter-group') === 'industry' && button.getAttribute('data-filter-value') === industryFromQuery;
+    })) selectFilter('industry', industryFromQuery);
+
     // The filter UI is meaningless without this script: it ships hidden
     // (.js-only) and is revealed only once the handlers are attached.
     Array.prototype.slice.call(document.querySelectorAll('.js-only')).forEach(function (el) {

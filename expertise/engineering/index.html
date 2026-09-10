@@ -7,12 +7,12 @@
   <meta name="description" content="Vier Engineering-Disziplinen: System Engineering & Entwicklung, Industrialisierung, Test & Validierung und Engineering Services.">
   <!-- Temporary preview build: remove this only when launch SEO settings are approved. -->
   <meta name="robots" content="noindex, nofollow">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23002b49'/%3E%3C/svg%3E">
-  <!-- Everything is same-origin: Inter is self-hosted (css/00-fonts.css) and all
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230A0532'/%3E%3C/svg%3E">
+  <!-- Everything is same-origin: Roboto is self-hosted (css/00-fonts.css) and all
        libraries are vendored, so no visitor request ever leaves this host (GDPR).
        crossorigin on the preload is REQUIRED even same-origin — fonts always fetch
        in CORS mode, and a preload without it is re-downloaded. -->
-  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/ttf" href="/assets/fonts/roboto-400.ttf" crossorigin>
   <link rel="stylesheet" href="/css/00-fonts.css">
   <link rel="stylesheet" href="/css/site.css">
   <!-- Lenis is vendored locally; no visitor request leaves this host. -->
@@ -24,97 +24,60 @@
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 <header class="site-header" data-site-header>
   <div class="gutter"><div class="container"><div class="site-header__inner">
-    <a class="site-logo" href="/" aria-label="Emposo — Startseite"><img src="/assets/brand/emposo-logo.png" alt="Emposo" width="1022" height="229"></a>
-    <p class="site-header__context max-xl:hidden">Outcome Factory <span>der Hays-Gruppe</span></p>
+    <a class="site-logo" href="/" aria-label="Emposo — Startseite"><span class="site-logo__wordmark"><img src="/assets/brand/emposo-logo.png" alt="Emposo" width="1022" height="229"></span></a>
     <nav class="site-nav max-nav:hidden" aria-label="Hauptnavigation">
       <details class="site-nav__group is-current">
-        <summary class="min-h-11">Expertise</summary>
+        <summary class="min-h-11">Leistungen</summary>
         <div class="mega-panel"><div class="gutter"><div class="container mega-panel__grid">
           <div class="mega-panel__intro">
-            <p class="mega-panel__eyebrow">Expertise</p>
-            <a class="mega-panel__all" href="/expertise/" aria-current="true">Übersicht</a>
-            <p>Acht Lieferdisziplinen verbinden Fachwissen, Technologie und Umsetzung — als klar definierte Ergebnisse für den Betrieb.</p>
+            <p class="mega-panel__eyebrow">Leistungen</p>
+            <a class="mega-panel__all" href="/portfolio/">Unsere Leistungen <span aria-hidden="true">→</span></a>
+            <p>Engineering und Technology aus einer Hand. Von der ersten Idee bis zum messbaren Ergebnis.</p>
+            <a class="mega-panel__all" href="/expertise/" aria-current="true">Alle acht Disziplinen <span aria-hidden="true">→</span></a>
           </div>
-          <a class="mega-panel__item" href="/expertise/engineering/" aria-current="page">
-            <span class="mega-panel__num">01</span>
-            <strong>Engineering</strong>
-            <span>System Engineering, Industrialisierung, Test &amp; Validierung, Engineering Services.</span>
-          </a>
-          <a class="mega-panel__item" href="/expertise/technology/">
-            <span class="mega-panel__num">02</span>
-            <strong>Technology</strong>
-            <span>Software, Cloud &amp; Architecture, Cyber &amp; Compliance, Enterprise Services.</span>
-          </a>
-          <a class="mega-panel__item" href="/expertise/ai-daten/">
-            <span class="mega-panel__num">03</span>
-            <strong>AI &amp; Daten</strong>
-            <span>AI-Strategie, Knowledge Graphs, RAG, Datenplattformen und MLOps.</span>
-          </a>
+          <a class="mega-panel__item" href="/expertise/engineering/" aria-current="page"><span class="mega-panel__num">01</span><strong>Engineering</strong><span>Systementwicklung, Industrialisierung, Test und Engineering Services.</span></a>
+          <a class="mega-panel__item" href="/expertise/technology/"><span class="mega-panel__num">02</span><strong>Technology</strong><span>AI &amp; Daten, Software, Cloud, Cyber und Enterprise Services.</span></a>
+          <a class="mega-panel__item" href="/expertise/ai-daten/"><span class="mega-panel__num">03</span><strong>AI &amp; Daten</strong><span>Von der AI-Strategie zur produktiven Anwendung.</span></a>
           <div class="mega-panel__featured">
-            <p class="mega-panel__eyebrow">Case Study</p>
-            <a href="/case-studies/data2ai-platform/"><strong>Data2AI Plattform</strong><span>7× Produktivität: Aus verteilten Engineering-Daten wird produktive KI.</span></a>
+            <p class="mega-panel__eyebrow">Was und wie wir liefern</p>
+            <a href="/portfolio/optimieren/">Wir optimieren</a>
+            <a href="/portfolio/transformieren/">Wir transformieren</a>
+            <a href="/portfolio/skalieren/">Wir skalieren</a>
+            <a href="/portfolio/verzahnen/">Wir verzahnen</a>
+            <a href="/portfolio/#delivery-model">Unser 5-Stufen-Modell <span aria-hidden="true">→</span></a>
           </div>
         </div></div></div>
       </details>
       <details class="site-nav__group">
-        <summary class="min-h-11">Portfolio</summary>
+        <summary class="min-h-11">Branchen &amp; Case Studies</summary>
         <div class="mega-panel"><div class="gutter"><div class="container mega-panel__grid">
-          <div class="mega-panel__intro">
-            <p class="mega-panel__eyebrow">Portfolio</p>
-            <a class="mega-panel__all" href="/portfolio/">Übersicht</a>
-            <p>Vier Liefermodelle, ein Prinzip: Werkvertrag mit Acceptance — bis das Ergebnis im Betrieb wirkt.</p>
-          </div>
-          <a class="mega-panel__item" href="/portfolio/optimieren/">
-            <span class="mega-panel__num">01</span>
-            <strong>Wir optimieren</strong>
-            <span>Bestehende Leistungen übernehmen und messbar verbessern.</span>
-          </a>
-          <a class="mega-panel__item" href="/portfolio/transformieren/">
-            <span class="mega-panel__num">02</span>
-            <strong>Wir transformieren</strong>
-            <span>Technologie bis zum messbaren Ergebnis produktiv machen.</span>
-          </a>
-          <a class="mega-panel__item" href="/portfolio/skalieren/">
-            <span class="mega-panel__num">03</span>
-            <strong>Wir skalieren</strong>
-            <span>Teams und Lösungen entlang des Bedarfs ausbauen.</span>
-          </a>
-          <div class="mega-panel__featured">
-            <a class="mega-panel__item" href="/portfolio/verzahnen/">
-              <span class="mega-panel__num">04</span>
-              <strong>Wir verzahnen</strong>
-              <span>Branchenwissen und Technologie zu Business-Mehrwert verbinden.</span>
-            </a>
-            <a class="mega-panel__all" href="/portfolio/#delivery-model">Delivery Model</a>
-          </div>
+          <div class="mega-panel__intro"><p class="mega-panel__eyebrow">Industrie-Know-how</p><a class="mega-panel__all" href="/branchen/">Alle Branchen <span aria-hidden="true">→</span></a><p>Unsere Teams und Spezialisten kommen direkt aus Ihrer Branche.</p></div>
+          <div class="mega-panel__links"><a href="/branchen/aerospace-defense/">Aerospace &amp; Defense</a><a href="/branchen/energy-resources/">Energy &amp; Resources</a><a href="/branchen/health-pharma/">Health &amp; Pharma</a></div>
+          <div class="mega-panel__links"><a href="/branchen/industrials-manufacturing/">Industrials &amp; Manufacturing <span>inklusive Automotive</span></a><a href="/branchen/technology-telecoms-media/">Technology, Telecoms &amp; Media</a></div>
+          <div class="mega-panel__featured"><p class="mega-panel__eyebrow">Unsere Erfolge</p><a href="/case-studies/"><strong>Alle Case Studies</strong><span>Zehn Projekte. Messbare Ergebnisse.</span></a><a href="/case-studies/data2ai-platform/">Data2AI Plattform <span aria-hidden="true">→</span></a></div>
         </div></div></div>
       </details>
-      <a class="min-h-11" href="/branchen/">Branchen</a>
-      <a class="min-h-11" href="/case-studies/">Case Studies</a>
       <a class="min-h-11" href="/about-us/">Über uns</a>
+      <a class="min-h-11" href="/karriere/">Karriere</a>
     </nav>
-    <a class="header-careers max-nav:hidden min-h-11" href="/karriere/">Karriere</a>
-    <a class="header-contact max-nav:hidden min-h-11" href="/kontakt/">Projekt besprechen <span aria-hidden="true">↗</span></a>
+    <a class="header-contact max-nav:hidden min-h-11" href="/kontakt/">Projekt besprechen <span aria-hidden="true">→</span></a>
     <details class="mobile-menu nav:hidden" id="mobile-menu">
       <summary aria-label="Menü öffnen" class="min-h-11"><span>Menü</span><span aria-hidden="true">+</span></summary>
       <nav class="mobile-menu__panel" aria-label="Hauptnavigation">
-        <p class="mobile-menu__label" aria-hidden="true">Expertise</p>
-        <a href="/expertise/" aria-current="true">Übersicht</a>
+        <p class="mobile-menu__label">Leistungen</p>
+        <a href="/portfolio/">Unsere Leistungen</a>
+        <a href="/expertise/" aria-current="true">Alle Disziplinen</a>
         <a href="/expertise/engineering/" aria-current="page">Engineering</a>
         <a href="/expertise/technology/">Technology</a>
         <a href="/expertise/ai-daten/">AI &amp; Daten</a>
-        <p class="mobile-menu__label" aria-hidden="true">Portfolio</p>
-        <a href="/portfolio/">Übersicht</a>
-        <a href="/portfolio/optimieren/">Wir optimieren</a>
-        <a href="/portfolio/transformieren/">Wir transformieren</a>
-        <a href="/portfolio/skalieren/">Wir skalieren</a>
-        <a href="/portfolio/verzahnen/">Wir verzahnen</a>
-        <p class="mobile-menu__label" aria-hidden="true">Unternehmen</p>
-        <a href="/branchen/">Branchen</a>
-        <a href="/case-studies/">Case Studies</a>
+        <p class="mobile-menu__label">Branchen &amp; Case Studies</p>
+        <a href="/branchen/">Alle Branchen</a>
+        <a href="/case-studies/">Alle Case Studies</a>
+        <p class="mobile-menu__label">Unternehmen</p>
         <a href="/about-us/">Über uns</a>
+        <a href="/about-us/#management">Management</a>
         <a href="/karriere/">Karriere</a>
-        <a class="mobile-menu__cta" href="/kontakt/">Projekt besprechen</a>
+        <a class="mobile-menu__cta" href="/kontakt/">Projekt besprechen <span aria-hidden="true">→</span></a>
       </nav>
     </details>
   </div></div></div>
@@ -129,7 +92,7 @@
           <p class="page-hero__intro">Vier Lieferdisziplinen von der Anforderung bis zur abgesicherten Funktion: Wir übernehmen definierte Entwicklungsumfänge und führen sie bis zur Abnahme.</p>
         </div>
         <figure class="page-hero__visual lg:@max-content:aspect-video lg:@max-content:min-h-0">
-          <picture><source type="image/avif" srcset="/assets/brand/validation-900.avif 900w, /assets/brand/validation-1600.avif 1600w" sizes="(max-width: 900px) 100vw, 44vw"><source type="image/webp" srcset="/assets/brand/validation-900.webp 900w, /assets/brand/validation-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 44vw"><img src="/assets/brand/validation-1600.jpg" alt="Team überprüft technische Daten in einer regulierten Umgebung" width="1600" height="1068" fetchpriority="high"></picture>
+          <picture><source type="image/avif" srcset="/assets/supplied/engineering-640.avif 640w, /assets/supplied/engineering-1600.avif 1600w" sizes="(max-width: 900px) 100vw, 65vw"><source type="image/webp" srcset="/assets/supplied/engineering-640.webp 640w, /assets/supplied/engineering-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 65vw"><img src="/assets/supplied/engineering-1600.jpg" alt="Ingenieur arbeitet mit digitalen Fahrzeugmodellen" width="1600" height="900" fetchpriority="high" decoding="async"></picture>
           <figcaption><span>Engineering</span><span>01 / 02</span></figcaption>
           <div class="page-hero__metric"><strong>4</strong><span>Engineering-Lieferdisziplinen</span></div>
         </figure>
@@ -146,25 +109,25 @@
           <p class="page-section__lede">Jede Disziplin ist eine klar abgegrenzte Leistung mit eigenem Ergebnisversprechen — einzeln beauftragbar, im Programm kombinierbar.</p>
         </div>
         <div class="expertise-list">
-          <a class="expertise-card" href="/portfolio/optimieren/">
+          <a class="expertise-card" id="systementwicklung" href="/expertise/system-engineering/">
             <span class="expertise-card__number text-accent-text">01 / Engineering</span>
             <h3>System Engineering &amp; Entwicklung</h3>
             <p>Anforderungen, Modellierung, Entwicklung und Embedded Systems werden zu einer abgesicherten Funktion verbunden.</p>
             <span class="expertise-card__promise">Wir übernehmen definierte Entwicklungsumfänge: von der Anforderung bis zur abgesicherten Funktion.</span>
           </a>
-          <a class="expertise-card" href="/portfolio/optimieren/">
+          <a class="expertise-card" id="industrialisierung" href="/expertise/produktion-industrialisierung/">
             <span class="expertise-card__number text-accent-text">02 / Engineering</span>
             <h3>Produktion &amp; Industrialisierung</h3>
             <p>Qualität, Logistik, Automatisierung, Anlagenintegration und Prozessoptimierung für stabile technische Abläufe.</p>
             <span class="expertise-card__promise">Wir industrialisieren Prozesse, Datenflüsse und Abläufe für einen belastbaren Betrieb.</span>
           </a>
-          <a class="expertise-card" href="/portfolio/transformieren/">
+          <a class="expertise-card" id="test-validierung" href="/expertise/test-validierung/">
             <span class="expertise-card__number text-accent-text">03 / Engineering</span>
             <h3>Test, Validierung &amp; Integration</h3>
             <p>Teststrategie, Automatisierung, Integration, Safety, Quality Gates und revisionssichere Nachweise.</p>
             <span class="expertise-card__promise">Wir machen Qualität, Sicherheit und Freigabeentscheidungen belastbar.</span>
           </a>
-          <a class="expertise-card" href="/portfolio/skalieren/">
+          <a class="expertise-card" id="engineering-services" href="/expertise/engineering-services/">
             <span class="expertise-card__number text-accent-text">04 / Engineering</span>
             <h3>Engineering Services</h3>
             <p>PMO, Change, Audit, technische Dokumentation, Reporting und Konfigurationsmanagement als Dauerleistung.</p>
@@ -183,20 +146,7 @@
           </div>
           <p class="page-section__lede">Drei Beispiele, wie Engineering-Disziplinen als Werkleistung geliefert werden — mit Abnahme statt Anwesenheit.</p>
         </div>
-        <div class="case-grid">
-          <article class="case-card">
-            <div class="case-card__top"><span class="case-card__number text-accent-text">Test &amp; Validierung</span><span class="case-card__discipline">Automotive</span></div>
-            <h3>Zulassungs- und Homologationstests</h3><p>Die Markteinführung über mehrere Fahrzeugwellen wird revisionssicher abgesichert.</p><div class="case-card__outcome"><strong class="text-accent-text">100 %</strong><span>nachweisbare Traceability</span></div>
-          </article>
-          <article class="case-card">
-            <div class="case-card__top"><span class="case-card__number text-accent-text">System Engineering</span><span class="case-card__discipline">Automotive</span></div>
-            <h3>Fahrzeugfunktionen als Langzeit-Werkprogramm</h3><p>Komplette Funktionsumfänge werden über mehrere Jahre planbar geliefert.</p><div class="case-card__outcome"><strong class="text-accent-text">5</strong><span>Jahre planbare Lieferung</span></div>
-          </article>
-          <article class="case-card">
-            <div class="case-card__top"><span class="case-card__number text-accent-text">Engineering Services</span><span class="case-card__discipline">Industrie</span></div>
-            <h3>Technische Dokumentation als Dauerleistung</h3><p>Produktfreigaben werden durch konsistente technische Dokumentation über komplexe Programme abgesichert.</p><div class="case-card__outcome"><strong class="text-accent-text">800</strong><span>Dokumente pro Jahr</span></div>
-          </article>
-        </div>
+        <div class="reference-grid"><a class="reference-card" href="/case-studies/homologationstests/"><figure><picture><source type="image/avif" srcset="/assets/supplied/vehicle-testing-640.avif 640w, /assets/supplied/vehicle-testing-1600.avif 1600w" sizes="(max-width: 700px) 100vw, 50vw"><source type="image/webp" srcset="/assets/supplied/vehicle-testing-640.webp 640w, /assets/supplied/vehicle-testing-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 50vw"><img src="/assets/supplied/vehicle-testing-1600.jpg" alt="Fahrzeugdiagnose mit einem digitalen Prüfgerät" width="1600" height="900" loading="lazy" decoding="async"></picture></figure><div class="reference-card__meta"><span>Automotive</span><span>Test, Validierung &amp; Integration</span></div><h3>Zulassungs- und Homologationstests</h3><p>Markteinführung über mehrere Fahrzeugwellen abgesichert.</p><div class="result-metric"><strong class="result-metric__word">Zulassung</strong><span>termingerecht abgesichert</span></div><span class="text-link">Case Study lesen <span aria-hidden="true">→</span></span></a><a class="reference-card" href="/case-studies/fahrzeugfunktionen/"><figure><picture><source type="image/avif" srcset="/assets/supplied/automotive-640.avif 640w, /assets/supplied/automotive-1600.avif 1600w" sizes="(max-width: 700px) 100vw, 50vw"><source type="image/webp" srcset="/assets/supplied/automotive-640.webp 640w, /assets/supplied/automotive-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 50vw"><img src="/assets/supplied/automotive-1600.jpg" alt="Digitales Modell eines vernetzten Fahrzeugs" width="1600" height="900" loading="lazy" decoding="async"></picture></figure><div class="reference-card__meta"><span>Automotive</span><span>System Engineering &amp; Entwicklung</span></div><h3>Fahrzeugfunktionen als Langzeit-Werkprogramm</h3><p>Fünf Jahre planbare Lieferung kompletter Funktionsumfänge.</p><div class="result-metric"><strong>5</strong><span>Jahre planbare Lieferung</span></div><span class="text-link">Case Study lesen <span aria-hidden="true">→</span></span></a><a class="reference-card" href="/case-studies/technische-dokumentation/"><figure><picture><source type="image/avif" srcset="/assets/supplied/collaboration-640.avif 640w, /assets/supplied/collaboration-1600.avif 1600w" sizes="(max-width: 700px) 100vw, 50vw"><source type="image/webp" srcset="/assets/supplied/collaboration-640.webp 640w, /assets/supplied/collaboration-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 50vw"><img src="/assets/supplied/collaboration-1600.jpg" alt="Zwei Fachleute besprechen Daten auf einem Tablet" width="1600" height="1067" loading="lazy" decoding="async"></picture></figure><div class="reference-card__meta"><span>Industrials &amp; Manufacturing</span><span>Engineering Services</span></div><h3>Technische Dokumentation als Dauerleistung</h3><p>800 technische Dokumente pro Jahr, skalierbar geliefert.</p><div class="result-metric"><strong>800</strong><span>technische Dokumente pro Jahr</span></div><span class="text-link">Case Study lesen <span aria-hidden="true">→</span></span></a></div>
         <p style="margin-top: 2.7rem;"><a class="page-link min-h-11" href="/case-studies/">Alle Case Studies ansehen</a></p>
       </div></div>
     </section>
@@ -208,6 +158,6 @@
       </div></div></div>
     </section>
 </main>
-<footer class="site-footer" aria-label="Footer"><div class="gutter"><div class="container @container"><div class="site-footer__top"><div class="site-footer__brand min-w-0"><img src="/assets/brand/emposo-logo-white.png" alt="Emposo" width="596" height="134" loading="lazy" decoding="async" class="w-58 max-w-full"><p>Die Outcome Factory der Hays-Gruppe.</p></div><nav aria-label="Für Unternehmen" class="min-w-0"><p class="eyebrow eyebrow--light">Für Unternehmen</p><a href="/expertise/" class="inline-flex min-h-11 items-center">Expertise</a><a href="/portfolio/" class="inline-flex min-h-11 items-center">Portfolio</a><a href="/branchen/" class="inline-flex min-h-11 items-center">Branchen</a><a href="/case-studies/" class="inline-flex min-h-11 items-center">Case Studies</a><a href="/portfolio/#delivery-model" class="inline-flex min-h-11 items-center">Delivery Model</a></nav><nav aria-label="Unternehmen" class="min-w-0"><p class="eyebrow eyebrow--light">Unternehmen</p><a href="/about-us/" class="inline-flex min-h-11 items-center">Über uns</a><a href="/karriere/" class="inline-flex min-h-11 items-center">Karriere</a><a href="/#faq" class="inline-flex min-h-11 items-center">Häufige Fragen</a></nav><div class="site-footer__contact min-w-0"><p class="eyebrow eyebrow--light">Kontakt</p><a href="/kontakt/" class="inline-flex min-h-11 items-center">Projekt besprechen <span aria-hidden="true">↗</span></a><p>Mannheim · Düsseldorf<br>Frankfurt · Timișoara</p></div></div><div class="site-footer__bottom flex-wrap"><span class="flex-wrap">© 2026 Emposo GmbH</span><div class="flex-wrap"><a href="#" class="inline-flex min-h-11 items-center">Impressum</a><a href="#" class="inline-flex min-h-11 items-center">Datenschutz</a><a href="#" class="inline-flex min-h-11 items-center">Barrierefreiheit</a></div></div></div></div></footer>
+<footer class="site-footer" aria-label="Footer"><div class="gutter"><div class="container @container"><div class="site-footer__top"><div class="site-footer__brand min-w-0"><span class="site-logo__wordmark"><img src="/assets/brand/emposo-logo-white.png" alt="Emposo" width="596" height="134" loading="lazy" decoding="async"></span><p>The Outcome Factory.</p></div><nav aria-label="Für Unternehmen" class="min-w-0"><p class="eyebrow eyebrow--light">Für Unternehmen</p><a href="/expertise/" class="inline-flex min-h-11 items-center">Expertise</a><a href="/portfolio/" class="inline-flex min-h-11 items-center">Leistungen</a><a href="/branchen/" class="inline-flex min-h-11 items-center">Branchen</a><a href="/case-studies/" class="inline-flex min-h-11 items-center">Case Studies</a><a href="/portfolio/#delivery-model" class="inline-flex min-h-11 items-center">Delivery Model</a></nav><nav aria-label="Unternehmen" class="min-w-0"><p class="eyebrow eyebrow--light">Unternehmen</p><a href="/about-us/" class="inline-flex min-h-11 items-center">Über uns</a><a href="/karriere/" class="inline-flex min-h-11 items-center">Karriere</a><a href="/zertifizierungen/" class="inline-flex min-h-11 items-center">Zertifizierungen</a><a href="/portfolio/#faq" class="inline-flex min-h-11 items-center">Häufige Fragen</a></nav><div class="site-footer__contact min-w-0"><p class="eyebrow eyebrow--light">Kontakt</p><a href="/kontakt/" class="inline-flex min-h-11 items-center">Projekt besprechen <span aria-hidden="true">→</span></a><p>Mannheim · Düsseldorf<br>Frankfurt · Timișoara</p></div></div><div class="site-footer__bottom flex-wrap"><span class="flex-wrap">© 2026 Emposo GmbH</span><div class="flex-wrap"><a href="https://emposo.de/impressum/" class="inline-flex min-h-11 items-center">Impressum</a><a href="https://emposo.de/datenschutzerklaerung/" class="inline-flex min-h-11 items-center">Datenschutz</a><a href="/barrierefreiheit/" class="inline-flex min-h-11 items-center">Barrierefreiheit</a><a href="/cookies/" class="inline-flex min-h-11 items-center">Cookies</a><a href="/sitemap/" class="inline-flex min-h-11 items-center">Sitemap</a></div></div></div></div></footer>
 </body>
 </html>

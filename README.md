@@ -1,7 +1,7 @@
 # Emposo website
 
 An editorial, work-first static site for Emposo — the Outcome Factory of the
-Hays Group. Plain HTML/CSS/JS, styled with Tailwind v4 (CLI build) plus a
+Hays network. Plain HTML/CSS/JS, styled with Tailwind v4 (CLI build) plus a
 hand-written editorial component layer. No framework, no runtime dependencies
 beyond the vendored Lenis smooth-scroll.
 
@@ -10,7 +10,7 @@ beyond the vendored Lenis smooth-scroll.
 ```bash
 npm run dev        # assemble + tailwind watch + local server (port 8080)
 npm run build      # one-off production build (assemble + purged CSS)
-npm run check      # build and fail if any generated file differs from git
+npm run check      # build and validate all local links, images, anchors and templates
 npm run build:img  # rebuild responsive images from assets/src/ masters
 ```
 
@@ -26,6 +26,14 @@ plus per-page content, driven by the `pages.mjs` manifest:
 - `pages.mjs` — route, title, description, active-nav key (`nav`, optional
   `navGroup`/`navExact` for section ancestors), body class and script list
   per page.
+- `content/site-data.mjs` — the eight disciplines, five industries, and ten
+  reference projects from the September 2026 workbook. Preserve qualifiers
+  such as “over 70%” and “up to EUR 80,000” when editing project claims.
+- `content/render.mjs` — shared cards, filters, management and detail-page
+  renderers. `project:<slug>` and `industry:<slug>` manifest entries render
+  from this data. `<!-- content:name -->` includes a shared component.
+- Homepage sections are explicitly ordered in its manifest entry. Other
+  section files are retained; the FAQ is included on the services page.
 
 **To add a page**: create `pages/<name>.html` (content only — no `<main>`,
 no header/footer), add a manifest entry in `pages.mjs`, run `npm run build`.
@@ -34,17 +42,32 @@ tokens `{{CUR:key: …}}` / `{{CURATTR:key}}` in partials emit per page.
 
 ## Design tokens
 
-`styles/main.css` holds the Tailwind `@theme`: brand colors (`--color-ink`,
-`--color-lemon` decorative orange, `--color-accent-text` AA-safe text
-orange, hairlines), the fluid type scale (`--text-display-1` …
+`styles/main.css` holds the Tailwind `@theme`: midnight blue `#0A0532`
+(`--color-ink` and `--color-accent-text`), decorative orange `#F7911E`
+(`--color-lemon`), hairlines, the fluid type scale (`--text-display-1` …
 `--text-eyebrow`), the spacing scale (`--spacing-section` is the shared
 vertical rhythm), two shadows, one easing, and `--font-sans` (self-hosted
-Inter, weights 300–600 — do not request 700). Component CSS lives in
+Roboto, weights 300–700). Component CSS lives in
 `styles/07-header.css` (header/megamenu), `08-editorial.css` (homepage
 sections) and `09-page-templates.css` (subpage templates, `.fact-grid`).
-All values are calibrated for the user-scalable 16px root.
+All values are calibrated for the user-scalable 16px root. The September
+feedback and new components live in `styles/10-feedback.css`: sentence case,
+straight arrows, orange underlines, dark text and numbers, and consistent
+headline sizes with more open spacing.
 
 ## Images
+
+The active pages use the supplied September photographs in `assets/supplied/`.
+Their manifest records original filenames, alt text, actual dimensions and
+AVIF/WebP variants. `{{image:key}}` inserts a responsive picture;
+`{{image:key:hero}}` sets eager loading and high fetch priority. To re-import:
+
+```bash
+npm run import:feedback-images -- /path/to/OneDrive_1_10-09-2026
+```
+
+The source Downloads directory is not required for normal builds. The following
+older assets remain available for reuse:
 
 Masters (large originals) live in `assets/src/{brand,generated}/` and are
 never referenced by markup. `npm run build:img` emits AVIF + WebP at
@@ -66,6 +89,11 @@ table predates AVIF); production hosts must send it too.
 
 ## Contact & launch state
 
-The contact form intentionally prepares a `mailto:` message — no form
-backend or visitor data processor is configured. All pages carry a preview
-`noindex`; legal footer links are placeholders pending owner content.
+The contact form prepares a `mailto:` message and explains the handoff to the
+visitor's email program. No form backend is configured. Company is optional,
+so career enquiries can use the same form. All pages retain preview `noindex`.
+The footer links to Emposo's existing imprint and privacy notice, and to local
+cookie information, accessibility information and a sitemap.
+
+See `docs/feedback-2026-09-10.md` for source decisions, implementation coverage,
+verification and the specific content/assets still absent from the delivery.

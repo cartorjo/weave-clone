@@ -18,6 +18,7 @@ import { readFileSync, writeFileSync, readdirSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pages from './pages.mjs';
+import { picture, fragment, projectPage, industryPage, disciplinePage } from './content/render.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const partial = (name) => readFileSync(join(root, 'partials', `${name}.html`), 'utf8');
@@ -34,8 +35,18 @@ const sectionBody = () =>
     .map((f) => `<!-- ${f} -->\n${readFileSync(join(sectionsDir, f), 'utf8').trim()}`)
     .join('\n\n');
 
-const inlinePartials = (html) =>
-  html.replace(/<!-- partial:([a-z0-9-]+) -->/g, (_, name) => partial(name).trim());
+const inlinePartials = (html) => html
+  .replace(/<!-- partial:([a-z0-9-]+) -->/g, (_, name) => partial(name).trim())
+  .replace(/<!-- content:([a-z0-9-]+) -->/g, (_, name) => fragment(name))
+  .replace(/\{\{image:([a-z0-9-]+)(:hero)?\}\}/g, (_, name, hero) => picture(name, hero ? '(max-width: 900px) 100vw, 65vw' : undefined, !!hero));
+
+const pageContent = page => {
+  if (Array.isArray(page.content)) return page.content.map(file=>readFileSync(join(root,file),'utf8').trim()).join('\n\n');
+  if (page.content.startsWith('project:')) return projectPage(page.content.slice(8));
+  if (page.content.startsWith('industry:')) return industryPage(page.content.slice(9));
+  if (page.content.startsWith('discipline:')) return disciplinePage(page.content.slice(11));
+  return page.content === 'sections' ? sectionBody() : readFileSync(join(root,page.content),'utf8').trim();
+};
 
 const stampNav = (html, page) => {
   // page.nav: the item that IS this page (aria-current="page", or "true"
@@ -60,10 +71,7 @@ for (const page of pages) {
     .replaceAll('{{DESCRIPTION}}', page.description)
     .replaceAll('{{BODY_CLASS}}', page.bodyClass)
     .replaceAll('{{SCRIPTS}}', scripts);
-  const content =
-    page.content === 'sections'
-      ? sectionBody()
-      : readFileSync(join(root, page.content), 'utf8').trim();
+  const content = pageContent(page);
   const html =
     pageHead +
     stampNav(header, page) +

@@ -4,15 +4,16 @@
 //   - content: 'pages/x.html'  → the page's <main> inner content
 // nav: which header item is highlighted. navExact: false marks an ancestor
 // (aria-current="true" instead of "page"), e.g. a case-study detail page.
+import { disciplines, industries, projects } from './content/site-data.mjs';
 export default [
   {
     out: 'index.html',
-    title: 'Emposo | Die Outcome Factory der Hays-Gruppe',
+    title: 'Emposo | Wir machen Wandel beherrschbar',
     description: 'Emposo macht Wandel beherrschbar: definierte Leistungen, messbare Ergebnisse und Werkvertrag mit Acceptance.',
     nav: 'home',
     bodyClass: 'wrap-anywhere',
-    content: 'sections',
-    scripts: ['00-core', '01-header', '02-intent-links', '03-connection-system', '06-work'],
+    content: ['sections/02-hero.html', 'sections/02b-expertise.html', 'sections/04-about.html', 'sections/05-industries.html', 'sections/06-work.html', 'sections/03-models.html', 'sections/07b-sales-cta.html'],
+    scripts: ['00-core', '01-header', '02-intent-links', '06-work', '07-countup'],
   },
   {
     out: 'expertise/index.html',
@@ -25,11 +26,11 @@ export default [
   },
   {
     out: 'portfolio/index.html',
-    title: 'Portfolio | Emposo',
+    title: 'Leistungen | Emposo',
     description: 'Das Emposo Portfolio: optimieren, transformieren, skalieren und verzahnen als Ergebnisverantwortung.',
     nav: 'portfolio',
     bodyClass: 'subpage wrap-anywhere',
-    content: 'pages/portfolio.html',
+    content: ['pages/portfolio.html', 'sections/07aa-faq.html'],
     scripts: ['00-core', '01-header'],
   },
   {
@@ -48,13 +49,13 @@ export default [
     nav: 'case-studies',
     navExact: false,
     bodyClass: 'subpage wrap-anywhere',
-    content: 'pages/case-study-data2ai-platform.html',
+    content: 'project:data2ai-platform',
     scripts: ['00-core', '01-header'],
   },
   {
     out: 'about-us/index.html',
     title: 'Über uns | Emposo',
-    description: 'Emposo ist die Outcome Factory der Hays-Gruppe: klare Leistungen, Verantwortung bis zur Abnahme und skalierbare Delivery.',
+    description: 'Emposo ist die Outcome Factory im Hays-Netzwerk: klare Leistungen, Verantwortung bis zur Abnahme und skalierbare Delivery.',
     nav: 'about',
     bodyClass: 'subpage wrap-anywhere',
     content: 'pages/about-us.html',
@@ -67,7 +68,7 @@ export default [
     nav: 'branchen',
     bodyClass: 'subpage wrap-anywhere',
     content: 'pages/branchen.html',
-    scripts: ['00-core', '01-header'],
+    scripts: ['00-core', '01-header', '06-work'],
   },
   {
     out: 'karriere/index.html',
@@ -168,4 +169,29 @@ export default [
     content: 'pages/portfolio-verzahnen.html',
     scripts: ['00-core', '01-header'],
   },
+  ...projects.filter(project=>project.slug !== 'data2ai-platform').map(project=>({
+    out:`case-studies/${project.slug}/index.html`, title:`${project.name} | Case Study | Emposo`,
+    description:project.headline, nav:'case-studies', navExact:false,
+    bodyClass:'subpage wrap-anywhere', content:`project:${project.slug}`, scripts:['00-core','01-header'],
+  })),
+  // One detail page per delivery discipline (workbook: every expertise is its
+  // own portfolio category). ai-daten keeps its richer hand-authored page.
+  ...disciplines.filter(discipline=>discipline.slug !== 'ai-daten').map(discipline=>({
+    out:`expertise/${discipline.slug}/index.html`, title:`${discipline.name} | Expertise | Emposo`,
+    description:discipline.promise, nav:'expertise', navExact:false,
+    bodyClass:'subpage wrap-anywhere', content:`discipline:${discipline.slug}`, scripts:['00-core','01-header'],
+  })),
+  ...industries.map(industry=>({
+    out:`branchen/${industry.slug}/index.html`, title:`${industry.name} | Emposo`,
+    description:industry.intro, nav:'branchen', navExact:false,
+    bodyClass:'subpage wrap-anywhere', content:`industry:${industry.slug}`, scripts:['00-core','01-header'],
+  })),
+  ...['cookies','barrierefreiheit','sitemap','zertifizierungen'].map(name=>({
+    out:`${name}/index.html`, title:`${{cookies:'Cookies',sitemap:'Sitemap',barrierefreiheit:'Barrierefreiheit',zertifizierungen:'Zertifizierungen'}[name]} | Emposo`,
+    description:name==='zertifizierungen'
+      ? 'Zertifizierungen und Nachweise von Emposo: ISO 9001, TISAX-Assessment, Standards, Methoden und Compliant Sourcing®.'
+      : 'Informationen zur Emposo Website.',
+    nav:'none', bodyClass:'subpage wrap-anywhere',
+    content:`pages/${name}.html`, scripts:['00-core','01-header'],
+  })),
 ];

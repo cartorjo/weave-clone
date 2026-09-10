@@ -7,12 +7,12 @@
   <meta name="description" content="Case Studies von Emposo: Herausforderung, Lieferung und messbare Ergebnisse im Überblick.">
   <!-- Temporary preview build: remove this only when launch SEO settings are approved. -->
   <meta name="robots" content="noindex, nofollow">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23002b49'/%3E%3C/svg%3E">
-  <!-- Everything is same-origin: Inter is self-hosted (css/00-fonts.css) and all
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230A0532'/%3E%3C/svg%3E">
+  <!-- Everything is same-origin: Roboto is self-hosted (css/00-fonts.css) and all
        libraries are vendored, so no visitor request ever leaves this host (GDPR).
        crossorigin on the preload is REQUIRED even same-origin — fonts always fetch
        in CORS mode, and a preload without it is re-downloaded. -->
-  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-var-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/ttf" href="/assets/fonts/roboto-400.ttf" crossorigin>
   <link rel="stylesheet" href="/css/00-fonts.css">
   <link rel="stylesheet" href="/css/site.css">
   <!-- Lenis is vendored locally; no visitor request leaves this host. -->
@@ -25,213 +25,69 @@
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 <header class="site-header" data-site-header>
   <div class="gutter"><div class="container"><div class="site-header__inner">
-    <a class="site-logo" href="/" aria-label="Emposo — Startseite"><img src="/assets/brand/emposo-logo.png" alt="Emposo" width="1022" height="229"></a>
-    <p class="site-header__context max-xl:hidden">Outcome Factory <span>der Hays-Gruppe</span></p>
+    <a class="site-logo" href="/" aria-label="Emposo — Startseite"><span class="site-logo__wordmark"><img src="/assets/brand/emposo-logo.png" alt="Emposo" width="1022" height="229"></span></a>
     <nav class="site-nav max-nav:hidden" aria-label="Hauptnavigation">
       <details class="site-nav__group">
-        <summary class="min-h-11">Expertise</summary>
+        <summary class="min-h-11">Leistungen</summary>
         <div class="mega-panel"><div class="gutter"><div class="container mega-panel__grid">
           <div class="mega-panel__intro">
-            <p class="mega-panel__eyebrow">Expertise</p>
-            <a class="mega-panel__all" href="/expertise/">Übersicht</a>
-            <p>Acht Lieferdisziplinen verbinden Fachwissen, Technologie und Umsetzung — als klar definierte Ergebnisse für den Betrieb.</p>
+            <p class="mega-panel__eyebrow">Leistungen</p>
+            <a class="mega-panel__all" href="/portfolio/">Unsere Leistungen <span aria-hidden="true">→</span></a>
+            <p>Engineering und Technology aus einer Hand. Von der ersten Idee bis zum messbaren Ergebnis.</p>
+            <a class="mega-panel__all" href="/expertise/">Alle acht Disziplinen <span aria-hidden="true">→</span></a>
           </div>
-          <a class="mega-panel__item" href="/expertise/engineering/">
-            <span class="mega-panel__num">01</span>
-            <strong>Engineering</strong>
-            <span>System Engineering, Industrialisierung, Test &amp; Validierung, Engineering Services.</span>
-          </a>
-          <a class="mega-panel__item" href="/expertise/technology/">
-            <span class="mega-panel__num">02</span>
-            <strong>Technology</strong>
-            <span>Software, Cloud &amp; Architecture, Cyber &amp; Compliance, Enterprise Services.</span>
-          </a>
-          <a class="mega-panel__item" href="/expertise/ai-daten/">
-            <span class="mega-panel__num">03</span>
-            <strong>AI &amp; Daten</strong>
-            <span>AI-Strategie, Knowledge Graphs, RAG, Datenplattformen und MLOps.</span>
-          </a>
+          <a class="mega-panel__item" href="/expertise/engineering/"><span class="mega-panel__num">01</span><strong>Engineering</strong><span>Systementwicklung, Industrialisierung, Test und Engineering Services.</span></a>
+          <a class="mega-panel__item" href="/expertise/technology/"><span class="mega-panel__num">02</span><strong>Technology</strong><span>AI &amp; Daten, Software, Cloud, Cyber und Enterprise Services.</span></a>
+          <a class="mega-panel__item" href="/expertise/ai-daten/"><span class="mega-panel__num">03</span><strong>AI &amp; Daten</strong><span>Von der AI-Strategie zur produktiven Anwendung.</span></a>
           <div class="mega-panel__featured">
-            <p class="mega-panel__eyebrow">Case Study</p>
-            <a href="/case-studies/data2ai-platform/"><strong>Data2AI Plattform</strong><span>7× Produktivität: Aus verteilten Engineering-Daten wird produktive KI.</span></a>
+            <p class="mega-panel__eyebrow">Was und wie wir liefern</p>
+            <a href="/portfolio/optimieren/">Wir optimieren</a>
+            <a href="/portfolio/transformieren/">Wir transformieren</a>
+            <a href="/portfolio/skalieren/">Wir skalieren</a>
+            <a href="/portfolio/verzahnen/">Wir verzahnen</a>
+            <a href="/portfolio/#delivery-model">Unser 5-Stufen-Modell <span aria-hidden="true">→</span></a>
           </div>
         </div></div></div>
       </details>
-      <details class="site-nav__group">
-        <summary class="min-h-11">Portfolio</summary>
+      <details class="site-nav__group is-current">
+        <summary class="min-h-11">Branchen &amp; Case Studies</summary>
         <div class="mega-panel"><div class="gutter"><div class="container mega-panel__grid">
-          <div class="mega-panel__intro">
-            <p class="mega-panel__eyebrow">Portfolio</p>
-            <a class="mega-panel__all" href="/portfolio/">Übersicht</a>
-            <p>Vier Liefermodelle, ein Prinzip: Werkvertrag mit Acceptance — bis das Ergebnis im Betrieb wirkt.</p>
-          </div>
-          <a class="mega-panel__item" href="/portfolio/optimieren/">
-            <span class="mega-panel__num">01</span>
-            <strong>Wir optimieren</strong>
-            <span>Bestehende Leistungen übernehmen und messbar verbessern.</span>
-          </a>
-          <a class="mega-panel__item" href="/portfolio/transformieren/">
-            <span class="mega-panel__num">02</span>
-            <strong>Wir transformieren</strong>
-            <span>Technologie bis zum messbaren Ergebnis produktiv machen.</span>
-          </a>
-          <a class="mega-panel__item" href="/portfolio/skalieren/">
-            <span class="mega-panel__num">03</span>
-            <strong>Wir skalieren</strong>
-            <span>Teams und Lösungen entlang des Bedarfs ausbauen.</span>
-          </a>
-          <div class="mega-panel__featured">
-            <a class="mega-panel__item" href="/portfolio/verzahnen/">
-              <span class="mega-panel__num">04</span>
-              <strong>Wir verzahnen</strong>
-              <span>Branchenwissen und Technologie zu Business-Mehrwert verbinden.</span>
-            </a>
-            <a class="mega-panel__all" href="/portfolio/#delivery-model">Delivery Model</a>
-          </div>
+          <div class="mega-panel__intro"><p class="mega-panel__eyebrow">Industrie-Know-how</p><a class="mega-panel__all" href="/branchen/">Alle Branchen <span aria-hidden="true">→</span></a><p>Unsere Teams und Spezialisten kommen direkt aus Ihrer Branche.</p></div>
+          <div class="mega-panel__links"><a href="/branchen/aerospace-defense/">Aerospace &amp; Defense</a><a href="/branchen/energy-resources/">Energy &amp; Resources</a><a href="/branchen/health-pharma/">Health &amp; Pharma</a></div>
+          <div class="mega-panel__links"><a href="/branchen/industrials-manufacturing/">Industrials &amp; Manufacturing <span>inklusive Automotive</span></a><a href="/branchen/technology-telecoms-media/">Technology, Telecoms &amp; Media</a></div>
+          <div class="mega-panel__featured"><p class="mega-panel__eyebrow">Unsere Erfolge</p><a href="/case-studies/" aria-current="page"><strong>Alle Case Studies</strong><span>Zehn Projekte. Messbare Ergebnisse.</span></a><a href="/case-studies/data2ai-platform/">Data2AI Plattform <span aria-hidden="true">→</span></a></div>
         </div></div></div>
       </details>
-      <a class="min-h-11" href="/branchen/">Branchen</a>
-      <a class="min-h-11" href="/case-studies/" aria-current="page">Case Studies</a>
       <a class="min-h-11" href="/about-us/">Über uns</a>
+      <a class="min-h-11" href="/karriere/">Karriere</a>
     </nav>
-    <a class="header-careers max-nav:hidden min-h-11" href="/karriere/">Karriere</a>
-    <a class="header-contact max-nav:hidden min-h-11" href="/kontakt/">Projekt besprechen <span aria-hidden="true">↗</span></a>
+    <a class="header-contact max-nav:hidden min-h-11" href="/kontakt/">Projekt besprechen <span aria-hidden="true">→</span></a>
     <details class="mobile-menu nav:hidden" id="mobile-menu">
       <summary aria-label="Menü öffnen" class="min-h-11"><span>Menü</span><span aria-hidden="true">+</span></summary>
       <nav class="mobile-menu__panel" aria-label="Hauptnavigation">
-        <p class="mobile-menu__label" aria-hidden="true">Expertise</p>
-        <a href="/expertise/">Übersicht</a>
+        <p class="mobile-menu__label">Leistungen</p>
+        <a href="/portfolio/">Unsere Leistungen</a>
+        <a href="/expertise/">Alle Disziplinen</a>
         <a href="/expertise/engineering/">Engineering</a>
         <a href="/expertise/technology/">Technology</a>
         <a href="/expertise/ai-daten/">AI &amp; Daten</a>
-        <p class="mobile-menu__label" aria-hidden="true">Portfolio</p>
-        <a href="/portfolio/">Übersicht</a>
-        <a href="/portfolio/optimieren/">Wir optimieren</a>
-        <a href="/portfolio/transformieren/">Wir transformieren</a>
-        <a href="/portfolio/skalieren/">Wir skalieren</a>
-        <a href="/portfolio/verzahnen/">Wir verzahnen</a>
-        <p class="mobile-menu__label" aria-hidden="true">Unternehmen</p>
-        <a href="/branchen/">Branchen</a>
-        <a href="/case-studies/" aria-current="page">Case Studies</a>
+        <p class="mobile-menu__label">Branchen &amp; Case Studies</p>
+        <a href="/branchen/">Alle Branchen</a>
+        <a href="/case-studies/" aria-current="page">Alle Case Studies</a>
+        <p class="mobile-menu__label">Unternehmen</p>
         <a href="/about-us/">Über uns</a>
+        <a href="/about-us/#management">Management</a>
         <a href="/karriere/">Karriere</a>
-        <a class="mobile-menu__cta" href="/kontakt/">Projekt besprechen</a>
+        <a class="mobile-menu__cta" href="/kontakt/">Projekt besprechen <span aria-hidden="true">→</span></a>
       </nav>
     </details>
   </div></div></div>
 </header>
 <main id="main" tabindex="-1">
-<section class="page-hero" aria-labelledby="cases-title">
-      <div class="gutter"><div class="container @container"><div class="page-hero__grid @max-content:grid-cols-1">
-        <div class="page-hero__copy">
-          <p class="page-breadcrumb"><a href="/">Startseite</a><span aria-hidden="true">/</span> Case Studies</p>
-          <p class="page-kicker">Referenzprojekte</p>
-          <h1 class="page-display" id="cases-title">Ergebnisse, die für sich <em>sprechen.</em></h1>
-          <p class="page-hero__intro">Jede Case Study verbindet Herausforderung, Lieferung und einen klaren Outcome. Kundennamen bleiben dort anonym, wo keine Freigabe vorliegt.</p>
-        </div>
-        <figure class="page-hero__visual lg:@max-content:aspect-video lg:@max-content:min-h-0">
-          <picture><source type="image/avif" srcset="/assets/brand/data-900.avif 900w, /assets/brand/data-1600.avif 1600w" sizes="(max-width: 900px) 100vw, 44vw"><source type="image/webp" srcset="/assets/brand/data-900.webp 900w, /assets/brand/data-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 44vw"><img src="/assets/brand/data-1600.jpg" alt="Datenströme als Sinnbild für vernetzte Projektergebnisse" width="1600" height="927" fetchpriority="high"></picture>
-          <figcaption><span>Outcome Index</span><span>01 / 10</span></figcaption>
-          <div class="page-hero__metric"><strong>10</strong><span>ausgewählte Projektbeispiele</span></div>
-        </figure>
-      </div></div></div>
-    </section>
-
-    <section class="page-section page-section--paper" aria-labelledby="case-principles-title">
-      <div class="gutter"><div class="container @container">
-        <div class="page-section__top @max-content:grid-cols-1">
-          <div><p class="page-eyebrow">Unser Nachweis</p><h2 class="page-title" id="case-principles-title">Ergebnisse statt <em class="text-accent-text">Leistungslisten.</em></h2></div>
-          <p class="page-section__lede">Die Auswahl ist nach Branche und Ausgangslage durchsuchbar. So wird sichtbar, welche Expertise in welchem Kontext Wirkung entfaltet.</p>
-        </div>
-        <div class="case-intro-grid">
-          <article><span class="text-accent-text">01 / Ausgangslage</span><h3>Die Herausforderung.</h3><p>Der konkrete Bedarf und die operative Realität stehen am Anfang jeder Lieferung.</p></article>
-          <article><span class="text-accent-text">02 / Lieferung</span><h3>Der Auftrag.</h3><p>Leistung, Verantwortlichkeiten und Zielbild werden für die Umsetzung klar abgegrenzt.</p></article>
-          <article><span class="text-accent-text">03 / Outcome</span><h3>Das Ergebnis.</h3><p>Die Wirkung wird mit einem dominanten Outcome sichtbar, nicht mit einer Präsentation.</p></article>
-        </div>
-      </div></div>
-    </section>
-
-    <section class="page-section" aria-labelledby="case-index-title">
-      <div class="gutter"><div class="container @container">
-        <div class="page-section__top @max-content:grid-cols-1">
-          <div><p class="page-eyebrow">Case Index</p><h2 class="page-title" id="case-index-title">Finden Sie den passenden <em class="text-accent-text">Kontext.</em></h2></div>
-          <p class="page-section__lede">Filtern Sie die Projektbeispiele nach Branche und dem Weg zur Wirkung.</p>
-        </div>
-
-        <div class="case-filter js-only">
-          <span class="case-filter__label">Branche</span>
-          <div class="case-filter__controls" role="group">
-            <button class="case-filter__button is-active min-h-11" type="button" data-filter-group="industry" data-filter-value="all" aria-pressed="true">Alle</button>
-            <button class="case-filter__button min-h-11" type="button" data-filter-group="industry" data-filter-value="automotive" aria-pressed="false">Automotive</button>
-            <button class="case-filter__button min-h-11" type="button" data-filter-group="industry" data-filter-value="health" aria-pressed="false">Health &amp; Pharma</button>
-            <button class="case-filter__button min-h-11" type="button" data-filter-group="industry" data-filter-value="industrial" aria-pressed="false">Industrie</button>
-            <button class="case-filter__button min-h-11" type="button" data-filter-group="industry" data-filter-value="energy" aria-pressed="false">Energy &amp; Resources</button>
-          </div>
-        </div>
-        <div class="case-filter js-only">
-          <span class="case-filter__label">Wirkung</span>
-          <div class="case-filter__controls" role="group">
-            <button class="case-filter__button is-active min-h-11" type="button" data-filter-group="outcome" data-filter-value="all" aria-pressed="true">Alle</button>
-            <button class="case-filter__button min-h-11" type="button" data-filter-group="outcome" data-filter-value="optimize" aria-pressed="false">Optimieren</button>
-            <button class="case-filter__button min-h-11" type="button" data-filter-group="outcome" data-filter-value="transform" aria-pressed="false">Transformieren</button>
-            <button class="case-filter__button min-h-11" type="button" data-filter-group="outcome" data-filter-value="scale" aria-pressed="false">Skalieren</button>
-          </div>
-        </div>
-
-        <p class="case-count" id="project-count" aria-live="polite">10 Projekte</p>
-        <div class="case-grid" data-project-grid>
-          <a class="case-card case-card--wide case-card--media" href="/case-studies/data2ai-platform/" data-project data-industry="automotive" data-outcome="transform">
-            <div class="case-card__top"><span class="case-card__number text-accent-text">Fall 01 / 10</span><span class="case-card__discipline">AI-Transformation &amp; Daten</span></div><figure><picture><source type="image/avif" srcset="/assets/generated/ai-engineering-900.avif 900w, /assets/generated/ai-engineering-1586.avif 1586w" sizes="(max-width: 650px) 100vw, 40vw"><source type="image/webp" srcset="/assets/generated/ai-engineering-900.webp 900w, /assets/generated/ai-engineering-1586.webp 1586w" sizes="(max-width: 650px) 100vw, 40vw"><img src="/assets/generated/ai-engineering-1586.jpg" alt="Abstrakte Visualisierung vernetzter KI-Systeme im Engineering" width="1586" height="992" loading="lazy" decoding="async"></picture></figure>
-            <h2>Data2AI Plattform</h2><p>Aus verteilten Engineering-Daten wird produktive KI: mit Knowledge Graph und KI-Agenten.</p><div class="case-card__outcome"><strong class="text-accent-text">7×</strong><span>Produktivitätssteigerung</span></div><span class="case-card__link after:text-accent-text">Case Study lesen</span>
-          </a>
-          <article class="case-card case-card--media" data-project data-industry="automotive" data-outcome="transform">
-            <div class="case-card__top"><span class="case-card__number text-accent-text">Fall 02 / 10</span><span class="case-card__discipline">AI-Transformation &amp; Daten</span></div><figure><picture><source type="image/avif" srcset="/assets/generated/hero-system-900.avif 900w, /assets/generated/hero-system-1122.avif 1122w" sizes="(max-width: 650px) 100vw, 40vw"><source type="image/webp" srcset="/assets/generated/hero-system-900.webp 900w, /assets/generated/hero-system-1122.webp 1122w" sizes="(max-width: 650px) 100vw, 40vw"><img src="/assets/generated/hero-system-1122.jpg" alt="Abstrakte Systemvisualisierung einer vernetzten Wissensbasis" width="1122" height="1402" loading="lazy" decoding="async"></picture></figure>
-            <h2>Vernetzte Engineering-Wissensbasis</h2><p>Von Wochen auf Stunden: Engineering-Wissen wird ausführbar und nachvollziehbar.</p><div class="case-card__outcome"><strong class="text-accent-text">83 %</strong><span>weniger Aufwand bei Testspezifikationen</span></div>
-          </article>
-          <article class="case-card case-card--media" data-project data-industry="automotive" data-outcome="scale">
-            <div class="case-card__top"><span class="case-card__number text-accent-text">Fall 03 / 10</span><span class="case-card__discipline">Enterprise Services</span></div><figure><picture><source type="image/avif" srcset="/assets/generated/cloud-platforms-900.avif 900w, /assets/generated/cloud-platforms-1536.avif 1536w" sizes="(max-width: 650px) 100vw, 40vw"><source type="image/webp" srcset="/assets/generated/cloud-platforms-900.webp 900w, /assets/generated/cloud-platforms-1536.webp 1536w" sizes="(max-width: 650px) 100vw, 40vw"><img src="/assets/generated/cloud-platforms-1536.jpg" alt="Abstrakte Darstellung verbundener Cloud-Plattformen" width="1536" height="1024" loading="lazy" decoding="async"></picture></figure>
-            <h2>Rechenzentrums-Umzug ohne Stillstand</h2><p>Migration und Integration sichern Produktion und Logistik während der Veränderung.</p><div class="case-card__outcome"><strong class="text-accent-text">0</strong><span>Minuten migrationsbedingte Downtime</span></div>
-          </article>
-          <article class="case-card case-card--media" data-project data-industry="health" data-outcome="transform">
-            <div class="case-card__top"><span class="case-card__number text-accent-text">Fall 04 / 10</span><span class="case-card__discipline">AI-Transformation &amp; Daten</span></div><figure><picture><source type="image/avif" srcset="/assets/generated/responsible-ai-900.avif 900w, /assets/generated/responsible-ai-1536.avif 1536w" sizes="(max-width: 650px) 100vw, 40vw"><source type="image/webp" srcset="/assets/generated/responsible-ai-900.webp 900w, /assets/generated/responsible-ai-1536.webp 1536w" sizes="(max-width: 650px) 100vw, 40vw"><img src="/assets/generated/responsible-ai-1536.jpg" alt="Abstrakte Darstellung regulierter, verantwortungsvoller KI" width="1536" height="1024" loading="lazy" decoding="async"></picture></figure>
-            <h2>MLOps für Medizinprodukte</h2><p>KI-Modelle regulatorisch sicher und deutlich schneller aktualisieren.</p><div class="case-card__outcome"><strong class="text-accent-text">70 %</strong><span>weniger Prüfaufwand</span></div>
-          </article>
-          <article class="case-card case-card--wide case-card--media" data-project data-industry="industrial" data-outcome="transform">
-            <div class="case-card__top"><span class="case-card__number text-accent-text">Fall 05 / 10</span><span class="case-card__discipline">AI-Transformation &amp; Daten</span></div><figure><picture><source type="image/avif" srcset="/assets/generated/data-analytics-900.avif 900w, /assets/generated/data-analytics-1536.avif 1536w" sizes="(max-width: 650px) 100vw, 40vw"><source type="image/webp" srcset="/assets/generated/data-analytics-900.webp 900w, /assets/generated/data-analytics-1536.webp 1536w" sizes="(max-width: 650px) 100vw, 40vw"><img src="/assets/generated/data-analytics-1536.jpg" alt="Abstrakte Visualisierung analytischer Datenströme" width="1536" height="1024" loading="lazy" decoding="async"></picture></figure>
-            <h2>Wissens-Assistent Engineering</h2><p>Technisches Wissen ist in Sekunden statt Tagen verfügbar und kann in der täglichen Arbeit genutzt werden.</p><div class="case-card__outcome"><strong class="text-accent-text">80 T€</strong><span>Rechercheaufwand pro Monat eingespart</span></div>
-          </article>
-          <article class="case-card case-card--media" data-project data-industry="health" data-outcome="optimize">
-            <div class="case-card__top"><span class="case-card__number text-accent-text">Fall 06 / 10</span><span class="case-card__discipline">Cyber &amp; Compliance</span></div><figure><picture><source type="image/avif" srcset="/assets/generated/cybersecurity-900.avif 900w, /assets/generated/cybersecurity-1536.avif 1536w" sizes="(max-width: 650px) 100vw, 40vw"><source type="image/webp" srcset="/assets/generated/cybersecurity-900.webp 900w, /assets/generated/cybersecurity-1536.webp 1536w" sizes="(max-width: 650px) 100vw, 40vw"><img src="/assets/generated/cybersecurity-1536.jpg" alt="Abstrakte Darstellung digitaler Sicherheitsstrukturen" width="1536" height="1024" loading="lazy" decoding="async"></picture></figure>
-            <h2>Multi-Site Transition Program</h2><p>Ein komplexer Labor-Rollout wird termingerecht und auditfest in den Betrieb geführt.</p><div class="case-card__outcome"><strong class="text-accent-text">27+</strong><span>Beauftragungen abgenommen</span></div>
-          </article>
-          <article class="case-card case-card--media" data-project data-industry="automotive" data-outcome="optimize">
-            <div class="case-card__top"><span class="case-card__number text-accent-text">Fall 07 / 10</span><span class="case-card__discipline">Test, Validierung &amp; Integration</span></div><figure><picture><source type="image/avif" srcset="/assets/brand/validation-900.avif 900w, /assets/brand/validation-1600.avif 1600w" sizes="(max-width: 650px) 100vw, 40vw"><source type="image/webp" srcset="/assets/brand/validation-900.webp 900w, /assets/brand/validation-1600.webp 1600w" sizes="(max-width: 650px) 100vw, 40vw"><img src="/assets/brand/validation-1600.jpg" alt="Team überprüft technische Daten in einer regulierten Umgebung" width="1600" height="1068" loading="lazy" decoding="async"></picture></figure>
-            <h2>Zulassungs- und Homologationstests</h2><p>Die Markteinführung über mehrere Fahrzeugwellen wird revisionssicher abgesichert.</p><div class="case-card__outcome"><strong class="text-accent-text">100 %</strong><span>nachweisbare Traceability</span></div>
-          </article>
-          <article class="case-card case-card--media" data-project data-industry="energy" data-outcome="optimize">
-            <div class="case-card__top"><span class="case-card__number text-accent-text">Fall 08 / 10</span><span class="case-card__discipline">Enterprise Services</span></div><figure><picture><source type="image/avif" srcset="/assets/generated/programme-delivery-900.avif 900w, /assets/generated/programme-delivery-1536.avif 1536w" sizes="(max-width: 650px) 100vw, 40vw"><source type="image/webp" srcset="/assets/generated/programme-delivery-900.webp 900w, /assets/generated/programme-delivery-1536.webp 1536w" sizes="(max-width: 650px) 100vw, 40vw"><img src="/assets/generated/programme-delivery-1536.jpg" alt="Abstrakte Darstellung gesteuerter Programmlieferung" width="1536" height="1024" loading="lazy" decoding="async"></picture></figure>
-            <h2>Managed Service seit 2018</h2><p>Langfristige Betriebssicherheit wird über klar gesteuerte Service-Level geliefert.</p><div class="case-card__outcome"><strong class="text-accent-text">8+</strong><span>Jahre stabiler Betrieb</span></div>
-          </article>
-          <article class="case-card case-card--media" data-project data-industry="automotive" data-outcome="scale">
-            <div class="case-card__top"><span class="case-card__number text-accent-text">Fall 09 / 10</span><span class="case-card__discipline">System Engineering &amp; Entwicklung</span></div><figure><picture><source type="image/avif" srcset="/assets/brand/engineering-900.avif 900w, /assets/brand/engineering-1600.avif 1600w" sizes="(max-width: 650px) 100vw, 40vw"><source type="image/webp" srcset="/assets/brand/engineering-900.webp 900w, /assets/brand/engineering-1600.webp 1600w" sizes="(max-width: 650px) 100vw, 40vw"><img src="/assets/brand/engineering-1600.jpg" alt="Digitale Technologien für Engineering" width="1600" height="900" loading="lazy" decoding="async"></picture></figure>
-            <h2>Fahrzeugfunktionen als Langzeit-Werkprogramm</h2><p>Komplette Funktionsumfänge werden über mehrere Jahre planbar geliefert.</p><div class="case-card__outcome"><strong class="text-accent-text">5</strong><span>Jahre planbare Lieferung</span></div>
-          </article>
-          <article class="case-card case-card--wide case-card--media" data-project data-industry="industrial" data-outcome="optimize">
-            <div class="case-card__top"><span class="case-card__number text-accent-text">Fall 10 / 10</span><span class="case-card__discipline">Engineering Services</span></div><figure><picture><source type="image/avif" srcset="/assets/generated/ai-governance-900.avif 900w, /assets/generated/ai-governance-1536.avif 1536w" sizes="(max-width: 650px) 100vw, 40vw"><source type="image/webp" srcset="/assets/generated/ai-governance-900.webp 900w, /assets/generated/ai-governance-1536.webp 1536w" sizes="(max-width: 650px) 100vw, 40vw"><img src="/assets/generated/ai-governance-1536.jpg" alt="Abstrakte Darstellung strukturierter Governance und Dokumentation" width="1536" height="1024" loading="lazy" decoding="async"></picture></figure>
-            <h2>Technische Dokumentation als Dauerleistung</h2><p>Produktfreigaben werden durch konsistente technische Dokumentation über komplexe Programme abgesichert.</p><div class="case-card__outcome"><strong class="text-accent-text">800</strong><span>Dokumente pro Jahr</span></div>
-          </article>
-        </div>
-        <p class="case-empty" id="project-empty" hidden>Für diese Auswahl liegt aktuell keine veröffentlichbare Case Study vor.</p>
-      </div></div>
-    </section>
-
-    <section class="page-section page-section--deep" aria-labelledby="cases-cta-title">
-      <div class="gutter"><div class="container @container"><div class="page-cta @max-content:grid-cols-1">
-        <div><p class="page-eyebrow page-eyebrow--light">Nächster Schritt</p><h2 class="page-cta__title" id="cases-cta-title">Lassen Sie uns Ihr nächstes Ergebnis <em>definieren.</em></h2></div>
-        <div class="page-cta__copy"><p>Ihre Herausforderung muss nicht in eine Standardschublade passen. Wir starten mit dem gewünschten Outcome und der realen Ausgangslage.</p><a class="page-link page-link--light min-h-11" href="/kontakt/">Projekt besprechen</a></div>
-      </div></div></div>
-    </section>
+<section class="page-hero" aria-labelledby="cases-title"><div class="gutter"><div class="container"><div class="page-hero__grid"><div class="page-hero__copy"><p class="page-breadcrumb"><a href="/">Startseite</a><span>/</span>Case Studies</p><p class="page-kicker">Referenzprojekte</p><h1 class="page-display" id="cases-title">Unsere Erfolge sprechen <em>für sich.</em></h1><p class="page-hero__intro">Jedes Projekt endet mit einem klaren Outcome. Wir waren nicht Teil der Lösung, wir haben sie geschaffen.</p></div><figure class="page-hero__visual"><picture><source type="image/avif" srcset="/assets/supplied/data2ai-640.avif 640w, /assets/supplied/data2ai-1600.avif 1600w" sizes="(max-width: 900px) 100vw, 65vw"><source type="image/webp" srcset="/assets/supplied/data2ai-640.webp 640w, /assets/supplied/data2ai-1600.webp 1600w" sizes="(max-width: 900px) 100vw, 65vw"><img src="/assets/supplied/data2ai-1600.jpg" alt="Visualisierung vernetzter Daten und Analysen" width="1600" height="900" fetchpriority="high" decoding="async"></picture></figure></div></div></div></section>
+<section class="page-section" id="referenzen" aria-labelledby="case-index-title"><div class="gutter"><div class="container"><p class="eyebrow">Zehn Projekte. Messbare Ergebnisse.</p><h2 class="page-title" id="case-index-title">Finden Sie Ihren <em>Kontext.</em></h2><div class="work-filter js-only"><div class="filter-group"><span>Branche</span><div role="group" aria-label="Nach Branche filtern"><button class="filter-button min-h-11 is-active" type="button" data-filter-group="industry" data-filter-value="all" aria-pressed="true">Alle</button><button class="filter-button min-h-11" type="button" data-filter-group="industry" data-filter-value="aerospace" aria-pressed="false">Aerospace &amp; Defense</button><button class="filter-button min-h-11" type="button" data-filter-group="industry" data-filter-value="energy" aria-pressed="false">Energy &amp; Resources</button><button class="filter-button min-h-11" type="button" data-filter-group="industry" data-filter-value="health" aria-pressed="false">Health &amp; Pharma</button><button class="filter-button min-h-11" type="button" data-filter-group="industry" data-filter-value="industrial" aria-pressed="false">Industrials &amp; Manufacturing</button><button class="filter-button min-h-11" type="button" data-filter-group="industry" data-filter-value="automotive" aria-pressed="false">Automotive</button><button class="filter-button min-h-11" type="button" data-filter-group="industry" data-filter-value="technology" aria-pressed="false">Technology, Telecoms &amp; Media</button></div></div><div class="filter-group"><span>Wirkung</span><div role="group" aria-label="Nach Wirkung filtern"><button class="filter-button min-h-11 is-active" type="button" data-filter-group="outcome" data-filter-value="all" aria-pressed="true">Alle</button><button class="filter-button min-h-11" type="button" data-filter-group="outcome" data-filter-value="optimize" aria-pressed="false">Optimieren</button><button class="filter-button min-h-11" type="button" data-filter-group="outcome" data-filter-value="transform" aria-pressed="false">Transformieren</button><button class="filter-button min-h-11" type="button" data-filter-group="outcome" data-filter-value="scale" aria-pressed="false">Skalieren</button></div></div></div><p class="work-count" id="project-count" aria-live="polite">10 Projekte</p><div class="reference-grid" data-project-grid><a class="reference-card" href="/case-studies/data2ai-platform/" data-project data-industry="industrial automotive" data-outcome="transform"><figure><picture><source type="image/avif" srcset="/assets/supplied/data2ai-640.avif 640w, /assets/supplied/data2ai-1600.avif 1600w" sizes="(max-width: 700px) 100vw, 50vw"><source type="image/webp" srcset="/assets/supplied/data2ai-640.webp 640w, /assets/supplied/data2ai-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 50vw"><img src="/assets/supplied/data2ai-1600.jpg" alt="Visualisierung vernetzter Daten und Analysen" width="1600" height="900" loading="lazy" decoding="async"></picture></figure><div class="reference-card__meta"><span>Automotive</span><span>AI-Transformation &amp; Daten</span></div><h3>Data2AI Plattform</h3><p>Aus verteilten Engineering-Daten wird produktive KI.</p><div class="result-metric"><strong>7×</strong><span>Produktivitätssteigerung</span></div><span class="text-link">Case Study lesen <span aria-hidden="true">→</span></span></a><a class="reference-card" href="/case-studies/engineering-wissensbasis/" data-project data-industry="industrial automotive" data-outcome="transform"><figure><picture><source type="image/avif" srcset="/assets/supplied/engineering-knowledge-640.avif 640w, /assets/supplied/engineering-knowledge-1600.avif 1600w" sizes="(max-width: 700px) 100vw, 50vw"><source type="image/webp" srcset="/assets/supplied/engineering-knowledge-640.webp 640w, /assets/supplied/engineering-knowledge-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 50vw"><img src="/assets/supplied/engineering-knowledge-1600.jpg" alt="Vernetzte Prozessoren und digitale Informationsflüsse" width="1600" height="900" loading="lazy" decoding="async"></picture></figure><div class="reference-card__meta"><span>Automotive</span><span>AI-Transformation &amp; Daten</span></div><h3>Vernetzte Engineering-Wissensbasis</h3><p>Von Wochen auf Stunden: Engineering-Wissen wird ausführbar.</p><div class="result-metric"><strong>83 %</strong><span>weniger Aufwand bei Testspezifikationen</span></div><span class="text-link">Case Study lesen <span aria-hidden="true">→</span></span></a><a class="reference-card" href="/case-studies/rechenzentrums-umzug/" data-project data-industry="industrial automotive" data-outcome="transform"><figure><picture><source type="image/avif" srcset="/assets/supplied/datacenter-640.avif 640w, /assets/supplied/datacenter-1600.avif 1600w" sizes="(max-width: 700px) 100vw, 50vw"><source type="image/webp" srcset="/assets/supplied/datacenter-640.webp 640w, /assets/supplied/datacenter-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 50vw"><img src="/assets/supplied/datacenter-1600.jpg" alt="Vernetzte Server in einem Rechenzentrum" width="1600" height="893" loading="lazy" decoding="async"></picture></figure><div class="reference-card__meta"><span>Automotive</span><span>Enterprise Services</span></div><h3>Rechenzentrums-Umzug ohne Stillstand</h3><p>Transformation ohne eine Minute migrationsbedingten Stillstand.</p><div class="result-metric"><strong>0</strong><span>Minuten migrationsbedingter Stillstand</span></div><span class="text-link">Case Study lesen <span aria-hidden="true">→</span></span></a><a class="reference-card" href="/case-studies/mlops-medizinprodukte/" data-project data-industry="health" data-outcome="transform"><figure><picture><source type="image/avif" srcset="/assets/supplied/pharma-640.avif 640w, /assets/supplied/pharma-1600.avif 1600w" sizes="(max-width: 700px) 100vw, 50vw"><source type="image/webp" srcset="/assets/supplied/pharma-640.webp 640w, /assets/supplied/pharma-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 50vw"><img src="/assets/supplied/pharma-1600.jpg" alt="Laborgerät für die Analyse medizinischer Proben" width="1600" height="1067" loading="lazy" decoding="async"></picture></figure><div class="reference-card__meta"><span>Health &amp; Pharma</span><span>AI-Transformation &amp; Daten</span></div><h3>MLOps für Medizinprodukte</h3><p>KI-Modelle regulatorisch sicher und schneller aktualisieren.</p><div class="result-metric"><strong>&gt;70 %</strong><span>weniger Prüfaufwand</span></div><span class="text-link">Case Study lesen <span aria-hidden="true">→</span></span></a><a class="reference-card" href="/case-studies/wissens-assistent/" data-project data-industry="industrial" data-outcome="transform"><figure><picture><source type="image/avif" srcset="/assets/supplied/software-640.avif 640w, /assets/supplied/software-1600.avif 1600w" sizes="(max-width: 700px) 100vw, 50vw"><source type="image/webp" srcset="/assets/supplied/software-640.webp 640w, /assets/supplied/software-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 50vw"><img src="/assets/supplied/software-1600.jpg" alt="Entwicklung einer digitalen Anwendung am Laptop" width="1600" height="816" loading="lazy" decoding="async"></picture></figure><div class="reference-card__meta"><span>Industrials &amp; Manufacturing</span><span>AI-Transformation &amp; Daten</span></div><h3>Wissens-Assistent Engineering</h3><p>Technisches Wissen in Sekunden statt Tagen verfügbar.</p><div class="result-metric"><strong>80.000 €</strong><span>bis zu dieser Summe monatlich an Rechercheaufwand eingespart</span></div><span class="text-link">Case Study lesen <span aria-hidden="true">→</span></span></a><a class="reference-card" href="/case-studies/multi-site-transition/" data-project data-industry="health" data-outcome="scale"><figure><picture><source type="image/avif" srcset="/assets/supplied/pharma-transition-640.avif 640w, /assets/supplied/pharma-transition-1600.avif 1600w" sizes="(max-width: 700px) 100vw, 50vw"><source type="image/webp" srcset="/assets/supplied/pharma-transition-640.webp 640w, /assets/supplied/pharma-transition-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 50vw"><img src="/assets/supplied/pharma-transition-1600.jpg" alt="Fachkraft arbeitet an einer Anlage im Reinraum" width="1600" height="1068" loading="lazy" decoding="async"></picture></figure><div class="reference-card__meta"><span>Health &amp; Pharma</span><span>Cyber &amp; Compliance</span></div><h3>Multi-Site Transition Program</h3><p>27+ Beauftragungen termingerecht und auditfest abgenommen.</p><div class="result-metric"><strong>27+</strong><span>Beauftragungen termingerecht und auditfest abgenommen</span></div><span class="text-link">Case Study lesen <span aria-hidden="true">→</span></span></a><a class="reference-card" href="/case-studies/homologationstests/" data-project data-industry="industrial automotive" data-outcome="optimize"><figure><picture><source type="image/avif" srcset="/assets/supplied/vehicle-testing-640.avif 640w, /assets/supplied/vehicle-testing-1600.avif 1600w" sizes="(max-width: 700px) 100vw, 50vw"><source type="image/webp" srcset="/assets/supplied/vehicle-testing-640.webp 640w, /assets/supplied/vehicle-testing-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 50vw"><img src="/assets/supplied/vehicle-testing-1600.jpg" alt="Fahrzeugdiagnose mit einem digitalen Prüfgerät" width="1600" height="900" loading="lazy" decoding="async"></picture></figure><div class="reference-card__meta"><span>Automotive</span><span>Test, Validierung &amp; Integration</span></div><h3>Zulassungs- und Homologationstests</h3><p>Markteinführung über mehrere Fahrzeugwellen abgesichert.</p><div class="result-metric"><strong class="result-metric__word">Zulassung</strong><span>termingerecht abgesichert</span></div><span class="text-link">Case Study lesen <span aria-hidden="true">→</span></span></a><a class="reference-card" href="/case-studies/managed-service/" data-project data-industry="energy" data-outcome="optimize"><figure><picture><source type="image/avif" srcset="/assets/supplied/wind-energy-640.avif 640w, /assets/supplied/wind-energy-1600.avif 1600w" sizes="(max-width: 700px) 100vw, 50vw"><source type="image/webp" srcset="/assets/supplied/wind-energy-640.webp 640w, /assets/supplied/wind-energy-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 50vw"><img src="/assets/supplied/wind-energy-1600.jpg" alt="Windenergieanlagen zwischen landwirtschaftlichen Flächen" width="1600" height="1067" loading="lazy" decoding="async"></picture></figure><div class="reference-card__meta"><span>Energy &amp; Resources</span><span>Enterprise Services</span></div><h3>Managed Service seit 2018</h3><p>Langfristige Betriebssicherheit mit klaren SLAs.</p><div class="result-metric"><strong>8+</strong><span>Jahre stabiler Betrieb</span></div><span class="text-link">Case Study lesen <span aria-hidden="true">→</span></span></a><a class="reference-card" href="/case-studies/fahrzeugfunktionen/" data-project data-industry="industrial automotive" data-outcome="scale"><figure><picture><source type="image/avif" srcset="/assets/supplied/automotive-640.avif 640w, /assets/supplied/automotive-1600.avif 1600w" sizes="(max-width: 700px) 100vw, 50vw"><source type="image/webp" srcset="/assets/supplied/automotive-640.webp 640w, /assets/supplied/automotive-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 50vw"><img src="/assets/supplied/automotive-1600.jpg" alt="Digitales Modell eines vernetzten Fahrzeugs" width="1600" height="900" loading="lazy" decoding="async"></picture></figure><div class="reference-card__meta"><span>Automotive</span><span>System Engineering &amp; Entwicklung</span></div><h3>Fahrzeugfunktionen als Langzeit-Werkprogramm</h3><p>Fünf Jahre planbare Lieferung kompletter Funktionsumfänge.</p><div class="result-metric"><strong>5</strong><span>Jahre planbare Lieferung</span></div><span class="text-link">Case Study lesen <span aria-hidden="true">→</span></span></a><a class="reference-card" href="/case-studies/technische-dokumentation/" data-project data-industry="industrial" data-outcome="optimize"><figure><picture><source type="image/avif" srcset="/assets/supplied/collaboration-640.avif 640w, /assets/supplied/collaboration-1600.avif 1600w" sizes="(max-width: 700px) 100vw, 50vw"><source type="image/webp" srcset="/assets/supplied/collaboration-640.webp 640w, /assets/supplied/collaboration-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 50vw"><img src="/assets/supplied/collaboration-1600.jpg" alt="Zwei Fachleute besprechen Daten auf einem Tablet" width="1600" height="1067" loading="lazy" decoding="async"></picture></figure><div class="reference-card__meta"><span>Industrials &amp; Manufacturing</span><span>Engineering Services</span></div><h3>Technische Dokumentation als Dauerleistung</h3><p>800 technische Dokumente pro Jahr, skalierbar geliefert.</p><div class="result-metric"><strong>800</strong><span>technische Dokumente pro Jahr</span></div><span class="text-link">Case Study lesen <span aria-hidden="true">→</span></span></a></div><p class="work-empty" id="project-empty" hidden>Für diese Auswahl ist noch keine Referenz veröffentlicht. <a href="/kontakt/">Sprechen Sie mit uns über Ihre Branche.</a></p></div></div></section>
+<section class="page-section page-section--deep"><div class="gutter"><div class="container"><div class="page-cta"><h2 class="page-cta__title">Lassen Sie uns Ihr nächstes Ergebnis <em>definieren.</em></h2><div class="page-cta__copy"><p>Wir starten mit Ihrer Herausforderung und dem gewünschten Outcome.</p><a class="page-link page-link--light" href="/kontakt/">Projekt besprechen</a></div></div></div></div></section>
 </main>
-<footer class="site-footer" aria-label="Footer"><div class="gutter"><div class="container @container"><div class="site-footer__top"><div class="site-footer__brand min-w-0"><img src="/assets/brand/emposo-logo-white.png" alt="Emposo" width="596" height="134" loading="lazy" decoding="async" class="w-58 max-w-full"><p>Die Outcome Factory der Hays-Gruppe.</p></div><nav aria-label="Für Unternehmen" class="min-w-0"><p class="eyebrow eyebrow--light">Für Unternehmen</p><a href="/expertise/" class="inline-flex min-h-11 items-center">Expertise</a><a href="/portfolio/" class="inline-flex min-h-11 items-center">Portfolio</a><a href="/branchen/" class="inline-flex min-h-11 items-center">Branchen</a><a href="/case-studies/" class="inline-flex min-h-11 items-center">Case Studies</a><a href="/portfolio/#delivery-model" class="inline-flex min-h-11 items-center">Delivery Model</a></nav><nav aria-label="Unternehmen" class="min-w-0"><p class="eyebrow eyebrow--light">Unternehmen</p><a href="/about-us/" class="inline-flex min-h-11 items-center">Über uns</a><a href="/karriere/" class="inline-flex min-h-11 items-center">Karriere</a><a href="/#faq" class="inline-flex min-h-11 items-center">Häufige Fragen</a></nav><div class="site-footer__contact min-w-0"><p class="eyebrow eyebrow--light">Kontakt</p><a href="/kontakt/" class="inline-flex min-h-11 items-center">Projekt besprechen <span aria-hidden="true">↗</span></a><p>Mannheim · Düsseldorf<br>Frankfurt · Timișoara</p></div></div><div class="site-footer__bottom flex-wrap"><span class="flex-wrap">© 2026 Emposo GmbH</span><div class="flex-wrap"><a href="#" class="inline-flex min-h-11 items-center">Impressum</a><a href="#" class="inline-flex min-h-11 items-center">Datenschutz</a><a href="#" class="inline-flex min-h-11 items-center">Barrierefreiheit</a></div></div></div></div></footer>
+<footer class="site-footer" aria-label="Footer"><div class="gutter"><div class="container @container"><div class="site-footer__top"><div class="site-footer__brand min-w-0"><span class="site-logo__wordmark"><img src="/assets/brand/emposo-logo-white.png" alt="Emposo" width="596" height="134" loading="lazy" decoding="async"></span><p>The Outcome Factory.</p></div><nav aria-label="Für Unternehmen" class="min-w-0"><p class="eyebrow eyebrow--light">Für Unternehmen</p><a href="/expertise/" class="inline-flex min-h-11 items-center">Expertise</a><a href="/portfolio/" class="inline-flex min-h-11 items-center">Leistungen</a><a href="/branchen/" class="inline-flex min-h-11 items-center">Branchen</a><a href="/case-studies/" class="inline-flex min-h-11 items-center">Case Studies</a><a href="/portfolio/#delivery-model" class="inline-flex min-h-11 items-center">Delivery Model</a></nav><nav aria-label="Unternehmen" class="min-w-0"><p class="eyebrow eyebrow--light">Unternehmen</p><a href="/about-us/" class="inline-flex min-h-11 items-center">Über uns</a><a href="/karriere/" class="inline-flex min-h-11 items-center">Karriere</a><a href="/zertifizierungen/" class="inline-flex min-h-11 items-center">Zertifizierungen</a><a href="/portfolio/#faq" class="inline-flex min-h-11 items-center">Häufige Fragen</a></nav><div class="site-footer__contact min-w-0"><p class="eyebrow eyebrow--light">Kontakt</p><a href="/kontakt/" class="inline-flex min-h-11 items-center">Projekt besprechen <span aria-hidden="true">→</span></a><p>Mannheim · Düsseldorf<br>Frankfurt · Timișoara</p></div></div><div class="site-footer__bottom flex-wrap"><span class="flex-wrap">© 2026 Emposo GmbH</span><div class="flex-wrap"><a href="https://emposo.de/impressum/" class="inline-flex min-h-11 items-center">Impressum</a><a href="https://emposo.de/datenschutzerklaerung/" class="inline-flex min-h-11 items-center">Datenschutz</a><a href="/barrierefreiheit/" class="inline-flex min-h-11 items-center">Barrierefreiheit</a><a href="/cookies/" class="inline-flex min-h-11 items-center">Cookies</a><a href="/sitemap/" class="inline-flex min-h-11 items-center">Sitemap</a></div></div></div></div></footer>
 </body>
 </html>

@@ -1,0 +1,84 @@
+import { readFileSync } from 'node:fs';
+import { disciplines, industries, projects } from './site-data.mjs';
+const assets = JSON.parse(readFileSync(new URL('../assets/supplied/manifest.json', import.meta.url), 'utf8'));
+export const escape = value => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+const arrow = '<span aria-hidden="true">→</span>';
+
+export function picture(key, sizes = '(max-width: 700px) 100vw, 50vw', priority = false) {
+  const asset = assets[key];
+  if (!asset) throw new Error(`Unknown supplied image: ${key}`);
+  return `<picture>${['avif','webp'].map(format => `<source type="image/${format}" srcset="${asset.variants.filter(v=>v.format===format).map(v=>`${v.src} ${v.width}w`).join(', ')}" sizes="${sizes}">`).join('')}<img src="${asset.src}" alt="${escape(asset.alt)}" width="${asset.width}" height="${asset.height}" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"></picture>`;
+}
+
+export function industryCards() {
+  return `<div class="industry-cards">${industries.map((industry,i)=>`<a class="industry-tile" href="/branchen/${industry.slug}/"><figure>${picture(industry.image,'(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 33vw')}</figure><div class="industry-tile__copy"><span class="industry-tile__number">0${i+1}</span><h3>${escape(industry.name)}</h3>${industry.subtitle ? `<p>${industry.subtitle}</p>` : ''}<span class="industry-tile__arrow" aria-hidden="true">→</span></div></a>`).join('')}</div>`;
+}
+
+function metric(project) {
+  return `<div class="result-metric"><strong${project.metric.length>8?' class="result-metric__word"':''}>${escape(project.metric)}</strong><span>${escape(project.label)}</span></div>`;
+}
+export function projectCards(selection = projects, filterable = false) {
+  return `<div class="reference-grid"${filterable ? ' data-project-grid' : ''}>${selection.map(project=>`<a class="reference-card" href="/case-studies/${project.slug}/"${filterable ? ` data-project data-industry="${project.filter}" data-outcome="${project.outcome}"` : ''}><figure>${picture(project.image,'(max-width: 700px) 100vw, 50vw')}</figure><div class="reference-card__meta"><span>${escape(project.industry)}</span><span>${escape(disciplines[project.discipline].name)}</span></div><h3>${escape(project.name)}</h3><p>${escape(project.headline)}</p>${metric(project)}<span class="text-link">Case Study lesen ${arrow}</span></a>`).join('')}</div>`;
+}
+
+function filters() {
+  const choices = {industry:[['all','Alle'],['aerospace','Aerospace & Defense'],['energy','Energy & Resources'],['health','Health & Pharma'],['industrial','Industrials & Manufacturing'],['automotive','Automotive'],['technology','Technology, Telecoms & Media']],outcome:[['all','Alle'],['optimize','Optimieren'],['transform','Transformieren'],['scale','Skalieren']]};
+  return `<div class="work-filter js-only">${Object.entries(choices).map(([group,values])=>`<div class="filter-group"><span>${group==='industry'?'Branche':'Wirkung'}</span><div role="group" aria-label="${group==='industry'?'Nach Branche filtern':'Nach Wirkung filtern'}">${values.map(([key,name])=>`<button class="filter-button min-h-11${key==='all'?' is-active':''}" type="button" data-filter-group="${group}" data-filter-value="${key}" aria-pressed="${key==='all'}">${escape(name)}</button>`).join('')}</div></div>`).join('')}</div><p class="work-count" id="project-count" aria-live="polite">${projects.length} Projekte</p>${projectCards(projects,true)}<p class="work-empty" id="project-empty" hidden>Für diese Auswahl ist noch keine Referenz veröffentlicht. <a href="/kontakt/">Sprechen Sie mit uns über Ihre Branche.</a></p>`;
+}
+
+export function disciplineGrid() {
+  return `<div class="expertise-matrix">${['Engineering','Technology'].map(group=>`<section class="expertise-column" aria-labelledby="disciplines-${group}"><h3 class="expertise-column__title" id="disciplines-${group}">${group}</h3><div class="expertise-list">${disciplines.filter(d=>d.group===group).map(d=>`<a class="expertise-card" href="${d.href}"><h4>${escape(d.name)}</h4><p>${escape(d.topics)}</p><span class="expertise-card__promise">${escape(d.promise)}</span></a>`).join('')}</div></section>`).join('')}</div>`;
+}
+
+function cta(title='Jetzt Kontakt aufnehmen!') {
+  return `<section class="page-section page-section--deep"><div class="gutter"><div class="container"><div class="page-cta"><div><p class="page-eyebrow page-eyebrow--light">Ihr nächster Schritt</p><h2 class="page-cta__title">${title}</h2></div><div class="page-cta__copy"><p>Ob konkretes Vorhaben, erste Orientierung oder weitere Fragen: Erzählen Sie uns kurz, worum es geht.</p><a class="page-link page-link--light" href="/kontakt/">Projekt besprechen</a></div></div></div></div></section>`;
+}
+
+export function projectPage(slug) {
+  const p = projects.find(p=>p.slug===slug);
+  if (!p) throw new Error(`Unknown project: ${slug}`);
+  const d = disciplines[p.discipline];
+  return `<section class="page-hero"><div class="gutter"><div class="container"><div class="page-hero__grid"><div class="page-hero__copy"><p class="page-breadcrumb"><a href="/">Startseite</a><span>/</span><a href="/case-studies/">Case Studies</a></p><p class="page-kicker">${escape(p.industry)}</p><h1 class="page-display">${escape(p.name)}</h1><p class="page-hero__intro">${escape(p.headline)}</p></div><figure class="page-hero__visual">${picture(p.image,'(max-width: 900px) 100vw, 50vw',true)}</figure></div></div></div></section>
+  <section class="page-section"><div class="gutter"><div class="container"><div class="case-story"><div><p class="eyebrow">Der Outcome</p>${metric(p)}</div><div><h2>Die Herausforderung</h2><p>${escape(p.challenge)}</p><h2>Unsere Lösung</h2><p>${escape(p.solution)}</p><h2>Das Ergebnis</h2><ul class="result-list">${p.results.map(r=>`<li>${escape(r)}</li>`).join('')}</ul><a class="text-link" href="${d.href}">${escape(d.name)} ${arrow}</a></div></div></div></div></section>
+  <section class="page-section page-section--paper"><div class="gutter"><div class="container"><p class="eyebrow">Weitere Referenzen</p><h2 class="page-title">Expertise, die Ergebnisse liefert.</h2>${projectCards(projects.filter(other=>other.slug!==p.slug && other.discipline===p.discipline).slice(0,2).length ? projects.filter(other=>other.slug!==p.slug && other.discipline===p.discipline).slice(0,2) : projects.filter(other=>other.slug!==p.slug).slice(0,2))}<p class="section-more"><a class="text-link" href="/case-studies/">Alle Case Studies ${arrow}</a></p></div></div></section>${cta()}`;
+}
+
+export function industryPage(slug) {
+  const i = industries.find(i=>i.slug===slug);
+  if (!i) throw new Error(`Unknown industry: ${slug}`);
+  const related = projects.filter(p=>i.cases.includes(p.slug));
+  return `<section class="page-hero"><div class="gutter"><div class="container"><div class="page-hero__grid"><div class="page-hero__copy"><p class="page-breadcrumb"><a href="/">Startseite</a><span>/</span><a href="/branchen/">Branchen</a></p><p class="page-kicker">${i.subtitle || 'Branchenwissen in Anwendung'}</p><h1 class="page-display">${escape(i.name)}</h1><p class="page-hero__intro">${escape(i.intro)}</p></div><figure class="page-hero__visual">${picture(i.image,'(max-width: 900px) 100vw, 50vw',true)}</figure></div></div></div></section>
+  <section class="page-section"><div class="gutter"><div class="container"><div class="page-section__top"><div><p class="eyebrow">Ihre Branche. Unsere Expertise.</p><h2 class="page-title">Unsere Teams kommen direkt aus Ihrer Branche.</h2></div><div class="page-section__lede"><p>${escape(i.challenge)}</p><p>${escape(i.delivery)}</p></div></div><div class="industry-disciplines">${i.disciplines.map(index=>{const d=disciplines[index];return `<a class="expertise-card" href="${d.href}"><h3>${escape(d.name)}</h3><p>${escape(d.promise)}</p><span class="text-link">Expertise entdecken ${arrow}</span></a>`;}).join('')}</div></div></div></section>
+  ${related.length ? `<section class="page-section page-section--paper"><div class="gutter"><div class="container"><p class="eyebrow">Referenzprojekte</p><h2 class="page-title">Unsere Erfolge sprechen für sich.</h2>${projectCards(related)}<p class="section-more"><a class="text-link" href="/case-studies/?branche=${i.filter}#referenzen">Alle passenden Referenzen ${arrow}</a></p></div></div></section>` : ''}${cta()}`;
+}
+
+export function disciplinePage(slug) {
+  const index = disciplines.findIndex(d=>d.slug===slug);
+  if (index === -1) throw new Error(`Unknown discipline: ${slug}`);
+  const d = disciplines[index];
+  const related = projects.filter(p=>p.discipline===index);
+  return `<section class="page-hero"><div class="gutter"><div class="container"><div class="page-hero__grid"><div class="page-hero__copy"><p class="page-breadcrumb"><a href="/">Startseite</a><span aria-hidden="true">/</span><a href="/expertise/">Expertise</a><span aria-hidden="true">/</span><a href="${d.overview}">${d.group}</a></p><p class="page-kicker">Expertise / ${d.group}</p><h1 class="page-display">${escape(d.name)}</h1><p class="page-hero__intro">${escape(d.promise)}</p></div><figure class="page-hero__visual">${picture(d.image,'(max-width: 900px) 100vw, 50vw',true)}</figure></div></div></div></section>
+  <section class="page-section"><div class="gutter"><div class="container"><div class="page-section__top"><div><p class="eyebrow">Leistungsschwerpunkte</p><h2 class="page-title">Eine Disziplin. Ein klares <em class="text-accent-text">Ergebnis.</em></h2></div><div class="page-section__lede"><p>${escape(d.detail)}</p><p>Jede Leistung ist klar abgegrenzt, einzeln beauftragbar und wird bis zur Abnahme geführt.</p></div></div><ul class="discipline-focus">${d.focus.map(item=>`<li>${escape(item)}</li>`).join('')}</ul><p class="section-more"><a class="text-link" href="${d.overview}">Alle ${d.group}-Disziplinen ${arrow}</a></p></div></div></section>
+  ${related.length ? `<section class="page-section page-section--paper"><div class="gutter"><div class="container"><p class="eyebrow">Referenzprojekte</p><h2 class="page-title">Unsere Erfolge sprechen für sich.</h2>${projectCards(related)}<p class="section-more"><a class="text-link" href="/case-studies/">Alle Case Studies ${arrow}</a></p></div></div></section>` : ''}${cta()}`;
+}
+
+function management() {
+  return `<section class="page-section page-section--paper" id="management" aria-labelledby="management-title"><div class="gutter"><div class="container"><p class="eyebrow">Management</p><h2 class="page-title" id="management-title">Menschen, die Verantwortung übernehmen.</h2><ul class="management-roster" aria-label="Management-Team"><li>Aleksandar Amidzic</li><li>Markus Auer</li><li>Claus Thierbach</li><li>Roman Bretz</li><li>Hans Lang</li><li>Dr. Michael Schmitt</li><li>Marcus Hefele</li></ul><div class="management-list"><article class="management-profile"><figure>${picture('claus-thierbach','(max-width: 700px) 100vw, 25vw')}</figure><div><h3>Claus Thierbach</h3><p class="management-profile__role">Director Emposo Professional Partner Solutions</p><p>Der Diplom-Ingenieur für Maschinenbau startete seine Karriere 1996 im Anlagen- und später im Flugzeugbau. 2015 wurde Claus Thierbach Teil von Emposo. In Business Development, der Verantwortung für das operative Geschäft und beim Aufbau des Standortes in Rumänien hat er die Entwicklung des Unternehmens mitgestaltet.</p><p>Seit Juli 2026 verantwortet er die Businessline Emposo Professional Partner Solutions, das Geschäft mit Partnern und den Aufbau des Partnernetzwerkes.</p></div></article><article class="management-profile management-profile--text"><div class="management-profile__initials" aria-hidden="true">RB</div><div><h3>Roman Bretz</h3><p class="management-profile__role">Technischer Direktor Emposo</p><p>Roman Bretz begann seine Laufbahn 2001 bei Siemens Healthineers und gestaltete dort zuletzt als Systemarchitekt die Entwicklung von Krebstherapiezentren mit. Ab 2010 führte er bei LieberLieber Software als CTO ein neues Produkt für Systems Engineering zur Marktreife und beriet internationale Industriekunden. 2018 baute er ein Start-up für Explainable AI mit auf.</p><p>Seit 2021 ist er bei Emposo. Als Technischer Direktor verantwortet er das Lösungsportfolio über alle Business Lines. Ein Schwerpunkt ist die Industrialisierung von KI, zu der er auch Kunden berät.</p><a class="text-link" href="https://www.linkedin.com/in/romanbretz">Roman Bretz auf LinkedIn ${arrow}</a></div></article></div></div></div></section>`;
+}
+
+export function fragment(name) {
+  switch (name) {
+    case 'industry-cards': return industryCards();
+    case 'projects-featured': return projectCards(projects.filter(p=>['data2ai-platform','engineering-wissensbasis','mlops-medizinprodukte','multi-site-transition'].includes(p.slug)));
+    case 'projects-all': return filters();
+    case 'projects-ai': return projectCards(projects.filter(p=>p.discipline===4 && p.slug!=='data2ai-platform'));
+    case 'projects-engineering': return projectCards(projects.filter(p=>p.discipline<4));
+    case 'projects-technology': return projectCards(projects.filter(p=>p.discipline===7));
+    case 'projects-optimize': return projectCards(projects.filter(p=>p.outcome==='optimize'));
+    case 'projects-transform': return projectCards(projects.filter(p=>p.discipline===4 && p.slug!=='data2ai-platform'));
+    case 'disciplines': return disciplineGrid();
+    case 'management': return management();
+    case 'sitemap': return `<div><h2>Leistungen</h2><a href="/">Startseite</a><a href="/portfolio/">Unsere Leistungen</a><a href="/expertise/">Alle Disziplinen</a><a href="/expertise/engineering/">Engineering im Überblick</a><a href="/expertise/technology/">Technology im Überblick</a>${disciplines.map(d=>`<a href="${d.href}">${escape(d.name)}</a>`).join('')}${['optimieren','transformieren','skalieren','verzahnen'].map(slug=>`<a href="/portfolio/${slug}/">Wir ${slug}</a>`).join('')}</div><div><h2>Branchen</h2><a href="/branchen/">Alle Branchen</a>${industries.map(i=>`<a href="/branchen/${i.slug}/">${escape(i.name)}</a>`).join('')}<h2>Unternehmen</h2><a href="/about-us/">Über uns</a><a href="/about-us/#management">Management</a><a href="/karriere/">Karriere</a><a href="/kontakt/">Kontakt</a><a href="/zertifizierungen/">Zertifizierungen</a><a href="/cookies/">Cookies</a><a href="/barrierefreiheit/">Barrierefreiheit</a><a href="https://emposo.de/impressum/">Impressum</a><a href="https://emposo.de/datenschutzerklaerung/">Datenschutz</a></div><div><h2>Referenzprojekte</h2><a href="/case-studies/">Alle Case Studies</a>${projects.map(p=>`<a href="/case-studies/${p.slug}/">${escape(p.name)}</a>`).join('')}</div>`;
+    default: throw new Error(`Unknown content fragment: ${name}`);
+  }
+}
