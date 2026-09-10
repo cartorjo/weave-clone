@@ -26,15 +26,18 @@ const selections = {
   'datacenter': ['General/AdobeStock_2013412737.jpeg', 'Vernetzte Server in einem Rechenzentrum'],
   'software': ['General/AdobeStock_1949888112.jpeg', 'Entwicklung einer digitalen Anwendung am Laptop'],
   'claus-thierbach': ['Management Bilder/Foto Thierbach.jpg', 'Claus Thierbach'],
-  // Final Verzahnung graphic, delivered separately (absolute path resolves as-is).
+  // Later deliveries outside the original OneDrive folder (absolute paths resolve as-is).
   'verzahnung': ['/Users/jose/Downloads/EMPOSO Grafik 26-V2.jpg', 'Orange und blaue Datenströme laufen im Emposo-Logo zusammen'],
+  'aleksandar-amidzic': ['/Users/jose/Downloads/Management Bilder/ALA.jpg', 'Aleksandar Amidzic'],
+  'markus-auer': ['/Users/jose/Downloads/Management Bilder/markus-auer-me-1020x765.jpg', 'Markus Auer'],
+  'roman-bretz': ['/Users/jose/Downloads/Management Bilder/Roman Bretz.jpg', 'Roman Bretz'],
 };
 await mkdir(destination, {recursive: true});
 const manifest = {};
 for (const [key, [file, alt]] of Object.entries(selections)) {
   const pipeline = sharp(resolve(source, file)).rotate();
   const metadata = await pipeline.metadata();
-  const portrait = key === 'claus-thierbach';
+  const portrait = ['claus-thierbach', 'aleksandar-amidzic', 'markus-auer', 'roman-bretz'].includes(key);
   const fullWidth = Math.min(portrait ? 900 : 1600, metadata.autoOrient.width);
   const widths = [...new Set([Math.min(640, fullWidth), fullWidth])];
   const variants = [];

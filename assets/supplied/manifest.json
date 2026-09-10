@@ -701,5 +701,116 @@
         "bytes": 27280
       }
     ]
+  },
+  "aleksandar-amidzic": {
+    "source": "ALA.jpg",
+    "alt": "Aleksandar Amidzic",
+    "src": "/assets/supplied/aleksandar-amidzic-800.jpg",
+    "width": 800,
+    "height": 800,
+    "variants": [
+      {
+        "src": "/assets/supplied/aleksandar-amidzic-640.avif",
+        "width": 640,
+        "height": 640,
+        "format": "avif",
+        "bytes": 7878
+      },
+      {
+        "src": "/assets/supplied/aleksandar-amidzic-640.webp",
+        "width": 640,
+        "height": 640,
+        "format": "webp",
+        "bytes": 10612
+      },
+      {
+        "src": "/assets/supplied/aleksandar-amidzic-800.avif",
+        "width": 800,
+        "height": 800,
+        "format": "avif",
+        "bytes": 11042
+      },
+      {
+        "src": "/assets/supplied/aleksandar-amidzic-800.webp",
+        "width": 800,
+        "height": 800,
+        "format": "webp",
+        "bytes": 15660
+      }
+    ]
+  },
+  "markus-auer": {
+    "source": "markus-auer-me-1020x765.jpg",
+    "alt": "Markus Auer",
+    "src": "/assets/supplied/markus-auer-900.jpg",
+    "width": 900,
+    "height": 675,
+    "variants": [
+      {
+        "src": "/assets/supplied/markus-auer-640.avif",
+        "width": 640,
+        "height": 480,
+        "format": "avif",
+        "bytes": 9248
+      },
+      {
+        "src": "/assets/supplied/markus-auer-640.webp",
+        "width": 640,
+        "height": 480,
+        "format": "webp",
+        "bytes": 13172
+      },
+      {
+        "src": "/assets/supplied/markus-auer-900.avif",
+        "width": 900,
+        "height": 675,
+        "format": "avif",
+        "bytes": 15905
+      },
+      {
+        "src": "/assets/supplied/markus-auer-900.webp",
+        "width": 900,
+        "height": 675,
+        "format": "webp",
+        "bytes": 23944
+      }
+    ]
+  },
+  "roman-bretz": {
+    "source": "Roman Bretz.jpg",
+    "alt": "Roman Bretz",
+    "src": "/assets/supplied/roman-bretz-900.jpg",
+    "width": 900,
+    "height": 643,
+    "variants": [
+      {
+        "src": "/assets/supplied/roman-bretz-640.avif",
+        "width": 640,
+        "height": 457,
+        "format": "avif",
+        "bytes": 8135
+      },
+      {
+        "src": "/assets/supplied/roman-bretz-640.webp",
+        "width": 640,
+        "height": 457,
+        "format": "webp",
+        "bytes": 11550
+      },
+      {
+        "src": "/assets/supplied/roman-bretz-900.avif",
+        "width": 900,
+        "height": 643,
+        "format": "avif",
+        "bytes": 14705
+      },
+      {
+        "src": "/assets/supplied/roman-bretz-900.webp",
+        "width": 900,
+        "height": 643,
+        "format": "webp",
+        "bytes": 21660
+      }
+    ]
   }
 }
