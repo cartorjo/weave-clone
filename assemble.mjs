@@ -18,7 +18,7 @@ import { readFileSync, writeFileSync, readdirSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pages from './pages.mjs';
-import { picture, fragment, projectPage, industryPage, disciplinePage } from './content/render.mjs';
+import { escape, picture, fragment, projectPage, industryPage, disciplinePage } from './content/render.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const partial = (name) => readFileSync(join(root, 'partials', `${name}.html`), 'utf8');
@@ -44,6 +44,7 @@ const icon = (name) => readFileSync(join(root, 'assets', 'icons', `${name}.svg`)
   .replace('<svg ', '<svg aria-hidden="true" focusable="false" ')
   .replace(/\swidth="72"\sheight="72"/, '')
   .replaceAll('stroke="#E8730E"', 'stroke="currentColor"')
+  .replaceAll('fill="#E8730E"', 'fill="currentColor"')
   .trim();
 
 // Brand SVGs (assets/brand/) are inlined verbatim: the logo uses currentColor
@@ -87,11 +88,13 @@ const footerInlined = inlinePartials(footer);
 
 for (const page of pages) {
   const scripts = page.scripts.map((s) => `  <script defer src="/js/${s}.js"></script>`).join('\n');
+  // Escaped, and via replacer functions so `$…` in copy is never treated as
+  // a replacement pattern.
   const pageHead = head
-    .replaceAll('{{TITLE}}', page.title)
-    .replaceAll('{{DESCRIPTION}}', page.description)
-    .replaceAll('{{BODY_CLASS}}', page.bodyClass)
-    .replaceAll('{{SCRIPTS}}', scripts);
+    .replaceAll('{{TITLE}}', () => escape(page.title))
+    .replaceAll('{{DESCRIPTION}}', () => escape(page.description))
+    .replaceAll('{{BODY_CLASS}}', () => page.bodyClass)
+    .replaceAll('{{SCRIPTS}}', () => scripts);
   const content = pageContent(page);
   const html =
     pageHead +
