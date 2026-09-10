@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-09-10T15:25:00.000Z",
+  "scope": "Sixth pass: management portraits (Amidzic, Auer, Bretz) integrated on /about-us/#management",
+  "build": {
+    "command": "npm run check",
+    "passed": true,
+    "documents": 42
+  },
+  "patchHygiene": {
+    "command": "git diff --check",
+    "passed": true
+  },
+  "browser": {
+    "engine": "Headless Chrome via cached puppeteer-core against npx serve",
+    "checks": [
+      {"test": "Bretz profile shows his portrait (3:2 crop) contained in its grid column beside the bio", "pass": true, "note": "first attempt overflowed — base figure height rule out-specified the modifier; fixed and re-verified via bounding-rect probe (fig == img == 405x270)"},
+      {"test": "management grid renders photo tiles for Amidzic and Auer plus initials tiles HL/MS/MH with names", "pass": true},
+      {"test": "Thierbach profile unchanged (delivered file byte-identical)", "pass": true},
+      {"test": "no horizontal overflow on /about-us/ at 320/390/768px", "pass": true}
+    ]
+  }
+}
