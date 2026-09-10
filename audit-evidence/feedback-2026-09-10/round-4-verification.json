@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-09-10T14:20:00.000Z",
+  "scope": "Fourth pass (owner corrections): underlines only under numbers, hover = dark blue + bold, double megamenu arrow fixed, blue reverted to #0A0532",
+  "build": {
+    "command": "npm run check",
+    "passed": true,
+    "documents": 42
+  },
+  "patchHygiene": {
+    "command": "git diff --check",
+    "passed": true
+  },
+  "browser": {
+    "engine": "Headless Chrome via cached puppeteer-core against npx serve",
+    "checks": [
+      {"test": "computed text-decoration underline sweep over /, /expertise/, /expertise/engineering/, /case-studies/, /about-us/, /karriere/, /portfolio/", "pass": true, "note": "only two unstyled inline prose links remain underlined (form-explanation Datenschutz link, empty-filter contact link) — intentional"},
+      {"test": "every .mega-panel__all renders exactly one arrow", "pass": true},
+      {"test": "megamenu opened on /expertise/engineering/ (the aria-current case from the owner screenshot): underline only under 01/02/03, current item bold ink, no item underlines", "pass": true},
+      {"test": "hover probes (nav summary, stats number, text-link, reference-card title): fontWeight 700, textDecorationLine none, color rgb(10,5,50)", "pass": true},
+      {"test": "header CTA hover = ink inversion (white on dark blue)", "pass": true},
+      {"test": "hero background computed rgb(10, 5, 50) — #0A0532 revert sealed", "pass": true},
+      {"test": "expertise-card numbers carry the only orange rules on the cards", "pass": true}
+    ]
+  }
+}
