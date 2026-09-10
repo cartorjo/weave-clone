@@ -74,13 +74,13 @@
   /* Brand color system: orange decoration; midnight blue text and numbers.
      --color-accent-text remains an alias for existing utility classes. */
   --color-lemon: #f7911e;
-  --color-accent-text: #0a0532;
-  --color-ink: #0a0532;
+  --color-accent-text: #00143d;
+  --color-ink: #00143d;
   --color-bg: #ffffff;
-  --color-bg-dark: #0a0532;
-  --color-bg-dark-2: #0a0532;
+  --color-bg-dark: #00143d;
+  --color-bg-dark-2: #00143d;
   --color-paper: #f5f0eb;
-  --color-line: rgba(10, 5, 50, 0.18);
+  --color-line: rgba(0, 20, 61, 0.18);
   --color-line-light: rgba(255, 255, 255, 0.22);
 
   /* Fluid editorial type scale (correct for the 16px root: floors equal the
@@ -136,8 +136,8 @@
   --spacing-menu: min(20rem, 90vw);
 
   /* Exactly two elevations. */
-  --shadow-raised: 0 8px 24px rgba(10, 5, 50, 0.08);
-  --shadow-overlay: 0 20px 48px rgba(10, 5, 50, 0.16);
+  --shadow-raised: 0 8px 24px rgba(0, 20, 61, 0.08);
+  --shadow-overlay: 0 20px 48px rgba(0, 20, 61, 0.16);
 
   /* One house easing. */
   --ease-em: cubic-bezier(0.22, 1, 0.36, 1);

@@ -91,7 +91,7 @@
   position: relative;
 }
 .page-hero__visual::after {
-  background: linear-gradient(180deg, rgba(10, 5, 50, 0.05), rgba(10, 5, 50, 0.6));
+  background: linear-gradient(180deg, rgba(0, 20, 61, 0.05), rgba(0, 20, 61, 0.6));
   content: "";
   inset: 0;
   pointer-events: none;
@@ -299,7 +299,7 @@
   justify-items: center;
 }
 .portfolio-hero__image { inset: 0; position: absolute; }
-.portfolio-hero__visual::after { background: linear-gradient(135deg, rgba(10, 5, 50, 0.3), rgba(10, 5, 50, 0.72)); }
+.portfolio-hero__visual::after { background: linear-gradient(135deg, rgba(0, 20, 61, 0.3), rgba(0, 20, 61, 0.72)); }
 .portfolio-modes { border-top: 1px solid var(--color-line-light); margin-top: clamp(1.6rem, 8vw, 7.2rem); }
 .portfolio-mode {
   border-bottom: 1px solid var(--color-line-light);
@@ -439,7 +439,7 @@
   width: min(50%, 17.1rem);
   z-index: 2;
 }
-.about-hero__visual::after { background: linear-gradient(145deg, rgba(10, 5, 50, 0.02), rgba(10, 5, 50, 0.82)); z-index: 1; }
+.about-hero__visual::after { background: linear-gradient(145deg, rgba(0, 20, 61, 0.02), rgba(0, 20, 61, 0.82)); z-index: 1; }
 .about-facts {
   border-top: 1px solid var(--color-line);
   display: grid;

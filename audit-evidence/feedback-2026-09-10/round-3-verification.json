@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-09-10T13:05:00.000Z",
+  "scope": "Third pass: CD-Handbuch color #00143D, Logo 2.0 SVGs, official icon set + {{icon}} inliner, Navi.pptx nav split, Bretz bio update",
+  "build": {
+    "command": "npm run check",
+    "passed": true,
+    "documents": 42
+  },
+  "patchHygiene": {
+    "command": "git diff --check",
+    "passed": true
+  },
+  "browser": {
+    "engine": "Headless Chrome via cached puppeteer-core against npx serve",
+    "checks": [
+      {"test": "header shows Logo 2.0 SVG; nav = Leistungen, Branchen, Referenzprojekte, Über uns, Karriere, CTA", "pass": true},
+      {"test": "Branchen megamenu opens with all five industries in the 4-column layout", "pass": true},
+      {"test": "stats icons = handbook Anwendungsbeispiel (building, users-group, cog, simple pin) in orange", "pass": true},
+      {"test": "connection-step icons swapped to official set (finance-trend, reload, layers, molecules)", "pass": true},
+      {"test": "footer shows white Logo 2.0 without tagline artifacts; Referenzprojekte label", "pass": true},
+      {"test": "no #0a0532/rgba(10,5,50) left in sources; surfaces render on #00143D", "pass": true},
+      {"test": "count-up still ends on authored strings after icon swap", "pass": true}
+    ]
+  }
+}

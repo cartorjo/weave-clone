@@ -35,9 +35,19 @@ const sectionBody = () =>
     .map((f) => `<!-- ${f} -->\n${readFileSync(join(sectionsDir, f), 'utf8').trim()}`)
     .join('\n\n');
 
+// Supplied outline icons (Hays Glow set, assets/icons/): 72×72 stroked SVGs
+// with a hardcoded orange. Inline them with currentColor so CSS decides the
+// color (CD handbook: icons in Emposo weiß, orange, blau).
+const icon = (name) => readFileSync(join(root, 'assets', 'icons', `${name}.svg`), 'utf8')
+  .replace('<svg ', '<svg aria-hidden="true" focusable="false" ')
+  .replace(/\swidth="72"\sheight="72"/, '')
+  .replaceAll('stroke="#E8730E"', 'stroke="currentColor"')
+  .trim();
+
 const inlinePartials = (html) => html
   .replace(/<!-- partial:([a-z0-9-]+) -->/g, (_, name) => partial(name).trim())
   .replace(/<!-- content:([a-z0-9-]+) -->/g, (_, name) => fragment(name))
+  .replace(/\{\{icon:([a-z0-9-]+)\}\}/g, (_, name) => icon(name))
   .replace(/\{\{image:([a-z0-9-]+)(:hero)?\}\}/g, (_, name, hero) => picture(name, hero ? '(max-width: 900px) 100vw, 65vw' : undefined, !!hero));
 
 const pageContent = page => {
