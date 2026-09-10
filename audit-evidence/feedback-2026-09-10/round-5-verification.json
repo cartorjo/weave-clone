@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-09-10T14:55:00.000Z",
+  "scope": "Fifth pass: final Verzahnung graphic (EMPOSO Grafik 26-V2.jpg) and official logo (EMPOSO LOGO Neu26.svg) integrated",
+  "build": {
+    "command": "npm run check",
+    "passed": true,
+    "documents": 42
+  },
+  "patchHygiene": {
+    "command": "git diff --check",
+    "passed": true
+  },
+  "browser": {
+    "engine": "Headless Chrome via cached puppeteer-core against npx serve",
+    "checks": [
+      {"test": "header shows the Neu26 lockup (mark, EMPOSO, rule, 'The Outcome Factory' in Roboto Bold) in ink", "pass": true},
+      {"test": "footer shows the same inlined lockup in white via currentColor; duplicate tagline text removed", "pass": true},
+      {"test": "services section shows the delivered Verzahnung graphic; background #0b0533 blends seamlessly with the #0A0532 section; caption positioned under the mark", "pass": true},
+      {"test": "graphic ingested as responsive AVIF/WebP/JPEG (640/1085) with manifest entry incl. source attribution", "pass": true},
+      {"test": "no references to the removed emposo-logo-2 SVGs remain", "pass": true}
+    ]
+  }
+}
