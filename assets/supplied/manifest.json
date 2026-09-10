@@ -664,5 +664,42 @@
         "bytes": 45302
       }
     ]
+  },
+  "verzahnung": {
+    "source": "EMPOSO Grafik 26-V2.jpg",
+    "alt": "Orange und blaue Datenströme laufen im Emposo-Logo zusammen",
+    "src": "/assets/supplied/verzahnung-1085.jpg",
+    "width": 1085,
+    "height": 962,
+    "variants": [
+      {
+        "src": "/assets/supplied/verzahnung-640.avif",
+        "width": 640,
+        "height": 567,
+        "format": "avif",
+        "bytes": 6544
+      },
+      {
+        "src": "/assets/supplied/verzahnung-640.webp",
+        "width": 640,
+        "height": 567,
+        "format": "webp",
+        "bytes": 13970
+      },
+      {
+        "src": "/assets/supplied/verzahnung-1085.avif",
+        "width": 1085,
+        "height": 962,
+        "format": "avif",
+        "bytes": 12342
+      },
+      {
+        "src": "/assets/supplied/verzahnung-1085.webp",
+        "width": 1085,
+        "height": 962,
+        "format": "webp",
+        "bytes": 27280
+      }
+    ]
   }
 }

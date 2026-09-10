@@ -20,10 +20,12 @@
 .text-link, .page-link { min-height: 44px; font-size: 1rem; font-weight: 700; letter-spacing: 0; line-height: 1.4; text-decoration: none; }
 .text-link span[aria-hidden], .page-link::after { color: currentColor; font-size: 1.65rem; }
 .text-link--light span[aria-hidden], .page-link--light::after { color: var(--color-lemon); }
-/* Logo 2.0 (assets/brand/emposo-logo-2*.svg, extracted from the supplied
-   vector PDF without tagline — "nur das Logo"). Aspect ratio ≈ 7.28. */
-.site-logo { width: 14.5rem; }
-.site-logo img { width: 100%; height: auto; }
+/* Logo Neu26 (assets/brand/emposo-logo-neu26.svg, inlined): full lockup incl.
+   the live-text tagline; ink parts use currentColor, so the footer renders it
+   white automatically. Aspect ratio ≈ 3.70. */
+.site-logo { width: 13rem; }
+.site-logo svg { width: 100%; height: auto; }
+.site-footer__brand svg { display: block; max-width: 13rem; width: 100%; height: auto; }
 .site-header__inner { gap: 2rem; min-height: 6rem; }
 .site-nav { gap: clamp(1.5rem, 2vw, 2.5rem); }
 .site-nav > a, .site-nav__group > summary, .header-contact { font-size: 1rem; font-weight: 700; letter-spacing: 0; }
@@ -73,8 +75,8 @@
 .connection-step p { font-size: 1.1rem; line-height: 1.5; margin-top: .65rem; }
 .connection-step__arrow { color: var(--color-lemon); font-size: 1.6rem; }
 .connection-model__visual { display: grid; align-content: center; position: relative; }
-.connection-model__visual svg { width: 100%; }
-.connection-model__visual p { position: absolute; right: 1rem; top: 66%; font-size: 1.15rem; text-align: center; }
+.connection-model__visual img { width: 100%; height: auto; }
+.connection-model__visual p { position: absolute; right: 4%; top: 72%; font-size: 1.15rem; text-align: center; }
 
 .industry-cards { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 1.5rem; margin-top: 3.5rem; }
 .industry-tile { grid-column: span 2; color: var(--color-ink); text-decoration: none; background: #fff; }

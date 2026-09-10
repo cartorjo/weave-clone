@@ -26,6 +26,8 @@ const selections = {
   'datacenter': ['General/AdobeStock_2013412737.jpeg', 'Vernetzte Server in einem Rechenzentrum'],
   'software': ['General/AdobeStock_1949888112.jpeg', 'Entwicklung einer digitalen Anwendung am Laptop'],
   'claus-thierbach': ['Management Bilder/Foto Thierbach.jpg', 'Claus Thierbach'],
+  // Final Verzahnung graphic, delivered separately (absolute path resolves as-is).
+  'verzahnung': ['/Users/jose/Downloads/EMPOSO Grafik 26-V2.jpg', 'Orange und blaue Datenströme laufen im Emposo-Logo zusammen'],
 };
 await mkdir(destination, {recursive: true});
 const manifest = {};

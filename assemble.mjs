@@ -24,6 +24,8 @@ const root = dirname(fileURLToPath(import.meta.url));
 const partial = (name) => readFileSync(join(root, 'partials', `${name}.html`), 'utf8');
 
 const head = partial('head');
+// header/footer run through the same inliner as page content (for {{brand:…}});
+// inlinePartials is defined below but only invoked lazily inside the loop.
 const header = partial('header');
 const footer = partial('footer');
 
@@ -44,9 +46,15 @@ const icon = (name) => readFileSync(join(root, 'assets', 'icons', `${name}.svg`)
   .replaceAll('stroke="#E8730E"', 'stroke="currentColor"')
   .trim();
 
+// Brand SVGs (assets/brand/) are inlined verbatim: the logo uses currentColor
+// for its ink parts, so it renders dark blue in the header and white in the
+// footer, and its live "The Outcome Factory" text uses the page's Roboto.
+const brand = (name) => readFileSync(join(root, 'assets', 'brand', `${name}.svg`), 'utf8').trim();
+
 const inlinePartials = (html) => html
   .replace(/<!-- partial:([a-z0-9-]+) -->/g, (_, name) => partial(name).trim())
   .replace(/<!-- content:([a-z0-9-]+) -->/g, (_, name) => fragment(name))
+  .replace(/\{\{brand:([a-z0-9-]+)\}\}/g, (_, name) => brand(name))
   .replace(/\{\{icon:([a-z0-9-]+)\}\}/g, (_, name) => icon(name))
   .replace(/\{\{image:([a-z0-9-]+)(:hero)?\}\}/g, (_, name, hero) => picture(name, hero ? '(max-width: 900px) 100vw, 65vw' : undefined, !!hero));
 
@@ -74,6 +82,9 @@ const stampNav = (html, page) => {
     });
 };
 
+const headerInlined = inlinePartials(header);
+const footerInlined = inlinePartials(footer);
+
 for (const page of pages) {
   const scripts = page.scripts.map((s) => `  <script defer src="/js/${s}.js"></script>`).join('\n');
   const pageHead = head
@@ -84,11 +95,11 @@ for (const page of pages) {
   const content = pageContent(page);
   const html =
     pageHead +
-    stampNav(header, page) +
+    stampNav(headerInlined, page) +
     '<main id="main" tabindex="-1">\n' +
     inlinePartials(content) +
     '\n</main>\n' +
-    footer;
+    footerInlined;
   const outPath = join(root, page.out);
   mkdirSync(dirname(outPath), { recursive: true });
   writeFileSync(outPath, html);

@@ -127,7 +127,7 @@
 
 @media (max-width: 600px) {
   .site-header__inner { min-height: 4.14rem; }
-  .site-logo { width: 7.65rem; }
+  .site-logo { width: 10rem; }
   .hero__copy { min-height: 31.5rem; padding-bottom: 3.6rem; padding-top: 3.6rem; }
   .hero__intro { align-items: start; flex-direction: column; }
   .hero__visual { aspect-ratio: 4 / 3; }
