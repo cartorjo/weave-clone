@@ -1,5 +1,5 @@
 // Verify the generated site as a connected set of documents. No server needed.
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, realpathSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pages from '../pages.mjs';
@@ -14,12 +14,15 @@ for (const [file,html] of documents) {
   if (/Hays-Gruppe|↗/.test(html)) failures.push(`${file}: superseded branding or arrow`);
   for (const match of html.matchAll(/\b(?:href|src)="([^"]+)"/g)) {
     const href = match[1];
-    if (/^(?:https?:|mailto:|data:)/.test(href)) continue;
+    if (/^(?:https?:|mailto:|tel:|data:)/.test(href)) continue;
     if (href === '#') { failures.push(`${file}: placeholder link`); continue; }
     const url = new URL(href, `https://local.test/${file}`);
     const pathname = decodeURIComponent(url.pathname);
     const target = pathname.endsWith('/') ? pathname.slice(1)+'index.html' : pathname.slice(1);
-    if (!existsSync(resolve(root,target))) { failures.push(`${file}: missing ${href}`); continue; }
+    const targetPath = resolve(root,target);
+    if (!existsSync(targetPath)) { failures.push(`${file}: missing ${href}`); continue; }
+    // existsSync is case-insensitive on APFS; a case-sensitive host would 404.
+    if (realpathSync.native(targetPath) !== targetPath) { failures.push(`${file}: wrong-case path ${href}`); continue; }
     if (url.hash && target.endsWith('.html')) {
       const targetHtml = documents.get(target) || readFileSync(resolve(root,target),'utf8');
       const anchor = decodeURIComponent(url.hash.slice(1));

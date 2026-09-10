@@ -10,7 +10,7 @@
     "import:feedback-images": "node tools/import-feedback-assets.mjs",
     "build:img": "node tools/optimize-images.mjs",
     "build:brand-img": "node tools/optimize-brand-images.mjs",
-    "check": "npm run build && npm run check:content",
+    "check": "npm run build && npm run check:content && git diff --exit-code",
     "watch:html": "node --watch --watch-path=sections --watch-path=pages --watch-path=partials --watch-path=js assemble.mjs",
     "build": "npm run assemble && npm run build:css",
     "serve": "serve . -l 8080",

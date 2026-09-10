@@ -2,6 +2,7 @@
 // the site ships bounded responsive derivatives and their source attribution.
 import sharp from 'sharp';
 import { mkdir, writeFile } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -32,6 +33,15 @@ const selections = {
   'markus-auer': ['/Users/jose/Downloads/Management Bilder/markus-auer-me-1020x765.jpg', 'Markus Auer'],
   'roman-bretz': ['/Users/jose/Downloads/Management Bilder/Roman Bretz.jpg', 'Roman Bretz'],
 };
+// Fail fast before touching assets/supplied/: a missing source mid-loop would
+// otherwise leave derivatives half-rewritten with a stale manifest.
+{
+  const missing = Object.values(selections).map(([file]) => resolve(source, file)).filter(path => !existsSync(path));
+  if (missing.length) {
+    console.error('Missing source files:\n' + missing.join('\n'));
+    process.exit(1);
+  }
+}
 await mkdir(destination, {recursive: true});
 const manifest = {};
 for (const [key, [file, alt]] of Object.entries(selections)) {
