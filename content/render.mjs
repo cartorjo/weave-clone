@@ -18,8 +18,13 @@ export function industryCards() {
 function metric(project) {
   return `<div class="result-metric"><strong${project.metric.length>8?' class="result-metric__word"':''}>${escape(project.metric)}</strong><span>${escape(project.label)}</span></div>`;
 }
-export function projectCards(selection = projects, filterable = false) {
-  return `<div class="reference-grid"${filterable ? ' data-project-grid' : ''}>${selection.map(project=>`<a class="reference-card" href="/case-studies/${project.slug}/"${filterable ? ` data-project data-industry="${project.filter}" data-discipline="${project.discipline}"` : ''}><figure>${picture(project.image,'(max-width: 700px) 100vw, 50vw')}</figure><div class="reference-card__meta"><span>${escape(project.industry)}</span><span>${escape(disciplineBySlug[project.discipline].name)}</span></div><h3>${escape(project.name)}</h3><p>${escape(project.headline)}</p>${metric(project)}<span class="text-link">Case Study lesen ${arrow}</span></a>`).join('')}</div>`;
+export function projectCards(selection = projects, filterable = false, collage = false) {
+  // The collage variant restores the first draft's mixed-size grid (owner
+  // correction): cards 2 and 3 run wide, 1 and 4 stay narrow and portrait.
+  const sizes = index => collage
+    ? (index === 1 || index === 2 ? '(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 58vw' : '(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 42vw')
+    : '(max-width: 700px) 100vw, 50vw';
+  return `<div class="reference-grid${collage ? ' reference-grid--collage' : ''}"${filterable ? ' data-project-grid' : ''}>${selection.map((project,index)=>`<a class="reference-card" href="/case-studies/${project.slug}/"${filterable ? ` data-project data-industry="${project.filter}" data-discipline="${project.discipline}"` : ''}><figure>${picture(project.image,sizes(index))}</figure><div class="reference-card__meta"><span>${escape(project.industry)}</span><span>${escape(disciplineBySlug[project.discipline].name)}</span></div><h3>${escape(project.name)}</h3><p>${escape(project.headline)}</p>${metric(project)}<span class="text-link">Case Study lesen ${arrow}</span></a>`).join('')}</div>`;
 }
 
 function filters() {
@@ -100,7 +105,7 @@ function management() {
 export function fragment(name) {
   switch (name) {
     case 'industry-cards': return industryCards();
-    case 'projects-featured': return projectCards(projects.filter(p=>['data2ai-platform','engineering-wissensbasis','mlops-medizinprodukte','multi-site-transition'].includes(p.slug)));
+    case 'projects-featured': return projectCards(projects.filter(p=>['data2ai-platform','engineering-wissensbasis','mlops-medizinprodukte','multi-site-transition'].includes(p.slug)), false, true);
     case 'projects-all': return filters();
     case 'projects-ai': return projectCards(projects.filter(p=>p.discipline==='ai-daten' && p.slug!=='data2ai-platform'));
     case 'projects-engineering': return projectCards(projects.filter(p=>disciplineBySlug[p.discipline].group==='Engineering'));

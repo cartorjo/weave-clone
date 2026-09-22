@@ -97,6 +97,12 @@
 .industry-disciplines { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.5rem; margin-top: 3rem; }
 
 .reference-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 4rem 2.5rem; margin-top: 3rem; }
+/* Homepage collage (owner correction: reference images in varying sizes again,
+   like the first draft): 12-column grid, narrow portrait cards next to wide ones. */
+.reference-grid--collage { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+.reference-grid--collage .reference-card:nth-child(1), .reference-grid--collage .reference-card:nth-child(4) { grid-column: span 5; }
+.reference-grid--collage .reference-card:nth-child(2), .reference-grid--collage .reference-card:nth-child(3) { grid-column: span 7; }
+.reference-grid--collage .reference-card:nth-child(1) figure, .reference-grid--collage .reference-card:nth-child(4) figure { aspect-ratio: 4 / 4.55; }
 .reference-card { display: flex; flex-direction: column; color: var(--color-ink); text-decoration: none; min-width: 0; }
 .reference-card[hidden] { display: none; }
 .reference-card figure { aspect-ratio: 16/10; overflow: hidden; }
@@ -216,6 +222,8 @@
   .industry-tile:last-child { grid-column: 2/span 4; }
   .management-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .industry-tile:nth-child(n+4) figure { aspect-ratio: 16/10; }
+  .reference-grid--collage { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .reference-grid--collage .reference-card { grid-column: auto; }
   .page-hero__grid, .page-section__top, .expertise-intro__heading { gap: 2rem; }
   .contact__grid { gap: 3rem; }
 }
@@ -240,8 +248,10 @@
   .about-facts--3 article:nth-child(even), .about-facts--5 article:nth-child(even) { border-right: 0; }
 }
 @media (max-width:700px) {
-  .reference-grid, .industry-disciplines, .contact__grid, .management-profile, .sitemap-grid { grid-template-columns: minmax(0,1fr); }
+  .reference-grid, .reference-grid--collage, .industry-disciplines, .contact__grid, .management-profile, .sitemap-grid { grid-template-columns: minmax(0,1fr); }
   .reference-grid { gap: 3rem; }
+  .reference-grid--collage .reference-card { grid-column: auto; }
+  .reference-grid--collage .reference-card:nth-child(1) figure, .reference-grid--collage .reference-card:nth-child(4) figure { aspect-ratio: 4 / 4.5; }
   .connection-model { grid-template-columns: minmax(0,1fr); }
   .connection-model__visual { display: none; }
   .connection-step { grid-template-columns: 3rem minmax(0,1fr) 1rem; gap: .9rem; }
