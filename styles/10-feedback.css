@@ -33,6 +33,7 @@
 .header-contact span { font-size: 1.4rem; }
 .mega-panel__eyebrow { font-size: .95rem; letter-spacing: 0; }
 .mega-panel__grid--4 { grid-template-columns: 1.15fr 1fr 1fr 1fr; }
+.mega-panel__grid--services { grid-template-columns: 1.15fr 1fr 1fr 1.2fr; }
 /* Only the number carries an orange rule (owner feedback, round 4). */
 .mega-panel__num { font-size: 1.1rem; border-bottom: 2px solid var(--color-lemon); display: inline-block; padding-bottom: .3rem; width: fit-content; }
 .mega-panel__item strong { font-size: 1.4rem; }

@@ -4,7 +4,7 @@
 //   - content: 'pages/x.html'  → the page's <main> inner content
 // nav: which header item is highlighted. navExact: false marks an ancestor
 // (aria-current="true" instead of "page"), e.g. a case-study detail page.
-import { disciplines, industries, projects } from './content/site-data.mjs';
+import { industries, projects } from './content/site-data.mjs';
 export default [
   {
     out: 'index.html',
@@ -109,16 +109,6 @@ export default [
     scripts: ['00-core', '01-header'],
   },
   {
-    out: 'expertise/ai-daten/index.html',
-    title: 'AI & Daten | Expertise | Emposo',
-    description: 'AI-Transformation & Daten: Strategie, Knowledge Graphs, RAG, Datenplattformen und MLOps — bis zur produktiven KI-Anwendung.',
-    nav: 'expertise-ai-daten',
-    navGroup: 'expertise',
-    bodyClass: 'subpage wrap-anywhere',
-    content: 'pages/expertise-ai-daten.html',
-    scripts: ['00-core', '01-header'],
-  },
-  {
     out: 'portfolio/optimieren/index.html',
     title: 'Wir optimieren | Portfolio | Emposo',
     description: 'Bestehende Leistungen zuverlässig übernehmen und messbar verbessern: stabiler, schneller, nachvollziehbar — mit klaren Service-Leveln.',
@@ -173,13 +163,6 @@ export default [
     out:`case-studies/${project.slug}/index.html`, title:`${project.name} | Case Study | Emposo`,
     description:project.headline, nav:'case-studies', navExact:false,
     bodyClass:'subpage wrap-anywhere', content:`project:${project.slug}`, scripts:['00-core','01-header'],
-  })),
-  // One detail page per delivery discipline (workbook: every expertise is its
-  // own portfolio category). ai-daten keeps its richer hand-authored page.
-  ...disciplines.filter(discipline=>discipline.slug !== 'ai-daten').map(discipline=>({
-    out:`expertise/${discipline.slug}/index.html`, title:`${discipline.name} | Expertise | Emposo`,
-    description:discipline.promise, nav:'expertise', navExact:false,
-    bodyClass:'subpage wrap-anywhere', content:`discipline:${discipline.slug}`, scripts:['00-core','01-header'],
   })),
   ...industries.map(industry=>({
     out:`branchen/${industry.slug}/index.html`, title:`${industry.name} | Emposo`,
