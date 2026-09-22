@@ -19,12 +19,18 @@ function metric(project) {
   return `<div class="result-metric"><strong${project.metric.length>8?' class="result-metric__word"':''}>${escape(project.metric)}</strong><span>${escape(project.label)}</span></div>`;
 }
 export function projectCards(selection = projects, filterable = false) {
-  return `<div class="reference-grid"${filterable ? ' data-project-grid' : ''}>${selection.map(project=>`<a class="reference-card" href="/case-studies/${project.slug}/"${filterable ? ` data-project data-industry="${project.filter}" data-outcome="${project.outcome}"` : ''}><figure>${picture(project.image,'(max-width: 700px) 100vw, 50vw')}</figure><div class="reference-card__meta"><span>${escape(project.industry)}</span><span>${escape(disciplineBySlug[project.discipline].name)}</span></div><h3>${escape(project.name)}</h3><p>${escape(project.headline)}</p>${metric(project)}<span class="text-link">Case Study lesen ${arrow}</span></a>`).join('')}</div>`;
+  return `<div class="reference-grid"${filterable ? ' data-project-grid' : ''}>${selection.map(project=>`<a class="reference-card" href="/case-studies/${project.slug}/"${filterable ? ` data-project data-industry="${project.filter}" data-discipline="${project.discipline}"` : ''}><figure>${picture(project.image,'(max-width: 700px) 100vw, 50vw')}</figure><div class="reference-card__meta"><span>${escape(project.industry)}</span><span>${escape(disciplineBySlug[project.discipline].name)}</span></div><h3>${escape(project.name)}</h3><p>${escape(project.headline)}</p>${metric(project)}<span class="text-link">Case Study lesen ${arrow}</span></a>`).join('')}</div>`;
 }
 
 function filters() {
-  const choices = {industry:[['all','Alle'],['aerospace','Aerospace & Defense'],['energy','Energy & Resources'],['health','Health & Pharma'],['industrial','Industrials & Manufacturing'],['automotive','Automotive'],['technology','Technology, Telecoms & Media']],outcome:[['all','Alle'],['optimize','Optimieren'],['transform','Transformieren'],['scale','Skalieren']]};
-  return `<div class="work-filter js-only">${Object.entries(choices).map(([group,values])=>`<div class="filter-group"><span>${group==='industry'?'Branche':'Wirkung'}</span><div role="group" aria-label="${group==='industry'?'Nach Branche filtern':'Nach Wirkung filtern'}">${values.map(([key,name])=>`<button class="filter-button min-h-11${key==='all'?' is-active':''}" type="button" data-filter-group="${group}" data-filter-value="${key}" aria-pressed="${key==='all'}">${escape(name)}</button>`).join('')}</div></div>`).join('')}</div><p class="work-count" id="project-count" aria-live="polite">${projects.length} Projekte</p>${projectCards(projects,true)}<p class="work-empty" id="project-empty" hidden>Für diese Auswahl ist noch keine Referenz veröffentlicht. <a href="/kontakt/">Sprechen Sie mit uns über Ihre Branche.</a></p>`;
+  // Dimensions per workbook v2: Branche + Leistungen (the eight service-portfolio
+  // terms), not Wirkung. All eight disciplines are offered; the empty state
+  // covers the ones without a published reference yet.
+  const groups = [
+    {key:'industry', label:'Branche', aria:'Nach Branche filtern', choices:[['all','Alle'],['aerospace','Aerospace & Defense'],['energy','Energy & Resources'],['health','Health & Pharma'],['industrial','Industrials & Manufacturing'],['automotive','Automotive'],['technology','Technology, Telecoms & Media']]},
+    {key:'discipline', label:'Leistung', aria:'Nach Leistung filtern', choices:[['all','Alle'],...disciplines.map(d=>[d.slug,d.name])]},
+  ];
+  return `<div class="work-filter js-only">${groups.map(group=>`<div class="filter-group"><span>${group.label}</span><div role="group" aria-label="${group.aria}">${group.choices.map(([key,name])=>`<button class="filter-button min-h-11${key==='all'?' is-active':''}" type="button" data-filter-group="${group.key}" data-filter-value="${key}" aria-pressed="${key==='all'}">${escape(name)}</button>`).join('')}</div></div>`).join('')}</div><p class="work-count" id="project-count" aria-live="polite">${projects.length} Projekte</p>${projectCards(projects,true)}<p class="work-empty" id="project-empty" hidden>Für diese Auswahl ist noch keine Referenz veröffentlicht. <a href="/kontakt/">Sprechen Sie mit uns über Ihre Branche.</a></p>`;
 }
 
 export function disciplineGrid() {

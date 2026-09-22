@@ -6,7 +6,7 @@
   if (!window.__onReady) return;
 
   window.__onReady(function () {
-    var state = { industry: 'all', outcome: 'all' };
+    var state = { industry: 'all', discipline: 'all' };
     var buttons = Array.prototype.slice.call(document.querySelectorAll('[data-filter-group]'));
     var projects = Array.prototype.slice.call(document.querySelectorAll('[data-project]'));
     var count = document.getElementById('project-count');
@@ -20,7 +20,7 @@
     function render() {
       var visible = 0;
       projects.forEach(function (project) {
-        var show = matches(project, 'industry', state.industry) && matches(project, 'outcome', state.outcome);
+        var show = matches(project, 'industry', state.industry) && matches(project, 'discipline', state.discipline);
         project.hidden = !show;
         if (show) visible += 1;
       });
@@ -57,12 +57,6 @@
     // (.js-only) and is revealed only once the handlers are attached.
     Array.prototype.slice.call(document.querySelectorAll('.js-only')).forEach(function (el) {
       el.classList.remove('js-only');
-    });
-
-    Array.prototype.slice.call(document.querySelectorAll('[data-project-filter]')).forEach(function (link) {
-      link.addEventListener('click', function () {
-        selectFilter('outcome', link.getAttribute('data-project-filter'));
-      });
     });
 
     var form = document.querySelector('[data-contact-form]');
