@@ -1,12 +1,16 @@
 // Import only selected, supplied photographs. Masters stay in the source folder;
 // the site ships bounded responsive derivatives and their source attribution.
 import sharp from 'sharp';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { basename, isAbsolute, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const source = resolve(process.argv[2] || '/Users/jose/Downloads/OneDrive_1_10-09-2026');
+// --only=key1,key2 re-imports just those keys and merges them into the existing
+// manifest, so lost masters of untouched keys don't block a partial delivery.
+const args = process.argv.slice(2);
+const only = args.find(a => a.startsWith('--only='))?.slice('--only='.length).split(',').filter(Boolean);
+const source = resolve(args.find(a => !a.startsWith('--')) || '/Users/jose/Downloads/OneDrive_1_10-09-2026');
 const destination = new URL('../assets/supplied/', import.meta.url);
 const selections = {
   'hero-flow': ['Technology/GettyImages-2200128716.jpg', 'Leuchtende Datenverbindungen auf einer digitalen Platine'],
@@ -26,28 +30,38 @@ const selections = {
   'logistics': ['General/AdobeStock_584600576.jpeg', 'Digitale Steuerung von Lager- und Logistikprozessen'],
   'datacenter': ['General/AdobeStock_2013412737.jpeg', 'Vernetzte Server in einem Rechenzentrum'],
   'software': ['General/AdobeStock_1949888112.jpeg', 'Entwicklung einer digitalen Anwendung am Laptop'],
-  'claus-thierbach': ['Management Bilder/Foto Thierbach.jpg', 'Claus Thierbach'],
   // Later deliveries outside the original OneDrive folder (absolute paths resolve as-is).
   'verzahnung': ['/Users/jose/Downloads/EMPOSO Grafik 26-V2.jpg', 'Orange und blaue Datenströme laufen im Emposo-Logo zusammen'],
-  'aleksandar-amidzic': ['/Users/jose/Downloads/Management Bilder/ALA.jpg', 'Aleksandar Amidzic'],
-  'markus-auer': ['/Users/jose/Downloads/Management Bilder/markus-auer-me-1020x765.jpg', 'Markus Auer'],
-  'roman-bretz': ['/Users/jose/Downloads/Management Bilder/Roman Bretz.jpg', 'Roman Bretz'],
+  // 2026-09-22 delivery: all six management portraits, 850×607 landscape masters.
+  'claus-thierbach': ['/Users/jose/Downloads/OneDrive_1_22-09-2026/Foto Thierbach.jpg', 'Claus Thierbach'],
+  'aleksandar-amidzic': ['/Users/jose/Downloads/OneDrive_1_22-09-2026/ALA.jpg', 'Aleksandar Amidzic'],
+  'markus-auer': ['/Users/jose/Downloads/OneDrive_1_22-09-2026/Markus Auer.jpg', 'Markus Auer'],
+  'roman-bretz': ['/Users/jose/Downloads/OneDrive_1_22-09-2026/Roman Bretz.jpg', 'Roman Bretz'],
+  'michael-schmitt': ['/Users/jose/Downloads/OneDrive_1_22-09-2026/Michael Schmitt.jpg', 'Dr. Michael Schmitt'],
+  'marcus-hefele': ['/Users/jose/Downloads/OneDrive_1_22-09-2026/Marcus Hefele.jpg', 'Marcus Hefele'],
 };
+const unknown = (only ?? []).filter(key => !selections[key]);
+if (unknown.length) {
+  console.error(`Unknown --only keys: ${unknown.join(', ')}`);
+  process.exit(1);
+}
+const selected = only ? Object.fromEntries(only.map(key => [key, selections[key]])) : selections;
 // Fail fast before touching assets/supplied/: a missing source mid-loop would
 // otherwise leave derivatives half-rewritten with a stale manifest.
 {
-  const missing = Object.values(selections).map(([file]) => resolve(source, file)).filter(path => !existsSync(path));
+  const missing = Object.values(selected).map(([file]) => resolve(source, file)).filter(path => !existsSync(path));
   if (missing.length) {
     console.error('Missing source files:\n' + missing.join('\n'));
     process.exit(1);
   }
 }
 await mkdir(destination, {recursive: true});
-const manifest = {};
-for (const [key, [file, alt]] of Object.entries(selections)) {
+const manifestURL = new URL('manifest.json', destination);
+const manifest = only ? JSON.parse(await readFile(manifestURL, 'utf8')) : {};
+for (const [key, [file, alt]] of Object.entries(selected)) {
   const pipeline = sharp(resolve(source, file)).rotate();
   const metadata = await pipeline.metadata();
-  const portrait = ['claus-thierbach', 'aleksandar-amidzic', 'markus-auer', 'roman-bretz'].includes(key);
+  const portrait = ['claus-thierbach', 'aleksandar-amidzic', 'markus-auer', 'roman-bretz', 'michael-schmitt', 'marcus-hefele'].includes(key);
   const fullWidth = Math.min(portrait ? 900 : 1600, metadata.autoOrient.width);
   const widths = [...new Set([Math.min(640, fullWidth), fullWidth])];
   const variants = [];
@@ -60,7 +74,8 @@ for (const [key, [file, alt]] of Object.entries(selections)) {
   }
   const fallback = `${key}-${fullWidth}.jpg`;
   const info = await pipeline.clone().resize({width:fullWidth, withoutEnlargement:true}).jpeg({quality:82, mozjpeg:true}).toFile(fileURLToPath(new URL(fallback, destination)));
-  manifest[key] = {source:file, alt, src:`/assets/supplied/${fallback}`, width:info.width, height:info.height, variants};
+  // The committed manifest records absolute-path sources by basename only.
+  manifest[key] = {source: isAbsolute(file) ? basename(file) : file, alt, src:`/assets/supplied/${fallback}`, width:info.width, height:info.height, variants};
   console.log(`Imported ${key}`);
 }
-await writeFile(new URL('manifest.json', destination), JSON.stringify(manifest, null, 2) + '\n');
+await writeFile(manifestURL, JSON.stringify(manifest, null, 2) + '\n');
