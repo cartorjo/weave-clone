@@ -186,6 +186,11 @@
 .company-values article { border-top: 3px solid var(--color-lemon); padding-top: 1.5rem; }
 .company-values :is(h2, h3) { font-size: 1.7rem; margin-bottom: 1rem; }
 .company-values p { font-size: 1.1rem; line-height: 1.6; }
+.company-values__icon { color: var(--color-lemon); display: block; height: 2.6rem; margin-bottom: 1.1rem; width: 2.6rem; }
+.company-values__icon svg { height: 100%; width: 100%; }
+.company-values__tagline { font-weight: 700; margin-bottom: .35rem; }
+.about-facts--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.about-facts--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .legal-copy { max-width: 55rem; }
 .legal-copy p:not(.page-breadcrumb) { margin-top: 2rem; font-size: 1.15rem; line-height: 1.6; }
 .legal-copy .page-breadcrumb { color: var(--color-ink); }
@@ -230,6 +235,8 @@
   .case-story { grid-template-columns: minmax(0,1fr); gap: 3rem; }
   .management-profile { gap: 2rem; }
   .company-values { grid-template-columns: 1fr; }
+  .about-facts--3, .about-facts--5 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .about-facts--3 article:nth-child(even), .about-facts--5 article:nth-child(even) { border-right: 0; }
 }
 @media (max-width:700px) {
   .reference-grid, .industry-disciplines, .contact__grid, .management-profile, .sitemap-grid { grid-template-columns: minmax(0,1fr); }
