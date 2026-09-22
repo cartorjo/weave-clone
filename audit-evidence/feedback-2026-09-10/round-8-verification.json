@@ -1,0 +1,26 @@
+{
+  "date": "2026-09-22",
+  "source": "Emposo_Website Struktur (2).xlsx (cell-diffed against v1; only the delta implemented)",
+  "build": "npm run check green after every commit: 34 documents; links, anchors, srcset, one H1, unique ids, no Hays-Gruppe/↗, git diff --exit-code",
+  "browser": {
+    "tool": "puppeteer-core + system Chrome, http://localhost:8080",
+    "pages": ["/", "/about-us/", "/karriere/", "/kontakt/", "/case-studies/", "/branchen/", "/expertise/", "/portfolio/", "/expertise/engineering/", "/expertise/technology/", "/case-studies/data2ai-platform/", "/branchen/health-pharma/", "/sitemap/"],
+    "viewports": [1440, 390],
+    "results": {
+      "horizontalOverflow": "none on any page/viewport",
+      "consoleAndPageErrors": "none (only the two intentional 404 probes below)",
+      "nav": ["Leistungen", "Branchen & Projekte", "Über uns", "Karriere"],
+      "megamenuBranchenProjekte": "opens with /branchen/, /case-studies/ and all five industry links; Escape closes",
+      "collage": "4 featured cards, widths 523/748/748/523px, figure heights 595/467/467/595px",
+      "referenceCardHover": "copy block background rgb(10,5,50), white text, lemon arrow",
+      "navHover": "background rgb(10,5,50), color rgb(255,255,255)",
+      "filters": "groups Branche + Leistung; 9 Leistung buttons; ai-daten=4 projects; software-cloud=empty state; health+ai-daten=1; ?branche=energy=1",
+      "management": "6 uniform profiles (Amidzic, Auer, Bretz, Thierbach, Schmitt, Hefele) + Hans Lang initials tile; value taglines render; fact grids 3 + 5",
+      "headlines": {
+        "karriere": "Mehr als Expertise. Die Menschen hinter dem Outcome.",
+        "kontakt": "Ihr Projekt. Unser Fokus auf Outcomes."
+      },
+      "removedSubpages": "/expertise/ai-daten/ and /expertise/system-engineering/ return HTTP 404"
+    }
+  }
+}
