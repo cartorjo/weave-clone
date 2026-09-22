@@ -24,7 +24,7 @@ export function projectCards(selection = projects, filterable = false, collage =
   const sizes = index => collage
     ? (index === 1 || index === 2 ? '(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 58vw' : '(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 42vw')
     : '(max-width: 700px) 100vw, 50vw';
-  return `<div class="reference-grid${collage ? ' reference-grid--collage' : ''}"${filterable ? ' data-project-grid' : ''}>${selection.map((project,index)=>`<a class="reference-card" href="/case-studies/${project.slug}/"${filterable ? ` data-project data-industry="${project.filter}" data-discipline="${project.discipline}"` : ''}><figure>${picture(project.image,sizes(index))}</figure><div class="reference-card__meta"><span>${escape(project.industry)}</span><span>${escape(disciplineBySlug[project.discipline].name)}</span></div><h3>${escape(project.name)}</h3><p>${escape(project.headline)}</p>${metric(project)}<span class="text-link">Case Study lesen ${arrow}</span></a>`).join('')}</div>`;
+  return `<div class="reference-grid${collage ? ' reference-grid--collage' : ''}"${filterable ? ' data-project-grid' : ''}>${selection.map((project,index)=>`<a class="reference-card" href="/case-studies/${project.slug}/"${filterable ? ` data-project data-industry="${project.filter}" data-discipline="${project.discipline}"` : ''}><figure>${picture(project.image,sizes(index))}</figure><div class="reference-card__copy"><div class="reference-card__meta"><span>${escape(project.industry)}</span><span>${escape(disciplineBySlug[project.discipline].name)}</span></div><h3>${escape(project.name)}</h3><p>${escape(project.headline)}</p>${metric(project)}<span class="text-link">Case Study lesen ${arrow}</span></div></a>`).join('')}</div>`;
 }
 
 function filters() {

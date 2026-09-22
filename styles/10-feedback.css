@@ -29,6 +29,10 @@
 .site-header__inner { gap: 2rem; min-height: 6rem; }
 .site-nav { gap: clamp(1.5rem, 2vw, 2.5rem); }
 .site-nav > a, .site-nav__group > summary, .header-contact { font-size: 1rem; font-weight: 700; letter-spacing: 0; }
+/* Top-level nav entries invert to the navy box on hover (owner correction:
+   der blaue Kasten bei Hover, einheitlicher Effekt). */
+.site-nav > a, .site-nav__group > summary { transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease; }
+.site-nav > a:hover, .site-nav > a:focus-visible, .site-nav__group > summary:hover, .site-nav__group > summary:focus-visible, .site-nav__group[open] > summary { background: var(--color-ink); box-shadow: 0 0 0 .55rem var(--color-ink); color: #fff; position: relative; z-index: 1; }
 .header-contact { padding: .8rem 1.15rem; }
 .header-contact span { font-size: 1.4rem; }
 .mega-panel__eyebrow { font-size: .95rem; letter-spacing: 0; }
@@ -107,15 +111,30 @@
 .reference-card[hidden] { display: none; }
 .reference-card figure { aspect-ratio: 16/10; overflow: hidden; }
 .reference-card img { height: 100%; width: 100%; object-fit: cover; transition: transform 400ms ease; }
+.reference-card__copy { display: flex; flex: 1; flex-direction: column; align-items: flex-start; transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease; }
 .reference-card__meta { display: flex; flex-wrap: wrap; gap: .4rem 1rem; font-size: .95rem; font-weight: 500; margin-top: 1.25rem; line-height: 1.4; }
 .reference-card h3 { font-size: clamp(1.5rem,2.5vw,2.4rem); line-height: 1.16; letter-spacing: -.02em; margin-top: 1rem; }
-.reference-card > p { font-size: 1.1rem; line-height: 1.5; margin-top: .8rem; max-width: 35rem; }
-.reference-card > .text-link { margin-top: 1.5rem; align-self: flex-start; }
+.reference-card__copy > p { font-size: 1.1rem; line-height: 1.5; margin-top: .8rem; max-width: 35rem; }
+.reference-card__copy > .text-link { margin-top: 1.5rem; align-self: flex-start; }
+/* Der blaue Kasten bei Hover (owner correction): the copy block inverts to the
+   brand navy, mirroring the industry tiles, without shifting layout. */
+.reference-card:hover .reference-card__copy, .reference-card:focus-visible .reference-card__copy { background: var(--color-ink); box-shadow: 0 0 0 1.1rem var(--color-ink); color: #fff; position: relative; z-index: 1; }
+.reference-card:hover .result-metric, .reference-card:focus-visible .result-metric { color: inherit; }
+.reference-card:hover .reference-card__copy .text-link, .reference-card:focus-visible .reference-card__copy .text-link { color: #fff; }
+.reference-card:hover .reference-card__copy .text-link span, .reference-card:focus-visible .reference-card__copy .text-link span { color: var(--color-lemon); }
 .result-metric { display: flex; flex-direction: column; align-items: flex-start; gap: .6rem; margin-top: 1.6rem; margin-bottom: .5rem; color: var(--color-ink); }
 .result-metric strong { font-size: clamp(2.75rem,4.6vw,4.5rem); font-weight: 700; line-height: 1.1; letter-spacing: -.025em; }
 .result-metric strong.result-metric__word { font-size: clamp(2rem,3vw,3rem); }
 .result-metric span { border-top: 3px solid var(--color-lemon); padding-top: .65rem; font-size: 1.1rem; line-height: 1.4; font-weight: 700; }
 .reference-card:hover h3, .reference-card:focus-visible h3 { font-weight: 700; }
+/* Linked expertise cards get the same navy box; static discipline cards
+   (plain <article>) stay inert. */
+a.expertise-card { transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease; }
+a.expertise-card:hover, a.expertise-card:focus-visible { background: var(--color-ink); box-shadow: 0 0 0 1.1rem var(--color-ink); color: #fff; position: relative; z-index: 1; transform: none; }
+a.expertise-card:hover h3, a.expertise-card:focus-visible h3 { font-weight: 700; }
+a.expertise-card:hover p, a.expertise-card:focus-visible p { color: inherit; }
+a.expertise-card:hover .text-link, a.expertise-card:focus-visible .text-link { color: #fff; }
+a.expertise-card:hover .text-link span, a.expertise-card:focus-visible .text-link span { color: var(--color-lemon); }
 .filter-button, .case-filter__button { font-size: 1rem; letter-spacing: 0; padding: .65rem 1rem; }
 .filter-button:hover, .filter-button.is-active, .case-filter__button:hover, .case-filter__button.is-active { background: var(--color-lemon); border-color: var(--color-lemon); color: var(--color-ink); }
 .filter-group > span { font-size: 1rem; letter-spacing: 0; }
