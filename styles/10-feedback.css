@@ -58,7 +58,10 @@
 .expertise-intro__heading { display: grid; grid-template-columns: 1.35fr .65fr; align-items: end; gap: 4rem; }
 .expertise-intro__heading > p { font-size: 1.2rem; line-height: 1.55; }
 .expertise-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 2rem; position: relative; margin-top: 3.5rem; }
-.expertise-pair > a { color: var(--color-ink); text-decoration: none; }
+.expertise-pair > a { color: var(--color-ink); text-decoration: none; transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease; }
+.expertise-pair > a:hover, .expertise-pair > a:focus-visible { background: var(--color-ink); box-shadow: 0 0 0 1.1rem var(--color-ink); color: #fff; position: relative; z-index: 1; }
+.expertise-pair > a:hover h3, .expertise-pair > a:focus-visible h3 { font-weight: 700; }
+.expertise-pair > a:hover > div > span, .expertise-pair > a:focus-visible > div > span { color: var(--color-lemon); }
 .expertise-pair figure { aspect-ratio: 16/9; overflow: hidden; }
 .expertise-pair img { width: 100%; height: 100%; object-fit: cover; transition: transform 400ms ease; }
 .expertise-pair > a > div { display: flex; align-items: center; justify-content: space-between; margin-top: 1.25rem; }

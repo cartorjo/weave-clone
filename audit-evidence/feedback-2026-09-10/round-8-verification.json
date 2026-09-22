@@ -20,7 +20,10 @@
         "karriere": "Mehr als Expertise. Die Menschen hinter dem Outcome.",
         "kontakt": "Ihr Projekt. Unser Fokus auf Outcomes."
       },
-      "removedSubpages": "/expertise/ai-daten/ and /expertise/system-engineering/ return HTTP 404"
+      "removedSubpages": "/expertise/ai-daten/ and /expertise/system-engineering/ return HTTP 404",
+      "leistungenMegamenu": "4 grid tracks (intro, Engineering, Technology, featured), no overflow after removing item 03",
+      "expertisePairHover": "homepage Engineering/Technology tiles invert to rgb(10,5,50) with white text, lemon arrow",
+      "axe": "wcag2a+wcag2aa on /about-us/ and /case-studies/: zero violations"
     }
   }
 }
