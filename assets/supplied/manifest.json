@@ -629,39 +629,39 @@
     ]
   },
   "claus-thierbach": {
-    "source": "Management Bilder/Foto Thierbach.jpg",
+    "source": "Foto Thierbach.jpg",
     "alt": "Claus Thierbach",
-    "src": "/assets/supplied/claus-thierbach-848.jpg",
-    "width": 848,
-    "height": 1214,
+    "src": "/assets/supplied/claus-thierbach-850.jpg",
+    "width": 850,
+    "height": 607,
     "variants": [
       {
         "src": "/assets/supplied/claus-thierbach-640.avif",
         "width": 640,
-        "height": 916,
+        "height": 457,
         "format": "avif",
-        "bytes": 16424
+        "bytes": 9303
       },
       {
         "src": "/assets/supplied/claus-thierbach-640.webp",
         "width": 640,
-        "height": 916,
+        "height": 457,
         "format": "webp",
-        "bytes": 25138
+        "bytes": 14604
       },
       {
-        "src": "/assets/supplied/claus-thierbach-848.avif",
-        "width": 848,
-        "height": 1214,
+        "src": "/assets/supplied/claus-thierbach-850.avif",
+        "width": 850,
+        "height": 607,
         "format": "avif",
-        "bytes": 27160
+        "bytes": 15395
       },
       {
-        "src": "/assets/supplied/claus-thierbach-848.webp",
-        "width": 848,
-        "height": 1214,
+        "src": "/assets/supplied/claus-thierbach-850.webp",
+        "width": 850,
+        "height": 607,
         "format": "webp",
-        "bytes": 45302
+        "bytes": 23744
       }
     ]
   },
@@ -705,111 +705,185 @@
   "aleksandar-amidzic": {
     "source": "ALA.jpg",
     "alt": "Aleksandar Amidzic",
-    "src": "/assets/supplied/aleksandar-amidzic-800.jpg",
-    "width": 800,
-    "height": 800,
+    "src": "/assets/supplied/aleksandar-amidzic-850.jpg",
+    "width": 850,
+    "height": 607,
     "variants": [
       {
         "src": "/assets/supplied/aleksandar-amidzic-640.avif",
         "width": 640,
-        "height": 640,
+        "height": 457,
         "format": "avif",
-        "bytes": 7878
+        "bytes": 7762
       },
       {
         "src": "/assets/supplied/aleksandar-amidzic-640.webp",
         "width": 640,
-        "height": 640,
+        "height": 457,
         "format": "webp",
-        "bytes": 10612
+        "bytes": 9548
       },
       {
-        "src": "/assets/supplied/aleksandar-amidzic-800.avif",
-        "width": 800,
-        "height": 800,
+        "src": "/assets/supplied/aleksandar-amidzic-850.avif",
+        "width": 850,
+        "height": 607,
         "format": "avif",
-        "bytes": 11042
+        "bytes": 11778
       },
       {
-        "src": "/assets/supplied/aleksandar-amidzic-800.webp",
-        "width": 800,
-        "height": 800,
+        "src": "/assets/supplied/aleksandar-amidzic-850.webp",
+        "width": 850,
+        "height": 607,
         "format": "webp",
-        "bytes": 15660
+        "bytes": 14076
       }
     ]
   },
   "markus-auer": {
-    "source": "markus-auer-me-1020x765.jpg",
+    "source": "Markus Auer.jpg",
     "alt": "Markus Auer",
-    "src": "/assets/supplied/markus-auer-900.jpg",
-    "width": 900,
-    "height": 675,
+    "src": "/assets/supplied/markus-auer-850.jpg",
+    "width": 850,
+    "height": 607,
     "variants": [
       {
         "src": "/assets/supplied/markus-auer-640.avif",
         "width": 640,
-        "height": 480,
+        "height": 457,
         "format": "avif",
-        "bytes": 9248
+        "bytes": 10999
       },
       {
         "src": "/assets/supplied/markus-auer-640.webp",
         "width": 640,
-        "height": 480,
+        "height": 457,
         "format": "webp",
-        "bytes": 13172
+        "bytes": 14994
       },
       {
-        "src": "/assets/supplied/markus-auer-900.avif",
-        "width": 900,
-        "height": 675,
+        "src": "/assets/supplied/markus-auer-850.avif",
+        "width": 850,
+        "height": 607,
         "format": "avif",
-        "bytes": 15905
+        "bytes": 15589
       },
       {
-        "src": "/assets/supplied/markus-auer-900.webp",
-        "width": 900,
-        "height": 675,
+        "src": "/assets/supplied/markus-auer-850.webp",
+        "width": 850,
+        "height": 607,
         "format": "webp",
-        "bytes": 23944
+        "bytes": 20934
       }
     ]
   },
   "roman-bretz": {
     "source": "Roman Bretz.jpg",
     "alt": "Roman Bretz",
-    "src": "/assets/supplied/roman-bretz-900.jpg",
-    "width": 900,
-    "height": 643,
+    "src": "/assets/supplied/roman-bretz-850.jpg",
+    "width": 850,
+    "height": 607,
     "variants": [
       {
         "src": "/assets/supplied/roman-bretz-640.avif",
         "width": 640,
         "height": 457,
         "format": "avif",
-        "bytes": 8135
+        "bytes": 10617
       },
       {
         "src": "/assets/supplied/roman-bretz-640.webp",
         "width": 640,
         "height": 457,
         "format": "webp",
-        "bytes": 11550
+        "bytes": 15896
       },
       {
-        "src": "/assets/supplied/roman-bretz-900.avif",
-        "width": 900,
-        "height": 643,
+        "src": "/assets/supplied/roman-bretz-850.avif",
+        "width": 850,
+        "height": 607,
         "format": "avif",
-        "bytes": 14705
+        "bytes": 18856
       },
       {
-        "src": "/assets/supplied/roman-bretz-900.webp",
-        "width": 900,
-        "height": 643,
+        "src": "/assets/supplied/roman-bretz-850.webp",
+        "width": 850,
+        "height": 607,
         "format": "webp",
-        "bytes": 21660
+        "bytes": 29934
+      }
+    ]
+  },
+  "michael-schmitt": {
+    "source": "Michael Schmitt.jpg",
+    "alt": "Dr. Michael Schmitt",
+    "src": "/assets/supplied/michael-schmitt-850.jpg",
+    "width": 850,
+    "height": 607,
+    "variants": [
+      {
+        "src": "/assets/supplied/michael-schmitt-640.avif",
+        "width": 640,
+        "height": 457,
+        "format": "avif",
+        "bytes": 11634
+      },
+      {
+        "src": "/assets/supplied/michael-schmitt-640.webp",
+        "width": 640,
+        "height": 457,
+        "format": "webp",
+        "bytes": 17988
+      },
+      {
+        "src": "/assets/supplied/michael-schmitt-850.avif",
+        "width": 850,
+        "height": 607,
+        "format": "avif",
+        "bytes": 21177
+      },
+      {
+        "src": "/assets/supplied/michael-schmitt-850.webp",
+        "width": 850,
+        "height": 607,
+        "format": "webp",
+        "bytes": 36408
+      }
+    ]
+  },
+  "marcus-hefele": {
+    "source": "Marcus Hefele.jpg",
+    "alt": "Marcus Hefele",
+    "src": "/assets/supplied/marcus-hefele-850.jpg",
+    "width": 850,
+    "height": 607,
+    "variants": [
+      {
+        "src": "/assets/supplied/marcus-hefele-640.avif",
+        "width": 640,
+        "height": 457,
+        "format": "avif",
+        "bytes": 8130
+      },
+      {
+        "src": "/assets/supplied/marcus-hefele-640.webp",
+        "width": 640,
+        "height": 457,
+        "format": "webp",
+        "bytes": 10354
+      },
+      {
+        "src": "/assets/supplied/marcus-hefele-850.avif",
+        "width": 850,
+        "height": 607,
+        "format": "avif",
+        "bytes": 12183
+      },
+      {
+        "src": "/assets/supplied/marcus-hefele-850.webp",
+        "width": 850,
+        "height": 607,
+        "format": "webp",
+        "bytes": 15062
       }
     ]
   }
