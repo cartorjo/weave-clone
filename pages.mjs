@@ -68,7 +68,7 @@ export default [
     nav: 'karriere',
     bodyClass: 'subpage wrap-anywhere',
     content: 'pages/karriere.html',
-    scripts: ['00-core', '01-header'],
+    scripts: ['00-core', '01-header', '07-countup'],
   },
   {
     out: 'kontakt/index.html',
