@@ -262,7 +262,9 @@
 .portfolio-model article { border-right: 1px solid var(--color-line); display: flex; flex-direction: column; min-height: 17.1rem; padding: 1.26rem 1.305rem 1.26rem 0; }
 .portfolio-model article + article { padding-left: 1.305rem; }
 .portfolio-model article:last-child { border-right: 0; }
-.portfolio-model span { border-bottom: 2px solid var(--color-lemon); color: var(--color-ink); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.09em; padding-bottom: 0.35rem; width: fit-content; }
+/* Phase numbers read as display digits (owner review 24-09: they were smaller
+   than the body copy) — Kennzahlen scale, lemon rule under the number. */
+.portfolio-model span { border-bottom: 2px solid var(--color-lemon); color: var(--color-ink); font-size: clamp(1.8rem, 2.6vw, 2.75rem); font-weight: 300; letter-spacing: -0.02em; line-height: 1.1; padding-bottom: 0.35rem; width: fit-content; }
 .portfolio-model h3 { font-size: clamp(1.05rem, 2.1vw, 1.98rem); font-weight: 300; letter-spacing: -0.05em; line-height: 0.96; margin-top: auto; }
 .portfolio-model p { color: var(--color-ink); font-size: 0.9rem; line-height: 1.36; margin-top: 0.99rem; }
 /* About -------------------------------------------------------------------- */
