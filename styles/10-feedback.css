@@ -150,7 +150,6 @@ a.expertise-card:focus-visible p { color: inherit; }
 .statement { background: var(--color-paper); }
 .statement .display-large { max-width: 24ch; }
 .company-facts { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 2rem; margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid var(--color-line); }
-.company-facts--5 { grid-template-columns: repeat(5,minmax(0,1fr)); }
 .company-facts__icon { color: var(--color-lemon); display: block; height: 2.6rem; margin-bottom: 1.1rem; width: 2.6rem; }
 .company-facts__icon svg { height: 100%; width: 100%; }
 .company-facts dt { font-size: clamp(2.75rem,5vw,5.25rem); font-weight: 300; line-height: 1.1; letter-spacing: -.025em; }
