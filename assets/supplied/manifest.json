@@ -886,5 +886,190 @@
         "bytes": 15062
       }
     ]
+  },
+  "industry-aerospace": {
+    "source": "AdobeStock_2155375490-Aerospace & Defense.jpg",
+    "alt": "Fachkraft überwacht Radar- und Flugdaten auf mehreren Monitoren",
+    "src": "/assets/supplied/industry-aerospace-920.jpg",
+    "width": 920,
+    "height": 614,
+    "variants": [
+      {
+        "src": "/assets/supplied/industry-aerospace-640.avif",
+        "width": 640,
+        "height": 427,
+        "format": "avif",
+        "bytes": 15911
+      },
+      {
+        "src": "/assets/supplied/industry-aerospace-640.webp",
+        "width": 640,
+        "height": 427,
+        "format": "webp",
+        "bytes": 23994
+      },
+      {
+        "src": "/assets/supplied/industry-aerospace-920.avif",
+        "width": 920,
+        "height": 614,
+        "format": "avif",
+        "bytes": 25892
+      },
+      {
+        "src": "/assets/supplied/industry-aerospace-920.webp",
+        "width": 920,
+        "height": 614,
+        "format": "webp",
+        "bytes": 37882
+      }
+    ]
+  },
+  "industry-energy": {
+    "source": "AdobeStock_223686976-Energy & Resources.jpg",
+    "alt": "Strommast mit Solarmodulen und Windenergieanlagen im Gegenlicht",
+    "src": "/assets/supplied/industry-energy-919.jpg",
+    "width": 919,
+    "height": 613,
+    "variants": [
+      {
+        "src": "/assets/supplied/industry-energy-640.avif",
+        "width": 640,
+        "height": 427,
+        "format": "avif",
+        "bytes": 16609
+      },
+      {
+        "src": "/assets/supplied/industry-energy-640.webp",
+        "width": 640,
+        "height": 427,
+        "format": "webp",
+        "bytes": 30532
+      },
+      {
+        "src": "/assets/supplied/industry-energy-919.avif",
+        "width": 919,
+        "height": 613,
+        "format": "avif",
+        "bytes": 35237
+      },
+      {
+        "src": "/assets/supplied/industry-energy-919.webp",
+        "width": 919,
+        "height": 613,
+        "format": "webp",
+        "bytes": 64094
+      }
+    ]
+  },
+  "industry-health": {
+    "source": "GettyImages-1194960360-Health & Pharma.jpg",
+    "alt": "Pipette dosiert Proben in Laborgefäße",
+    "src": "/assets/supplied/industry-health-816.jpg",
+    "width": 816,
+    "height": 612,
+    "variants": [
+      {
+        "src": "/assets/supplied/industry-health-640.avif",
+        "width": 640,
+        "height": 480,
+        "format": "avif",
+        "bytes": 15157
+      },
+      {
+        "src": "/assets/supplied/industry-health-640.webp",
+        "width": 640,
+        "height": 480,
+        "format": "webp",
+        "bytes": 25752
+      },
+      {
+        "src": "/assets/supplied/industry-health-816.avif",
+        "width": 816,
+        "height": 612,
+        "format": "avif",
+        "bytes": 21868
+      },
+      {
+        "src": "/assets/supplied/industry-health-816.webp",
+        "width": 816,
+        "height": 612,
+        "format": "webp",
+        "bytes": 35464
+      }
+    ]
+  },
+  "industry-industrials": {
+    "source": "AdobeStock_483288607-Indutrials & Manufacturing.jpg",
+    "alt": "Digital vernetzte Roboter in einer Fahrzeug-Fertigungslinie",
+    "src": "/assets/supplied/industry-industrials-1091.jpg",
+    "width": 1091,
+    "height": 613,
+    "variants": [
+      {
+        "src": "/assets/supplied/industry-industrials-640.avif",
+        "width": 640,
+        "height": 360,
+        "format": "avif",
+        "bytes": 34311
+      },
+      {
+        "src": "/assets/supplied/industry-industrials-640.webp",
+        "width": 640,
+        "height": 360,
+        "format": "webp",
+        "bytes": 61058
+      },
+      {
+        "src": "/assets/supplied/industry-industrials-1091.avif",
+        "width": 1091,
+        "height": 613,
+        "format": "avif",
+        "bytes": 83236
+      },
+      {
+        "src": "/assets/supplied/industry-industrials-1091.webp",
+        "width": 1091,
+        "height": 613,
+        "format": "webp",
+        "bytes": 145736
+      }
+    ]
+  },
+  "industry-technology": {
+    "source": "AdobeStock_970503738-Technology, Telecoms & Media.jpg",
+    "alt": "Mobilfunkmast über einer abendlichen Stadt",
+    "src": "/assets/supplied/industry-technology-1094.jpg",
+    "width": 1094,
+    "height": 614,
+    "variants": [
+      {
+        "src": "/assets/supplied/industry-technology-640.avif",
+        "width": 640,
+        "height": 359,
+        "format": "avif",
+        "bytes": 22781
+      },
+      {
+        "src": "/assets/supplied/industry-technology-640.webp",
+        "width": 640,
+        "height": 359,
+        "format": "webp",
+        "bytes": 32958
+      },
+      {
+        "src": "/assets/supplied/industry-technology-1094.avif",
+        "width": 1094,
+        "height": 614,
+        "format": "avif",
+        "bytes": 64110
+      },
+      {
+        "src": "/assets/supplied/industry-technology-1094.webp",
+        "width": 1094,
+        "height": 614,
+        "format": "webp",
+        "bytes": 97010
+      }
+    ]
   }
 }

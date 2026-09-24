@@ -39,6 +39,12 @@ const selections = {
   'roman-bretz': ['/Users/jose/Downloads/OneDrive_1_22-09-2026/Roman Bretz.jpg', 'Roman Bretz'],
   'michael-schmitt': ['/Users/jose/Downloads/OneDrive_1_22-09-2026/Michael Schmitt.jpg', 'Dr. Michael Schmitt'],
   'marcus-hefele': ['/Users/jose/Downloads/OneDrive_1_22-09-2026/Marcus Hefele.jpg', 'Marcus Hefele'],
+  // 2026-09-24 delivery: final per-industry images ("Feedback Branchen V2").
+  'industry-aerospace': ['/Users/jose/Downloads/OneDrive_1_24-09-2026/AdobeStock_2155375490-Aerospace & Defense.jpg', 'Fachkraft überwacht Radar- und Flugdaten auf mehreren Monitoren'],
+  'industry-energy': ['/Users/jose/Downloads/OneDrive_1_24-09-2026/AdobeStock_223686976-Energy & Resources.jpg', 'Strommast mit Solarmodulen und Windenergieanlagen im Gegenlicht'],
+  'industry-health': ['/Users/jose/Downloads/OneDrive_1_24-09-2026/GettyImages-1194960360-Health & Pharma.jpg', 'Pipette dosiert Proben in Laborgefäße'],
+  'industry-industrials': ['/Users/jose/Downloads/OneDrive_1_24-09-2026/AdobeStock_483288607-Indutrials & Manufacturing.jpg', 'Digital vernetzte Roboter in einer Fahrzeug-Fertigungslinie'],
+  'industry-technology': ['/Users/jose/Downloads/OneDrive_1_24-09-2026/AdobeStock_970503738-Technology, Telecoms & Media.jpg', 'Mobilfunkmast über einer abendlichen Stadt'],
 };
 const unknown = (only ?? []).filter(key => !selections[key]);
 if (unknown.length) {
