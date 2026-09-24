@@ -27,14 +27,31 @@
 .site-logo svg { width: 100%; height: auto; }
 .site-footer__brand svg { display: block; max-width: 13rem; width: 100%; height: auto; }
 .site-header__inner { gap: 2rem; min-height: 6rem; }
-.site-nav { gap: clamp(1.5rem, 2vw, 2.5rem); }
-.site-nav > a, .header-contact { font-size: 1rem; font-weight: 700; letter-spacing: 0; }
-/* Top-level nav entries invert to the navy box on hover (owner correction:
-   der blaue Kasten bei Hover, einheitlicher Effekt). */
-.site-nav > a { transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease; }
-.site-nav > a:hover, .site-nav > a:focus-visible { background: var(--color-ink); box-shadow: 0 0 0 .55rem var(--color-ink); color: #fff; position: relative; z-index: 1; }
-.header-contact { padding: .8rem 1.15rem; }
-.header-contact span { font-size: 1.4rem; }
+.site-nav { gap: clamp(1.75rem, 2.5vw, 3rem); }
+/* Menü nach Edenspiekermann-Vorbild (owner 24-09): ruhige Links in normaler
+   Stärke, aktive Seite und Hover mit einslidendem Ink-Unterstrich (bewusste
+   Menü-Ausnahme der "Unterstrich nur Zahlen"-Regel), CTA als orange Pill mit
+   Pfeil-Kreis. */
+.site-nav > a { font-size: 1rem; font-weight: 500; letter-spacing: 0; position: relative; }
+.site-nav > a::after { background: var(--color-ink); bottom: .55rem; content: ''; height: 2px; left: 0; position: absolute; right: 0; transform: scaleX(0); transform-origin: left; transition: transform var(--duration-medium) var(--ease-em); }
+@media (hover: hover) {
+  .site-nav > a:hover::after { transform: scaleX(1); }
+}
+.site-nav > a:focus-visible::after, .site-nav > a[aria-current]::after { transform: scaleX(1); }
+.header-contact { border-radius: 999px; font-size: 1rem; font-weight: 700; letter-spacing: 0; padding: .4rem .45rem .4rem 1.4rem; gap: .85rem; transition: background-color var(--duration-medium) var(--ease-em), color var(--duration-medium) var(--ease-em); }
+.header-contact__arrow { align-items: center; background: var(--color-ink); border-radius: 50%; color: #fff; display: inline-flex; flex: none; font-size: 1.15rem; height: 2.2rem; justify-content: center; width: 2.2rem; transition: background-color var(--duration-medium) var(--ease-em), color var(--duration-medium) var(--ease-em); }
+@media (hover: hover) {
+  .header-contact:hover { background: var(--color-ink); color: #fff; }
+  .header-contact:hover .header-contact__arrow { background: var(--color-lemon); color: var(--color-ink); }
+  .mobile-menu__cta:hover .header-contact__arrow { background: var(--color-lemon); color: var(--color-ink); }
+}
+.header-contact:focus-visible { background: var(--color-ink); color: #fff; }
+.header-contact:focus-visible .header-contact__arrow { background: var(--color-lemon); color: var(--color-ink); }
+/* Mobile-Parität: aria-current ebenfalls als Unterstrich, CTA als Pill-Zeile. */
+.mobile-menu__panel a { font-size: 1rem; font-weight: 500; letter-spacing: 0; }
+.mobile-menu__panel a[aria-current] { font-weight: 500; text-decoration: underline; text-decoration-color: var(--color-ink); text-decoration-thickness: 2px; text-underline-offset: .35rem; }
+.mobile-menu__cta { border-radius: 999px; display: flex; justify-content: space-between; align-items: center; margin: .85rem 1rem 1rem; border-bottom: 0; padding: .4rem .45rem .4rem 1.2rem; font-weight: 700; }
+.mobile-menu__cta[aria-current] { text-decoration: none; }
 
 .hero--feedback .hero__grid { position: relative; min-height: 43rem; grid-template-columns: 40% 60%; }
 .hero--feedback .hero__copy { z-index: 2; padding: 6rem 0; width: 43rem; max-width: 50vw; }
