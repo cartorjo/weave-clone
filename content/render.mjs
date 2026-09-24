@@ -115,8 +115,24 @@ function management() {
       'Sein Anspruch ist es, gemeinsam mit seinen Kunden Lösungen zu entwickeln, die über reine Konzepte hinausgehen, messbare Ergebnisse erzielen und nachhaltigen Mehrwert für das operative Geschäft schaffen.',
     ]},
   ];
-  const list = profiles.map(person=>`<article class="management-profile"><figure class="management-profile__media--wide">${picture(person.image,'(max-width: 700px) 100vw, 25vw')}</figure><div><h3>${escape(person.name)}</h3><p class="management-profile__role">${person.roles.map(escape).join('<br>')}</p>${person.bio.map(text=>`<p>${escape(text)}</p>`).join('')}${person.link ? `<a class="text-link" href="${person.link.href}">${escape(person.link.label)} ${arrow}</a>` : ''}</div></article>`).join('');
-  return `<section class="page-section page-section--paper" id="management" aria-labelledby="management-title"><div class="gutter"><div class="container"><p class="eyebrow">Management</p><h2 class="page-title" id="management-title">Menschen, die Verantwortung übernehmen.</h2><div class="management-list">${list}</div><ul class="management-grid" aria-label="Weitere Mitglieder des Management-Teams"><li><div class="management-grid__initials" aria-hidden="true">HL</div><span>Hans Lang</span></li></ul></div></div></section>`;
+  // Card presentation per owner review 24-09: visible state = photo, name,
+  // role; hover/focus reveals at most three facts (Verantwortung, Expertise,
+  // Schwerpunkt) — distilled from the supplied bios above, nothing invented.
+  // Photos render grayscale for a uniform scheme (the long bios stay in git).
+  const facts = {
+    'aleksandar-amidzic': ['Emposo Deutschland & Rumänien; deutsches Projektgeschäft der Hays Professional Solutions', 'Technologische Dienstleistungen und Führung im Projektgeschäft', 'Nachhaltige, skalierbare und kundennahe Ergebnisse'],
+    'markus-auer': ['Finanzen und Service-Bereiche der Hays AG; Geschäftsführung Emposo', 'Finanzführung bei Bilfinger, Pöyry und der Lahmeyer-Gruppe', 'Weiterentwicklung der Organisation'],
+    'roman-bretz': ['Lösungsportfolio über alle Business Lines', 'Systems Engineering, Systemarchitektur, Explainable AI', 'Industrialisierung von KI und digitale Transformation'],
+    'claus-thierbach': ['Businessline Professional Partner Solutions; Partnernetzwerk', 'Maschinenbau, Anlagen- und Flugzeugbau, Business Development', 'Aufbau des Partnernetzwerks und des Standorts Rumänien'],
+    'michael-schmitt': ['Business Unit Digital Solutions; operatives Geschäft Emposo Rumänien', 'Software- und Cloud-Lösungen, Cyber Security, Data & AI', 'Digitale Transformation und hochproduktives Engineering mit KI'],
+    'marcus-hefele': ['Strategische Kundenpartnerschaften und Positionierung des Lösungsportfolios', 'Aufbau neuer Geschäftsfelder, branchenübergreifende Zusammenarbeit', 'Messbare Geschäftsergebnisse statt reiner Konzepte'],
+  };
+  const labels = ['Verantwortung', 'Expertise', 'Schwerpunkt'];
+  const cards = profiles.map(person=>{
+    const detail = facts[person.image].map((fact,i)=>`<p><strong>${labels[i]}</strong>${escape(fact)}</p>`).join('');
+    return `<article class="management-card" tabindex="0"><figure>${picture(person.image,'(max-width: 700px) 100vw, 33vw')}</figure><div class="management-card__detail">${detail}${person.link ? `<a href="${person.link.href}">LinkedIn ${arrow}</a>` : ''}</div><h3>${escape(person.name)}</h3><p class="management-card__role">${person.roles.map(escape).join('<br>')}</p></article>`;
+  }).join('');
+  return `<section class="page-section page-section--paper" id="management" aria-labelledby="management-title"><div class="gutter"><div class="container"><p class="eyebrow">Management</p><h2 class="page-title" id="management-title">Menschen, die Verantwortung übernehmen.</h2><div class="management-cards">${cards}<article class="management-card"><div class="management-card__initials" aria-hidden="true">HL</div><h3>Hans Lang</h3></article></div></div></div></section>`;
 }
 
 export function fragment(name) {
