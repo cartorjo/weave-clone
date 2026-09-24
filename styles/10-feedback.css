@@ -221,12 +221,6 @@ a.expertise-card:focus-visible p { color: inherit; }
 /* Das Foto ist nicht klickbar und traegt keinen Hover (owner review 24-09);
    der Mehr-lesen-Expander haelt Rest-Bio + LinkedIn (Fakten entfernt 24-09). */
 .management-card__bio { font-size: 1rem; line-height: 1.55; margin-top: .9rem; }
-.management-card__more summary { align-items: center; color: var(--color-ink); cursor: pointer; display: inline-flex; font-size: .95rem; font-weight: 700; gap: .5rem; list-style: none; margin-top: .4rem; }
-.management-card__more summary::-webkit-details-marker { display: none; }
-.management-card__more summary::after { color: var(--color-lemon); content: '+'; font-size: 1.35rem; line-height: 1; transition: transform var(--duration-medium) var(--ease-em); }
-.management-card__more[open] summary::after { transform: rotate(45deg); }
-.management-card__more[open] .management-card__more-open { display: none; }
-.management-card__more:not([open]) .management-card__more-close { display: none; }
 .company-values { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 2rem; margin-top: 3rem; }
 .company-values article { border-top: 3px solid var(--color-lemon); padding-top: 1.5rem; }
 .company-values :is(h2, h3) { font-size: 1.7rem; margin-bottom: 1rem; }

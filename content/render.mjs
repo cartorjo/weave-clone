@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { disciplines, industries, projects } from './site-data.mjs';
+import { disciplines, industries, jobs, projects } from './site-data.mjs';
 const assets = JSON.parse(readFileSync(new URL('../assets/supplied/manifest.json', import.meta.url), 'utf8'));
 const disciplineBySlug = Object.fromEntries(disciplines.map(d => [d.slug, d]));
 export const escape = value => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
@@ -67,6 +67,13 @@ export function disciplineGrid() {
   // rows are shared across both columns so the promises align per row.
   const cell = d => `<article class="discipline-cell"><span class="discipline-cell__icon" aria-hidden="true">{{icon:${d.icon}}}</span><h4>${escape(d.name)}</h4><p>${escape(d.topics)}</p><p class="discipline-cell__promise">${escape(d.promise)}</p></article>`;
   return `<div class="discipline-table">${['Engineering','Technology'].map(group=>`<h3 class="discipline-table__head">${group}</h3>${disciplines.filter(d=>d.group===group).map(cell).join('')}`).join('')}</div>`;
+}
+
+export function jobsList() {
+  // Stellenausschreibungen (owner deck 24-09) on /karriere/: flat IA — no
+  // subpages, the full posting sits in the canonical expander. Visible state:
+  // title, meta chips, tagline and the first paragraph.
+  return `<div class="job-list">${jobs.map(job=>`<article class="job-card" id="${job.slug}"><h3>${escape(job.title)}</h3><p class="job-card__meta">${job.meta.map(m=>`<span>${escape(m)}</span>`).join('')}</p><p class="job-card__tagline">${escape(job.tagline)}</p><p class="job-card__text">${escape(job.intro[0])}</p><details class="expander"><summary class="min-h-11"><span class="expander__open">Zur vollständigen Ausschreibung</span><span class="expander__close">Weniger anzeigen</span></summary>${job.intro.slice(1).map(text=>`<p class="job-card__text">${escape(text)}</p>`).join('')}${job.sections.map(section=>`<h4>${escape(section.title)}</h4><ul class="result-list result-list--compact">${section.items.map(item=>`<li>${escape(item)}</li>`).join('')}</ul>`).join('')}<p class="job-card__text">${escape(job.apply)}</p><p><a class="text-link" href="/kontakt/?interesse=Karriere%20bei%20Emposo">Jetzt bewerben ${arrow}</a></p></details></article>`).join('')}</div>`;
 }
 
 function cta() {
@@ -149,7 +156,7 @@ function management() {
   };
   const cards = profiles.map(person=>{
     const {teaser, rest} = splitBio(person.bio);
-    const more = `<details class="management-card__more"><summary class="min-h-11"><span class="management-card__more-open">Mehr lesen</span><span class="management-card__more-close">Weniger anzeigen</span></summary>${rest.map(text=>`<p class="management-card__bio">${escape(text)}</p>`).join('')}${person.link ? `<p class="management-card__bio"><a class="text-link" href="${person.link.href}">${escape(person.name)} auf LinkedIn ${arrow}</a></p>` : ''}</details>`;
+    const more = `<details class="expander"><summary class="min-h-11"><span class="expander__open">Mehr lesen</span><span class="expander__close">Weniger anzeigen</span></summary>${rest.map(text=>`<p class="management-card__bio">${escape(text)}</p>`).join('')}${person.link ? `<p class="management-card__bio"><a class="text-link" href="${person.link.href}">${escape(person.name)} auf LinkedIn ${arrow}</a></p>` : ''}</details>`;
     return `<article class="management-card"><figure>${picture(person.image,'(max-width: 700px) 100vw, 33vw')}</figure><h3>${escape(person.name)}</h3><p class="management-card__role">${person.roles.map(escape).join('<br>')}</p>${teaser.map(text=>`<p class="management-card__bio">${escape(text)}</p>`).join('')}${more}</article>`;
   }).join('');
   return `<section class="page-section page-section--paper" id="management" aria-labelledby="management-title"><div class="gutter"><div class="container"><p class="eyebrow">Management</p><h2 class="display-large" id="management-title">Menschen, die Verantwortung übernehmen.</h2><div class="management-cards">${cards}</div></div></div></section>`;
@@ -159,6 +166,7 @@ export function fragment(name) {
   switch (name) {
     case 'industry-cards': return industryCards();
     case 'company-facts': return companyFacts();
+    case 'jobs': return jobsList();
     case 'projects-featured': return projectCards(projects.filter(p=>['data2ai-platform','engineering-wissensbasis','mlops-medizinprodukte','multi-site-transition'].includes(p.slug)), false, true);
     case 'projects-all': return filters();
     case 'disciplines': return disciplineGrid();

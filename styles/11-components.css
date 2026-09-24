@@ -54,6 +54,31 @@
    outrank the copy). */
 .fact-grid__label--display { border-bottom: 2px solid var(--color-lemon); color: var(--color-ink); font-size: clamp(1.8rem, 2.6vw, 2.75rem); font-weight: 300; letter-spacing: -.02em; line-height: 1.1; padding-bottom: .35rem; width: fit-content; }
 
+/* Expander — the canonical details/summary (Mehr-lesen pattern): open/close
+   label spans + rotating lemon plus. Consumers: management cards, job
+   postings. Former management-card__more. */
+.expander summary { align-items: center; color: var(--color-ink); cursor: pointer; display: inline-flex; font-size: .95rem; font-weight: 700; gap: .5rem; list-style: none; margin-top: .4rem; }
+.expander summary::-webkit-details-marker { display: none; }
+.expander summary::after { color: var(--color-lemon); content: '+'; font-size: 1.35rem; line-height: 1; transition: transform var(--duration-medium) var(--ease-em); }
+.expander[open] summary::after { transform: rotate(45deg); }
+.expander[open] .expander__open { display: none; }
+.expander:not([open]) .expander__close { display: none; }
+
+/* Job posting (Stellenausschreibung, /karriere/): hairline-framed article,
+   static meta chips (not clickable — no hover), full posting in the expander.
+   Copy verbatim from the owner's Stellen deck; lists reuse result-list. */
+.job-list { border-top: 1px solid var(--color-line); margin-top: 3rem; }
+.job-card { border-bottom: 1px solid var(--color-line); padding: clamp(1.8rem, 4vw, 3rem) 0; }
+.job-card h3 { font-size: clamp(1.5rem, 2.6vw, 2.4rem); font-weight: 300; letter-spacing: -.02em; }
+.job-card__meta { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.1rem; }
+.job-card__meta span { border: 1px solid var(--color-line); border-radius: 100rem; font-size: .85rem; font-weight: 600; padding: .4rem .85rem; }
+.job-card__tagline { font-size: 1.1rem; font-weight: 700; margin-top: 1.6rem; }
+.job-card__text { font-size: 1.05rem; line-height: 1.55; margin-top: .9rem; max-width: 52rem; }
+.job-card h4 { font-size: 1rem; font-weight: 700; margin-top: 2rem; }
+.result-list--compact { font-size: 1rem; margin-bottom: 0; max-width: 52rem; }
+.result-list--compact li { border-bottom: 0; padding: .35rem 0 .35rem 1.2rem; }
+.result-list--compact li::before { height: .4rem; top: .85rem; width: .4rem; }
+
 /* Company-values variants (base trio grid lives in 10): --paper fills the
    boxes (former lede-boxes), --2 caps at two columns. Collapse matches the
    base 900px breakpoint. */
