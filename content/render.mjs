@@ -53,8 +53,8 @@ export function disciplineGrid() {
   return `<div class="discipline-table">${['Engineering','Technology'].map(group=>`<h3 class="discipline-table__head">${group}</h3>${disciplines.filter(d=>d.group===group).map(cell).join('')}`).join('')}</div>`;
 }
 
-function cta(title='Jetzt Kontakt aufnehmen!') {
-  return `<section class="page-section page-section--deep"><div class="gutter"><div class="container"><div class="page-cta"><div><p class="eyebrow eyebrow--light">Ihr nächster Schritt</p><h2 class="display-large display-large--light">${title}</h2></div><div class="page-cta__copy"><p>Ob konkretes Vorhaben, erste Orientierung oder weitere Fragen: Erzählen Sie uns kurz, worum es geht.</p><a class="text-link text-link--light" href="/kontakt/">Projekt besprechen <span aria-hidden="true">→</span></a></div></div></div></div></section>`;
+function cta() {
+  return `<section class="page-section page-section--deep"><div class="gutter"><div class="container"><div class="page-cta"><div><p class="eyebrow eyebrow--light">Ihr nächster Schritt</p><h2 class="display-large display-large--light">Jetzt Kontakt aufnehmen!</h2></div><div class="page-cta__copy"><p>Ob konkretes Vorhaben, erste Orientierung oder weitere Fragen: Erzählen Sie uns kurz, worum es geht.</p><a class="text-link text-link--light" href="/kontakt/">Projekt besprechen <span aria-hidden="true">→</span></a></div></div></div></div></section>`;
 }
 
 export function projectPage(slug) {
