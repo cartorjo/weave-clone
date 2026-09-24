@@ -41,6 +41,9 @@ const selections = {
   'roman-bretz': ['/Users/jose/Downloads/OneDrive_1_22-09-2026/Roman Bretz.jpg', 'Roman Bretz'],
   'michael-schmitt': ['/Users/jose/Downloads/OneDrive_1_22-09-2026/Michael Schmitt.jpg', 'Dr. Michael Schmitt'],
   'marcus-hefele': ['/Users/jose/Downloads/OneDrive_1_22-09-2026/Marcus Hefele.jpg', 'Marcus Hefele'],
+  // 2026-09-24 review: Über-uns Hays-Netzwerk graphic (edges carry white/blue
+  // frame artefacts — trimmed like the Verzahnung graphic).
+  'about-netzwerk': ['/Users/jose/Downloads/About Emposo Grafik Final_About Emposo Grafik V1B.jpg', '250 Inhouse-Experten von Emposo, dahinter das Hays-Netzwerk mit 3.000 festangestellten Talenten und 10.000 aktiven Partnern', {trimLeft: 3, trimTop: 1, trimBottom: 1}],
   // 2026-09-24 review: Leistungen hero (master restorable from OneDrive_1_10-09-2026.zip).
   'portfolio-hero': ['General/AdobeStock_1952732297.jpeg', 'Laptop mit Engineering-Workflows in einem Rechenzentrum'],
   // 2026-09-24 delivery: final per-industry images ("Feedback Branchen V2").
@@ -72,9 +75,10 @@ for (const [key, [file, alt, options = {}]] of Object.entries(selected)) {
   let pipeline = sharp(resolve(source, file)).rotate();
   const metadata = await pipeline.metadata();
   let sourceWidth = metadata.autoOrient.width;
-  if (options.trimRight) {
-    pipeline = pipeline.extract({left: 0, top: 0, width: sourceWidth - options.trimRight, height: metadata.autoOrient.height});
-    sourceWidth -= options.trimRight;
+  const trim = {left: options.trimLeft ?? 0, right: options.trimRight ?? 0, top: options.trimTop ?? 0, bottom: options.trimBottom ?? 0};
+  if (trim.left || trim.right || trim.top || trim.bottom) {
+    pipeline = pipeline.extract({left: trim.left, top: trim.top, width: sourceWidth - trim.left - trim.right, height: metadata.autoOrient.height - trim.top - trim.bottom});
+    sourceWidth -= trim.left + trim.right;
   }
   const portrait = ['claus-thierbach', 'aleksandar-amidzic', 'markus-auer', 'roman-bretz', 'michael-schmitt', 'marcus-hefele'].includes(key);
   const fullWidth = Math.min(portrait ? 900 : 1600, sourceWidth);

@@ -405,18 +405,6 @@
 
 /* About -------------------------------------------------------------------- */
 .about-hero__visual { background: var(--color-bg-dark-2); }
-.about-hero__visual::before {
-  border: clamp(0.4rem, 2vw, 1.62rem) solid var(--color-lemon);
-  border-radius: 50%;
-  content: "";
-  height: min(50%, 17.1rem);
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: min(50%, 17.1rem);
-  z-index: 2;
-}
 .about-hero__visual::after { background: linear-gradient(145deg, rgba(10, 5, 50, 0.02), rgba(10, 5, 50, 0.82)); z-index: 1; }
 .about-facts {
   border-top: 1px solid var(--color-line);
@@ -430,24 +418,6 @@
 .about-facts span { align-self: start; border-bottom: 2px solid var(--color-lemon); color: var(--color-ink); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; padding-bottom: 0.35rem; text-transform: none; width: fit-content; }
 .about-facts strong { align-self: end; font-size: clamp(1.5rem, 5vw, 4.86rem); font-weight: 300; letter-spacing: -0.025em; line-height: 1.08; }
 .about-facts p { color: var(--color-ink); font-size: 0.92rem; line-height: 1.32; margin-top: 0.9rem; max-width: 11.7rem; }
-.about-statement {
-  display: grid;
-  gap: clamp(1.6rem, 8vw, 8.1rem);
-  grid-template-columns: minmax(17.1rem, 0.8fr) minmax(18rem, 1.2fr);
-}
-.about-statement__mark {
-  border-top: 1px solid var(--color-line-light);
-  color: var(--color-lemon);
-  font-size: clamp(1.8rem, 6vw, 6.21rem);
-  font-weight: 600;
-  letter-spacing: -0.1em;
-  line-height: 0.76;
-  padding-top: 0.9rem;
-}
-.about-statement__copy { border-top: 1px solid var(--color-line-light); padding-top: 0.9rem; }
-.about-statement__copy h2 { font-size: clamp(1.25rem, 5vw, 5.04rem); font-weight: 300; letter-spacing: -0.025em; line-height: 0.87; max-width: 12ch; }
-.about-statement__copy h2 em { color: inherit; font-style: normal; font-weight: 700; }
-.about-statement__copy p { color: rgba(255,255,255,0.72); font-size: 1.16rem; line-height: 1.42; margin-top: 1.8rem; max-width: 38.7rem; }
 .about-principles {
   border-top: 1px solid var(--color-line);
   display: grid;
@@ -504,9 +474,7 @@
   .page-section__top,
   .page-section__top--wide,
   .expertise-case-strip,
-  .portfolio-assurance,
   .case-related,
-  .about-statement,
   .about-locations,
   .page-cta { grid-template-columns: 1fr; }
   .page-hero__visual { aspect-ratio: 16 / 10; margin-left: calc(var(--gutter) * -1); min-height: 0; }
