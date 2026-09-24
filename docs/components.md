@@ -19,6 +19,10 @@ statt eine Parallel-Klasse zu erfinden.
 - **Orange Linien** (#F7911E) nur unter Zahlen/Labels — Ausnahme: der
   aktive/gehoverte Menülink trägt einen 2px-Ink-Unterstrich (Owner-Entscheid
   24.09., gilt nur im Menü).
+- **Keine Seiten-Forks:** dieselbe Komponente verhält sich auf jeder Seite
+  gleich (Owner 24.09.). Die frühere Startseiten-Sonderform (statische
+  Branchen-Kacheln, pfeillose Karten-Links) ist aufgehoben; Varianten sind
+  Modifier im Kanon, keine Parallel-Implementierungen.
 
 ## Kanon-Komponenten
 
@@ -26,12 +30,12 @@ statt eine Parallel-Klasse zu erfinden.
 | --- | --- | --- |
 | Eyebrow | `.eyebrow`, `--light` | Sektions-Label mit Lemon-Rule danach. Ersetzt page-eyebrow, page-kicker. |
 | Display-Heading | `.display-large`, `--light` | Die eine große Überschrift (H1/H2). `em` = bold, Farbe erbt. Ersetzt display-hero, page-display, page-title, page-cta__title. |
-| Text-Link | `.text-link`, `--light` | Pfeil-Link; Pfeil IMMER als `<span aria-hidden="true">→</span>` im Markup (Startseite bewusst ohne Pfeil-Spans). 44px-Target eingebaut. Ersetzt page-link. |
+| Text-Link | `.text-link`, `--light` | Pfeil-Link; Pfeil IMMER als `<span aria-hidden="true">→</span>` im Markup. 44px-Target eingebaut. Ersetzt page-link. |
 | Fakten/Nummern-Grid | `.fact-grid`, `--3/--4/--5`, `--flush`, `--stats`, `--flow`, `__label`, `__label--rule`, `__label--display` | Hairline-Zellen-Grid für Kennzahlen, Phasen, Prinzipien. `--display` = Phasen-Ziffern in Kennzahlen-Größe; `--rule` = Lemon-Unterstrich unterm Label; `--flow` = Überschrift oben statt unten. Ersetzt portfolio-model, about-principles, about-facts. |
 | Box-Trio | `.company-values`, `--paper`, `--2`, `__icon` | Artikel-Grid mit Lemon-Top-Rule; `--paper` = gefüllte Papier-Boxen (ex lede-boxes), `--2` = zweispaltig. `.case-facets` ist der bewusste Projekt-Override (Icon-Spalten). |
 | CTA | `.page-cta` via `cta()` in content/render.mjs | Eyebrow immer „Ihr nächster Schritt“; handgeschriebene CTAs (karriere, portfolio, case-studies) folgen exakt derselben Form. |
 | Referenzkarte | `.reference-card` | Navy-Box-Hover (320ms), Bild-Zoom 560ms/1.03, Pfeil-Slide .35rem. |
-| Branchen-Kachel | `.industry-tile` | Gefüllter `__copy`-Block, kein Bleed; Border-Farbwechsel statt Dickensprung. |
+| Branchen-Kachel | `.industry-tile` | EIN Verhalten überall (Owner 24.09.): immer verlinkt auf /branchen/&lt;slug&gt;/, nummeriert, mit Pfeil und Navy-Hover — auch auf der Startseite (ersetzt die frühere statische Variante). Gefüllter `__copy`-Block, kein Bleed; Border-Farbwechsel statt Dickensprung. |
 | Management-Karte | `.management-card`, `__more`, `__facts` | Foto (grayscale, kein Hover), Name, Rolle, 48-Wort-Teaser; Fakten + Rest-Bio + LinkedIn im `<details>`-Expander. |
 | Kennzahlen | `.company-facts`, `__value` | Startseiten-Stil, Countup. Nicht klickbar → kein Hover. |
 | Standorte | `partials/locations-map.html`, `partials/location-list.html` | Byte-identische Blöcke, einmal definiert (karriere + kontakt). |

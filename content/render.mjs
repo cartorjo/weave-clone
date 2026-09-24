@@ -11,13 +11,11 @@ export function picture(key, sizes = '(max-width: 700px) 100vw, 50vw', priority 
   return `<picture>${['avif','webp'].map(format => `<source type="image/${format}" srcset="${asset.variants.filter(v=>v.format===format).map(v=>`${v.src} ${v.width}w`).join(', ')}" sizes="${sizes}">`).join('')}<img src="${asset.src}" alt="${escape(asset.alt)}" width="${asset.width}" height="${asset.height}" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"></picture>`;
 }
 
-export function industryCards(linked = true) {
-  // The homepage is static (owner rule: only reference projects are clickable,
-  // no arrows) — it renders the plain variant; the Branchen overview keeps links.
-  return `<div class="industry-cards">${industries.map((industry,i)=>{
-    const inner = `<figure>${picture(industry.image,'(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 33vw')}</figure><div class="industry-tile__copy"><span class="industry-tile__number">0${i+1}</span><h3>${escape(industry.name)}</h3>${industry.subtitle ? `<p>${escape(industry.subtitle)}</p>` : ''}${linked ? '<span class="industry-tile__arrow" aria-hidden="true">→</span>' : ''}</div>`;
-    return linked ? `<a class="industry-tile" href="/branchen/${industry.slug}/">${inner}</a>` : `<div class="industry-tile">${inner}</div>`;
-  }).join('')}</div>`;
+export function industryCards() {
+  // ONE industry tile everywhere (owner 24-09: identical components must not
+  // fork per page — supersedes the earlier static-homepage variant): always
+  // linked, numbered, with arrow and hover inversion.
+  return `<div class="industry-cards">${industries.map((industry,i)=>`<a class="industry-tile" href="/branchen/${industry.slug}/"><figure>${picture(industry.image,'(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 33vw')}</figure><div class="industry-tile__copy"><span class="industry-tile__number">0${i+1}</span><h3>${escape(industry.name)}</h3>${industry.subtitle ? `<p>${escape(industry.subtitle)}</p>` : ''}<span class="industry-tile__arrow" aria-hidden="true">→</span></div></a>`).join('')}</div>`;
 }
 
 function metric(project) {
@@ -29,7 +27,7 @@ export function projectCards(selection = projects, filterable = false, collage =
   const sizes = index => collage
     ? (index === 1 || index === 2 ? '(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 58vw' : '(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 42vw')
     : '(max-width: 700px) 100vw, 50vw';
-  return `<div class="reference-grid${collage ? ' reference-grid--collage' : ''}"${filterable ? ' data-project-grid' : ''}>${selection.map((project,index)=>`<a class="reference-card" href="/case-studies/${project.slug}/"${filterable ? ` data-project data-industry="${project.filter}" data-discipline="${project.discipline}"` : ''}><figure>${picture(project.image,sizes(index))}</figure><div class="reference-card__copy"><div class="reference-card__meta"><span>${escape(project.industry)}</span><span>${escape(disciplineBySlug[project.discipline].name)}</span></div><h3>${escape(project.name)}</h3><p>${escape(project.headline)}</p>${metric(project)}<span class="text-link">Case Study lesen${collage ? '' : ` ${arrow}`}</span></div></a>`).join('')}</div>`;
+  return `<div class="reference-grid${collage ? ' reference-grid--collage' : ''}"${filterable ? ' data-project-grid' : ''}>${selection.map((project,index)=>`<a class="reference-card" href="/case-studies/${project.slug}/"${filterable ? ` data-project data-industry="${project.filter}" data-discipline="${project.discipline}"` : ''}><figure>${picture(project.image,sizes(index))}</figure><div class="reference-card__copy"><div class="reference-card__meta"><span>${escape(project.industry)}</span><span>${escape(disciplineBySlug[project.discipline].name)}</span></div><h3>${escape(project.name)}</h3><p>${escape(project.headline)}</p>${metric(project)}<span class="text-link">Case Study lesen ${arrow}</span></div></a>`).join('')}</div>`;
 }
 
 function filters() {
@@ -164,7 +162,6 @@ function management() {
 export function fragment(name) {
   switch (name) {
     case 'industry-cards': return industryCards();
-    case 'industry-cards-static': return industryCards(false);
     case 'projects-featured': return projectCards(projects.filter(p=>['data2ai-platform','engineering-wissensbasis','mlops-medizinprodukte','multi-site-transition'].includes(p.slug)), false, true);
     case 'projects-all': return filters();
     case 'disciplines': return disciplineGrid();
