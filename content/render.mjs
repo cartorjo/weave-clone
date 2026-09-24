@@ -129,11 +129,31 @@ function management() {
     'marcus-hefele': ['Strategische Kundenpartnerschaften und Positionierung des Lösungsportfolios', 'Aufbau neuer Geschäftsfelder, branchenübergreifende Zusammenarbeit', 'Messbare Geschäftsergebnisse statt reiner Konzepte'],
   };
   const labels = ['Verantwortung', 'Expertise', 'Schwerpunkt'];
+  // The visible teaser is capped at 96 words, cut at the nearest sentence
+  // boundary below the cap so it never breaks mid-sentence; everything after
+  // sits behind the Mehr-lesen expander.
+  const TEASER_WORDS = 96;
+  const splitBio = paragraphs => {
+    const teaser = [], rest = [];
+    let count = 0, full = false;
+    for (const paragraph of paragraphs) {
+      if (full) { rest.push(paragraph); continue; }
+      let keep = '', spill = '';
+      for (const sentence of paragraph.match(/[^.!?]+[.!?]+["']?(\s+|$)/g) ?? [paragraph]) {
+        const words = sentence.trim().split(/\s+/).length;
+        if (!full && count + words <= TEASER_WORDS) { keep += sentence; count += words; }
+        else { full = true; spill += sentence; }
+      }
+      if (keep.trim()) teaser.push(keep.trim());
+      if (spill.trim()) rest.push(spill.trim());
+    }
+    return {teaser, rest};
+  };
   const cards = profiles.map(person=>{
     const detail = facts[person.image].map((fact,i)=>`<p><strong>${labels[i]}</strong>${escape(fact)}</p>`).join('');
-    const [intro, ...rest] = person.bio;
+    const {teaser, rest} = splitBio(person.bio);
     const more = rest.length ? `<details class="management-card__more"><summary class="min-h-11"><span class="management-card__more-open">Mehr lesen</span><span class="management-card__more-close">Weniger anzeigen</span></summary>${rest.map(text=>`<p class="management-card__bio">${escape(text)}</p>`).join('')}</details>` : '';
-    return `<article class="management-card"><figure tabindex="0">${picture(person.image,'(max-width: 700px) 100vw, 33vw')}</figure><div class="management-card__detail">${detail}${person.link ? `<a href="${person.link.href}">LinkedIn ${arrow}</a>` : ''}</div><h3>${escape(person.name)}</h3><p class="management-card__role">${person.roles.map(escape).join('<br>')}</p><p class="management-card__bio">${escape(intro)}</p>${more}</article>`;
+    return `<article class="management-card"><figure tabindex="0">${picture(person.image,'(max-width: 700px) 100vw, 33vw')}</figure><div class="management-card__detail">${detail}${person.link ? `<a href="${person.link.href}">LinkedIn ${arrow}</a>` : ''}</div><h3>${escape(person.name)}</h3><p class="management-card__role">${person.roles.map(escape).join('<br>')}</p>${teaser.map(text=>`<p class="management-card__bio">${escape(text)}</p>`).join('')}${more}</article>`;
   }).join('');
   return `<section class="page-section page-section--paper" id="management" aria-labelledby="management-title"><div class="gutter"><div class="container"><p class="eyebrow">Management</p><h2 class="page-title" id="management-title">Menschen, die Verantwortung übernehmen.</h2><div class="management-cards">${cards}<article class="management-card"><div class="management-card__initials" aria-hidden="true">HL</div><h3>Hans Lang</h3></article></div></div></div></section>`;
 }
