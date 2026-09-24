@@ -1,0 +1,17 @@
+{
+  "date": "2026-09-24",
+  "source": "Startseiten-Review (owner annotations + Feedback Branchen V2 delivery, OneDrive_1_24-09-2026)",
+  "build": "npm run check green after every commit: 34 documents; links, anchors, srcset, one H1, unique ids, drift gate",
+  "browser": {
+    "tool": "puppeteer-core + system Chrome, http://localhost:8080, 1440/390",
+    "results": {
+      "homepageAnchors": ["4× /case-studies/<slug>/", "/branchen/#referenzen", "Datenschutz (form, legally required)"],
+      "homepageArrowGlyphs": 0,
+      "industryTiles": "5 static <div> tiles on the homepage (no hover inversion, verified rgba(0,0,0,0)); 5 linked tiles with arrows + navy hover (rgb(10,5,50)) on /branchen/",
+      "newImages": "industry-aerospace/energy/health/industrials/technology render on homepage tiles, Branchen overview and detail heroes (aerospace hero = industry-aerospace-920.avif)",
+      "verzahnung": "right-edge pixel column now rgb(11,5,51) across full height; 2x close-up screenshot shows no frame line",
+      "overflow": "none on /, /branchen/, two detail pages at 1440 and 390",
+      "consoleErrors": "none"
+    }
+  }
+}
