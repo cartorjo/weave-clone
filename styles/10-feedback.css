@@ -58,15 +58,12 @@
 .expertise-intro__heading { display: grid; grid-template-columns: 1.35fr .65fr; align-items: end; gap: 4rem; }
 .expertise-intro__heading > p { font-size: 1.2rem; line-height: 1.55; }
 .expertise-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 2rem; position: relative; margin-top: 3.5rem; }
-.expertise-pair > a { color: var(--color-ink); text-decoration: none; transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease; }
-.expertise-pair > a:hover, .expertise-pair > a:focus-visible { background: var(--color-ink); box-shadow: 0 0 0 1.1rem var(--color-ink); color: #fff; position: relative; z-index: 1; }
-.expertise-pair > a:hover h3, .expertise-pair > a:focus-visible h3 { font-weight: 700; }
-.expertise-pair > a:hover > div > span, .expertise-pair > a:focus-visible > div > span { color: var(--color-lemon); }
+/* Static pair (owner rule: the homepage carries no links except references). */
+.expertise-pair > div { color: var(--color-ink); }
 .expertise-pair figure { aspect-ratio: 16/9; overflow: hidden; }
-.expertise-pair img { width: 100%; height: 100%; object-fit: cover; transition: transform 400ms ease; }
-.expertise-pair > a > div { display: flex; align-items: center; justify-content: space-between; margin-top: 1.25rem; }
+.expertise-pair img { width: 100%; height: 100%; object-fit: cover; }
+.expertise-pair > div > div { display: flex; align-items: center; justify-content: space-between; margin-top: 1.25rem; }
 .expertise-pair h3 { font-size: clamp(1.6rem,3vw,2.75rem); letter-spacing: -.02em; }
-.expertise-pair a span { font-size: 2rem; }
 .expertise-pair p { margin-top: .6rem; font-size: 1.1rem; }
 .expertise-pair__join { position: absolute; left: 50%; top: 26%; transform: translate(-50%,-50%); width: 4.5rem; height: 4.5rem; display: grid; place-items: center; color: var(--color-ink); background: var(--color-lemon); font-size: 3rem; z-index: 2; border-radius: 50%; }
 
@@ -75,13 +72,12 @@
 .connection-model { display: grid; grid-template-columns: 1.05fr .95fr; align-items: stretch; margin-top: 4rem; }
 .connection-model__label { font-size: 1rem; font-weight: 700; padding-bottom: 1rem; border-bottom: 1px solid var(--color-line-light); }
 .connection-model__label--how { margin-top: 3rem; }
-.connection-step { display: grid; grid-template-columns: 4rem minmax(0,1fr) 1.5rem; align-items: start; gap: 1.5rem; color: #fff; text-decoration: none; padding: 1.5rem 0; }
+.connection-step { display: grid; grid-template-columns: 4rem minmax(0,1fr); align-items: start; gap: 1.5rem; color: #fff; padding: 1.5rem 0; }
 .connection-step__icon { width: 4rem; height: 4rem; border-radius: 50%; padding: .9rem; background: var(--color-lemon); color: var(--color-ink); }
 .connection-step__icon svg { height: 100%; width: 100%; }
 .connection-step--how .connection-step__icon { background: #4597ce; }
 .connection-step h3 { font-size: clamp(1.3rem,1.75vw,1.7rem); font-weight: 700; line-height: 1.2; }
 .connection-step p { font-size: 1.1rem; line-height: 1.5; margin-top: .65rem; }
-.connection-step__arrow { color: var(--color-lemon); font-size: 1.6rem; }
 .connection-model__visual { display: grid; align-content: center; position: relative; }
 .connection-model__visual img { width: 100%; height: auto; }
 .connection-model__visual p { position: absolute; right: 4%; top: 72%; font-size: 1.15rem; text-align: center; }
@@ -97,10 +93,12 @@
 .industry-tile h3 { font-size: clamp(1.4rem,2.1vw,2rem); font-weight: 400; line-height: 1.2; margin-top: 1.15rem; padding-right: 1.7rem; }
 .industry-tile p { margin-top: .5rem; }
 .industry-tile__arrow { position: absolute; right: 1.25rem; top: 1.5rem; font-size: 1.6rem; }
-.industry-tile:hover .industry-tile__copy, .industry-tile:focus-visible .industry-tile__copy { color: #fff; background: var(--color-ink); }
-.industry-tile:hover h3, .industry-tile:focus-visible h3 { font-weight: 700; }
-.industry-tile:hover .industry-tile__number, .industry-tile:focus-visible .industry-tile__number { color: var(--color-lemon); font-weight: 700; border-bottom-width: 3px; }
-.industry-tile:hover .industry-tile__arrow { color: var(--color-lemon); }
+/* Hover inversion only on linked tiles (Branchen overview); the homepage
+   variant is static and must not suggest clickability. */
+a.industry-tile:hover .industry-tile__copy, a.industry-tile:focus-visible .industry-tile__copy { color: #fff; background: var(--color-ink); }
+a.industry-tile:hover h3, a.industry-tile:focus-visible h3 { font-weight: 700; }
+a.industry-tile:hover .industry-tile__number, a.industry-tile:focus-visible .industry-tile__number { color: var(--color-lemon); font-weight: 700; border-bottom-width: 3px; }
+a.industry-tile:hover .industry-tile__arrow { color: var(--color-lemon); }
 .industry-disciplines { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.5rem; margin-top: 3rem; }
 
 .reference-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 4rem 2.5rem; margin-top: 3rem; }
@@ -233,7 +231,7 @@ a.expertise-card:hover .text-link span, a.expertise-card:focus-visible .text-lin
 [id] { scroll-margin-top: 7rem; }
 
 @media (hover:hover) and (prefers-reduced-motion:no-preference) {
-  .reference-card:hover img, .industry-tile:hover img, .expertise-pair > a:hover img { transform: scale(1.035); }
+  .reference-card:hover img, a.industry-tile:hover img { transform: scale(1.035); }
 }
 @media (max-width:1279px) { .site-header__inner { min-height: 5rem; } .site-logo { width: 11rem; } }
 @media (max-width:1000px) {
@@ -276,7 +274,7 @@ a.expertise-card:hover .text-link span, a.expertise-card:focus-visible .text-lin
   .reference-grid--collage .reference-card:nth-child(1) figure, .reference-grid--collage .reference-card:nth-child(4) figure { aspect-ratio: 4 / 4.5; }
   .connection-model { grid-template-columns: minmax(0,1fr); }
   .connection-model__visual { display: none; }
-  .connection-step { grid-template-columns: 3rem minmax(0,1fr) 1rem; gap: .9rem; }
+  .connection-step { grid-template-columns: 3rem minmax(0,1fr); gap: .9rem; }
   .connection-step__icon { width: 3rem; height: 3rem; padding: .65rem; }
   .management-profile figure { height: 25rem; }
   .management-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
