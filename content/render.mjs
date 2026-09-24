@@ -44,8 +44,8 @@ function filters() {
 }
 
 export function disciplineGrid() {
-  // No per-service subpages (workbook v2 correction) — the disciplines render as
-  // static cards; the Engineering/Technology overview pages carry the detail.
+  // No per-service subpages (owner IA) — the disciplines render as static cards
+  // on the Leistungen page.
   return `<div class="expertise-matrix">${['Engineering','Technology'].map(group=>`<section class="expertise-column" aria-labelledby="disciplines-${group}"><h3 class="expertise-column__title" id="disciplines-${group}">${group}</h3><div class="expertise-list">${disciplines.filter(d=>d.group===group).map(d=>`<article class="expertise-card"><h4>${escape(d.name)}</h4><p>${escape(d.topics)}</p><span class="expertise-card__promise">${escape(d.promise)}</span></article>`).join('')}</div></section>`).join('')}</div>`;
 }
 
@@ -58,7 +58,7 @@ export function projectPage(slug) {
   if (!p) throw new Error(`Unknown project: ${slug}`);
   const d = disciplineBySlug[p.discipline];
   return `<section class="page-hero"><div class="gutter"><div class="container"><div class="page-hero__grid"><div class="page-hero__copy"><p class="page-breadcrumb"><a href="/">Startseite</a><span aria-hidden="true">/</span><a href="/case-studies/">Case Studies</a></p><p class="page-kicker">${escape(p.industry)}</p><h1 class="page-display">${escape(p.name)}</h1><p class="page-hero__intro">${escape(p.headline)}</p></div><figure class="page-hero__visual">${picture(p.image,'(max-width: 900px) 100vw, 50vw',true)}</figure></div></div></div></section>
-  <section class="page-section"><div class="gutter"><div class="container"><div class="case-story"><div><p class="eyebrow">Der Outcome</p>${metric(p)}</div><div><h2>Die Herausforderung</h2><p>${escape(p.challenge)}</p><h2>Unsere Lösung</h2><p>${escape(p.solution)}</p><h2>Das Ergebnis</h2><ul class="result-list">${p.results.map(r=>`<li>${escape(r)}</li>`).join('')}</ul><a class="text-link" href="${d.overview}">${escape(d.name)} ${arrow}</a></div></div></div></div></section>
+  <section class="page-section"><div class="gutter"><div class="container"><div class="case-story"><div><p class="eyebrow">Der Outcome</p>${metric(p)}</div><div><h2>Die Herausforderung</h2><p>${escape(p.challenge)}</p><h2>Unsere Lösung</h2><p>${escape(p.solution)}</p><h2>Das Ergebnis</h2><ul class="result-list">${p.results.map(r=>`<li>${escape(r)}</li>`).join('')}</ul><a class="text-link" href="/portfolio/">${escape(d.name)} ${arrow}</a></div></div></div></div></section>
   <section class="page-section page-section--paper"><div class="gutter"><div class="container"><p class="eyebrow">Weitere Referenzen</p><h2 class="page-title">Expertise, die Ergebnisse liefert.</h2>${projectCards(projects.filter(other=>other.slug!==p.slug && other.discipline===p.discipline).slice(0,2).length ? projects.filter(other=>other.slug!==p.slug && other.discipline===p.discipline).slice(0,2) : projects.filter(other=>other.slug!==p.slug).slice(0,2))}<p class="section-more"><a class="text-link" href="/case-studies/">Alle Case Studies ${arrow}</a></p></div></div></section>${cta()}`;
 }
 
@@ -122,7 +122,7 @@ export function fragment(name) {
     case 'projects-transform': return projectCards(projects.filter(p=>p.outcome==='transform' && p.slug!=='data2ai-platform'));
     case 'disciplines': return disciplineGrid();
     case 'management': return management();
-    case 'sitemap': return `<div><h2>Leistungen</h2><a href="/">Startseite</a><a href="/portfolio/">Unsere Leistungen</a><a href="/expertise/">Alle Disziplinen</a><a href="/expertise/engineering/">Engineering im Überblick</a><a href="/expertise/technology/">Technology im Überblick</a>${['optimieren','transformieren','skalieren','verzahnen'].map(slug=>`<a href="/portfolio/${slug}/">Wir ${slug}</a>`).join('')}</div><div><h2>Branchen</h2><a href="/branchen/">Alle Branchen</a>${industries.map(i=>`<a href="/branchen/${i.slug}/">${escape(i.name)}</a>`).join('')}<h2>Unternehmen</h2><a href="/about-us/">Über uns</a><a href="/about-us/#management">Management</a><a href="/karriere/">Karriere</a><a href="/kontakt/">Kontakt</a><a href="/zertifizierungen/">Zertifizierungen</a><a href="/cookies/">Cookies</a><a href="/barrierefreiheit/">Barrierefreiheit</a><a href="https://emposo.de/impressum/">Impressum</a><a href="https://emposo.de/datenschutzerklaerung/">Datenschutz</a></div><div><h2>Referenzprojekte</h2><a href="/case-studies/">Alle Case Studies</a>${projects.map(p=>`<a href="/case-studies/${p.slug}/">${escape(p.name)}</a>`).join('')}</div>`;
+    case 'sitemap': return `<div><h2>Leistungen</h2><a href="/">Startseite</a><a href="/portfolio/">Unsere Leistungen</a><a href="/portfolio/#delivery-model">Unser 5-Stufen-Modell</a></div><div><h2>Branchen</h2><a href="/branchen/">Alle Branchen</a>${industries.map(i=>`<a href="/branchen/${i.slug}/">${escape(i.name)}</a>`).join('')}<h2>Unternehmen</h2><a href="/about-us/">Über uns</a><a href="/about-us/#management">Management</a><a href="/karriere/">Karriere</a><a href="/kontakt/">Kontakt</a><a href="/zertifizierungen/">Zertifizierungen</a><a href="/cookies/">Cookies</a><a href="/barrierefreiheit/">Barrierefreiheit</a><a href="https://emposo.de/impressum/">Impressum</a><a href="https://emposo.de/datenschutzerklaerung/">Datenschutz</a></div><div><h2>Referenzprojekte</h2><a href="/case-studies/">Alle Case Studies</a>${projects.map(p=>`<a href="/case-studies/${p.slug}/">${escape(p.name)}</a>`).join('')}</div>`;
     default: throw new Error(`Unknown content fragment: ${name}`);
   }
 }

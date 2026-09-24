@@ -28,23 +28,13 @@
 .site-footer__brand svg { display: block; max-width: 13rem; width: 100%; height: auto; }
 .site-header__inner { gap: 2rem; min-height: 6rem; }
 .site-nav { gap: clamp(1.5rem, 2vw, 2.5rem); }
-.site-nav > a, .site-nav__group > summary, .header-contact { font-size: 1rem; font-weight: 700; letter-spacing: 0; }
+.site-nav > a, .header-contact { font-size: 1rem; font-weight: 700; letter-spacing: 0; }
 /* Top-level nav entries invert to the navy box on hover (owner correction:
    der blaue Kasten bei Hover, einheitlicher Effekt). */
-.site-nav > a, .site-nav__group > summary { transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease; }
-.site-nav > a:hover, .site-nav > a:focus-visible, .site-nav__group > summary:hover, .site-nav__group > summary:focus-visible, .site-nav__group[open] > summary { background: var(--color-ink); box-shadow: 0 0 0 .55rem var(--color-ink); color: #fff; position: relative; z-index: 1; }
+.site-nav > a { transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease; }
+.site-nav > a:hover, .site-nav > a:focus-visible { background: var(--color-ink); box-shadow: 0 0 0 .55rem var(--color-ink); color: #fff; position: relative; z-index: 1; }
 .header-contact { padding: .8rem 1.15rem; }
 .header-contact span { font-size: 1.4rem; }
-.mega-panel__eyebrow { font-size: .95rem; letter-spacing: 0; }
-.mega-panel__grid--4 { grid-template-columns: 1.15fr 1fr 1fr 1fr; }
-.mega-panel__grid--services { grid-template-columns: 1.15fr 1fr 1fr 1.2fr; }
-/* Only the number carries an orange rule (owner feedback, round 4). */
-.mega-panel__num { font-size: 1.1rem; border-bottom: 2px solid var(--color-lemon); display: inline-block; padding-bottom: .3rem; width: fit-content; }
-.mega-panel__item strong { font-size: 1.4rem; }
-.mega-panel__featured a, .mega-panel__links a { display: block; padding: .5rem 0; min-height: 44px; color: var(--color-ink); font-size: 1rem; text-decoration: none; }
-.mega-panel__links { display: flex; flex-direction: column; gap: 1rem; }
-.mega-panel__links span { display: block; font-size: .875rem; font-weight: 400; }
-.mega-panel__featured a:hover, .mega-panel__links a:hover { color: var(--color-ink); font-weight: 700; }
 .mobile-menu__label { font-size: 1rem; letter-spacing: 0; }
 
 .hero--feedback .hero__grid { position: relative; min-height: 43rem; grid-template-columns: 40% 60%; }

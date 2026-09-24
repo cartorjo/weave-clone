@@ -55,7 +55,6 @@
 }
 
 .site-nav > a,
-.site-nav__group > summary,
 .header-careers {
   align-items: center;
   color: var(--color-ink);
@@ -70,12 +69,9 @@
   white-space: nowrap;
 }
 .site-nav > a:hover,
-.site-nav__group > summary:hover,
 .header-careers:hover { color: var(--color-accent-text); }
 .site-nav a[aria-current],
-.header-careers[aria-current],
-.site-nav__group.is-current > summary,
-.site-nav__group[open] > summary { color: var(--color-ink); }
+.header-careers[aria-current] { color: var(--color-ink); }
 
 .header-contact {
   align-items: center;
@@ -94,134 +90,6 @@
   white-space: nowrap;
 }
 .header-contact:hover { background: var(--color-ink); color: #fff; }
-
-/* Megamenu ------------------------------------------------------------------
-   Native <details>: opens on click, fully usable without JS. The panel is a
-   full-width sheet under the header, its inner grid re-aligned to .container. */
-.site-nav__group > summary {
-  cursor: pointer;
-  gap: 0.45rem;
-  list-style: none;
-}
-.site-nav__group > summary::-webkit-details-marker { display: none; }
-.site-nav__group > summary::after {
-  border-bottom: 1px solid currentColor;
-  border-right: 1px solid currentColor;
-  content: "";
-  height: 0.38rem;
-  margin-top: -0.18rem;
-  transform: rotate(45deg);
-  transition: transform var(--duration-fast) ease;
-  width: 0.38rem;
-}
-.site-nav__group[open] > summary::after { transform: rotate(225deg) translate(-0.12rem, -0.12rem); }
-
-.mega-panel {
-  background: #fff;
-  border-bottom: 1px solid var(--color-line);
-  box-shadow: var(--shadow-overlay);
-  left: 0;
-  padding-block: var(--spacing-lg);
-  position: absolute;
-  right: 0;
-  top: 100%;
-  z-index: 60;
-}
-@media (prefers-reduced-motion: no-preference) {
-  .site-nav__group[open] .mega-panel { animation: mega-panel-in var(--duration-fast) var(--ease-em); }
-}
-@keyframes mega-panel-in {
-  from { opacity: 0; transform: translateY(-0.5rem); }
-}
-.mega-panel__grid {
-  align-items: start;
-  display: grid;
-  gap: var(--spacing-lg);
-  grid-template-columns: 1.15fr 1fr 1fr 1fr 1.2fr;
-}
-.mega-panel__eyebrow {
-  color: var(--color-accent-text);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: var(--tracking-caps-wide);
-  text-transform: none;
-}
-.mega-panel__intro > p:last-child {
-  color: var(--color-ink);
-  font-size: 0.9rem;
-  line-height: 1.5;
-  margin-top: 0.9rem;
-  max-width: 16rem;
-}
-.mega-panel__all {
-  align-items: center;
-  color: var(--color-ink);
-  display: inline-flex;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  gap: 0.6rem;
-  letter-spacing: var(--tracking-caps);
-  margin-top: 0.9rem;
-  min-height: 2.75rem;
-  text-decoration: none;
-  text-transform: none;
-}
-.mega-panel__all span[aria-hidden] { font-size: 1.2em; transition: transform var(--duration-fast) var(--ease-em); }
-.mega-panel__all:hover span[aria-hidden] { transform: translateX(0.25rem); }
-.mega-panel__item {
-  border-top: 1px solid var(--color-line);
-  color: var(--color-ink);
-  display: grid;
-  gap: 0.45rem;
-  padding-top: var(--spacing-rule);
-  text-decoration: none;
-}
-.mega-panel__item strong {
-  font-size: 1.2rem;
-  font-weight: 300;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  transition: color var(--duration-fast) ease;
-}
-.mega-panel__item > span:last-child {
-  color: var(--color-ink);
-  font-size: 0.85rem;
-  line-height: 1.45;
-}
-.mega-panel__num {
-  color: var(--color-accent-text);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: var(--tracking-caps-wide);
-}
-.mega-panel__item:hover strong,
-.mega-panel__item:focus-visible strong,
-.mega-panel__item[aria-current] strong { color: var(--color-ink); font-weight: 700; }
-.mega-panel__featured {
-  border-left: 1px solid var(--color-line);
-  display: grid;
-  gap: 0.6rem;
-  padding-left: var(--spacing-md);
-}
-.mega-panel__featured a {
-  color: var(--color-ink);
-  display: grid;
-  gap: 0.45rem;
-  text-decoration: none;
-}
-.mega-panel__featured strong {
-  font-size: 1.2rem;
-  font-weight: 300;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  transition: color var(--duration-fast) ease;
-}
-.mega-panel__featured a:hover strong { color: var(--color-ink); font-weight: 700; }
-.mega-panel__featured span {
-  color: var(--color-ink);
-  font-size: 0.85rem;
-  line-height: 1.45;
-}
 
 /* Mobile menu ---------------------------------------------------------------
    One grouped list with every destination (the old flat menu hid all
