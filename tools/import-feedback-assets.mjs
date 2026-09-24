@@ -31,7 +31,9 @@ const selections = {
   'datacenter': ['General/AdobeStock_2013412737.jpeg', 'Vernetzte Server in einem Rechenzentrum'],
   'software': ['General/AdobeStock_1949888112.jpeg', 'Entwicklung einer digitalen Anwendung am Laptop'],
   // Later deliveries outside the original OneDrive folder (absolute paths resolve as-is).
-  'verzahnung': ['/Users/jose/Downloads/EMPOSO Grafik 26-V2.jpg', 'Orange und blaue Datenströme laufen im Emposo-Logo zusammen'],
+  // trimRight: the delivered V2 JPG carries a 1px light frame column on its right
+  // edge that renders as a hairline on the navy section ("Grafik hat noch einen Rahmen").
+  'verzahnung': ['/Users/jose/Downloads/EMPOSO Grafik 26-V2.jpg', 'Orange und blaue Datenströme laufen im Emposo-Logo zusammen', {trimRight: 2}],
   // 2026-09-22 delivery: all six management portraits, 850×607 landscape masters.
   'claus-thierbach': ['/Users/jose/Downloads/OneDrive_1_22-09-2026/Foto Thierbach.jpg', 'Claus Thierbach'],
   'aleksandar-amidzic': ['/Users/jose/Downloads/OneDrive_1_22-09-2026/ALA.jpg', 'Aleksandar Amidzic'],
@@ -64,11 +66,16 @@ const selected = only ? Object.fromEntries(only.map(key => [key, selections[key]
 await mkdir(destination, {recursive: true});
 const manifestURL = new URL('manifest.json', destination);
 const manifest = only ? JSON.parse(await readFile(manifestURL, 'utf8')) : {};
-for (const [key, [file, alt]] of Object.entries(selected)) {
-  const pipeline = sharp(resolve(source, file)).rotate();
+for (const [key, [file, alt, options = {}]] of Object.entries(selected)) {
+  let pipeline = sharp(resolve(source, file)).rotate();
   const metadata = await pipeline.metadata();
+  let sourceWidth = metadata.autoOrient.width;
+  if (options.trimRight) {
+    pipeline = pipeline.extract({left: 0, top: 0, width: sourceWidth - options.trimRight, height: metadata.autoOrient.height});
+    sourceWidth -= options.trimRight;
+  }
   const portrait = ['claus-thierbach', 'aleksandar-amidzic', 'markus-auer', 'roman-bretz', 'michael-schmitt', 'marcus-hefele'].includes(key);
-  const fullWidth = Math.min(portrait ? 900 : 1600, metadata.autoOrient.width);
+  const fullWidth = Math.min(portrait ? 900 : 1600, sourceWidth);
   const widths = [...new Set([Math.min(640, fullWidth), fullWidth])];
   const variants = [];
   for (const width of widths) {
