@@ -57,3 +57,12 @@
 .fact-grid__label--rule { border-bottom: 2px solid var(--color-lemon); padding-bottom: .35rem; width: fit-content; }
 .fact-grid__label--display { border-bottom: 2px solid var(--color-lemon); color: var(--color-ink); font-size: clamp(1.8rem, 2.6vw, 2.75rem); font-weight: 300; letter-spacing: -.02em; line-height: 1.1; padding-bottom: .35rem; width: fit-content; }
 .fact-grid--flow h3 { margin-top: 2rem; padding-top: 0; }
+
+/* Company-values variants (base trio grid lives in 10): --paper fills the
+   boxes (former lede-boxes), --2 caps at two columns. Collapse matches the
+   base 900px breakpoint. */
+.company-values--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 68rem; }
+.company-values--paper article { background: var(--color-paper); padding: 1.6rem 1.8rem 1.8rem; }
+@media (max-width: 900px) {
+  .company-values--2 { grid-template-columns: 1fr; max-width: 40rem; }
+}

@@ -195,10 +195,6 @@ a.expertise-card:focus-visible p { color: inherit; }
 .portfolio-mode__outcome { font-size: 1.15rem; font-weight: 700; letter-spacing: .01em; line-height: 1.45; max-width: 15rem; }
 /* Leistungen intro: kurze Lede plus Fließtext in Kästen nebeneinander
    (owner review 24-09). */
-.lede-boxes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2.5rem; max-width: 68rem; }
-.lede-boxes--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: none; }
-.lede-boxes article { background: var(--color-paper); border-top: 3px solid var(--color-lemon); padding: 1.6rem 1.8rem 1.8rem; }
-.lede-boxes p { font-size: 1.1rem; line-height: 1.6; }
 /* Über uns: Hays-Netzwerk-Grafik ersetzt die Kennzahlen-Reihe (Review 24-09). */
 .about-netzwerk { margin: 3.5rem auto 0; max-width: 62rem; }
 .about-netzwerk img { width: 100%; height: auto; }
@@ -296,7 +292,6 @@ a.expertise-card:focus-visible p { color: inherit; }
   .company-facts { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 2rem; }
   .company-values { grid-template-columns: 1fr; }
   .contact__grid { grid-template-columns: minmax(0, 1fr); }
-  .lede-boxes { grid-template-columns: minmax(0, 1fr); max-width: 40rem; }
   .discipline-table { grid-auto-flow: row; grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
   .discipline-table > :nth-child(n+6) { border-left: 0; padding-left: 0; }
   .discipline-cell { padding-right: 0; }
