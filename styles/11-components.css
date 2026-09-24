@@ -66,3 +66,9 @@
 @media (max-width: 900px) {
   .company-values--2 { grid-template-columns: 1fr; max-width: 40rem; }
 }
+
+/* Filter rows hang: "Alle" sits in its own column, so wrapped chip lines
+   align with the first named chip instead of with "Alle" (owner 24-09).
+   gap: inherit keeps the chip gap in sync with every breakpoint override. */
+.filter-group > div[role="group"] { align-items: start; display: grid; grid-template-columns: auto 1fr; }
+.filter-choices { display: flex; flex-wrap: wrap; gap: inherit; }
