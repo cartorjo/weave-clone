@@ -12,10 +12,10 @@ export function picture(key, sizes = '(max-width: 700px) 100vw, 50vw', priority 
 }
 
 export function industryCards() {
-  // ONE industry tile everywhere (owner 24-09: identical components must not
-  // fork per page — supersedes the earlier static-homepage variant): always
-  // linked, numbered, with arrow and hover inversion.
-  return `<div class="industry-cards">${industries.map((industry,i)=>`<a class="industry-tile" href="/branchen/${industry.slug}/"><figure>${picture(industry.image,'(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 33vw')}</figure><div class="industry-tile__copy"><span class="industry-tile__number">0${i+1}</span><h3>${escape(industry.name)}</h3>${industry.subtitle ? `<p>${escape(industry.subtitle)}</p>` : ''}<span class="industry-tile__arrow" aria-hidden="true">→</span></div></a>`).join('')}</div>`;
+  // ONE industry tile everywhere, and it is static content: the Branchen
+  // detail subpages were removed (owner 24-09), so tiles carry no link, no
+  // arrow, no hover — same behavior on the homepage and on /branchen/.
+  return `<div class="industry-cards">${industries.map((industry,i)=>`<div class="industry-tile"><figure>${picture(industry.image,'(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 33vw')}</figure><div class="industry-tile__copy"><span class="industry-tile__number">0${i+1}</span><h3>${escape(industry.name)}</h3>${industry.subtitle ? `<p>${escape(industry.subtitle)}</p>` : ''}</div></div>`).join('')}</div>`;
 }
 
 function metric(project) {
@@ -75,14 +75,6 @@ export function projectPage(slug) {
   <section class="page-section page-section--paper"><div class="gutter"><div class="container"><p class="eyebrow">Weitere Projekte</p><h2 class="display-large">Expertise, die Ergebnisse liefert.</h2>${projectCards(related)}<p class="section-more"><a class="text-link" href="/case-studies/">Alle Projekte ${arrow}</a></p></div></div></section>${cta()}`;
 }
 
-export function industryPage(slug) {
-  const i = industries.find(i=>i.slug===slug);
-  if (!i) throw new Error(`Unknown industry: ${slug}`);
-  const related = projects.filter(p=>i.cases.includes(p.slug));
-  return `<section class="page-hero"><div class="gutter"><div class="container"><div class="page-hero__grid"><div class="page-hero__copy"><p class="page-breadcrumb"><a href="/">Startseite</a><span aria-hidden="true">/</span><a href="/branchen/">Branchen</a></p><p class="eyebrow eyebrow--light">${escape(i.subtitle || 'Branchenwissen in Anwendung')}</p><h1 class="display-large display-large--light">${escape(i.name)}</h1><p class="page-hero__intro">${escape(i.intro)}</p></div><figure class="page-hero__visual">${picture(i.image,'(max-width: 900px) 100vw, 50vw',true)}</figure></div></div></div></section>
-  <section class="page-section"><div class="gutter"><div class="container"><div class="page-section__top"><div><p class="eyebrow">Ihre Branche. Unsere Expertise.</p><h2 class="display-large">Unsere Teams kommen direkt aus Ihrer Branche.</h2></div><div class="page-section__lede"><p>${escape(i.challenge)}</p><p>${escape(i.delivery)}</p></div></div><div class="industry-disciplines">${i.disciplines.map(slug=>{const d=disciplineBySlug[slug];return `<article class="expertise-card"><h3>${escape(d.name)}</h3><p>${escape(d.promise)}</p></article>`;}).join('')}</div></div></div></section>
-  ${related.length ? `<section class="page-section page-section--paper"><div class="gutter"><div class="container"><p class="eyebrow">Projekte</p><h2 class="display-large">Unsere Erfolge sprechen für sich.</h2>${projectCards(related)}<p class="section-more"><a class="text-link" href="/case-studies/?branche=${i.filter}#referenzen">Alle passenden Referenzen ${arrow}</a></p></div></div></section>` : ''}${cta()}`;
-}
 
 function management() {
   // Roles and biographies as supplied in the owner's workbook (sheet 06 Management),
@@ -166,7 +158,7 @@ export function fragment(name) {
     case 'projects-all': return filters();
     case 'disciplines': return disciplineGrid();
     case 'management': return management();
-    case 'sitemap': return `<div><h2>Leistungen</h2><a href="/">Startseite</a><a href="/portfolio/">Unsere Leistungen</a><a href="/portfolio/#delivery-model">Unser 5-Stufen-Modell</a></div><div><h2>Branchen</h2><a href="/branchen/">Alle Branchen</a>${industries.map(i=>`<a href="/branchen/${i.slug}/">${escape(i.name)}</a>`).join('')}<h2>Unternehmen</h2><a href="/about-us/">Über uns</a><a href="/about-us/#management">Management</a><a href="/karriere/">Karriere</a><a href="/kontakt/">Kontakt</a><a href="/zertifizierungen/">Zertifizierungen</a><a href="/cookies/">Cookies</a><a href="/barrierefreiheit/">Barrierefreiheit</a><a href="https://emposo.de/impressum/">Impressum</a><a href="https://emposo.de/datenschutzerklaerung/">Datenschutz</a></div><div><h2>Projekte</h2><a href="/case-studies/">Alle Projekte</a>${projects.map(p=>`<a href="/case-studies/${p.slug}/">${escape(p.name)}</a>`).join('')}</div>`;
+    case 'sitemap': return `<div><h2>Leistungen</h2><a href="/">Startseite</a><a href="/portfolio/">Unsere Leistungen</a><a href="/portfolio/#delivery-model">Unser 5-Stufen-Modell</a></div><div><h2>Branchen</h2><a href="/branchen/">Alle Branchen</a><h2>Unternehmen</h2><a href="/about-us/">Über uns</a><a href="/about-us/#management">Management</a><a href="/karriere/">Karriere</a><a href="/kontakt/">Kontakt</a><a href="/zertifizierungen/">Zertifizierungen</a><a href="/cookies/">Cookies</a><a href="/barrierefreiheit/">Barrierefreiheit</a><a href="https://emposo.de/impressum/">Impressum</a><a href="https://emposo.de/datenschutzerklaerung/">Datenschutz</a></div><div><h2>Projekte</h2><a href="/case-studies/">Alle Projekte</a>${projects.map(p=>`<a href="/case-studies/${p.slug}/">${escape(p.name)}</a>`).join('')}</div>`;
     default: throw new Error(`Unknown content fragment: ${name}`);
   }
 }

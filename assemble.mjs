@@ -18,7 +18,7 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pages from './pages.mjs';
-import { escape, picture, fragment, projectPage, industryPage } from './content/render.mjs';
+import { escape, picture, fragment, projectPage } from './content/render.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 const partial = (name) => readFileSync(join(root, 'partials', `${name}.html`), 'utf8');
@@ -54,7 +54,6 @@ const inlinePartials = (html) => html
 const pageContent = page => {
   if (Array.isArray(page.content)) return page.content.map(file=>readFileSync(join(root,file),'utf8').trim()).join('\n\n');
   if (page.content.startsWith('project:')) return projectPage(page.content.slice(8));
-  if (page.content.startsWith('industry:')) return industryPage(page.content.slice(9));
   return readFileSync(join(root,page.content),'utf8').trim();
 };
 

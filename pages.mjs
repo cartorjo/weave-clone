@@ -4,7 +4,7 @@
 //   - content: 'pages/x.html'  → the page's <main> inner content
 // nav: which header item is highlighted. navExact: false marks an ancestor
 // (aria-current="true" instead of "page"), e.g. a case-study detail page.
-import { industries, projects } from './content/site-data.mjs';
+import { projects } from './content/site-data.mjs';
 export default [
   {
     out: 'index.html',
@@ -94,11 +94,6 @@ export default [
     out:`case-studies/${project.slug}/index.html`, title:`${project.name} | Case Study | Emposo`,
     description:project.headline, nav:'case-studies', navExact:false,
     bodyClass:'subpage wrap-anywhere', content:`project:${project.slug}`, scripts:['00-core','01-header'],
-  })),
-  ...industries.map(industry=>({
-    out:`branchen/${industry.slug}/index.html`, title:`${industry.name} | Emposo`,
-    description:industry.intro, nav:'branchen', navExact:false,
-    bodyClass:'subpage wrap-anywhere', content:`industry:${industry.slug}`, scripts:['00-core','01-header'],
   })),
   ...['cookies','barrierefreiheit','sitemap','zertifizierungen'].map(name=>({
     out:`${name}/index.html`, title:`${{cookies:'Cookies',sitemap:'Sitemap',barrierefreiheit:'Barrierefreiheit',zertifizierungen:'Zertifizierungen'}[name]} | Emposo`,

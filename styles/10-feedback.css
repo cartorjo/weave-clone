@@ -88,23 +88,12 @@
 .industry-tile figure { aspect-ratio: 16/10; overflow: hidden; }
 .industry-tile:nth-child(n+4) figure { aspect-ratio: 2.4/1; }
 .industry-tile img { width: 100%; height: 100%; object-fit: cover; }
-a.industry-tile img { transition: transform var(--duration-slow) var(--ease-em); }
 .industry-tile__copy { padding: 1.4rem 1.5rem 1.8rem; position: relative; min-height: 10rem; }
-a.industry-tile .industry-tile__copy { transition: background var(--duration-medium) var(--ease-em), color var(--duration-medium) var(--ease-em); }
-.industry-tile__number { font-size: 1.15rem; border-bottom: 1px solid currentColor; padding-bottom: .2rem; transition: color var(--duration-medium) var(--ease-em); }
+.industry-tile__number { font-size: 1.15rem; border-bottom: 1px solid currentColor; padding-bottom: .2rem; }
 .industry-tile h3 { font-size: clamp(1.4rem,2.1vw,2rem); font-weight: 400; line-height: 1.2; margin-top: 1.15rem; padding-right: 1.7rem; }
 .industry-tile p { margin-top: .5rem; }
-.industry-tile__arrow { position: absolute; right: 1.25rem; top: 1.5rem; font-size: 1.6rem; transition: color var(--duration-medium) var(--ease-em); }
-/* Hover inversion only on linked tiles (Branchen overview); the homepage
-   variant is static and must not suggest clickability. Hover gated for touch;
-   focus-visible mirrors it ungated. No weight/border jumps — nothing reflows. */
-@media (hover: hover) {
-  a.industry-tile:hover .industry-tile__copy { color: #fff; background: var(--color-ink); }
-  a.industry-tile:hover .industry-tile__number, a.industry-tile:hover .industry-tile__arrow { color: var(--color-lemon); }
-}
-a.industry-tile:focus-visible .industry-tile__copy { color: #fff; background: var(--color-ink); }
-a.industry-tile:focus-visible .industry-tile__number, a.industry-tile:focus-visible .industry-tile__arrow { color: var(--color-lemon); }
-.industry-disciplines { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.5rem; margin-top: 3rem; }
+/* Tiles are static content (owner 24-09: Branchen-Unterseiten entfernt) —
+   no hover, per the hover-only-on-clickables policy. */
 
 .reference-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 4rem 2.5rem; margin-top: 3rem; }
 /* Homepage collage (owner correction: reference images in varying sizes again,
@@ -261,7 +250,7 @@ a.expertise-card:focus-visible p { color: inherit; }
 [id] { scroll-margin-top: 7rem; }
 
 @media (hover:hover) and (prefers-reduced-motion:no-preference) {
-  .reference-card:hover img, a.industry-tile:hover img { transform: scale(1.03); }
+  .reference-card:hover img { transform: scale(1.03); }
 }
 @media (max-width:1279px) { .site-header__inner { min-height: 5rem; } .site-logo { width: 11rem; } }
 @media (max-width:1000px) {
@@ -298,7 +287,7 @@ a.expertise-card:focus-visible p { color: inherit; }
   .discipline-table__head:not(:first-child) { margin-top: 2.75rem; }
 }
 @media (max-width:700px) {
-  .reference-grid, .reference-grid--collage, .industry-disciplines, .sitemap-grid { grid-template-columns: minmax(0,1fr); }
+  .reference-grid, .reference-grid--collage, .sitemap-grid { grid-template-columns: minmax(0,1fr); }
   .reference-grid { gap: 3rem; }
   .reference-grid--collage .reference-card { grid-column: auto; }
   .reference-grid--collage .reference-card:nth-child(1) figure, .reference-grid--collage .reference-card:nth-child(4) figure { aspect-ratio: 4 / 4.5; }
