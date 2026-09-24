@@ -220,7 +220,9 @@
   text-transform: none;
 }
 .page-link::after { content: "→"; font-size: 1.25em; transition: transform var(--duration-fast) var(--ease-em); }
-.page-link:hover::after { transform: translateX(0.25rem); }
+@media (hover: hover) {
+  .page-link:hover::after { transform: translateX(0.35rem); }
+}
 .page-link--light { color: #fff; }
 
 /* Expertise ---------------------------------------------------------------- */
@@ -232,14 +234,11 @@
   gap: 0.99rem;
   padding: clamp(0.52rem, 2.6vw, 2.43rem) 0;
   text-decoration: none;
-  transition: color var(--duration-fast) ease, transform var(--duration-fast) var(--ease-em);
 }
 .expertise-card:last-child { border-bottom: 1px solid var(--color-line); }
-.expertise-card:hover { color: var(--color-accent-text); transform: translateX(0.72rem); }
 .expertise-card__number { color: var(--color-lemon); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: none; }
 .expertise-card h3 { font-size: clamp(1.05rem, 2.4vw, 2.295rem); font-weight: 300; letter-spacing: -0.025em; line-height: 1.08; max-width: 15ch; }
 .expertise-card p { color: var(--color-ink); font-size: 0.96rem; line-height: 1.38; max-width: 28.8rem; }
-.expertise-card:hover p { color: currentColor; }
 
 /* Portfolio ---------------------------------------------------------------- */
 .portfolio-modes { border-top: 1px solid var(--color-line-light); margin-top: clamp(1.6rem, 8vw, 7.2rem); }

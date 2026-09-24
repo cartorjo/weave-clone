@@ -38,7 +38,9 @@
 .hero__intro p { color: rgba(255, 255, 255, 0.76); font-size: clamp(1.05rem, 1.4vw, 1.305rem); line-height: 1.35; max-width: 25.2rem; }
 .text-link { align-items: center; color: var(--color-ink); display: inline-flex; flex: none; font-size: 0.88rem; font-weight: 600; gap: 0.9rem; letter-spacing: 0.06em; text-decoration: none; text-transform: none; }
 .text-link span { font-size: 1.3em; transition: transform var(--duration-fast) var(--ease-em); }
-.text-link:hover span { transform: translateX(0.35rem); }
+@media (hover: hover) {
+  .text-link:hover span { transform: translateX(0.35rem); }
+}
 .text-link--light { color: #fff; }
 .hero__visual { margin: 0 calc(var(--gutter) * -1) 0 0; min-height: 100%; overflow: hidden; position: relative; }
 .hero__visual::after { background: linear-gradient(180deg, rgba(10, 5, 50, 0.04), rgba(10, 5, 50, 0.6)); content: ""; inset: 0; position: absolute; pointer-events: none; }
@@ -62,7 +64,6 @@
 .filter-group > span { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.09em; text-transform: none; }
 .filter-group > div { display: flex; flex-wrap: wrap; gap: 0.45rem; }
 .filter-button { border: 1px solid var(--color-line); border-radius: 100rem; color: var(--color-ink); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.035em; padding: 0.585rem 0.81rem; transition: background-color var(--duration-fast) ease, border-color var(--duration-fast) ease, color var(--duration-fast) ease; }
-.filter-button:hover, .filter-button.is-active { background: var(--color-ink); border-color: var(--color-ink); color: #fff; }
 .work-count { color: var(--color-ink); font-size: 0.85rem; margin-top: 2.25rem; }
 .work-empty { border-top: 1px solid var(--color-line); font-size: 1.2rem; margin-top: 2.25rem; padding-top: 1.125rem; }
 

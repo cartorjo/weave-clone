@@ -85,18 +85,23 @@
 .industry-tile:nth-child(n+4) { grid-column: span 3; }
 .industry-tile figure { aspect-ratio: 16/10; overflow: hidden; }
 .industry-tile:nth-child(n+4) figure { aspect-ratio: 2.4/1; }
-.industry-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 400ms ease; }
-.industry-tile__copy { padding: 1.4rem 1.5rem 1.8rem; position: relative; min-height: 10rem; transition: background 180ms ease,color 180ms ease; }
-.industry-tile__number { font-size: 1.15rem; border-bottom: 1px solid currentColor; padding-bottom: .2rem; }
+.industry-tile img { width: 100%; height: 100%; object-fit: cover; }
+a.industry-tile img { transition: transform var(--duration-slow) var(--ease-em); }
+.industry-tile__copy { padding: 1.4rem 1.5rem 1.8rem; position: relative; min-height: 10rem; }
+a.industry-tile .industry-tile__copy { transition: background var(--duration-medium) var(--ease-em), color var(--duration-medium) var(--ease-em); }
+.industry-tile__number { font-size: 1.15rem; border-bottom: 1px solid currentColor; padding-bottom: .2rem; transition: color var(--duration-medium) var(--ease-em); }
 .industry-tile h3 { font-size: clamp(1.4rem,2.1vw,2rem); font-weight: 400; line-height: 1.2; margin-top: 1.15rem; padding-right: 1.7rem; }
 .industry-tile p { margin-top: .5rem; }
-.industry-tile__arrow { position: absolute; right: 1.25rem; top: 1.5rem; font-size: 1.6rem; }
+.industry-tile__arrow { position: absolute; right: 1.25rem; top: 1.5rem; font-size: 1.6rem; transition: color var(--duration-medium) var(--ease-em); }
 /* Hover inversion only on linked tiles (Branchen overview); the homepage
-   variant is static and must not suggest clickability. */
-a.industry-tile:hover .industry-tile__copy, a.industry-tile:focus-visible .industry-tile__copy { color: #fff; background: var(--color-ink); }
-a.industry-tile:hover h3, a.industry-tile:focus-visible h3 { font-weight: 700; }
-a.industry-tile:hover .industry-tile__number, a.industry-tile:focus-visible .industry-tile__number { color: var(--color-lemon); font-weight: 700; border-bottom-width: 3px; }
-a.industry-tile:hover .industry-tile__arrow { color: var(--color-lemon); }
+   variant is static and must not suggest clickability. Hover gated for touch;
+   focus-visible mirrors it ungated. No weight/border jumps — nothing reflows. */
+@media (hover: hover) {
+  a.industry-tile:hover .industry-tile__copy { color: #fff; background: var(--color-ink); }
+  a.industry-tile:hover .industry-tile__number, a.industry-tile:hover .industry-tile__arrow { color: var(--color-lemon); }
+}
+a.industry-tile:focus-visible .industry-tile__copy { color: #fff; background: var(--color-ink); }
+a.industry-tile:focus-visible .industry-tile__number, a.industry-tile:focus-visible .industry-tile__arrow { color: var(--color-lemon); }
 .industry-disciplines { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.5rem; margin-top: 3rem; }
 
 .reference-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 4rem 2.5rem; margin-top: 3rem; }
@@ -109,31 +114,45 @@ a.industry-tile:hover .industry-tile__arrow { color: var(--color-lemon); }
 .reference-card { display: flex; flex-direction: column; color: var(--color-ink); text-decoration: none; min-width: 0; }
 .reference-card[hidden] { display: none; }
 .reference-card figure { aspect-ratio: 16/10; overflow: hidden; }
-.reference-card img { height: 100%; width: 100%; object-fit: cover; transition: transform 400ms ease; }
-.reference-card__copy { display: flex; flex: 1; flex-direction: column; align-items: flex-start; transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease; }
+.reference-card img { height: 100%; width: 100%; object-fit: cover; transition: transform var(--duration-slow) var(--ease-em); }
+.reference-card__copy { display: flex; flex: 1; flex-direction: column; align-items: flex-start; transition: background var(--duration-medium) var(--ease-em), color var(--duration-medium) var(--ease-em), box-shadow var(--duration-medium) var(--ease-em); }
+.reference-card .result-metric { transition: color var(--duration-medium) var(--ease-em); }
+.reference-card__copy .text-link { transition: color var(--duration-medium) var(--ease-em); }
+.reference-card__copy .text-link span { transition: transform var(--duration-medium) var(--ease-em), color var(--duration-medium) var(--ease-em); }
 .reference-card__meta { display: flex; flex-wrap: wrap; gap: .4rem 1rem; font-size: .95rem; font-weight: 500; margin-top: 1.25rem; line-height: 1.4; }
 .reference-card h3 { font-size: clamp(1.5rem,2.5vw,2.4rem); line-height: 1.16; letter-spacing: -.02em; margin-top: 1rem; }
 .reference-card__copy > p { font-size: 1.1rem; line-height: 1.5; margin-top: .8rem; max-width: 35rem; }
 .reference-card__copy > .text-link { margin-top: 1.5rem; align-self: flex-start; }
 /* Der blaue Kasten bei Hover (owner correction): the copy block inverts to the
    brand navy, mirroring the industry tiles, without shifting layout. */
-.reference-card:hover .reference-card__copy, .reference-card:focus-visible .reference-card__copy { background: var(--color-ink); box-shadow: 0 0 0 1.1rem var(--color-ink); color: #fff; position: relative; z-index: 1; }
-.reference-card:hover .result-metric, .reference-card:focus-visible .result-metric { color: inherit; }
-.reference-card:hover .reference-card__copy .text-link, .reference-card:focus-visible .reference-card__copy .text-link { color: #fff; }
-.reference-card:hover .reference-card__copy .text-link span, .reference-card:focus-visible .reference-card__copy .text-link span { color: var(--color-lemon); }
+@media (hover: hover) {
+  .reference-card:hover .reference-card__copy { background: var(--color-ink); box-shadow: 0 0 0 1.1rem var(--color-ink); color: #fff; position: relative; z-index: 1; }
+  .reference-card:hover .result-metric { color: inherit; }
+  .reference-card:hover .reference-card__copy .text-link { color: #fff; }
+  .reference-card:hover .reference-card__copy .text-link span { color: var(--color-lemon); transform: translateX(.35rem); }
+}
+.reference-card:focus-visible .reference-card__copy { background: var(--color-ink); box-shadow: 0 0 0 1.1rem var(--color-ink); color: #fff; position: relative; z-index: 1; }
+.reference-card:focus-visible .result-metric { color: inherit; }
+.reference-card:focus-visible .reference-card__copy .text-link { color: #fff; }
+.reference-card:focus-visible .reference-card__copy .text-link span { color: var(--color-lemon); transform: translateX(.35rem); }
 .result-metric { display: flex; flex-direction: column; align-items: flex-start; gap: .6rem; margin-top: 1.6rem; margin-bottom: .5rem; color: var(--color-ink); }
 .result-metric strong { font-size: clamp(2.75rem,4.6vw,4.5rem); font-weight: 700; line-height: 1.1; letter-spacing: -.025em; }
 .result-metric strong.result-metric__word { font-size: clamp(2rem,3vw,3rem); }
 .result-metric span { border-top: 3px solid var(--color-lemon); padding-top: .65rem; font-size: 1.1rem; line-height: 1.4; font-weight: 700; }
-.reference-card:hover h3, .reference-card:focus-visible h3 { font-weight: 700; }
 /* Linked expertise cards get the same navy box; static discipline cards
    (plain <article>) stay inert. */
-a.expertise-card { transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease; }
-a.expertise-card:hover, a.expertise-card:focus-visible { background: var(--color-ink); box-shadow: 0 0 0 1.1rem var(--color-ink); color: #fff; position: relative; z-index: 1; transform: none; }
-a.expertise-card:hover h3, a.expertise-card:focus-visible h3 { font-weight: 700; }
-a.expertise-card:hover p, a.expertise-card:focus-visible p { color: inherit; }
+a.expertise-card { transition: background var(--duration-medium) var(--ease-em), color var(--duration-medium) var(--ease-em), box-shadow var(--duration-medium) var(--ease-em); }
+@media (hover: hover) {
+  a.expertise-card:hover { background: var(--color-ink); box-shadow: 0 0 0 1.1rem var(--color-ink); color: #fff; position: relative; z-index: 1; transform: none; }
+  a.expertise-card:hover p { color: inherit; }
+}
+a.expertise-card:focus-visible { background: var(--color-ink); box-shadow: 0 0 0 1.1rem var(--color-ink); color: #fff; position: relative; z-index: 1; transform: none; }
+a.expertise-card:focus-visible p { color: inherit; }
 .filter-button { font-size: 1rem; letter-spacing: 0; padding: .65rem 1rem; }
-.filter-button:hover, .filter-button.is-active { background: var(--color-lemon); border-color: var(--color-lemon); color: var(--color-ink); }
+.filter-button.is-active { background: var(--color-lemon); border-color: var(--color-lemon); color: var(--color-ink); }
+@media (hover: hover) {
+  .filter-button:hover { background: var(--color-lemon); border-color: var(--color-lemon); color: var(--color-ink); }
+}
 .filter-group > span { font-size: 1rem; letter-spacing: 0; }
 .work-count { color: var(--color-ink); }
 
@@ -143,12 +162,9 @@ a.expertise-card:hover p, a.expertise-card:focus-visible p { color: inherit; }
 .company-facts--5 { grid-template-columns: repeat(5,minmax(0,1fr)); }
 .company-facts__icon { color: var(--color-lemon); display: block; height: 2.6rem; margin-bottom: 1.1rem; width: 2.6rem; }
 .company-facts__icon svg { height: 100%; width: 100%; }
-.company-facts dt { font-size: clamp(2.75rem,5vw,5.25rem); font-weight: 300; line-height: 1.1; letter-spacing: -.025em; transition: color 180ms ease; }
+.company-facts dt { font-size: clamp(2.75rem,5vw,5.25rem); font-weight: 300; line-height: 1.1; letter-spacing: -.025em; }
 .company-facts dd { font-size: 1rem; border-top: 3px solid var(--color-lemon); margin-top: .8rem; padding-top: .8rem; width: fit-content; }
-.company-facts > div:hover dt, .company-facts > div:focus-within dt { font-weight: 700; }
-.company-facts > div:hover dd, .company-facts > div:focus-within dd { font-weight: 700; }
-.fact-grid--stats article:hover h3, .fact-grid--stats article:focus-within h3 { font-weight: 700; }
-.fact-grid--stats article:hover .fact-grid__label, .fact-grid--stats article:focus-within .fact-grid__label { font-weight: 700; }
+/* Kennzahlen sind nicht klickbar — keine Hover-Effekte (owner review 24-09). */
 .trust-strip { display: flex; flex-wrap: wrap; gap: 1rem 2rem; padding-top: 2.5rem; margin-top: 2rem; border-top: 1px solid var(--color-line); }
 .trust-strip span { font-size: 1.05rem; font-weight: 700; }
 .contact { background: var(--color-ink); }
@@ -225,7 +241,7 @@ a.expertise-card:hover p, a.expertise-card:focus-visible p { color: inherit; }
 .management-card__bio { font-size: 1rem; line-height: 1.55; margin-top: .9rem; }
 .management-card__more summary { align-items: center; color: var(--color-ink); cursor: pointer; display: inline-flex; font-size: .95rem; font-weight: 700; gap: .5rem; list-style: none; margin-top: .4rem; }
 .management-card__more summary::-webkit-details-marker { display: none; }
-.management-card__more summary::after { color: var(--color-lemon); content: '+'; font-size: 1.35rem; line-height: 1; transition: transform 180ms ease; }
+.management-card__more summary::after { color: var(--color-lemon); content: '+'; font-size: 1.35rem; line-height: 1; transition: transform var(--duration-medium) var(--ease-em); }
 .management-card__more[open] summary::after { transform: rotate(45deg); }
 .management-card__more[open] .management-card__more-open { display: none; }
 .management-card__more:not([open]) .management-card__more-close { display: none; }
@@ -252,7 +268,7 @@ a.expertise-card:hover p, a.expertise-card:focus-visible p { color: inherit; }
 [id] { scroll-margin-top: 7rem; }
 
 @media (hover:hover) and (prefers-reduced-motion:no-preference) {
-  .reference-card:hover img, a.industry-tile:hover img { transform: scale(1.035); }
+  .reference-card:hover img, a.industry-tile:hover img { transform: scale(1.03); }
 }
 @media (max-width:1279px) { .site-header__inner { min-height: 5rem; } .site-logo { width: 11rem; } }
 @media (max-width:1000px) {
