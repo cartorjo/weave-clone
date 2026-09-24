@@ -12,6 +12,12 @@ for (const [file,html] of documents) {
   if ([...html.matchAll(/<h1\b/g)].length !== 1) failures.push(`${file}: expected exactly one h1`);
   if (/\{\{|<!-- (?:content|partial):/.test(html)) failures.push(`${file}: unresolved template`);
   if (/Hays-Gruppe|↗/.test(html)) failures.push(`${file}: superseded branding or arrow`);
+  // Retired component classes (canon: styles/11-components.css + docs/components.md).
+  // case-facets is the one live case-* class; everything else of that family is gone.
+  for (const [,classes] of html.matchAll(/\bclass="([^"]+)"/g)) {
+    const retired = classes.match(/\b(?:page-eyebrow|page-kicker|page-display|page-title|page-cta__title|display-hero|page-link|lede-boxes|portfolio-model|about-principles|about-facts|expertise-proof|expertise-case-strip|header-careers|mobile-menu__label|page-rule|case-(?!facets\b)[a-z][a-z-]*)\b/);
+    if (retired) { failures.push(`${file}: retired class "${retired[0]}"`); break; }
+  }
   for (const match of html.matchAll(/\b(?:href|src)="([^"]+)"/g)) {
     const href = match[1];
     if (/^(?:https?:|mailto:|tel:|data:)/.test(href)) continue;
