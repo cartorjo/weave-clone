@@ -164,22 +164,6 @@
   max-width: 28.8rem;
 }
 .page-section__lede--light { color: rgba(255,255,255,0.7); }
-.page-link {
-  align-items: center;
-  color: var(--color-ink);
-  display: inline-flex;
-  font-size: 0.8rem;
-  font-weight: 600;
-  gap: 0.72rem;
-  letter-spacing: 0.075em;
-  text-decoration: none;
-  text-transform: none;
-}
-.page-link::after { content: "→"; font-size: 1.25em; transition: transform var(--duration-fast) var(--ease-em); }
-@media (hover: hover) {
-  .page-link:hover::after { transform: translateX(0.35rem); }
-}
-.page-link--light { color: #fff; }
 
 /* Expertise ---------------------------------------------------------------- */
 .expertise-list { margin-top: 2.07rem; }
@@ -270,7 +254,7 @@
 }
 .page-cta__copy { border-top: 1px solid var(--color-line-light); padding-top: 1.17rem; }
 .page-cta__copy p { color: rgba(255,255,255,0.72); font-size: 1.16rem; line-height: 1.42; max-width: 27rem; }
-.page-cta__copy .page-link { margin-top: 1.8rem; }
+.page-cta__copy .text-link { margin-top: 1.8rem; }
 
 
 @media (max-width: 900px) {

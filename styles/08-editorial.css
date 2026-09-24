@@ -11,12 +11,6 @@
 .hero__copy { align-self: center; display: flex; flex-direction: column; justify-content: center; padding: clamp(1.8rem, 9vw, 9rem) clamp(1rem, 5vw, 6.3rem) clamp(1.6rem, 8vw, 8.1rem) 0; }
 .hero__intro { align-items: flex-end; border-top: 1px solid var(--color-line-light); display: flex; gap: 1.8rem; justify-content: space-between; margin-top: clamp(1rem, 5vw, 4.5rem); max-width: 44.1rem; padding-top: 1.215rem; }
 .hero__intro p { color: rgba(255, 255, 255, 0.76); font-size: clamp(1.05rem, 1.4vw, 1.305rem); line-height: 1.35; max-width: 25.2rem; }
-.text-link { align-items: center; color: var(--color-ink); display: inline-flex; flex: none; font-size: 0.88rem; font-weight: 600; gap: 0.9rem; letter-spacing: 0.06em; text-decoration: none; text-transform: none; }
-.text-link span { font-size: 1.3em; transition: transform var(--duration-fast) var(--ease-em); }
-@media (hover: hover) {
-  .text-link:hover span { transform: translateX(0.35rem); }
-}
-.text-link--light { color: #fff; }
 .hero__visual { margin: 0 calc(var(--gutter) * -1) 0 0; min-height: 100%; overflow: hidden; position: relative; }
 .hero__visual::after { background: linear-gradient(180deg, rgba(10, 5, 50, 0.04), rgba(10, 5, 50, 0.6)); content: ""; inset: 0; position: absolute; pointer-events: none; }
 .hero__visual > picture > img { height: 100%; object-fit: cover; width: 100%; }

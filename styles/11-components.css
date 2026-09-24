@@ -36,3 +36,15 @@
 @media (max-width: 650px) {
   .page-hero__copy .display-large { font-size: clamp(1.95rem, 15vw, 5.22rem); }
 }
+
+/* Text link — the one arrow link (former page-link). The arrow is always a
+   markup span (<span aria-hidden="true">→</span>); --light for dark sections
+   (white text, lemon arrow). No underline in any state (owner rule). */
+.text-link { align-items: center; color: var(--color-ink); display: inline-flex; flex: none; font-size: 1rem; font-weight: 700; gap: .9rem; letter-spacing: 0; line-height: 1.4; min-height: 44px; text-decoration: none; text-transform: none; }
+.text-link span[aria-hidden] { color: currentColor; font-size: 1.65rem; transition: transform var(--duration-fast) var(--ease-em); }
+@media (hover: hover) {
+  .text-link:hover span[aria-hidden] { transform: translateX(.35rem); }
+}
+.text-link:focus-visible span[aria-hidden] { transform: translateX(.35rem); }
+.text-link--light { color: #fff; }
+.text-link--light span[aria-hidden] { color: var(--color-lemon); }

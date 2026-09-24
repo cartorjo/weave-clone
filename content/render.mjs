@@ -54,7 +54,7 @@ export function disciplineGrid() {
 }
 
 function cta(title='Jetzt Kontakt aufnehmen!') {
-  return `<section class="page-section page-section--deep"><div class="gutter"><div class="container"><div class="page-cta"><div><p class="eyebrow eyebrow--light">Ihr nächster Schritt</p><h2 class="display-large display-large--light">${title}</h2></div><div class="page-cta__copy"><p>Ob konkretes Vorhaben, erste Orientierung oder weitere Fragen: Erzählen Sie uns kurz, worum es geht.</p><a class="page-link page-link--light" href="/kontakt/">Projekt besprechen</a></div></div></div></div></section>`;
+  return `<section class="page-section page-section--deep"><div class="gutter"><div class="container"><div class="page-cta"><div><p class="eyebrow eyebrow--light">Ihr nächster Schritt</p><h2 class="display-large display-large--light">${title}</h2></div><div class="page-cta__copy"><p>Ob konkretes Vorhaben, erste Orientierung oder weitere Fragen: Erzählen Sie uns kurz, worum es geht.</p><a class="text-link text-link--light" href="/kontakt/">Projekt besprechen <span aria-hidden="true">→</span></a></div></div></div></div></section>`;
 }
 
 export function projectPage(slug) {
