@@ -116,9 +116,10 @@ function management() {
     ]},
   ];
   // Card presentation per owner review 24-09: visible state = photo, name,
-  // role; hover/focus reveals at most three facts (Verantwortung, Expertise,
-  // Schwerpunkt) — distilled from the supplied bios above, nothing invented.
-  // Photos render grayscale for a uniform scheme (the long bios stay in git).
+  // role and the first bio paragraph; the remaining paragraphs sit behind a
+  // native details expander. Hovering/focusing the PHOTO reveals at most three
+  // facts (Verantwortung, Expertise, Schwerpunkt) — distilled from the bios,
+  // nothing invented. Photos render grayscale for a uniform scheme.
   const facts = {
     'aleksandar-amidzic': ['Emposo Deutschland & Rumänien; deutsches Projektgeschäft der Hays Professional Solutions', 'Technologische Dienstleistungen und Führung im Projektgeschäft', 'Nachhaltige, skalierbare und kundennahe Ergebnisse'],
     'markus-auer': ['Finanzen und Service-Bereiche der Hays AG; Geschäftsführung Emposo', 'Finanzführung bei Bilfinger, Pöyry und der Lahmeyer-Gruppe', 'Weiterentwicklung der Organisation'],
@@ -130,7 +131,9 @@ function management() {
   const labels = ['Verantwortung', 'Expertise', 'Schwerpunkt'];
   const cards = profiles.map(person=>{
     const detail = facts[person.image].map((fact,i)=>`<p><strong>${labels[i]}</strong>${escape(fact)}</p>`).join('');
-    return `<article class="management-card" tabindex="0"><figure>${picture(person.image,'(max-width: 700px) 100vw, 33vw')}</figure><div class="management-card__detail">${detail}${person.link ? `<a href="${person.link.href}">LinkedIn ${arrow}</a>` : ''}</div><h3>${escape(person.name)}</h3><p class="management-card__role">${person.roles.map(escape).join('<br>')}</p></article>`;
+    const [intro, ...rest] = person.bio;
+    const more = rest.length ? `<details class="management-card__more"><summary class="min-h-11"><span class="management-card__more-open">Mehr lesen</span><span class="management-card__more-close">Weniger anzeigen</span></summary>${rest.map(text=>`<p class="management-card__bio">${escape(text)}</p>`).join('')}</details>` : '';
+    return `<article class="management-card"><figure tabindex="0">${picture(person.image,'(max-width: 700px) 100vw, 33vw')}</figure><div class="management-card__detail">${detail}${person.link ? `<a href="${person.link.href}">LinkedIn ${arrow}</a>` : ''}</div><h3>${escape(person.name)}</h3><p class="management-card__role">${person.roles.map(escape).join('<br>')}</p><p class="management-card__bio">${escape(intro)}</p>${more}</article>`;
   }).join('');
   return `<section class="page-section page-section--paper" id="management" aria-labelledby="management-title"><div class="gutter"><div class="container"><p class="eyebrow">Management</p><h2 class="page-title" id="management-title">Menschen, die Verantwortung übernehmen.</h2><div class="management-cards">${cards}<article class="management-card"><div class="management-card__initials" aria-hidden="true">HL</div><h3>Hans Lang</h3></article></div></div></div></section>`;
 }

@@ -221,7 +221,15 @@ a.expertise-card:hover .text-link span, a.expertise-card:focus-visible .text-lin
 .management-card h3 { font-size: 1.55rem; font-weight: 700; letter-spacing: -.01em; margin-top: 1.1rem; }
 .management-card__role { font-size: .95rem; font-weight: 600; line-height: 1.4; margin-top: .35rem; }
 .management-card__detail { position: absolute; left: 0; right: 0; top: 0; aspect-ratio: 3 / 2; background: var(--color-ink); color: #fff; padding: 1.15rem 1.3rem; opacity: 0; visibility: hidden; transition: opacity 180ms ease, visibility 180ms ease; overflow: auto; z-index: 1; }
-.management-card:hover .management-card__detail, .management-card:focus-within .management-card__detail, .management-card:focus .management-card__detail { opacity: 1; visibility: visible; }
+.management-card figure:hover + .management-card__detail, .management-card figure:focus + .management-card__detail, .management-card__detail:hover, .management-card__detail:focus-within { opacity: 1; visibility: visible; }
+.management-card figure { cursor: pointer; }
+.management-card__bio { font-size: 1rem; line-height: 1.55; margin-top: .9rem; }
+.management-card__more summary { align-items: center; color: var(--color-ink); cursor: pointer; display: inline-flex; font-size: .95rem; font-weight: 700; gap: .5rem; list-style: none; margin-top: .4rem; }
+.management-card__more summary::-webkit-details-marker { display: none; }
+.management-card__more summary::after { color: var(--color-lemon); content: '+'; font-size: 1.35rem; line-height: 1; transition: transform 180ms ease; }
+.management-card__more[open] summary::after { transform: rotate(45deg); }
+.management-card__more[open] .management-card__more-open { display: none; }
+.management-card__more:not([open]) .management-card__more-close { display: none; }
 .management-card__detail p { font-size: .84rem; line-height: 1.35; margin-bottom: .6rem; }
 .management-card__detail strong { color: var(--color-lemon); display: block; font-size: .68rem; font-weight: 700; letter-spacing: .06em; margin-bottom: .1rem; }
 .management-card__detail a { color: #fff; font-weight: 700; text-decoration: none; }
