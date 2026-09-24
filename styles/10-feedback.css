@@ -1,13 +1,5 @@
 /* September 2026 feedback: midnight blue, orange accents, open typography,
    sentence case, straight arrows and supplied project/industry photography. */
-:root { --display-size: clamp(2.4rem, 5.8vw, 5.5rem); --display-leading: 1.08; }
-
-.display-hero, .display-large, .page-display, .page-title, .page-cta__title {
-  font-size: var(--display-size); line-height: var(--display-leading);
-  letter-spacing: -.025em; font-weight: 300; max-width: 20ch;
-}
-@media (min-width:901px) { .display-hero, .display-large, .page-display, .page-title, .page-cta__title { hyphens: none; } }
-.display-hero em, .display-large em, .page-display em, .page-title em, .page-cta__title em { color: inherit; font-style: normal; font-weight: 700; }
 .page-breadcrumb { letter-spacing: 0; font-size: .95rem; line-height: 1.5; flex-wrap: wrap; }
 .section-lede { font-size: clamp(1.1rem, 1.6vw, 1.35rem); line-height: 1.55; max-width: 52rem; margin-top: 2rem; }
 .section-more { margin-top: 3rem; }
@@ -51,7 +43,7 @@
 
 .hero--feedback .hero__grid { position: relative; min-height: 43rem; grid-template-columns: 40% 60%; }
 .hero--feedback .hero__copy { z-index: 2; padding: 6rem 0; width: 43rem; max-width: 50vw; }
-.hero--feedback .display-hero { max-width: 12ch; hyphens: none; }
+.hero--feedback .display-large { max-width: 12ch; }
 .hero--feedback .hero__intro { display: block; margin-top: 3rem; max-width: 28rem; padding-top: 1.6rem; }
 .hero--feedback .hero__intro p { color: #fff; line-height: 1.5; max-width: 27rem; }
 .hero--feedback .hero__visual { min-width: 0; }
@@ -197,8 +189,6 @@ a.expertise-card:focus-visible p { color: inherit; }
 .page-hero__visual { min-width: 0; min-height: 28rem; }
 .page-hero__visual > picture > img { position: absolute; inset: 0; }
 .page-hero::before { display: none; }
-.page-display { max-width: none; }
-.page-title { max-width: 20ch; }
 .page-hero__intro { line-height: 1.5; color: #fff; }
 .page-cta { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,.8fr); gap: 3rem; align-items: end; }
 .page-cta__copy p { line-height: 1.55; }
@@ -301,9 +291,8 @@ a.expertise-card:focus-visible p { color: inherit; }
   .hero--feedback .hero__visual { height: 23rem; min-height: 0; margin-left: calc(-1 * var(--gutter)); }
   .hero--feedback .hero__visual::after { background: linear-gradient(180deg,var(--color-ink),transparent 35%); }
   .hero--feedback .hero__intro { margin-top: 2rem; max-width: 35rem; }
-  .hero--feedback .display-hero { max-width: none; }
+  .hero--feedback .display-large { max-width: none; }
   .page-hero__grid, .page-section__top, .page-cta, .expertise-intro__heading, .work__heading { grid-template-columns: minmax(0,1fr); }
-  .page-display { max-width: 19ch; }
   .page-hero__grid { padding: 3rem 0; }
   .page-hero__visual { margin-left: 0; margin-right: 0; min-height: 22rem; aspect-ratio: auto; }
   .page-section__lede { max-width: 40rem; }

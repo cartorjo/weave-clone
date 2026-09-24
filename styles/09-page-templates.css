@@ -52,16 +52,6 @@
 .page-breadcrumb a { color: inherit; text-decoration: none; }
 .page-breadcrumb a:hover { color: var(--color-lemon); }
 .page-breadcrumb span[aria-hidden="true"] { color: var(--color-lemon); }
-.page-display {
-  color: #fff;
-  font-size: clamp(2rem, 8.1vw, 8.37rem);
-  font-weight: 300;
-  letter-spacing: -0.025em;
-  line-height: 1.08;
-  margin-top: 1.395rem;
-  max-width: 10.5ch;
-}
-.page-display em { color: var(--color-lemon); font-style: normal; font-weight: 600; }
 .page-hero__intro {
   border-top: 1px solid var(--color-line-light);
   color: rgba(255,255,255,0.76);
@@ -168,17 +158,6 @@
   grid-template-columns: minmax(0, 1.2fr) minmax(14.4rem, 0.56fr);
 }
 .page-section__top--wide { grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.85fr); }
-.page-title {
-  color: var(--color-ink);
-  font-size: clamp(1.55rem, 6vw, 6.03rem);
-  font-weight: 300;
-  letter-spacing: -0.025em;
-  line-height: 1.08;
-  margin-top: 1.305rem;
-  max-width: 12ch;
-}
-.page-title em { color: var(--color-lemon); font-style: normal; font-weight: 600; }
-.page-title--light { color: #fff; }
 .page-section__lede {
   font-size: clamp(1.05rem, 1.55vw, 1.278rem);
   line-height: 1.4;
@@ -289,8 +268,6 @@
   gap: clamp(1.6rem, 8vw, 8.1rem);
   grid-template-columns: minmax(0, 1.1fr) minmax(16.2rem, 0.9fr);
 }
-.page-cta__title { color: #fff; font-size: clamp(1.6rem, 6.3vw, 6.3rem); font-weight: 300; letter-spacing: -0.025em; line-height: 1.08; max-width: 12ch; }
-.page-cta__title em { color: var(--color-lemon); font-style: normal; font-weight: 600; }
 .page-cta__copy { border-top: 1px solid var(--color-line-light); padding-top: 1.17rem; }
 .page-cta__copy p { color: rgba(255,255,255,0.72); font-size: 1.16rem; line-height: 1.42; max-width: 27rem; }
 .page-cta__copy .page-link { margin-top: 1.8rem; }
@@ -321,7 +298,6 @@
 @media (max-width: 650px) {
   .page-hero__grid { padding-top: 3.6rem; }
   .page-breadcrumb { margin-bottom: 2.25rem; }
-  .page-display { font-size: clamp(1.95rem, 15vw, 5.22rem); }
   .page-hero__visual { aspect-ratio: 4 / 3; }
   .page-hero__metric { padding: 0.99rem; }
   .portfolio-model { grid-template-columns: 1fr; }

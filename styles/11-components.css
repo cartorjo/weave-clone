@@ -14,3 +14,25 @@
 .eyebrow { align-items: center; color: var(--color-ink); display: flex; font-size: 1rem; font-weight: 700; gap: .675rem; letter-spacing: 0; line-height: 1.35; margin-bottom: 1.35rem; text-transform: none; }
 .eyebrow::after { background: var(--color-lemon); content: ''; height: 3px; width: 2.5rem; }
 .eyebrow--light { color: #fff; }
+
+/* Display heading — the one big-heading class (former display-hero,
+   page-display, page-title, page-cta__title). Variant: --light. Contextual
+   widths for heroes/statement live below; everything else is uniform. */
+:root { --display-size: clamp(2.4rem, 5.8vw, 5.5rem); --display-leading: 1.08; }
+.display-large { color: var(--color-ink); font-size: var(--display-size); font-weight: 300; letter-spacing: -.025em; line-height: var(--display-leading); max-width: 20ch; }
+.display-large--light { color: #fff; }
+.display-large em { color: inherit; font-style: normal; font-weight: 700; }
+/* Subpage rhythm: headings under an eyebrow keep the former page-title gap;
+   CTA titles sit flush (they never had one). */
+.subpage .eyebrow + .display-large { margin-top: 1.305rem; }
+.page-cta .eyebrow + .display-large { margin-top: 0; }
+/* Hero H1s span their column; on small screens they scale up for presence. */
+.page-hero__copy .display-large { max-width: none; }
+@media (min-width: 901px) { .display-large { hyphens: none; } }
+@media (max-width: 900px) {
+  :root { --display-size: clamp(2.4rem, 6.5vw, 4rem); }
+  .page-hero__copy .display-large { max-width: 19ch; }
+}
+@media (max-width: 650px) {
+  .page-hero__copy .display-large { font-size: clamp(1.95rem, 15vw, 5.22rem); }
+}

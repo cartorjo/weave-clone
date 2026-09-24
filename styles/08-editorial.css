@@ -5,18 +5,6 @@
 /* Brand tokens live in styles/main.css @theme (--color-*, --ease-em). */
 
 
-.display-hero,
-.display-large {
-  color: var(--color-ink);
-  font-size: clamp(1.85rem, 7.5vw, 7.56rem);
-  font-weight: 300;
-  letter-spacing: -0.025em;
-  line-height: 1.08;
-}
-.display-hero { color: #fff; font-size: clamp(2.15rem, 8.8vw, 9.18rem); max-width: 11ch; }
-.display-hero em,
-.display-large em { font-style: normal; font-weight: 600; }
-.display-large--light { color: #fff; }
 
 .hero { background: var(--color-ink); color: #fff; overflow: hidden; }
 .hero__grid { display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(17.1rem, 0.96fr); min-height: min(47.7rem, calc(100vh - 4.86rem)); }
