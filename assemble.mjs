@@ -14,7 +14,7 @@
 //   {{CURATTR:key}}        aria-current="page" when page.nav === key
 //                          (aria-current="true" when the page sets navExact: false)
 //   <!-- partial:name -->  inlines partials/name.html (e.g. the contact form)
-import { readFileSync, writeFileSync, readdirSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pages from './pages.mjs';
@@ -28,14 +28,6 @@ const head = partial('head');
 // inlinePartials is defined below but only invoked lazily inside the loop.
 const header = partial('header');
 const footer = partial('footer');
-
-const sectionsDir = join(root, 'sections');
-const sectionBody = () =>
-  readdirSync(sectionsDir)
-    .filter((f) => f.endsWith('.html'))
-    .sort()
-    .map((f) => `<!-- ${f} -->\n${readFileSync(join(sectionsDir, f), 'utf8').trim()}`)
-    .join('\n\n');
 
 // Supplied outline icons (Hays Glow set, assets/icons/): 72×72 stroked SVGs
 // with a hardcoded orange. Inline them with currentColor so CSS decides the
@@ -63,7 +55,7 @@ const pageContent = page => {
   if (Array.isArray(page.content)) return page.content.map(file=>readFileSync(join(root,file),'utf8').trim()).join('\n\n');
   if (page.content.startsWith('project:')) return projectPage(page.content.slice(8));
   if (page.content.startsWith('industry:')) return industryPage(page.content.slice(9));
-  return page.content === 'sections' ? sectionBody() : readFileSync(join(root,page.content),'utf8').trim();
+  return readFileSync(join(root,page.content),'utf8').trim();
 };
 
 const stampNav = (html, page) => {

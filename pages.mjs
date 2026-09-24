@@ -1,6 +1,6 @@
 // Page manifest for assemble.mjs. Every shipped HTML document is generated
 // from partials/ (head, header, footer) plus its content source:
-//   - content: 'sections'      → concatenate sections/*.html (homepage)
+//   - content: [files…]        → concatenated in the given order (homepage)
 //   - content: 'pages/x.html'  → the page's <main> inner content
 // nav: which header item is highlighted. navExact: false marks an ancestor
 // (aria-current="true" instead of "page"), e.g. a case-study detail page.

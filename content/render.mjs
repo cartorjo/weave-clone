@@ -163,13 +163,6 @@ export function fragment(name) {
     case 'industry-cards-static': return industryCards(false);
     case 'projects-featured': return projectCards(projects.filter(p=>['data2ai-platform','engineering-wissensbasis','mlops-medizinprodukte','multi-site-transition'].includes(p.slug)), false, true);
     case 'projects-all': return filters();
-    case 'projects-ai': return projectCards(projects.filter(p=>p.discipline==='ai-daten' && p.slug!=='data2ai-platform'));
-    case 'projects-engineering': return projectCards(projects.filter(p=>disciplineBySlug[p.discipline].group==='Engineering'));
-    case 'projects-technology': return projectCards(projects.filter(p=>p.discipline==='enterprise-services'));
-    case 'projects-optimize': return projectCards(projects.filter(p=>p.outcome==='optimize'));
-    case 'projects-scale': return projectCards(projects.filter(p=>p.outcome==='scale'));
-    case 'projects-verzahnen': return projectCards(projects.filter(p=>p.slug==='multi-site-transition'));
-    case 'projects-transform': return projectCards(projects.filter(p=>p.outcome==='transform' && p.slug!=='data2ai-platform'));
     case 'disciplines': return disciplineGrid();
     case 'management': return management();
     case 'sitemap': return `<div><h2>Leistungen</h2><a href="/">Startseite</a><a href="/portfolio/">Unsere Leistungen</a><a href="/portfolio/#delivery-model">Unser 5-Stufen-Modell</a></div><div><h2>Branchen</h2><a href="/branchen/">Alle Branchen</a>${industries.map(i=>`<a href="/branchen/${i.slug}/">${escape(i.name)}</a>`).join('')}<h2>Unternehmen</h2><a href="/about-us/">Über uns</a><a href="/about-us/#management">Management</a><a href="/karriere/">Karriere</a><a href="/kontakt/">Kontakt</a><a href="/zertifizierungen/">Zertifizierungen</a><a href="/cookies/">Cookies</a><a href="/barrierefreiheit/">Barrierefreiheit</a><a href="https://emposo.de/impressum/">Impressum</a><a href="https://emposo.de/datenschutzerklaerung/">Datenschutz</a></div><div><h2>Projekte</h2><a href="/case-studies/">Alle Projekte</a>${projects.map(p=>`<a href="/case-studies/${p.slug}/">${escape(p.name)}</a>`).join('')}</div>`;
