@@ -45,6 +45,15 @@
 .hero--feedback .hero__visual { min-width: 0; }
 .hero--feedback .hero__visual img { position: absolute; inset: 0; object-position: 58% center; }
 .hero--feedback .hero__visual::after { background: linear-gradient(90deg, var(--color-ink) 0%, transparent 35%); }
+/* Alle Seiten-Heros verschmelzen wie der Startseiten-Hero per Verlauf mit dem
+   Navy-Hintergrund (Review 24-09) — keine harten Bildkanten mehr: linke, obere
+   und untere Kante laufen ins Ink aus. */
+.page-hero__visual::after {
+  background:
+    linear-gradient(90deg, var(--color-ink) 0%, rgba(10, 5, 50, 0) 38%),
+    linear-gradient(180deg, var(--color-ink) 0%, rgba(10, 5, 50, 0) 22%),
+    linear-gradient(0deg, var(--color-ink) 0%, rgba(10, 5, 50, 0) 26%);
+}
 .expertise-intro__heading { display: grid; grid-template-columns: 1.35fr .65fr; align-items: end; gap: 4rem; }
 .expertise-intro__heading > p { font-size: 1.2rem; line-height: 1.55; }
 .expertise-pair { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 2rem; position: relative; margin-top: 3.5rem; }
