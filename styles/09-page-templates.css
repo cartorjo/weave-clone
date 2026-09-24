@@ -193,33 +193,8 @@
 .portfolio-mode h3 { font-size: clamp(1.05rem, 4vw, 3.78rem); font-weight: 300; letter-spacing: -0.065em; line-height: 1.08; }
 .portfolio-mode__copy { color: rgba(255,255,255,0.74); font-size: 1.07rem; line-height: 1.43; max-width: 29.7rem; }
 .portfolio-mode__outcome { align-self: end; border-left: 1px solid var(--color-line-light); color: #fff; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.07em; line-height: 1.35; max-width: 11.7rem; padding-left: 0.9rem; text-transform: none; }
-.portfolio-model {
-  border-top: 1px solid var(--color-line);
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  margin-top: clamp(1.6rem, 8vw, 7.2rem);
-}
-.portfolio-model article { border-right: 1px solid var(--color-line); display: flex; flex-direction: column; min-height: 17.1rem; padding: 1.26rem 1.305rem 1.26rem 0; }
-.portfolio-model article + article { padding-left: 1.305rem; }
-.portfolio-model article:last-child { border-right: 0; }
-/* Phase numbers read as display digits (owner review 24-09: they were smaller
-   than the body copy) — Kennzahlen scale, lemon rule under the number. */
-.portfolio-model span { border-bottom: 2px solid var(--color-lemon); color: var(--color-ink); font-size: clamp(1.8rem, 2.6vw, 2.75rem); font-weight: 300; letter-spacing: -0.02em; line-height: 1.1; padding-bottom: 0.35rem; width: fit-content; }
-.portfolio-model h3 { font-size: clamp(1.05rem, 2.1vw, 1.98rem); font-weight: 300; letter-spacing: -0.05em; line-height: 0.96; margin-top: auto; }
-.portfolio-model p { color: var(--color-ink); font-size: 0.9rem; line-height: 1.36; margin-top: 0.99rem; }
 /* About -------------------------------------------------------------------- */
-.about-hero__visual { background: var(--color-bg-dark-2); }.about-principles {
-  border-top: 1px solid var(--color-line);
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin-top: clamp(1.6rem, 8vw, 7.2rem);
-}
-.about-principles article { border-right: 1px solid var(--color-line); min-height: 17.1rem; padding: 1.26rem 1.44rem 1.26rem 0; }
-.about-principles article + article { padding-left: 1.44rem; }
-.about-principles article:last-child { border-right: 0; }
-.about-principles span { border-bottom: 2px solid var(--color-lemon); color: var(--color-ink); display: inline-block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; padding-bottom: 0.35rem; text-transform: none; }
-.about-principles h3 { font-size: clamp(1.05rem, 3.2vw, 3.06rem); font-weight: 300; letter-spacing: -0.025em; line-height: 1.08; margin-top: 2.97rem; }
-.about-principles p { color: var(--color-ink); font-size: 0.98rem; line-height: 1.42; margin-top: 0.99rem; max-width: 18.9rem; }
+.about-hero__visual { background: var(--color-bg-dark-2); }
 .about-locations { display: grid; gap: clamp(1.4rem, 7vw, 7.2rem); grid-template-columns: minmax(18rem, 0.8fr) minmax(18rem, 1.2fr); }
 .about-locations__map {
   aspect-ratio: 1 / 0.9;
@@ -269,14 +244,6 @@
   .portfolio-mode { grid-template-columns: 3.15rem minmax(0, 1fr); }
   .portfolio-mode__copy { grid-column: 2; }
   .portfolio-mode__outcome { border-left: 0; grid-column: 2; padding-left: 0; }
-  .portfolio-model { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .portfolio-model article:nth-child(2n) { border-right: 0; }
-  .portfolio-model article:nth-child(n + 3) { border-top: 1px solid var(--color-line); }
-  .about-principles { grid-template-columns: 1fr; }
-  .about-principles article,
-  .about-principles article + article { border-bottom: 1px solid var(--color-line); border-right: 0; min-height: 0; padding: 1.8rem 0; }
-  .about-principles article:last-child { border-bottom: 0; }
-  .about-principles h3 { margin-top: 1.8rem; }
 }
 
 @media (max-width: 650px) {
@@ -284,11 +251,6 @@
   .page-breadcrumb { margin-bottom: 2.25rem; }
   .page-hero__visual { aspect-ratio: 4 / 3; }
   .page-hero__metric { padding: 0.99rem; }
-  .portfolio-model { grid-template-columns: 1fr; }
-  .portfolio-model article,
-  .portfolio-model article + article { border-bottom: 1px solid var(--color-line); border-right: 0; min-height: 0; padding: 1.62rem 0; }
-  .portfolio-model article:last-child { border-bottom: 0; }
-  .portfolio-model h3 { margin-top: 1.98rem; }
   .location-list { grid-template-columns: 1fr; }
   .location-list div:nth-child(odd) { margin-right: 0; }
 }
