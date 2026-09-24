@@ -21,7 +21,7 @@ export default [
     description: 'Das Emposo Portfolio: optimieren, transformieren, skalieren und verzahnen als Ergebnisverantwortung.',
     nav: 'portfolio',
     bodyClass: 'subpage wrap-anywhere',
-    content: ['pages/portfolio.html', 'sections/07aa-faq.html'],
+    content: 'pages/portfolio.html',
     scripts: ['00-core', '01-header'],
   },
   {

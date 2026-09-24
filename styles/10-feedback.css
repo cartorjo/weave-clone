@@ -172,6 +172,8 @@ a.expertise-card:hover .text-link span, a.expertise-card:focus-visible .text-lin
 .page-cta__copy p { line-height: 1.55; }
 .page-section__top { gap: 3rem; }
 .page-section__lede > p + p { margin-top: 1rem; }
+/* Leistungs-Modi: das Outcome-Statement war "sehr klein" (owner review 24-09). */
+.portfolio-mode__outcome { font-size: 1.15rem; font-weight: 700; letter-spacing: .01em; line-height: 1.45; max-width: 15rem; }
 /* Leistungen intro: kurze Lede plus Fließtext in Kästen nebeneinander
    (owner review 24-09). */
 .lede-boxes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2.5rem; max-width: 68rem; }
