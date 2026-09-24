@@ -85,8 +85,7 @@ export function industryPage(slug) {
 
 function management() {
   // Roles and biographies as supplied in the owner's workbook (sheet 06 Management),
-  // in the sheet's row order. Hans Lang has no supplied role, bio or portrait and
-  // stays a name-only tile.
+  // in the sheet's row order. Hans Lang was removed per owner request (24-09).
   const profiles = [
     {name:'Aleksandar Amidzic', image:'aleksandar-amidzic', roles:['Geschäftsführer Emposo Deutschland & Rumänien','Geschäftsführer Hays Professional Solutions GmbH'], bio:[
       'Aleksandar Amidzic prägt seit vielen Jahren die Weiterentwicklung technologischer Dienstleistungen im deutschsprachigen Raum. Seit 2020 führt er die Emposo in Deutschland sowie Rumänien und hat dabei das Unternehmen gezielt als verlässlichen sowie leistungsstarken Partner für innovative technologiegetriebene Lösungen etabliert.',
@@ -155,7 +154,7 @@ function management() {
     const more = rest.length ? `<details class="management-card__more"><summary class="min-h-11"><span class="management-card__more-open">Mehr lesen</span><span class="management-card__more-close">Weniger anzeigen</span></summary>${rest.map(text=>`<p class="management-card__bio">${escape(text)}</p>`).join('')}</details>` : '';
     return `<article class="management-card"><figure tabindex="0">${picture(person.image,'(max-width: 700px) 100vw, 33vw')}</figure><div class="management-card__detail">${detail}${person.link ? `<a href="${person.link.href}">LinkedIn ${arrow}</a>` : ''}</div><h3>${escape(person.name)}</h3><p class="management-card__role">${person.roles.map(escape).join('<br>')}</p>${teaser.map(text=>`<p class="management-card__bio">${escape(text)}</p>`).join('')}${more}</article>`;
   }).join('');
-  return `<section class="page-section page-section--paper" id="management" aria-labelledby="management-title"><div class="gutter"><div class="container"><p class="eyebrow">Management</p><h2 class="page-title" id="management-title">Menschen, die Verantwortung übernehmen.</h2><div class="management-cards">${cards}<article class="management-card"><div class="management-card__initials" aria-hidden="true">HL</div><h3>Hans Lang</h3></article></div></div></div></section>`;
+  return `<section class="page-section page-section--paper" id="management" aria-labelledby="management-title"><div class="gutter"><div class="container"><p class="eyebrow">Management</p><h2 class="page-title" id="management-title">Menschen, die Verantwortung übernehmen.</h2><div class="management-cards">${cards}</div></div></div></section>`;
 }
 
 export function fragment(name) {
