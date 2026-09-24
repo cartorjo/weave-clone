@@ -18,6 +18,25 @@ export function industryCards() {
   return `<div class="industry-cards">${industries.map((industry,i)=>`<div class="industry-tile"><figure>${picture(industry.image,'(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 33vw')}</figure><div class="industry-tile__copy"><span class="industry-tile__number">0${i+1}</span><h3>${escape(industry.name)}</h3>${industry.subtitle ? `<p>${escape(industry.subtitle)}</p>` : ''}</div></div>`).join('')}</div>`;
 }
 
+// Company Kennzahlen: values and icons live ONCE here (icons follow the CD
+// handbook's Anwendungsbeispiel, page 5). Pages select facts and page-fitting
+// labels via the company-facts-* fragments — never hand-write the markup.
+const companyFactData = {
+  founded:   {icon:'building-line',         value:'2014'},
+  team:      {icon:'users-group-line',      value:'250+'},
+  projects:  {icon:'settings-cog-2-line',   value:'2.900+'},
+  nations:   {icon:'globe-earth-line',      value:'30'},
+  locations: {icon:'map-pin-simple-2-line', value:'4'},
+};
+function companyFacts(selection) {
+  const facts = Object.entries(selection);
+  return `<dl class="company-facts${facts.length === 5 ? ' company-facts--5' : ''}">${facts.map(([key,label])=>{
+    const f = companyFactData[key];
+    if (!f) throw new Error(`Unknown company fact: ${key}`);
+    return `<div><dt><span class="company-facts__icon">{{icon:${f.icon}}}</span><span class="company-facts__value">${f.value}</span></dt><dd>${escape(label)}</dd></div>`;
+  }).join('')}</dl>`;
+}
+
 function metric(project) {
   return `<div class="result-metric"><strong${project.metric.length>8?' class="result-metric__word"':''}>${escape(project.metric)}</strong><span>${escape(project.label)}</span></div>`;
 }
@@ -154,6 +173,9 @@ function management() {
 export function fragment(name) {
   switch (name) {
     case 'industry-cards': return industryCards();
+    case 'company-facts-home': return companyFacts({founded:'gegründet', team:'Mitarbeitende', projects:'Projekte & Services', locations:'Standorte in Deutschland und Rumänien'});
+    case 'company-facts-about': return companyFacts({founded:'gegründet', team:'praxiserfahrene Expertinnen, Experten und Spezialisten', projects:'erfolgreiche Projekte und Dienstleistungen', nations:'Nationen mit jahrelanger Erfahrung', locations:'Standorte in Deutschland und Rumänien'});
+    case 'company-facts-karriere': return companyFacts({founded:'gegründet', team:'Mitarbeitende in Engineering, Technology und Operations', projects:'Projekte und Dienstleistungen als Grundlage für praxisnahes Wissen', locations:'Standorte: Mannheim, Düsseldorf, Frankfurt und Timișoara'});
     case 'projects-featured': return projectCards(projects.filter(p=>['data2ai-platform','engineering-wissensbasis','mlops-medizinprodukte','multi-site-transition'].includes(p.slug)), false, true);
     case 'projects-all': return filters();
     case 'disciplines': return disciplineGrid();

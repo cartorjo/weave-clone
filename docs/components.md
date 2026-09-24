@@ -37,7 +37,7 @@ statt eine Parallel-Klasse zu erfinden.
 | Referenzkarte | `.reference-card` | Navy-Box-Hover (320ms), Bild-Zoom 560ms/1.03, Pfeil-Slide .35rem. |
 | Branchen-Kachel | `.industry-tile` | EIN Verhalten überall (Owner 24.09., zweiter Entscheid am selben Tag): statische Inhaltskachel — kein Link, kein Pfeil, kein Hover, da die Branchen-Unterseiten entfernt wurden. Bild, Nummer, Name, optionale Subline. |
 | Management-Karte | `.management-card`, `__more`, `__facts` | Foto (grayscale, kein Hover), Name, Rolle, 48-Wort-Teaser; Fakten + Rest-Bio + LinkedIn im `<details>`-Expander. |
-| Kennzahlen | `.company-facts`, `--5`, `__icon`, `__value` | DIE Zahlen-Komponente überall (Startseite, Über-uns, Karriere — Owner 24.09.): Icon, große Zahl mit Countup, orange Rule, Label. Nicht klickbar → kein Hover. |
+| Kennzahlen | `.company-facts`, `--5`, `__icon`, `__value` — NUR via `companyFacts()` in content/render.mjs (`content:company-facts-home/-about/-karriere`) | DIE Zahlen-Komponente überall (Startseite, Über-uns, Karriere — Owner 24.09.): Icon, große Zahl mit Countup, orange Rule, Label. Werte + Icons leben einmal in `companyFactData`; Seiten wählen Fakten und Labels. Markup nie von Hand schreiben. Nicht klickbar → kein Hover. |
 | Standorte | `partials/locations-map.html`, `partials/location-list.html` | Byte-identische Blöcke, einmal definiert (karriere + kontakt). |
 | Header/Menü | `.site-nav`, `.header-contact`, `.mobile-menu` | Links weight 500; Hover/aktiv = 2px-Ink-Unterstrich (scaleX). CTA = Lemon-Pill mit Ink-Pfeilkreis, Hover invertiert. 1280px-Sync mit js/01-header.js. |
 
