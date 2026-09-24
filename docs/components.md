@@ -31,7 +31,7 @@ statt eine Parallel-Klasse zu erfinden.
 | Eyebrow | `.eyebrow`, `--light` | Sektions-Label mit Lemon-Rule danach. Ersetzt page-eyebrow, page-kicker. |
 | Display-Heading | `.display-large`, `--light` | Die eine große Überschrift (H1/H2). `em` = bold, Farbe erbt. Ersetzt display-hero, page-display, page-title, page-cta__title. |
 | Text-Link | `.text-link`, `--light` | Pfeil-Link; Pfeil IMMER als `<span aria-hidden="true">→</span>` im Markup. 44px-Target eingebaut. Ersetzt page-link. |
-| Fakten/Nummern-Grid | `.fact-grid`, `--3/--5`, `--flow`, `__label`, `__label--rule`, `__label--display` | Hairline-Zellen-Grid für Phasen und Prinzipien (NICHT für Kennzahlen — die sind immer `.company-facts`). `--display` = Phasen-Ziffern in Kennzahlen-Größe; `--rule` = Lemon-Unterstrich unterm Label; `--flow` = Überschrift oben statt unten. Ersetzt portfolio-model, about-principles, about-facts. |
+| Fakten/Nummern-Grid | `.fact-grid`, `--5`, `__label`, `__label--display` | Hairline-Zellen-Grid für Phasen (NICHT für Kennzahlen — die sind immer `.company-facts`). `--display` = Phasen-Ziffern in Kennzahlen-Größe mit Lemon-Rule. Einziger Konsument: das 5-Stufen-Modell auf /portfolio/. Ersetzt portfolio-model, about-principles, about-facts. |
 | Box-Trio | `.company-values`, `--paper`, `--2`, `__icon` | Artikel-Grid mit Lemon-Top-Rule; `--paper` = gefüllte Papier-Boxen (ex lede-boxes), `--2` = zweispaltig. `.case-facets` ist der bewusste Projekt-Override (Icon-Spalten). |
 | CTA | `.page-cta` via `cta()` in content/render.mjs | Eyebrow immer „Ihr nächster Schritt“; handgeschriebene CTAs (karriere, portfolio, case-studies) folgen exakt derselben Form. |
 | Referenzkarte | `.reference-card` | Navy-Box-Hover (320ms), Bild-Zoom 560ms/1.03, Pfeil-Slide .35rem. |

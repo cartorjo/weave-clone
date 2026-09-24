@@ -50,7 +50,7 @@ export default [
     nav: 'about',
     bodyClass: 'subpage wrap-anywhere',
     content: 'pages/about-us.html',
-    scripts: ['00-core', '01-header'],
+    scripts: ['00-core', '01-header', '07-countup'],
   },
   {
     out: 'branchen/index.html',
@@ -68,7 +68,7 @@ export default [
     nav: 'karriere',
     bodyClass: 'subpage wrap-anywhere',
     content: 'pages/karriere.html',
-    scripts: ['00-core', '01-header', '07-countup'],
+    scripts: ['00-core', '01-header'],
   },
   {
     out: 'kontakt/index.html',
