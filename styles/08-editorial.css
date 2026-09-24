@@ -4,19 +4,6 @@
 
 /* Brand tokens live in styles/main.css @theme (--color-*, --ease-em). */
 
-.eyebrow {
-  align-items: center;
-  color: var(--color-ink);
-  display: flex;
-  font-size: 0.75rem;
-  font-weight: 600;
-  gap: 0.675rem;
-  letter-spacing: 0.12em;
-  line-height: 1;
-  text-transform: none;
-}
-.eyebrow::before { background: currentColor; content: ""; height: 1px; width: 1.8rem; }
-.eyebrow--light { color: rgba(255, 255, 255, 0.76); }
 
 .display-hero,
 .display-large {

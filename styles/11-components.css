@@ -1,0 +1,16 @@
+/* --------------------------------------------------------------------------
+   Canonical component layer (consolidation, 24-09).
+
+   One class per component family — the duplicate vocabularies that grew over
+   the feedback rounds (page-eyebrow/page-kicker, page-title/page-display/…)
+   are folded in here and deleted from 07–10. This file is imported LAST so a
+   missed legacy rule loses ties (fail-safe). docs/components.md is the
+   inventory; tools/check-content.mjs rejects retired class names in output.
+   -------------------------------------------------------------------------- */
+
+/* Eyebrow — the small bold section label with the lemon rule after it.
+   Variants: --light (on ink/deep sections). Kickers in heroes are
+   `eyebrow eyebrow--light`. Footer margins live contextually in 08. */
+.eyebrow { align-items: center; color: var(--color-ink); display: flex; font-size: 1rem; font-weight: 700; gap: .675rem; letter-spacing: 0; line-height: 1.35; margin-bottom: 1.35rem; text-transform: none; }
+.eyebrow::after { background: var(--color-lemon); content: ''; height: 3px; width: 2.5rem; }
+.eyebrow--light { color: #fff; }

@@ -52,17 +52,6 @@
 .page-breadcrumb a { color: inherit; text-decoration: none; }
 .page-breadcrumb a:hover { color: var(--color-lemon); }
 .page-breadcrumb span[aria-hidden="true"] { color: var(--color-lemon); }
-.page-kicker {
-  align-items: center;
-  color: rgba(255,255,255,0.74);
-  display: flex;
-  font-size: 0.75rem;
-  font-weight: 600;
-  gap: 0.675rem;
-  letter-spacing: 0.12em;
-  text-transform: none;
-}
-.page-kicker::before { background: currentColor; content: ""; height: 1px; width: 1.8rem; }
 .page-display {
   color: #fff;
   font-size: clamp(2rem, 8.1vw, 8.37rem);
@@ -179,18 +168,6 @@
   grid-template-columns: minmax(0, 1.2fr) minmax(14.4rem, 0.56fr);
 }
 .page-section__top--wide { grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.85fr); }
-.page-eyebrow {
-  align-items: center;
-  color: var(--color-ink);
-  display: flex;
-  font-size: 0.74rem;
-  font-weight: 600;
-  gap: 0.675rem;
-  letter-spacing: 0.115em;
-  text-transform: none;
-}
-.page-eyebrow::before { background: currentColor; content: ""; height: 1px; width: 1.8rem; }
-.page-eyebrow--light { color: rgba(255,255,255,0.72); }
 .page-title {
   color: var(--color-ink);
   font-size: clamp(1.55rem, 6vw, 6.03rem);
