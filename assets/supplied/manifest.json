@@ -1071,5 +1071,42 @@
         "bytes": 97010
       }
     ]
+  },
+  "portfolio-hero": {
+    "source": "General/AdobeStock_1952732297.jpeg",
+    "alt": "Laptop mit Engineering-Workflows in einem Rechenzentrum",
+    "src": "/assets/supplied/portfolio-hero-1600.jpg",
+    "width": 1600,
+    "height": 844,
+    "variants": [
+      {
+        "src": "/assets/supplied/portfolio-hero-640.avif",
+        "width": 640,
+        "height": 337,
+        "format": "avif",
+        "bytes": 17451
+      },
+      {
+        "src": "/assets/supplied/portfolio-hero-640.webp",
+        "width": 640,
+        "height": 337,
+        "format": "webp",
+        "bytes": 28594
+      },
+      {
+        "src": "/assets/supplied/portfolio-hero-1600.avif",
+        "width": 1600,
+        "height": 844,
+        "format": "avif",
+        "bytes": 59183
+      },
+      {
+        "src": "/assets/supplied/portfolio-hero-1600.webp",
+        "width": 1600,
+        "height": 844,
+        "format": "webp",
+        "bytes": 94288
+      }
+    ]
   }
 }

@@ -41,6 +41,8 @@ const selections = {
   'roman-bretz': ['/Users/jose/Downloads/OneDrive_1_22-09-2026/Roman Bretz.jpg', 'Roman Bretz'],
   'michael-schmitt': ['/Users/jose/Downloads/OneDrive_1_22-09-2026/Michael Schmitt.jpg', 'Dr. Michael Schmitt'],
   'marcus-hefele': ['/Users/jose/Downloads/OneDrive_1_22-09-2026/Marcus Hefele.jpg', 'Marcus Hefele'],
+  // 2026-09-24 review: Leistungen hero (master restorable from OneDrive_1_10-09-2026.zip).
+  'portfolio-hero': ['General/AdobeStock_1952732297.jpeg', 'Laptop mit Engineering-Workflows in einem Rechenzentrum'],
   // 2026-09-24 delivery: final per-industry images ("Feedback Branchen V2").
   'industry-aerospace': ['/Users/jose/Downloads/OneDrive_1_24-09-2026/AdobeStock_2155375490-Aerospace & Defense.jpg', 'Fachkraft überwacht Radar- und Flugdaten auf mehreren Monitoren'],
   'industry-energy': ['/Users/jose/Downloads/OneDrive_1_24-09-2026/AdobeStock_223686976-Energy & Resources.jpg', 'Strommast mit Solarmodulen und Windenergieanlagen im Gegenlicht'],

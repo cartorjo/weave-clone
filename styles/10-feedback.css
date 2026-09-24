@@ -172,7 +172,23 @@ a.expertise-card:hover .text-link span, a.expertise-card:focus-visible .text-lin
 .page-cta__copy p { line-height: 1.55; }
 .page-section__top { gap: 3rem; }
 .page-section__lede > p + p { margin-top: 1rem; }
-.expertise-column__title { font-size: 2rem; color: var(--color-ink); }
+/* Leistungen intro: kurze Lede plus Fließtext in Kästen nebeneinander
+   (owner review 24-09). */
+.lede-boxes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2.5rem; max-width: 68rem; }
+.lede-boxes article { background: var(--color-paper); border-top: 3px solid var(--color-lemon); padding: 1.6rem 1.8rem 1.8rem; }
+.lede-boxes p { font-size: 1.1rem; line-height: 1.6; }
+/* Disziplinen als ruhige 2×4-Tabelle: Spaltenfluss teilt die Zeilenhöhen
+   zwischen Engineering und Technology, Promises sitzen auf einer Höhe. */
+.discipline-table { display: grid; grid-auto-flow: column; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto repeat(4, minmax(0, 1fr)); margin-top: 3.5rem; }
+.discipline-table__head { font-size: 2rem; font-weight: 700; color: var(--color-ink); letter-spacing: -.01em; padding-bottom: 1.4rem; }
+.discipline-cell { border-top: 1px solid var(--color-line); display: flex; flex-direction: column; gap: .55rem; padding: 1.6rem 2.4rem 1.6rem 0; }
+.discipline-table > :nth-child(n+6) { border-left: 1px solid var(--color-line); padding-left: 2.4rem; }
+.discipline-cell:nth-child(n+6) { padding-right: 0; }
+.discipline-cell__icon { color: var(--color-lemon); height: 2.4rem; width: 2.4rem; margin-bottom: .35rem; }
+.discipline-cell__icon svg { height: 100%; width: 100%; }
+.discipline-cell h4 { font-size: clamp(1.2rem, 1.8vw, 1.65rem); font-weight: 700; letter-spacing: -.01em; line-height: 1.2; }
+.discipline-cell > p { font-size: .98rem; line-height: 1.45; max-width: 30rem; }
+.discipline-cell__promise { margin-top: auto; padding-top: 1rem; font-weight: 700; font-size: .95rem; }
 .expertise-card h4 { font-size: 1.55rem; letter-spacing: -.02em; line-height: 1.2; }
 .expertise-card__number, .fact-grid__label, .about-facts span, .about-principles span { font-size: .95rem; letter-spacing: 0; }
 .expertise-card__number { border-bottom: 2px solid var(--color-lemon); display: inline-block; padding-bottom: .3rem; width: fit-content; }
@@ -256,6 +272,11 @@ a.expertise-card:hover .text-link span, a.expertise-card:focus-visible .text-lin
   .company-values { grid-template-columns: 1fr; }
   .about-facts--3, .about-facts--5 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .about-facts--3 article:nth-child(even), .about-facts--5 article:nth-child(even) { border-right: 0; }
+  .lede-boxes { grid-template-columns: minmax(0, 1fr); max-width: 40rem; }
+  .discipline-table { grid-auto-flow: row; grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+  .discipline-table > :nth-child(n+6) { border-left: 0; padding-left: 0; }
+  .discipline-cell { padding-right: 0; }
+  .discipline-table__head:not(:first-child) { margin-top: 2.75rem; }
 }
 @media (max-width:700px) {
   .reference-grid, .reference-grid--collage, .industry-disciplines, .contact__grid, .management-profile, .sitemap-grid { grid-template-columns: minmax(0,1fr); }

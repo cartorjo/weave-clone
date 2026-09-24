@@ -231,21 +231,6 @@
 .page-rule--light { border-color: var(--color-line-light); }
 
 /* Expertise ---------------------------------------------------------------- */
-.expertise-matrix {
-  border-top: 1px solid var(--color-line);
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: clamp(1.6rem, 8vw, 7.2rem);
-}
-.expertise-column { padding: 1.215rem 0 0; }
-.expertise-column + .expertise-column { border-left: 1px solid var(--color-line); padding-left: clamp(0.8rem, 4vw, 3.6rem); }
-.expertise-column__title {
-  color: var(--color-lemon);
-  font-size: clamp(1.05rem, 3.5vw, 3.6rem);
-  font-weight: 300;
-  letter-spacing: -0.025em;
-  line-height: 0.92;
-}
 .expertise-list { margin-top: 2.07rem; }
 .expertise-card {
   border-top: 1px solid var(--color-line);
@@ -564,8 +549,6 @@
   .page-display { font-size: clamp(1.95rem, 15vw, 5.22rem); }
   .page-hero__visual { aspect-ratio: 4 / 3; }
   .page-hero__metric { padding: 0.99rem; }
-  .expertise-matrix { grid-template-columns: 1fr; }
-  .expertise-column + .expertise-column { border-left: 0; border-top: 1px solid var(--color-line); margin-top: 2.7rem; padding-left: 0; padding-top: 2.7rem; }
   .expertise-proof { grid-template-columns: 1fr; }
   .expertise-proof article,
   .expertise-proof article + article { border-bottom: 1px solid var(--color-line-light); border-right: 0; min-height: 0; padding: 1.8rem 0; }

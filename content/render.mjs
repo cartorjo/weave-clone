@@ -44,9 +44,11 @@ function filters() {
 }
 
 export function disciplineGrid() {
-  // No per-service subpages (owner IA) — the disciplines render as static cards
-  // on the Leistungen page.
-  return `<div class="expertise-matrix">${['Engineering','Technology'].map(group=>`<section class="expertise-column" aria-labelledby="disciplines-${group}"><h3 class="expertise-column__title" id="disciplines-${group}">${group}</h3><div class="expertise-list">${disciplines.filter(d=>d.group===group).map(d=>`<article class="expertise-card"><h4>${escape(d.name)}</h4><p>${escape(d.topics)}</p><span class="expertise-card__promise">${escape(d.promise)}</span></article>`).join('')}</div></section>`).join('')}</div>`;
+  // No per-service subpages (owner IA) — the disciplines render as a calm 2×4
+  // table (owner review 24-09): group headers, icons, continuous rules; grid
+  // rows are shared across both columns so the promises align per row.
+  const cell = d => `<article class="discipline-cell"><span class="discipline-cell__icon" aria-hidden="true">{{icon:${d.icon}}}</span><h4>${escape(d.name)}</h4><p>${escape(d.topics)}</p><p class="discipline-cell__promise">${escape(d.promise)}</p></article>`;
+  return `<div class="discipline-table">${['Engineering','Technology'].map(group=>`<h3 class="discipline-table__head">${group}</h3>${disciplines.filter(d=>d.group===group).map(cell).join('')}`).join('')}</div>`;
 }
 
 function cta(title='Jetzt Kontakt aufnehmen!') {
