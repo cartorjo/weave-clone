@@ -129,10 +129,10 @@ function management() {
     'marcus-hefele': ['Strategische Kundenpartnerschaften und Positionierung des Lösungsportfolios', 'Aufbau neuer Geschäftsfelder, branchenübergreifende Zusammenarbeit', 'Messbare Geschäftsergebnisse statt reiner Konzepte'],
   };
   const labels = ['Verantwortung', 'Expertise', 'Schwerpunkt'];
-  // The visible teaser is capped at 96 words, cut at the nearest sentence
+  // The visible teaser is capped at 48 words, cut at the nearest sentence
   // boundary below the cap so it never breaks mid-sentence; everything after
   // sits behind the Mehr-lesen expander.
-  const TEASER_WORDS = 96;
+  const TEASER_WORDS = 48;
   const splitBio = paragraphs => {
     const teaser = [], rest = [];
     let count = 0, full = false;
