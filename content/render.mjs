@@ -35,10 +35,12 @@ export function projectCards(selection = projects, filterable = false, collage =
 function filters() {
   // Dimensions per workbook v2: Branche + Leistungen (the eight service-portfolio
   // terms), not Wirkung. All eight disciplines are offered; the empty state
-  // covers the ones without a published reference yet.
+  // covers the ones without a published reference yet. Buttons sort A–Z
+  // (owner review 24-09), "Alle" stays first.
+  const az = choices => choices.sort((a,b)=>a[1].localeCompare(b[1],'de'));
   const groups = [
-    {key:'industry', label:'Branche', aria:'Nach Branche filtern', choices:[['all','Alle'],['aerospace','Aerospace & Defense'],['energy','Energy & Resources'],['health','Health & Pharma'],['industrial','Industrials & Manufacturing'],['automotive','Automotive'],['technology','Technology, Telecoms & Media']]},
-    {key:'discipline', label:'Leistung', aria:'Nach Leistung filtern', choices:[['all','Alle'],...disciplines.map(d=>[d.slug,d.name])]},
+    {key:'industry', label:'Branche', aria:'Nach Branche filtern', choices:[['all','Alle'],...az([['aerospace','Aerospace & Defense'],['energy','Energy & Resources'],['health','Health & Pharma'],['industrial','Industrials & Manufacturing'],['automotive','Automotive'],['technology','Technology, Telecoms & Media']])]},
+    {key:'discipline', label:'Leistung', aria:'Nach Leistung filtern', choices:[['all','Alle'],...az(disciplines.map(d=>[d.slug,d.name]))]},
   ];
   return `<div class="work-filter js-only">${groups.map(group=>`<div class="filter-group"><span>${group.label}</span><div role="group" aria-label="${group.aria}">${group.choices.map(([key,name])=>`<button class="filter-button min-h-11${key==='all'?' is-active':''}" type="button" data-filter-group="${group.key}" data-filter-value="${key}" aria-pressed="${key==='all'}">${escape(name)}</button>`).join('')}</div></div>`).join('')}</div><p class="work-count" id="project-count" aria-live="polite">${projects.length} Projekte</p>${projectCards(projects,true)}<p class="work-empty" id="project-empty" hidden>Für diese Auswahl ist noch keine Referenz veröffentlicht. <a href="/kontakt/">Sprechen Sie mit uns über Ihre Branche.</a></p>`;
 }
@@ -70,7 +72,7 @@ export function industryPage(slug) {
   const related = projects.filter(p=>i.cases.includes(p.slug));
   return `<section class="page-hero"><div class="gutter"><div class="container"><div class="page-hero__grid"><div class="page-hero__copy"><p class="page-breadcrumb"><a href="/">Startseite</a><span aria-hidden="true">/</span><a href="/branchen/">Branchen</a></p><p class="page-kicker">${escape(i.subtitle || 'Branchenwissen in Anwendung')}</p><h1 class="page-display">${escape(i.name)}</h1><p class="page-hero__intro">${escape(i.intro)}</p></div><figure class="page-hero__visual">${picture(i.image,'(max-width: 900px) 100vw, 50vw',true)}</figure></div></div></div></section>
   <section class="page-section"><div class="gutter"><div class="container"><div class="page-section__top"><div><p class="eyebrow">Ihre Branche. Unsere Expertise.</p><h2 class="page-title">Unsere Teams kommen direkt aus Ihrer Branche.</h2></div><div class="page-section__lede"><p>${escape(i.challenge)}</p><p>${escape(i.delivery)}</p></div></div><div class="industry-disciplines">${i.disciplines.map(slug=>{const d=disciplineBySlug[slug];return `<article class="expertise-card"><h3>${escape(d.name)}</h3><p>${escape(d.promise)}</p></article>`;}).join('')}</div></div></div></section>
-  ${related.length ? `<section class="page-section page-section--paper"><div class="gutter"><div class="container"><p class="eyebrow">Referenzprojekte</p><h2 class="page-title">Unsere Erfolge sprechen für sich.</h2>${projectCards(related)}<p class="section-more"><a class="text-link" href="/case-studies/?branche=${i.filter}#referenzen">Alle passenden Referenzen ${arrow}</a></p></div></div></section>` : ''}${cta()}`;
+  ${related.length ? `<section class="page-section page-section--paper"><div class="gutter"><div class="container"><p class="eyebrow">Projekte</p><h2 class="page-title">Unsere Erfolge sprechen für sich.</h2>${projectCards(related)}<p class="section-more"><a class="text-link" href="/case-studies/?branche=${i.filter}#referenzen">Alle passenden Referenzen ${arrow}</a></p></div></div></section>` : ''}${cta()}`;
 }
 
 function management() {
@@ -124,7 +126,7 @@ export function fragment(name) {
     case 'projects-transform': return projectCards(projects.filter(p=>p.outcome==='transform' && p.slug!=='data2ai-platform'));
     case 'disciplines': return disciplineGrid();
     case 'management': return management();
-    case 'sitemap': return `<div><h2>Leistungen</h2><a href="/">Startseite</a><a href="/portfolio/">Unsere Leistungen</a><a href="/portfolio/#delivery-model">Unser 5-Stufen-Modell</a></div><div><h2>Branchen</h2><a href="/branchen/">Alle Branchen</a>${industries.map(i=>`<a href="/branchen/${i.slug}/">${escape(i.name)}</a>`).join('')}<h2>Unternehmen</h2><a href="/about-us/">Über uns</a><a href="/about-us/#management">Management</a><a href="/karriere/">Karriere</a><a href="/kontakt/">Kontakt</a><a href="/zertifizierungen/">Zertifizierungen</a><a href="/cookies/">Cookies</a><a href="/barrierefreiheit/">Barrierefreiheit</a><a href="https://emposo.de/impressum/">Impressum</a><a href="https://emposo.de/datenschutzerklaerung/">Datenschutz</a></div><div><h2>Referenzprojekte</h2><a href="/case-studies/">Alle Case Studies</a>${projects.map(p=>`<a href="/case-studies/${p.slug}/">${escape(p.name)}</a>`).join('')}</div>`;
+    case 'sitemap': return `<div><h2>Leistungen</h2><a href="/">Startseite</a><a href="/portfolio/">Unsere Leistungen</a><a href="/portfolio/#delivery-model">Unser 5-Stufen-Modell</a></div><div><h2>Branchen</h2><a href="/branchen/">Alle Branchen</a>${industries.map(i=>`<a href="/branchen/${i.slug}/">${escape(i.name)}</a>`).join('')}<h2>Unternehmen</h2><a href="/about-us/">Über uns</a><a href="/about-us/#management">Management</a><a href="/karriere/">Karriere</a><a href="/kontakt/">Kontakt</a><a href="/zertifizierungen/">Zertifizierungen</a><a href="/cookies/">Cookies</a><a href="/barrierefreiheit/">Barrierefreiheit</a><a href="https://emposo.de/impressum/">Impressum</a><a href="https://emposo.de/datenschutzerklaerung/">Datenschutz</a></div><div><h2>Projekte</h2><a href="/case-studies/">Alle Projekte</a>${projects.map(p=>`<a href="/case-studies/${p.slug}/">${escape(p.name)}</a>`).join('')}</div>`;
     default: throw new Error(`Unknown content fragment: ${name}`);
   }
 }
