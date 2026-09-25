@@ -71,11 +71,14 @@ export function disciplineGrid() {
   return `<div class="discipline-table">${['Engineering','Technology'].map(group=>`<h3 class="discipline-table__head">${group}</h3>${disciplines.filter(d=>d.group===group).map(cell).join('')}`).join('')}</div>`;
 }
 
+// Applications and enquiries go to the shared inbox (owner decision 2026-09-25).
+const APPLY_EMAIL = 'info@emposo.eu';
+
 export function jobsList() {
   // Stellenausschreibungen (owner deck 24-09) on /karriere/: flat IA — no
   // subpages, the full posting sits in the canonical expander. Visible state:
   // title, meta chips, tagline and the first paragraph.
-  return `<div class="job-list">${jobs.map(job=>`<article class="job-card" id="${job.slug}"><h3>${escape(job.title)}</h3><p class="job-card__meta">${job.meta.map(m=>`<span class="tag">${escape(m)}</span>`).join('')}</p><p class="job-card__tagline">${escape(job.tagline)}</p><p class="job-card__text">${escape(job.intro[0])}</p><details class="expander"><summary class="min-h-11"><span class="expander__open">Zur vollständigen Ausschreibung</span><span class="expander__close">Weniger anzeigen</span><span class="sr-only"> – ${escape(job.title)}</span></summary>${job.intro.slice(1).map(text=>`<p class="job-card__text">${escape(text)}</p>`).join('')}${job.sections.map(section=>`<h4>${escape(section.title)}</h4><ul class="result-list result-list--compact">${section.items.map(item=>`<li>${escape(item)}</li>`).join('')}</ul>`).join('')}<p class="job-card__text">${escape(job.apply)}</p></details></article>`).join('')}</div>`;
+  return `<div class="job-list">${jobs.map(job=>`<article class="job-card" id="${job.slug}"><h3>${escape(job.title)}</h3><p class="job-card__meta">${job.meta.map(m=>`<span class="tag">${escape(m)}</span>`).join('')}</p><p class="job-card__tagline">${escape(job.tagline)}</p><p class="job-card__text">${escape(job.intro[0])}</p><details class="expander"><summary class="min-h-11"><span class="expander__open">Zur vollständigen Ausschreibung</span><span class="expander__close">Weniger anzeigen</span><span class="sr-only"> – ${escape(job.title)}</span></summary>${job.intro.slice(1).map(text=>`<p class="job-card__text">${escape(text)}</p>`).join('')}${job.sections.map(section=>`<h4>${escape(section.title)}</h4><ul class="result-list result-list--compact">${section.items.map(item=>`<li>${escape(item)}</li>`).join('')}</ul>`).join('')}<p class="job-card__text">${escape(job.apply)}</p><p class="job-card__apply"><a class="text-link" href="mailto:${APPLY_EMAIL}?subject=${encodeURIComponent(`Bewerbung: ${job.title}`)}">Bewerbung an ${APPLY_EMAIL}<span class="sr-only"> – ${escape(job.title)}</span> <span aria-hidden="true">→</span></a></p></details></article>`).join('')}</div><p class="job-list__apply">Keine passende Position dabei? Schick uns Deine Initiativbewerbung an <a href="mailto:${APPLY_EMAIL}?subject=Initiativbewerbung">${APPLY_EMAIL}</a>.</p>`;
 }
 
 // The one CTA block. Variants are content, never copied markup; pages include

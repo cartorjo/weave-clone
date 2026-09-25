@@ -141,6 +141,9 @@
 .tag { background: var(--color-bg); border-radius: var(--radius-full); font-size: var(--text-label); font-weight: 600; padding: .4rem .85rem; }
 .job-card__tagline { font-size: var(--text-lede-sm); font-weight: 700; margin-top: 1.6rem; }
 .job-card__text { font-size: var(--text-body-lg); line-height: 1.55; margin-top: var(--space-legacy-2); max-width: 52rem; }
+.job-card__apply { margin-top: var(--space-3); }
+.job-list__apply { font-size: var(--text-body-lg); line-height: 1.55; margin-top: var(--space-5); }
+.job-list__apply a { text-decoration: underline; text-underline-offset: .15em; }
 .job-card h4 { font-size: var(--text-body); font-weight: 700; margin-top: var(--space-4); }
 .result-list--compact { font-size: var(--text-body); margin-bottom: 0; max-width: 52rem; }
 .result-list--compact li { border-bottom: 0; padding-block: .35rem .35rem; padding-inline: 1.2rem 0; }
