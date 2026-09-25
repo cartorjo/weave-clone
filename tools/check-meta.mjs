@@ -30,7 +30,15 @@ for (const page of pages) {
   if (image && !existsSync(resolve(root, image.slice(1)))) failures.push(`${f}: og:image ${image} does not exist`);
   const ld = attr(html, /<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
   if (!ld) failures.push(`${f}: JSON-LD missing`);
-  else try { const g = JSON.parse(ld)['@graph']; if (!g?.some(n => n['@type'] === 'WebPage')) failures.push(`${f}: JSON-LD has no WebPage`); }
+  else try {
+    const g = JSON.parse(ld)['@graph'];
+    if (!g?.some(n => n['@type'] === 'WebPage')) failures.push(`${f}: JSON-LD has no WebPage`);
+    const crumbs = g?.find(n => n['@type'] === 'BreadcrumbList');
+    if (f !== 'index.html' && !crumbs) failures.push(`${f}: JSON-LD has no BreadcrumbList`);
+    if (crumbs && crumbs.itemListElement.some((it, i) => it.position !== i + 1 || !it.name || !/^https:\/\//.test(it.item))) failures.push(`${f}: BreadcrumbList malformed`);
+    if (f.startsWith('case-studies/') && f !== 'case-studies/index.html' && !g.some(n => n['@type'] === 'Article')) failures.push(`${f}: case study without Article`);
+    if (f === 'portfolio/index.html' && !g.some(n => n['@type'] === 'Service')) failures.push(`${f}: Leistungen without Service`);
+  }
   catch (e) { failures.push(`${f}: JSON-LD invalid (${e.message})`); }
 }
 if (owner.length) console.log(`Metadata length guidance, NEEDS-OWNER (not a failure, fixing means rewriting):\n${owner.map(o => '  ' + o).join('\n')}`);
