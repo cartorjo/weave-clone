@@ -92,13 +92,13 @@ decisions below.
   docs/components.md measured (4.5:1 text, 3:1 UI) with evidence.
   Agents: a11y-perf-reviewer -> design-system-engineer -> qa-reviewer.
 
-- B-18 Spacing snap to the 8px grid (S, A) - TODO
+- B-18 Spacing snap to the 4px/8px grid (S, A) - IN-REVIEW (ecf0321; awaiting owner approval of the before/after shots)
   Set --space-legacy-N to 8px multiples in styles/main.css (one-file change),
   migrate the ~100 one-off spacing values to the nearest step.
   Before/after crops per page for owner approval.
   Agents: design-system-engineer -> a11y-perf-reviewer -> qa-reviewer.
 
-- B-19 Headline scale consolidation (M, A) - TODO
+- B-19 Headline scale consolidation (M, A) - IN-REVIEW (6596a4b; 22 clamps -> 8 roles; awaiting owner approval)
   About 30 one-off fluid clamp() headline sizes become a few named headline
   roles; before/after crops per page for owner approval.
   Agents: design-system-engineer -> qa-reviewer.
