@@ -127,7 +127,7 @@ decisions below.
   between static filtered views and query-string handling).
   Agents: ux-ia-architect -> frontend-engineer -> a11y-perf-reviewer -> qa-reviewer.
 
-- B-14 Automated accessibility checks (S, T) - PARTIAL (thresholds documented in README; CI NEEDS-OWNER)
+- B-14 Automated accessibility checks (S, T) - DONE (6bb8dfa: CI runs check + smoke + contrast on every PR; no Lighthouse)
   Done: npm run smoke runs axe on the core routes plus overflow, console,
   CSP and flow checks. Remaining: document thresholds; CI only if the owner
   wants it (Lighthouse in CI is a recorded won't-do in emposo-wp).
