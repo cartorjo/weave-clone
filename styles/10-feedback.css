@@ -233,7 +233,7 @@ a.expertise-card:focus-visible p { color: inherit; }
 .legal-copy { max-width: 55rem; }
 .legal-copy p:not(.page-breadcrumb) { margin-top: 2rem; font-size: 1.15rem; line-height: 1.6; }
 .legal-copy .page-breadcrumb { color: var(--color-ink); }
-/* Breadcrumbs on light sections (e.g. /zertifizierungen/) need ink, not the
+/* Breadcrumbs on light sections (e.g. /cookies/) need ink, not the
    washed white meant for dark page heroes. */
 .page-section:not(.page-section--dark):not(.page-section--deep) .page-breadcrumb { color: var(--color-ink); }
 .legal-copy > a { margin-top: 2rem; }
