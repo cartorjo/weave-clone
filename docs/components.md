@@ -16,6 +16,13 @@ statt eine Parallel-Klasse zu erfinden.
   `@media (hover: hover)`, jeweils mit ungegatetem `:focus-visible`-Zwilling.
   Kein font-weight-Wechsel im Hover (Reflow). Navy-Box-Bleed auf Karten
   einheitlich 1.1rem.
+- **Farbe auf Dunkel:** Inhalte auf Ink-/Deep-Flächen nutzen nur die
+  Rollen `--color-on-dark` (Weiß), `--color-on-dark-muted` (72 %, Fließtext,
+  Ledes, Bildunterschriften) und `--color-on-dark-faint` (62 %, Breadcrumb,
+  Footer-Metatext); Linien `--color-line-light` (22 %) bzw.
+  `--color-line-light-strong` (45 %, Formularfelder, Footer-Kante). Keine
+  `#fff`/`rgba(255,255,255,…)`-Literale in Komponenten; weiße Flächen sind
+  `--color-bg`.
 - **Orange Linien** (#F7911E) nur unter Zahlen/Labels — Ausnahme: der
   aktive/gehoverte Menülink trägt einen 2px-Ink-Unterstrich (Owner-Entscheid
   24.09., gilt nur im Menü).

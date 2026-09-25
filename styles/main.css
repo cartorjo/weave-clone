@@ -82,6 +82,13 @@
   --color-paper: #f5f0eb;
   --color-line: rgba(10, 5, 50, 0.18);
   --color-line-light: rgba(255, 255, 255, 0.22);
+  --color-line-light-strong: rgba(255, 255, 255, 0.45);
+  --color-surface-veil: rgba(255, 255, 255, 0.96);
+  /* On-dark roles (content on ink/deep grounds): primary, secondary and
+     tertiary emphasis. White page/card grounds use --color-bg instead. */
+  --color-on-dark: #ffffff;
+  --color-on-dark-muted: rgba(255, 255, 255, 0.72);
+  --color-on-dark-faint: rgba(255, 255, 255, 0.62);
 
   /* Fluid editorial type scale (correct for the 16px root: floors equal the
      vw term at 320px so type stays fluid on phones; caps restore the designed

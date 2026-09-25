@@ -44,7 +44,12 @@ tokens `{{CUR:key: …}}` / `{{CURATTR:key}}` in partials emit per page.
 
 `styles/main.css` holds the Tailwind `@theme`: midnight blue `#0A0532`
 (`--color-ink` and `--color-accent-text`), decorative orange `#F7911E`
-(`--color-lemon`), hairlines, the fluid type scale (`--text-display-1` …
+(`--color-lemon`), hairlines (`--color-line`, and on dark grounds
+`--color-line-light` / `--color-line-light-strong`), the on-dark content
+roles (`--color-on-dark` #fff, `--color-on-dark-muted` 72 %,
+`--color-on-dark-faint` 62 % white — no white literals in component CSS;
+white page/card grounds use `--color-bg`), the sticky-header
+`--color-surface-veil`, the fluid type scale (`--text-display-1` …
 `--text-eyebrow`), the spacing scale (`--spacing-section` is the shared
 vertical rhythm), two shadows, one easing, and `--font-sans` (self-hosted
 Roboto, weights 300–700). Component CSS lives in
