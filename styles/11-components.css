@@ -21,7 +21,7 @@
   .reference-card__copy, a.expertise-card)::before { background: currentColor; border-radius: inherit; content: ''; inset: var(--state-inset, 0); opacity: 0; pointer-events: none; position: absolute; transition: opacity var(--duration-fast) var(--ease-em); z-index: -1; }
 :is(.site-nav > a, .text-link, .expander summary, .mobile-menu summary, .site-logo, .site-footer a, .page-breadcrumb a) { --state-inset: 0 -.6rem; }
 :is(.site-nav > a, .text-link, .expander summary, .mobile-menu summary, .site-logo, .site-footer a, .page-breadcrumb a)::before { border-radius: var(--radius-full); }
-:is(.reference-card__copy, a.expertise-card) { --state-inset: -1.1rem; }
+:is(.reference-card__copy, a.expertise-card) { --state-inset: calc(-1 * var(--invert-bleed)); }
 @media (hover: hover) {
   :is(.filter-button.is-active, .mobile-menu__panel a:not(.mobile-menu__cta), .expander summary, .mobile-menu summary, .site-logo):hover::before { opacity: var(--state-hover); }
   :is(.filter-button.is-active, .mobile-menu__panel a:not(.mobile-menu__cta), .expander summary, .mobile-menu summary, .site-logo):hover:active::before { opacity: var(--state-press); }

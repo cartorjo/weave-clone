@@ -115,31 +115,27 @@
 .reference-card h3 { font-size: clamp(1.5rem,2.5vw,2.4rem); line-height: 1.16; letter-spacing: -.02em; margin-top: var(--space-2); }
 .reference-card__copy > p { font-size: var(--text-lede-sm); line-height: 1.5; margin-top: .8rem; max-width: 35rem; }
 .reference-card__copy > .text-link { margin-top: var(--space-3); align-self: flex-start; }
-/* Der blaue Kasten bei Hover (owner correction): the copy block inverts to the
-   brand navy, mirroring the industry tiles, without shifting layout. */
+/* Der blaue Kasten (owner correction): reference-card copy blocks and linked
+   expertise cards invert to the brand navy with an --invert-bleed halo,
+   without shifting layout. One treatment for hover and keyboard focus;
+   focus adds the global ring on top (--focus-halo keeps the halo under it).
+   Static discipline cards (plain <article>) stay inert. */
+a.expertise-card { transition: background var(--duration-medium) var(--ease-em), color var(--duration-medium) var(--ease-em), box-shadow var(--duration-medium) var(--ease-em); }
 @media (hover: hover) {
-  .reference-card:hover .reference-card__copy { background: var(--color-ink); box-shadow: 0 0 0 1.1rem var(--color-ink); color: var(--color-on-dark); position: relative; z-index: 1; }
-  .reference-card:hover .result-metric { color: inherit; }
+  :is(.reference-card:hover .reference-card__copy, a.expertise-card:hover) { background: var(--color-ink); box-shadow: 0 0 0 var(--invert-bleed) var(--color-ink); color: var(--color-on-dark); position: relative; transform: none; z-index: 1; }
+  :is(.reference-card:hover .result-metric, a.expertise-card:hover p) { color: inherit; }
   .reference-card:hover .reference-card__copy .text-link { color: var(--color-on-dark); }
   .reference-card:hover .reference-card__copy .text-link span { color: var(--color-lemon); transform: translateX(.35rem); }
 }
-.reference-card:focus-visible .reference-card__copy { background: var(--color-ink); box-shadow: 0 0 0 1.1rem var(--color-ink); color: var(--color-on-dark); position: relative; z-index: 1; }
-.reference-card:focus-visible .result-metric { color: inherit; }
+:is(.reference-card:focus-visible .reference-card__copy, a.expertise-card:focus-visible) { background: var(--color-ink); box-shadow: 0 0 0 var(--invert-bleed) var(--color-ink); color: var(--color-on-dark); position: relative; transform: none; z-index: 1; }
+a.expertise-card:focus-visible { --focus-halo: 0 0 0 var(--invert-bleed) var(--color-ink); }
+:is(.reference-card:focus-visible .result-metric, a.expertise-card:focus-visible p) { color: inherit; }
 .reference-card:focus-visible .reference-card__copy .text-link { color: var(--color-on-dark); }
 .reference-card:focus-visible .reference-card__copy .text-link span { color: var(--color-lemon); transform: translateX(.35rem); }
 .result-metric { display: flex; flex-direction: column; align-items: flex-start; gap: .6rem; margin-top: 1.6rem; margin-bottom: var(--space-1); color: var(--color-ink); }
 .result-metric strong { font-size: clamp(2.75rem,4.6vw,4.5rem); font-weight: 700; line-height: 1.1; letter-spacing: -.025em; }
 .result-metric strong.result-metric__word { font-size: clamp(2rem,3vw,3rem); }
 .result-metric span { border-top: 3px solid var(--color-lemon); padding-top: .65rem; font-size: var(--text-lede-sm); line-height: 1.4; font-weight: 700; }
-/* Linked expertise cards get the same navy box; static discipline cards
-   (plain <article>) stay inert. */
-a.expertise-card { transition: background var(--duration-medium) var(--ease-em), color var(--duration-medium) var(--ease-em), box-shadow var(--duration-medium) var(--ease-em); }
-@media (hover: hover) {
-  a.expertise-card:hover { background: var(--color-ink); box-shadow: 0 0 0 1.1rem var(--color-ink); color: var(--color-on-dark); position: relative; z-index: 1; transform: none; }
-  a.expertise-card:hover p { color: inherit; }
-}
-a.expertise-card:focus-visible { background: var(--color-ink); box-shadow: 0 0 0 1.1rem var(--color-ink); color: var(--color-on-dark); position: relative; z-index: 1; transform: none; }
-a.expertise-card:focus-visible p { color: inherit; }
 .filter-button { font-size: var(--text-body); letter-spacing: 0; padding: .65rem var(--space-2); }
 .filter-button.is-active { background: var(--color-lemon); border-color: var(--color-lemon); color: var(--color-ink); }
 @media (hover: hover) {
