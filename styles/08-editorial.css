@@ -84,7 +84,7 @@
 /* Desktop/mobile nav switching is handled by the max-xl:/xl: utilities in
    the header markup (single breakpoint source); no media query here. */
 
-@media (max-width: 900px) {
+@media (width <= theme(--breakpoint-hero)) {
   .hero__grid { grid-template-columns: 1fr; }
   .hero__copy { min-height: 37.8rem; padding-right: 0; }
   .hero__visual { aspect-ratio: 16 / 10; margin-left: calc(var(--gutter) * -1); }
@@ -93,7 +93,7 @@
   .site-footer__top { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (max-width: 600px) {
+@media (width <= theme(--breakpoint-compact)) {
   .hero__copy { min-height: 31.5rem; padding-bottom: var(--space-legacy-8); padding-top: var(--space-legacy-8); }
   .hero__intro { align-items: start; flex-direction: column; }
   .hero__visual { aspect-ratio: 4 / 3; }

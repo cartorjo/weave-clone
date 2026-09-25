@@ -50,12 +50,12 @@
 .page-cta .eyebrow + .display-large { margin-top: 0; }
 /* Hero H1s span their column; on small screens they scale up for presence. */
 .page-hero__copy .display-large { max-width: none; }
-@media (min-width: 901px) { .display-large { hyphens: none; } }
-@media (max-width: 900px) {
+@media (width > theme(--breakpoint-hero)) { .display-large { hyphens: none; } }
+@media (width <= theme(--breakpoint-hero)) {
   :root { --display-size: clamp(2.4rem, 6.5vw, 4rem); }
   .page-hero__copy .display-large { max-width: 19ch; }
 }
-@media (max-width: 650px) {
+@media (width <= theme(--breakpoint-narrow)) {
   .page-hero__copy .display-large { font-size: clamp(1.95rem, 15vw, 5.22rem); }
 }
 
@@ -106,7 +106,7 @@
    base 900px breakpoint. */
 .company-values--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 68rem; }
 .company-values--paper article { background: var(--color-paper); padding: 1.6rem var(--space-legacy-4) var(--space-legacy-4); }
-@media (max-width: 900px) {
+@media (width <= theme(--breakpoint-hero)) {
   .company-values--2 { grid-template-columns: 1fr; max-width: 40rem; }
 }
 

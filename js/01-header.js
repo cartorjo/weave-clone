@@ -8,7 +8,7 @@
     var menu = document.getElementById('mobile-menu');
     var header = document.querySelector('[data-site-header]');
     /* Keep in sync with --breakpoint-nav in styles/main.css. */
-    var wideNav = window.matchMedia('(min-width: 1280px)');
+    var wideNav = window.matchMedia('(min-width: 75rem)');
 
     if (menu) {
       menu.addEventListener('toggle', function () {

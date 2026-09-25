@@ -59,16 +59,18 @@
    margin and gap utilities, --color-N → text/bg/border color utilities,
    --shadow-N → shadow-N, --ease-N → ease-N. */
 @theme {
-  --breakpoint-xs: 480px;
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  /* Desktop-nav switch — mirrored in js/01-header.js. */
-  --breakpoint-nav: 1280px;
-  /* Overrides Tailwind's default xl (1280px): ≥1440 is the site's recurring
-     wide-desktop boundary. */
-  --breakpoint-xl: 1440px;
-  --breakpoint-2xl: 1536px;
+  /* Every layout threshold, once, in rem (= px at the default 16px text
+     size; enlarged browser text moves them with it). Media queries read them
+     via theme(); nav is mirrored in js/01-header.js. */
+  --breakpoint-compact: 37.5rem;  /* 600px, the M3 compact/medium boundary */
+  --breakpoint-sm: 40rem;         /* 640px */
+  --breakpoint-narrow: 40.625rem; /* 650px */
+  --breakpoint-stack: 43.75rem;   /* 700px */
+  --breakpoint-hero: 56.25rem;    /* 900px, split heroes and grids stack */
+  --breakpoint-lg: 62rem;         /* 992px */
+  --breakpoint-tablet: 62.5rem;   /* 1000px */
+  --breakpoint-nav: 75rem;        /* 1200px, the M3 large boundary: inline nav */
+  /* Container size read by the @max-content: variant (hero/CTA collapse). */
   --container-content: 56rem;
 
   /* Brand color system: orange decoration; midnight blue text and numbers.
