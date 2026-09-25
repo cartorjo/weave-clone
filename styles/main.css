@@ -124,8 +124,8 @@
      1px hairline grids. The fixed step scale (--space-*) lives in :root. */
   --spacing-section: clamp(2rem, 10vw, 9.45rem);
   --spacing-xl: clamp(2.25rem, 8vw, 7.2rem);
-  --spacing-cell: 1.45rem;
-  --spacing-rule: 1.2rem;
+  --spacing-cell: 1.5rem;
+  --spacing-rule: 1rem;
   --spacing-menu: min(20rem, 90vw);
 
   /* Exactly two elevations. */
@@ -142,31 +142,25 @@
 }
 
 :root {
-  /* Spacing steps, as shipped. --space-N = N × 0.5rem (the rem grid);
-     --space-legacy-N = N × 0.45rem (the 0.9× re-pin grid). Snapping the
-     legacy steps onto the 8px grid is a value edit here, nowhere else.
+  /* Spacing steps on the 4px unit (M3): --space-N = N × 0.25rem. Component
+     internals use 4px steps, layout spacing 8px steps (even N).
      Plain :root, not @theme: --spacing-<n> would override Tailwind's
      numeric utilities such as min-h-11. */
-  --space-1: 0.5rem;
-  --space-2: 1rem;
-  --space-3: 1.5rem;
-  --space-4: 2rem;
-  --space-5: 2.5rem;
-  --space-6: 3rem;
-  --space-7: 3.5rem;
-  --space-8: 4rem;
-  --space-9: 4.5rem;
-  --space-10: 5rem;
-  --space-12: 6rem;
-  --space-14: 7rem;
-  --space-20: 1E+1rem;
-  --space-legacy-1: 0.45rem;
-  --space-legacy-2: 0.9rem;
-  --space-legacy-3: 1.35rem;
-  --space-legacy-4: 1.8rem;
-  --space-legacy-5: 2.25rem;
-  --space-legacy-6: 2.7rem;
-  --space-legacy-8: 3.6rem;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-14: 3.5rem;
+  --space-16: 4rem;
+  --space-18: 4.5rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-28: 7rem;
+  --space-40: 10rem;
   /* Composite/geometry tokens with no fitting @theme namespace. */
   --gutter: 4.5vw;
   --container-max: 84rem; /* 1344px — the designed ~1348px content measure */

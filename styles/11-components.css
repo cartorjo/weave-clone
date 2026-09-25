@@ -35,7 +35,7 @@
    hover on an unselected chip only tints, so it never looks selected. Selected
    chips hover and press through the state layer. Arrow keys move between the
    chips of a group (js/06-work.js). */
-.filter-button { border: 1px solid var(--color-line-strong); border-radius: var(--radius-full); color: var(--color-ink); font-size: var(--text-body); font-weight: 600; letter-spacing: 0; padding: .65rem var(--space-2); transition: background-color var(--duration-fast) var(--ease-em), border-color var(--duration-fast) var(--ease-em), color var(--duration-fast) var(--ease-em); }
+.filter-button { border: 1px solid var(--color-line-strong); border-radius: var(--radius-full); color: var(--color-ink); font-size: var(--text-body); font-weight: 600; letter-spacing: 0; padding: var(--space-3) var(--space-4); transition: background-color var(--duration-fast) var(--ease-em), border-color var(--duration-fast) var(--ease-em), color var(--duration-fast) var(--ease-em); }
 .filter-button__check { display: none; height: .8em; margin-inline-end: .4em; vertical-align: -.05em; width: .8em; }
 .filter-button.is-active { background: var(--color-lemon); border-color: var(--color-ink); color: var(--color-ink); }
 .filter-button.is-active .filter-button__check { display: inline-block; }
@@ -45,15 +45,16 @@
 @media (width <= theme(--breakpoint-compact)) { .filter-button { font-size: var(--text-body-sm); } }
 
 /* Text field — the contact form's underline field (brand adaptation of the
-   M3 filled field without container): 56px field box; the indicator
+   M3 filled field without container): 56px field box (min-height); the indicator
    strengthens on hover, turns lemon and 2px on focus, and error-coloured
    (with supporting text below, filled by js/06-work.js) when invalid. Only
    "(optional)" is marked; required fields carry no asterisk (owner rule). */
-.contact-form input, .contact-form select, .contact-form textarea { appearance: none; background: transparent; border: 0; border-bottom: 1px solid var(--color-line-light-strong); border-radius: 0; color: var(--color-on-dark); font-size: var(--text-lede-lg); font-weight: 400; letter-spacing: 0; outline: none; padding: .82rem 0; text-transform: none; transition: border-color var(--duration-fast) var(--ease-em); width: 100%; }
-.contact-form select { background-color: var(--color-ink); grid-area: 2 / 1; padding-inline-end: 1.6rem; }
+.contact-form input, .contact-form select, .contact-form textarea { appearance: none; background: transparent; border: 0; border-bottom: 1px solid var(--color-line-light-strong); border-radius: 0; color: var(--color-on-dark); font-size: var(--text-lede-lg); font-weight: 400; letter-spacing: 0; outline: none; padding: var(--space-3) 0; text-transform: none; transition: border-color var(--duration-fast) var(--ease-em); width: 100%; }
+.contact-form :is(input, select) { min-height: 3.5rem; }
+.contact-form select { background-color: var(--color-ink); grid-area: 2 / 1; padding-inline-end: var(--space-6); }
 @media (hover: hover) { .contact-form :is(input, select, textarea):hover { border-color: var(--color-on-dark-muted); } }
 .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--color-lemon); }
-.contact-form :is(input, select, textarea):is(:focus, [aria-invalid="true"], :user-invalid) { border-bottom-width: 2px; padding-bottom: calc(.82rem - 1px); }
+.contact-form :is(input, select, textarea):is(:focus, [aria-invalid="true"], :user-invalid) { border-bottom-width: 2px; padding-bottom: calc(var(--space-3) - 1px); }
 .contact-form :is(input, select, textarea):is([aria-invalid="true"], :user-invalid) { border-bottom-color: var(--color-error-on-dark); }
 .contact-form textarea { resize: vertical; }
 .contact-form__support { color: var(--color-error-on-dark); font-size: var(--text-body-sm); font-weight: 400; line-height: 1.35; }
@@ -75,7 +76,7 @@
 /* Eyebrow — the small bold section label with the lemon rule after it.
    Variants: --light (on ink/deep sections). Kickers in heroes are
    `eyebrow eyebrow--light`. Footer margins live contextually in 08. */
-.eyebrow { align-items: center; color: var(--color-ink); display: flex; font-size: var(--text-body); font-weight: 700; gap: .675rem; letter-spacing: 0; line-height: 1.35; margin-bottom: var(--space-legacy-3); text-transform: none; }
+.eyebrow { align-items: center; color: var(--color-ink); display: flex; font-size: var(--text-body); font-weight: 700; gap: var(--space-3); letter-spacing: 0; line-height: 1.35; margin-bottom: var(--space-6); text-transform: none; }
 .eyebrow::after { background: var(--color-lemon); content: ''; height: 3px; width: 2.5rem; }
 .eyebrow--light { color: var(--color-on-dark); }
 
@@ -88,7 +89,7 @@
 .display-large em { color: inherit; font-style: normal; font-weight: 700; }
 /* Subpage rhythm: headings under an eyebrow keep the former page-title gap;
    CTA titles sit flush (they never had one). */
-.subpage .eyebrow + .display-large { margin-top: 1.305rem; }
+.subpage .eyebrow + .display-large { margin-top: var(--space-6); }
 .page-cta .eyebrow + .display-large { margin-top: 0; }
 /* Hero H1s span their column; on small screens they scale up for presence. */
 .page-hero__copy .display-large { max-width: none; }
@@ -104,7 +105,7 @@
 /* Text link — the one arrow link (former page-link). The arrow is always a
    markup span (<span aria-hidden="true">→</span>); --light for dark sections
    (white text, lemon arrow). No underline in any state (owner rule). */
-.text-link { align-items: center; color: var(--color-ink); display: inline-flex; flex: none; font-size: var(--text-body); font-weight: 700; gap: var(--space-legacy-2); letter-spacing: 0; line-height: 1.4; min-height: 44px; text-decoration: none; text-transform: none; }
+.text-link { align-items: center; color: var(--color-ink); display: inline-flex; flex: none; font-size: var(--text-body); font-weight: 700; gap: var(--space-4); letter-spacing: 0; line-height: 1.4; min-height: 44px; text-decoration: none; text-transform: none; }
 .text-link span[aria-hidden] { color: currentColor; font-size: 1.65rem; transition: transform var(--duration-fast) var(--ease-em); }
 @media (hover: hover) {
   .text-link:hover span[aria-hidden] { transform: translateX(.35rem); }
@@ -116,12 +117,12 @@
 /* Fact grid label variant (the base grid lives in 09): --display renders
    phase digits at Kennzahlen scale with the lemon rule (owner: numbers must
    outrank the copy). */
-.fact-grid__label--display { border-bottom: 2px solid var(--color-lemon); color: var(--color-ink); font-size: clamp(1.8rem, 2.6vw, 2.75rem); font-weight: 300; letter-spacing: -.02em; line-height: 1.1; padding-bottom: .35rem; width: fit-content; }
+.fact-grid__label--display { border-bottom: 2px solid var(--color-lemon); color: var(--color-ink); font-size: clamp(1.8rem, 2.6vw, 2.75rem); font-weight: 300; letter-spacing: -.02em; line-height: 1.1; padding-bottom: var(--space-1); width: fit-content; }
 
 /* Expander — the canonical details/summary (Mehr-lesen pattern): open/close
    label spans + rotating lemon plus. Consumers: management cards, job
    postings. Former management-card__more. */
-.expander summary { align-items: center; color: var(--color-ink); cursor: pointer; display: inline-flex; font-size: var(--text-body-sm); font-weight: 700; gap: var(--space-1); list-style: none; margin-top: .4rem; }
+.expander summary { align-items: center; color: var(--color-ink); cursor: pointer; display: inline-flex; font-size: var(--text-body-sm); font-weight: 700; gap: var(--space-2); list-style: none; margin-top: var(--space-2); }
 .expander summary::-webkit-details-marker { display: none; }
 .expander summary::after { color: var(--color-lemon); content: '+'; font-size: 1.35rem; line-height: 1; transition: transform var(--duration-medium) var(--ease-em); }
 .expander[open] summary::after { transform: rotate(45deg); }
@@ -131,29 +132,29 @@
 /* Job posting (Stellenausschreibung, /karriere/): hairline-framed article,
    static meta chips (not clickable — no hover), full posting in the expander.
    Copy verbatim from the owner's Stellen deck; lists reuse result-list. */
-.job-list { border-top: 1px solid var(--color-line); margin-top: var(--space-6); }
+.job-list { border-top: 1px solid var(--color-line); margin-top: var(--space-12); }
 .job-card { border-bottom: 1px solid var(--color-line); padding: clamp(1.8rem, 4vw, 3rem) 0; }
 .job-card h3 { font-size: clamp(1.5rem, 2.6vw, 2.4rem); font-weight: 300; letter-spacing: -.02em; }
-.job-card__meta { display: flex; flex-wrap: wrap; gap: var(--space-1); margin-top: 1.1rem; }
+.job-card__meta { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
 /* Tag — a static label (no action): filled on its ground (white on the
    paper sections), no outline, so it never borrows the interactive chip's
    resting look. */
-.tag { background: var(--color-bg); border-radius: var(--radius-full); font-size: var(--text-label); font-weight: 600; padding: .4rem .85rem; }
-.job-card__tagline { font-size: var(--text-lede-sm); font-weight: 700; margin-top: 1.6rem; }
-.job-card__text { font-size: var(--text-body-lg); line-height: 1.55; margin-top: var(--space-legacy-2); max-width: 52rem; }
-.job-card__apply { margin-top: var(--space-3); }
-.job-list__apply { font-size: var(--text-body-lg); line-height: 1.55; margin-top: var(--space-5); }
+.tag { background: var(--color-bg); border-radius: var(--radius-full); font-size: var(--text-label); font-weight: 600; padding: var(--space-2) var(--space-3); }
+.job-card__tagline { font-size: var(--text-lede-sm); font-weight: 700; margin-top: var(--space-6); }
+.job-card__text { font-size: var(--text-body-lg); line-height: 1.55; margin-top: var(--space-4); max-width: 52rem; }
+.job-card__apply { margin-top: var(--space-6); }
+.job-list__apply { font-size: var(--text-body-lg); line-height: 1.55; margin-top: var(--space-10); }
 .job-list__apply a { text-decoration: underline; text-underline-offset: .15em; }
-.job-card h4 { font-size: var(--text-body); font-weight: 700; margin-top: var(--space-4); }
+.job-card h4 { font-size: var(--text-body); font-weight: 700; margin-top: var(--space-8); }
 .result-list--compact { font-size: var(--text-body); margin-bottom: 0; max-width: 52rem; }
-.result-list--compact li { border-bottom: 0; padding-block: .35rem .35rem; padding-inline: 1.2rem 0; }
+.result-list--compact li { border-bottom: 0; padding-block: var(--space-1) var(--space-1); padding-inline: var(--space-4) 0; }
 .result-list--compact li::before { height: .4rem; top: .85rem; width: .4rem; }
 
 /* Company-values variants (base trio grid lives in 10): --paper fills the
    boxes (former lede-boxes), --2 caps at two columns. Collapse matches the
    base 900px breakpoint. */
 .company-values--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 68rem; }
-.company-values--paper article { background: var(--color-paper); padding: 1.6rem var(--space-legacy-4) var(--space-legacy-4); }
+.company-values--paper article { background: var(--color-paper); padding: var(--space-6) var(--space-8) var(--space-8); }
 @media (width <= theme(--breakpoint-hero)) {
   .company-values--2 { grid-template-columns: 1fr; max-width: 40rem; }
 }
