@@ -107,7 +107,7 @@ export default [
   ...['cookies','barrierefreiheit','sitemap','zertifizierungen'].map(name=>({
     out:`${name}/index.html`, title:`${{cookies:'Cookies',sitemap:'Sitemap',barrierefreiheit:'Barrierefreiheit',zertifizierungen:'Zertifizierungen'}[name]} | Emposo`,
     description:name==='zertifizierungen'
-      ? 'Zertifizierungen und Nachweise von Emposo: ISO 9001, TISAX-Assessment, Standards, Methoden und Compliant Sourcing®.'
+      ? 'Zertifizierungen und Nachweise von Emposo: ISO 9001, ISO 37301, TISAX, Standards, Methoden und Compliant Sourcing®.'
       : 'Informationen zur Emposo Website.',
     nav:'none', bodyClass:'subpage wrap-anywhere',
     content:`pages/${name}.html`, scripts:['00-core','01-header'],
