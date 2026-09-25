@@ -19,11 +19,39 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pages from './pages.mjs';
 import { escape, picture, fragment, projectPage } from './content/render.mjs';
+import { projects } from './content/site-data.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 // The production origin every page declares as canonical (the site stays
 // noindex until launch; this only fixes which URL a page claims to be).
 const SITE_ORIGIN = 'https://emposo.de';
+const images = JSON.parse(readFileSync(join(root, 'assets', 'supplied', 'manifest.json'), 'utf8'));
+// Organization facts are the Impressum's, nothing more.
+const organization = { '@type': 'Organization', '@id': `${SITE_ORIGIN}/#organization`, name: 'Emposo GmbH', url: `${SITE_ORIGIN}/`,
+  email: 'info@emposo.eu', telephone: '+49 621 1788 0',
+  address: { '@type': 'PostalAddress', streetAddress: 'Glücksteinallee 67', postalCode: '68163', addressLocality: 'Mannheim', addressCountry: 'DE' },
+  parentOrganization: { '@type': 'Organization', name: 'Hays Holding GmbH' } };
+const website = { '@type': 'WebSite', '@id': `${SITE_ORIGIN}/#website`, name: 'Emposo', url: `${SITE_ORIGIN}/`, inLanguage: 'de-DE', publisher: { '@id': organization['@id'] } };
+// Share image: the page's own hero photo (case studies: the project image), else the homepage hero.
+const shareImage = page => {
+  const key = page.content.startsWith?.('project:') ? projects.find(p => p.slug === page.content.slice(8))?.image
+    : (Array.isArray(page.content) ? page.content : [page.content]).map(f => readFileSync(join(root, f), 'utf8').match(/\{\{image:([a-z0-9-]+):hero\}\}/)?.[1]).find(Boolean);
+  return images[key] || images['hero-flow'];
+};
+const seoMeta = page => {
+  const path = canonicalPath(page.out);
+  if (!path) return '  <meta name="robots" content="noindex">\n';
+  const url = `${SITE_ORIGIN}${path}`, img = shareImage(page);
+  const tags = [['og:type', 'website'], ['og:site_name', 'Emposo'], ['og:locale', 'de_DE'], ['og:title', page.title], ['og:description', page.description], ['og:url', url],
+    ['og:image', `${SITE_ORIGIN}${img.src}`], ['og:image:width', img.width], ['og:image:height', img.height], ['og:image:alt', img.alt]]
+    .map(([p, v]) => `  <meta property="${p}" content="${escape(String(v))}">`);
+  tags.push('  <meta name="twitter:card" content="summary_large_image">');
+  const graph = { '@context': 'https://schema.org', '@graph': [organization, website,
+    { '@type': 'WebPage', '@id': url, url, name: page.title, description: page.description, inLanguage: 'de-DE', isPartOf: { '@id': website['@id'] }, primaryImageOfPage: `${SITE_ORIGIN}${img.src}` }] };
+  // JSON-LD is a data block, not script: the CSP's script-src does not apply.
+  tags.push(`  <script type="application/ld+json">${JSON.stringify(graph).replace(/</g, '\\u003c')}</script>`);
+  return tags.join('\n') + '\n';
+};
 const canonicalPath = out => out === 'index.html' ? '/' : out.endsWith('/index.html') ? `/${out.slice(0, -'index.html'.length)}` : null;
 const partial = (name) => readFileSync(join(root, 'partials', `${name}.html`), 'utf8');
 
@@ -89,6 +117,7 @@ for (const page of pages) {
   const pageHead = head
     .replaceAll('{{TITLE}}', () => escape(page.title))
     .replaceAll('{{DESCRIPTION}}', () => escape(page.description))
+    .replaceAll('{{META}}', () => seoMeta(page))
     .replaceAll('{{CANONICAL}}', () => { const path = canonicalPath(page.out); return path ? `  <link rel="canonical" href="${SITE_ORIGIN}${path}">\n` : ''; })
     .replaceAll('{{BODY_CLASS}}', () => page.bodyClass)
     .replaceAll('{{SCRIPTS}}', () => scripts);
@@ -104,4 +133,7 @@ for (const page of pages) {
   mkdirSync(dirname(outPath), { recursive: true });
   writeFileSync(outPath, html);
 }
-console.log(`assembled: ${pages.length} pages`);
+const routes = pages.map(p => canonicalPath(p.out)).filter(Boolean);
+writeFileSync(join(root, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.map(r => `  <url><loc>${SITE_ORIGIN}${r}</loc></url>`).join('\n')}\n</urlset>\n`);
+writeFileSync(join(root, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE_ORIGIN}/sitemap.xml\n`);
+console.log(`assembled: ${pages.length} pages, sitemap.xml (${routes.length} URLs), robots.txt`);

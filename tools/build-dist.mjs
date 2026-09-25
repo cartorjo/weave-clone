@@ -16,6 +16,8 @@ for (const page of pages) copy(page.out);
 copy('css');
 copy('js');
 copy('serve.json');
+copy('robots.txt');
+copy('sitemap.xml');
 // Masters, superseded art and build-time inputs stay out of the webroot:
 // icons are inlined into the HTML, manifests are read by the generators.
 const SKIP_ASSETS = /\/assets\/(src|archive|icons)(\/|$)|\.png$|manifest\.json$/;

@@ -104,7 +104,12 @@ including `<style>` inside inlined SVGs (assemble.mjs strips the logo's).
 The contact form prepares a `mailto:` message to info@emposo.eu (the shared
 inbox, also for career enquiries) and explains the handoff to the
 visitor's email program. No form backend is configured. Company is optional,
-so career enquiries can use the same form. All pages retain preview `noindex`.
+so career enquiries can use the same form. The site is indexable (launch SEO,
+2026-09-25): assemble.mjs emits canonical, Open Graph/Twitter tags and
+JSON-LD (Organization/WebSite/WebPage) per page from one `SITE_ORIGIN`, plus
+`robots.txt` and `sitemap.xml`; only 404.html is `noindex`. The old emposo.de
+URLs (`docs/legacy-urls.txt`) 301 via `serve.json` redirects, and
+`npm run check:content` fails if any old URL or redirect target stops resolving.
 The footer links to Emposo's existing imprint and privacy notice, and to local
 cookie information, accessibility information and a sitemap.
 
