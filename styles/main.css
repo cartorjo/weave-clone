@@ -74,6 +74,8 @@
   /* Brand color system: orange decoration; midnight blue text and numbers.
      --color-accent-text remains an alias for existing utility classes. */
   --color-lemon: #f7911e;
+  /* Secondary accent: the homepage "How" connection-step icon discs. */
+  --color-info: #4597ce;
   --color-accent-text: #0a0532;
   --color-ink: #0a0532;
   --color-bg: #ffffff;

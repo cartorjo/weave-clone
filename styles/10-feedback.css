@@ -75,7 +75,7 @@
 .connection-step { display: grid; grid-template-columns: 4rem minmax(0,1fr); align-items: start; gap: 1.5rem; color: var(--color-on-dark); padding: 1.5rem 0; }
 .connection-step__icon { width: 4rem; height: 4rem; border-radius: 50%; padding: .9rem; background: var(--color-lemon); color: var(--color-ink); }
 .connection-step__icon svg { height: 100%; width: 100%; }
-.connection-step--how .connection-step__icon { background: #4597ce; }
+.connection-step--how .connection-step__icon { background: var(--color-info); }
 .connection-step h3 { font-size: clamp(1.3rem,1.75vw,1.7rem); font-weight: 700; line-height: 1.2; }
 .connection-step p { font-size: 1.1rem; line-height: 1.5; margin-top: .65rem; }
 .connection-model__visual { display: grid; align-content: center; position: relative; }
