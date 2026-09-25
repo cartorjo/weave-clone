@@ -44,17 +44,17 @@
 .hero--feedback .hero__intro p { color: var(--color-on-dark); line-height: 1.5; max-width: 27rem; }
 .hero--feedback .hero__visual { min-width: 0; }
 .hero--feedback .hero__visual img { position: absolute; inset: 0; object-position: 58% center; }
-.hero--feedback .hero__visual::after { background: linear-gradient(90deg, var(--color-ink) 0%, transparent 35%); }
+.hero--feedback .hero__visual::after { background: var(--scrim-ink-side); }
 /* Seiten-Heros wie der Startseiten-Hero (siehe .hero--feedback oben): ein
    einziger Verlauf als Übergang Text → Bild an der linken Kante. Die oberen
    und unteren Fades vom 24-09 sind entfernt (Review 25-09) — das Bild füllt
    die volle Höhe des Navy-Blocks, ein Rand-Verlauf ist dort nicht mehr nötig. */
-.page-hero__visual::after { background: linear-gradient(90deg, var(--color-ink) 0%, transparent 35%); }
+.page-hero__visual::after { background: var(--scrim-ink-side); }
 /* Sobald das Grid einspaltig wird (@max-content:grid-cols-1, Container < 56rem)
    liegt das Bild unter dem Text: Übergang dann von oben statt von links.
    Deckt die Spanne 900–985px ab, in der die ≤900px-Regel noch nicht greift. */
 @container (width < 56rem) {
-  .page-hero__visual::after { background: linear-gradient(180deg, var(--color-ink), transparent 35%); }
+  .page-hero__visual::after { background: var(--scrim-ink-top); }
 }
 .expertise-intro__heading { display: grid; grid-template-columns: 1.35fr .65fr; align-items: end; gap: var(--space-8); }
 .expertise-intro__heading > p { font-size: var(--text-lede-lg); line-height: 1.55; }
@@ -177,7 +177,6 @@ a.expertise-card:focus-visible { --focus-halo: 0 0 0 var(--invert-bleed) var(--c
 .page-cta { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,.8fr); gap: var(--space-6) var(--space-20); align-items: end; }
 .page-cta__copy p { line-height: 1.55; }
 .page-section__top { gap: var(--space-6); }
-.page-section__lede > p + p { margin-top: var(--space-2); }
 /* Leistungs-Modi: das Outcome-Statement war "sehr klein" (owner review 24-09). */
 .portfolio-mode__outcome { font-size: var(--text-lede); font-weight: 700; letter-spacing: .01em; line-height: 1.45; max-width: 15rem; }
 /* Leistungen intro: kurze Lede plus Fließtext in Kästen nebeneinander
@@ -235,8 +234,7 @@ a.expertise-card:focus-visible { --focus-halo: 0 0 0 var(--invert-bleed) var(--c
 .legal-copy > a { margin-top: var(--space-4); }
 .legal-copy h2 { font-size: clamp(1.5rem,2.2vw,2rem); font-weight: 700; line-height: 1.2; margin-top: var(--space-8); }
 .legal-copy h3 { font-size: 1.3rem; font-weight: 700; line-height: 1.3; margin-top: var(--space-6); }
-.legal-copy ul, .legal-copy ol { font-size: var(--text-lede); line-height: 1.6; list-style: disc; margin-top: var(--space-2); padding-inline-start: var(--space-3); }
-.legal-copy ol { list-style: decimal; }
+.legal-copy ul { font-size: var(--text-lede); line-height: 1.6; list-style: disc; margin-top: var(--space-2); padding-inline-start: var(--space-3); }
 .legal-copy li ul { list-style: circle; margin-top: var(--space-1); }
 .legal-copy li + li { margin-top: var(--space-1); }
 .legal-copy :is(p, li, td) a { overflow-wrap: anywhere; text-decoration: underline; text-underline-offset: .15em; }
@@ -269,18 +267,17 @@ a.expertise-card:focus-visible { --focus-halo: 0 0 0 var(--invert-bleed) var(--c
   .contact__grid { gap: var(--space-6); }
 }
 @media (width <= theme(--breakpoint-hero)) {
-  :root { --display-size: clamp(2.4rem,6.5vw,4rem); }
-  .hero--feedback .hero__grid { display: flex; flex-direction: column; min-height: 0; }
+    .hero--feedback .hero__grid { display: flex; flex-direction: column; min-height: 0; }
   .hero--feedback .hero__copy { width: 100%; max-width: none; min-height: 0; padding: var(--space-7) 0 var(--space-5); }
   .hero--feedback .hero__visual { height: 23rem; min-height: 0; margin-left: calc(-1 * var(--gutter)); }
-  .hero--feedback .hero__visual::after { background: linear-gradient(180deg,var(--color-ink),transparent 35%); }
+  .hero--feedback .hero__visual::after { background: var(--scrim-ink-top); }
   .hero--feedback .hero__intro { margin-top: var(--space-4); max-width: 35rem; }
   .hero--feedback .display-large { max-width: none; }
   .page-section__top, .expertise-intro__heading, .work__heading { grid-template-columns: minmax(0,1fr); }
   .page-hero__grid { padding: 0; }
   .page-hero__copy { padding: var(--space-6) 0 var(--space-5); }
   .page-hero__visual { margin-left: 0; margin-right: 0; min-height: 22rem; aspect-ratio: auto; }
-  .page-hero__visual::after { background: linear-gradient(180deg, var(--color-ink), transparent 35%); }
+  .page-hero__visual::after { background: var(--scrim-ink-top); }
   .page-section__lede { max-width: 40rem; }
   .company-facts { grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--space-4); }
   .company-values { grid-template-columns: 1fr; }

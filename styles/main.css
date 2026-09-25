@@ -50,6 +50,8 @@
 @source "../partials";
 @source "../content";
 @source "../js";
+/* Words in copy, comments and JS that the scanner mistakes for utilities. */
+@source not inline("filter grayscale grid hidden static table transform visible");
 
 /* ---- design tokens --------------------------------------------------------
    The token system is calibrated for the user-relative 16px root (the old
@@ -81,7 +83,6 @@
   --color-accent-text: #0a0532;
   --color-ink: #0a0532;
   --color-bg: #ffffff;
-  --color-bg-dark: #0a0532;
   --color-bg-dark-2: #0a0532;
   --color-paper: #f5f0eb;
   --color-line: rgba(10, 5, 50, 0.18);
@@ -183,6 +184,9 @@
   /* State layers: content-color overlay opacity per interaction state. */
   --state-hover: .08;
   --state-press: .1;
+  /* Ink scrims over hero photos: from the copy side, or from the top once stacked. */
+  --scrim-ink-side: linear-gradient(90deg, var(--color-ink) 0%, transparent 35%);
+  --scrim-ink-top: linear-gradient(180deg, var(--color-ink), transparent 35%);
   /* Halo of the navy card invert (reference and expertise cards). */
   --invert-bleed: 1.1rem;
   /* Hairline color for the numbered fact grids; dark sections flip it to
@@ -332,8 +336,8 @@
 /* ---- Per-section remainders — migration complete -------------------------
    Every section's utility-mappable CSS now lives as classes in its
    sections/*.html; each file below holds only what has no utility
-   equivalent: @keyframes bodies, Splide vendor-class exceptions, and (for
-   00-base-remainder) skip-link, focus, and reduced-motion rules. */
+   equivalent: @keyframes bodies and (for 00-base-remainder) skip-link,
+   focus, and reduced-motion rules. */
 @import "./00-base-remainder.css";
 @import "./07-header.css" layer(components);
 @import "./08-editorial.css" layer(components);
