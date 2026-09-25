@@ -186,6 +186,7 @@
 }
 .page-cta__copy { border-top: 1px solid var(--color-line-light); padding-top: 1.17rem; }
 .page-cta__copy p { color: var(--color-on-dark-muted); font-size: 1.16rem; line-height: 1.42; max-width: 27rem; }
+.page-cta__copy p + p { margin-top: 1.2rem; }
 .page-cta__copy .text-link { margin-top: 1.8rem; }
 
 
