@@ -10,7 +10,7 @@
 .hero__grid { display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(17.1rem, 0.96fr); min-height: min(47.7rem, calc(100vh - 4.86rem)); }
 .hero__copy { align-self: center; display: flex; flex-direction: column; justify-content: center; padding-block: clamp(1.8rem, 9vw, 9rem) clamp(1.6rem, 8vw, 8.1rem); padding-inline: 0 clamp(1rem, 5vw, 6.3rem); }
 .hero__intro { align-items: flex-end; border-top: 1px solid var(--color-line-light); display: flex; gap: var(--space-8); justify-content: space-between; margin-top: clamp(1rem, 5vw, 4.5rem); max-width: 44.1rem; padding-top: var(--space-4); }
-.hero__intro p { color: var(--color-on-dark-muted); font-size: clamp(1.05rem, 1.4vw, 1.305rem); line-height: 1.35; max-width: 25.2rem; }
+.hero__intro p { color: var(--color-on-dark-muted); font-size: var(--text-lede-fluid); line-height: 1.35; max-width: 25.2rem; }
 .hero__visual { margin-block: 0 0; margin-inline: 0 calc(var(--bleed-right) * -1); min-height: 100%; overflow: hidden; position: relative; }
 .hero__visual::after { content: ""; inset: 0; position: absolute; pointer-events: none; }
 .hero__visual > picture > img { height: 100%; object-fit: cover; width: 100%; }

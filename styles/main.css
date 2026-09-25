@@ -116,6 +116,17 @@
   --text-lede: 1.15rem;
   --text-lede-lg: 1.2rem;
 
+  /* Fluid headline and figure roles (one clamp per role; floors are the
+     320px size, caps the ≥1440px size). */
+  --text-lede-fluid: clamp(1.1rem, 1.5vw, 1.32rem); /* intro and section ledes */
+  --text-title-fluid: clamp(1.25rem, 1.8vw, 1.7rem); /* item titles in step lists and tables */
+  --text-headline-sm: clamp(1.4rem, 2.1vw, 2rem); /* tile titles, legal section headings */
+  --text-headline-md: clamp(1.5rem, 2.5vw, 2.4rem); /* card titles */
+  --text-headline-light: clamp(1.05rem, 2.5vw, 2.45rem); /* light-weight grid titles */
+  --text-headline-lg: clamp(1.15rem, 4vw, 3.9rem); /* large light titles and hero badge figures */
+  --text-figure-md: clamp(2rem, 2.8vw, 2.875rem); /* phase digits and word-figures */
+  --text-figure-lg: clamp(2.75rem, 4.8vw, 4.875rem); /* Kennzahlen and card metrics */
+
   --tracking-caps: 0.01em;
   --leading-body: 1.5;
 
