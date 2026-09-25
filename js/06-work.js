@@ -120,7 +120,7 @@
           'Nachricht:',
           data.get('message')
         ].join('\n');
-        window.location.href = 'mailto:jose.caravaca@emposo.eu?subject=' + encodeURIComponent('Emposo Anfrage: ' + data.get('interest')) + '&body=' + encodeURIComponent(body);
+        window.location.href = 'mailto:info@emposo.eu?subject=' + encodeURIComponent('Emposo Anfrage: ' + data.get('interest')) + '&body=' + encodeURIComponent(body);
       });
     }
   });

@@ -101,7 +101,8 @@ including `<style>` inside inlined SVGs (assemble.mjs strips the logo's).
 
 ## Contact & launch state
 
-The contact form prepares a `mailto:` message and explains the handoff to the
+The contact form prepares a `mailto:` message to info@emposo.eu (the shared
+inbox, also for career enquiries) and explains the handoff to the
 visitor's email program. No form backend is configured. Company is optional,
 so career enquiries can use the same form. All pages retain preview `noindex`.
 The footer links to Emposo's existing imprint and privacy notice, and to local
