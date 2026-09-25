@@ -8,6 +8,27 @@
    inventory; tools/check-content.mjs rejects retired class names in output.
    -------------------------------------------------------------------------- */
 
+/* State layer — the one hover/press treatment: an overlay in the content
+   color between the component's ground and its content. Every clickable
+   presses; hover uses it only where no bespoke hover exists (inverts, colour
+   shifts and arrow slides stay as the owner approved them). Text-like controls
+   get a pill that bleeds past the label; cards bleed to the navy halo. */
+:is(.header-contact, .mobile-menu__cta, .filter-button, .contact-form button, .mobile-menu__panel a,
+  .site-nav > a, .text-link, .expander summary, .mobile-menu summary, .site-logo, .site-footer a, .page-breadcrumb a,
+  .reference-card__copy, a.expertise-card) { isolation: isolate; position: relative; }
+:is(.header-contact, .mobile-menu__cta, .filter-button, .contact-form button, .mobile-menu__panel a,
+  .site-nav > a, .text-link, .expander summary, .mobile-menu summary, .site-logo, .site-footer a, .page-breadcrumb a,
+  .reference-card__copy, a.expertise-card)::before { background: currentColor; border-radius: inherit; content: ''; inset: var(--state-inset, 0); opacity: 0; pointer-events: none; position: absolute; transition: opacity var(--duration-fast) var(--ease-em); z-index: -1; }
+:is(.site-nav > a, .text-link, .expander summary, .mobile-menu summary, .site-logo, .site-footer a, .page-breadcrumb a) { --state-inset: 0 -.6rem; }
+:is(.site-nav > a, .text-link, .expander summary, .mobile-menu summary, .site-logo, .site-footer a, .page-breadcrumb a)::before { border-radius: var(--radius-full); }
+:is(.reference-card__copy, a.expertise-card) { --state-inset: -1.1rem; }
+@media (hover: hover) {
+  :is(.filter-button.is-active, .mobile-menu__panel a:not(.mobile-menu__cta), .expander summary, .mobile-menu summary, .site-logo):hover::before { opacity: var(--state-hover); }
+}
+:is(.header-contact, .mobile-menu__cta, .filter-button, .contact-form button, .mobile-menu__panel a,
+  .site-nav > a, .text-link, .expander summary, .mobile-menu summary, .site-logo, .site-footer a, .page-breadcrumb a, a.expertise-card):active::before,
+.reference-card:active .reference-card__copy::before { opacity: var(--state-press); }
+
 /* Eyebrow — the small bold section label with the lemon rule after it.
    Variants: --light (on ink/deep sections). Kickers in heroes are
    `eyebrow eyebrow--light`. Footer margins live contextually in 08. */

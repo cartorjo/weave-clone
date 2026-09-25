@@ -23,6 +23,15 @@ statt eine Parallel-Klasse zu erfinden.
   `--color-line-light-strong` (45 %, Formularfelder, Footer-Kante). Keine
   `#fff`/`rgba(255,255,255,…)`-Literale in Komponenten; weiße Flächen sind
   `--color-bg`.
+- **State-Layer (Hover/Press):** EINE Overlay-Schicht in der Inhaltsfarbe
+  (`::before` zwischen Grund und Inhalt, `--state-hover` .08,
+  `--state-press` .1), definiert in `styles/11-components.css`. Press gilt für
+  alles Klickbare; das Hover-Overlay nur dort, wo es keine eigene
+  Hover-Behandlung gibt (Summaries, Menü-Links, Logo, aktiver Filter-Chip) —
+  Invertierungen, Farbwechsel und Pfeil-Slides bleiben wie abgenommen.
+  Text-Controls bekommen eine Pill mit .6rem Überstand, Karten reichen bis zum
+  Navy-Halo (1.1rem). `::before` ist auf diesen Komponenten dafür reserviert.
+  Formularfelder: Hover verstärkt die Linie (`--color-on-dark-muted`).
 - **Orange Linien** (#F7911E) nur unter Zahlen/Labels — Ausnahme: der
   aktive/gehoverte Menülink trägt einen 2px-Ink-Unterstrich (Owner-Entscheid
   24.09., gilt nur im Menü).
@@ -48,7 +57,7 @@ statt eine Parallel-Klasse zu erfinden.
 | Stellenausschreibung | `.job-list`, `.job-card`, `__meta`, `__tagline`, `__text` (+ `.result-list--compact`) | Karriere-Stellen aus `jobs` in site-data.mjs via `jobsList()` (`content:jobs`): Titel, statische Meta-Chips, Tagline, erster Absatz sichtbar; volle Ausschreibung im `.expander`, Bewerben-Link auf /kontakt/. Owner-Copy wörtlich, keine Unterseiten. |
 | Kennzahlen | `.company-facts`, `__icon`, `__value` — NUR via `companyFacts()` in content/render.mjs (`content:company-facts`) | EINE homogene Zahlenreihe mit EINEM Inhalt (Owner 24.09., Startseiten-Version ist die Referenz): 2014 / 250+ / 2.900+ / 4, identisch auf Startseite, Über-uns und Karriere. Werte, Icons und Labels leben einmal in `companyFactData` — Markup nie von Hand schreiben, Labels nie pro Seite forken. Nicht klickbar → kein Hover. |
 | Standorte | `partials/locations-map.html`, `partials/location-list.html` | Byte-identische Blöcke, einmal definiert (karriere + kontakt). |
-| Header/Menü | `.site-nav`, `.header-contact`, `.mobile-menu` | Links weight 500; Hover/aktiv = 2px-Ink-Unterstrich (scaleX). CTA = Lemon-Pill mit Ink-Pfeilkreis, Hover invertiert. 1280px-Sync mit js/01-header.js. |
+| Header/Menü | `.site-nav`, `.header-contact`, `.mobile-menu` | Links weight 500; Hover/aktiv = 2px-Ink-Unterstrich (scaleX). CTA = Lemon-Pill mit Ink-Pfeilkreis, Hover/Fokus invertiert (Desktop und Mobile-Menü teilen eine Regel). 1280px-Sync mit js/01-header.js. |
 
 ## Bewusste Zwillinge (keine Duplikate)
 

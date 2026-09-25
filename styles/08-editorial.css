@@ -59,12 +59,13 @@
   pointer-events: none;
   width: 12px;
 }
+@media (hover: hover) { .contact-form :is(input, select, textarea):hover { border-color: var(--color-on-dark-muted); } }
 .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--color-lemon); }
 .contact-form__hint { border-left: 2px solid var(--color-lemon); color: var(--color-on-dark-muted); font-size: 0.94rem; grid-column: 1 / -1; line-height: 1.35; padding-left: 0.81rem; }
 .contact-form__message { grid-column: 1 / -1; }
 .contact-form textarea { resize: vertical; }
 .contact-form button { align-items: center; background: var(--color-lemon); color: var(--color-ink); display: inline-flex; font-size: 0.82rem; font-weight: 600; gap: 0.9rem; grid-column: 1 / -1; justify-content: space-between; letter-spacing: 0.08em; margin-top: 0.9rem; padding: 1.17rem 1.35rem; text-transform: none; transition: background-color var(--duration-fast) var(--ease-em), color var(--duration-fast) var(--ease-em); }
-.contact-form button:hover { background: var(--color-on-dark); color: var(--color-ink); }
+@media (hover: hover) { .contact-form button:hover { background: var(--color-on-dark); color: var(--color-ink); } }
 
 .site-footer { background: var(--color-bg-dark-2); color: var(--color-on-dark); padding: clamp(1.4rem, 7vw, 6.3rem) 0 1.8rem; }
 .site-footer__top { display: grid; gap: clamp(1rem, 5vw, 4.5rem); grid-template-columns: 1.15fr 0.8fr 0.68fr 0.8fr; }

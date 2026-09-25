@@ -168,6 +168,9 @@
   --duration-fast: 180ms;
   --duration-medium: 320ms;
   --duration-slow: 560ms;
+  /* State layers: content-color overlay opacity per interaction state. */
+  --state-hover: .08;
+  --state-press: .1;
   /* Hairline color for the numbered fact grids; dark sections flip it to
      --color-line-light (see .page-section--dark/--deep). */
   --line-hairline: var(--color-line);
