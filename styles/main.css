@@ -85,7 +85,9 @@
   --color-line: rgba(10, 5, 50, 0.18);
   --color-line-light: rgba(255, 255, 255, 0.22);
   --color-line-light-strong: rgba(255, 255, 255, 0.45);
-  --color-surface-veil: rgba(255, 255, 255, 0.96);
+  /* Header ground: the paper/sand tone at 96 % so the sticky bar reads as part
+     of the site, not of the browser chrome (Owner 25.09.). Same RGB as --color-paper. */
+  --color-surface-veil: rgba(245, 240, 235, 0.96);
   /* On-dark roles (content on ink/deep grounds): primary, secondary and
      tertiary emphasis. White page/card grounds use --color-bg instead. */
   --color-on-dark: #ffffff;
