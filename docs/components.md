@@ -128,3 +128,109 @@ Every component in the canon above gets one contract in this form
 - Status: active / deprecated (replacement: ...)
 ```
 
+
+## Verträge (B-01)
+
+Contracts for the canon above, in the template's form. "Props" are renderer
+arguments or the data fields a renderer reads; text always comes from the page
+source or content/site-data.mjs (never from the renderer).
+
+### page-hero
+- Purpose: the one subpage hero frame (breadcrumb, eyebrow, H1, intro, photo).
+- Renderer: content/render.mjs -> pageHero(); pages use `<page-hero …>` (assemble.mjs).
+- CSS: styles/09-page-templates.css, 10-feedback.css -> .page-hero, __grid, __copy, __visual
+- Props (required): id (the H1 id; labels the section), crumb (current label) or parent
+- Props (optional): parent "href|label", modifier (e.g. portfolio-hero), figure-class, image (supplied key; omitted = no figure)
+- Slots: copy = eyebrow + H1 + intro, authored in the page
+- States: static. Variants: with/without figure; case-study figure carries .page-hero__metric
+- Accessibility: section aria-labelledby = H1; one H1; hero image fetchpriority=high, never lazy
+- Example call: `<page-hero id="karriere-title" crumb="Karriere" image="technology-team">…</page-hero>`
+- Status: active
+
+### breadcrumb
+- Purpose: Startseite / [parent] / page; also feeds the BreadcrumbList JSON-LD.
+- Renderer: breadcrumb(label, parent); pages use `<page-crumb label="…">`
+- CSS: .page-breadcrumb (light and on-dark variants by section ground)
+- Props: label (optional when a parent ends the trail), parent [href, label]
+- States: rest, hover (lemon on dark; ink 2px underline on light), focus-visible, press
+- Accessibility: links 44px tall via overhanging box; separator aria-hidden
+- Status: active
+
+### cta
+- Purpose: the closing call to action of a page.
+- Renderer: cta(name) from the `ctas` table; pages use `<!-- content:cta-<name> -->`; case studies use the default
+- CSS: .page-cta, __copy (11-components.css / 10-feedback.css)
+- Props: eyebrow (default "Ihr nächster Schritt"), title (HTML), copy (paragraphs), link (bool: contact text-link), id (labels the section)
+- Variants: default, case-studies, portfolio, karriere (no link)
+- Accessibility: section labelled by its H2 when id is set
+- Status: active; hand-written CTAs rejected by check:content
+
+### filter-chip
+- Purpose: single-select toggle for the project filters (/branchen/, /case-studies/).
+- Renderer: chip() inside filters(); JS js/06-work.js
+- CSS: 11-components.css -> .filter-button, __check
+- Props: group, value, label; the first chip of a group ("Alle") starts selected
+- States: rest (3.17:1 outline), hover (15% lemon tint, unselected only), selected (lemon + ink outline + check), selected hover/press (state layer), focus-visible
+- Accessibility: buttons with aria-pressed inside role=group; one Tab stop per group, Arrow/Home/End move; the filter bar is .js-only (without JS all projects show)
+- Status: active
+
+### reference-card
+- Purpose: whole-card link to a case study.
+- Renderer: projectCards(selection, filterable, collage)
+- CSS: 10-feedback.css -> .reference-card, __copy, __meta; .result-metric
+- Props (data): slug, name, headline, industry, discipline label, metric, label, image
+- States: rest, hover/focus-visible = navy invert with --invert-bleed halo, press (state layer), image zoom 1.03 on hover
+- Variants: grid, collage (mixed sizes), filterable (data-project attributes)
+- Accessibility: one link per card; photo decorative (alt=""), the title names the link
+- Status: active
+
+### industry-tile
+- Purpose: static industry content tile (owner 24.09: no link, no hover).
+- Renderer: industryCards(); CSS: .industry-tile, __copy, __number
+- Props (data): name, image, optional subline; States: static only
+- Status: active
+
+### company-facts
+- Purpose: the one Kennzahlen row (home, about-us, karriere).
+- Renderer: companyFacts() from companyFactData; CSS: .company-facts, __icon, __value
+- Props (data): icon, value (final value in HTML), label
+- States: static; countup animates only when motion is allowed (reads --duration-countup)
+- Accessibility: dl/dt/dd; value text present without JS (gated)
+- Status: active
+
+### expander
+- Purpose: the canonical "Mehr lesen" disclosure (management cards, job postings).
+- CSS: 11-components.css -> .expander, __open, __close
+- Slots: summary (open/close labels + screen-reader " – <name>"), body
+- States: closed, open (+ rotates 45°), hover (state layer), focus-visible, press
+- Accessibility: native details/summary; accessible name includes the item
+- Status: active
+
+### job-card / tag
+- Purpose: job postings on /karriere/; .tag = static label (never the chip look).
+- Renderer: jobsList() from `jobs`; CSS: .job-card, __meta, __text, __apply; .tag
+- Props (data): slug, title, meta[], tagline, intro[], sections[], apply
+- Slots: expander with the full posting, ending in the mailto application link
+- Status: active
+
+### text-field
+- Purpose: the contact form's underline field (M3 filled field, no container).
+- Markup: partials/contact-form.html; CSS: 11-components.css (Text field block)
+- States: rest (4.41:1 underline), hover (muted underline), focus (lemon, 2px), error (--color-error-on-dark + supporting text), filled
+- Accessibility: label per control, aria-describedby -> supporting text, aria-invalid; German messages from js/06-work.js; works without JS (native validation)
+- Status: active
+
+### state-layer (primitive)
+- Purpose: the one hover/press overlay for clickables (::before, currentColor).
+- CSS: 11-components.css; tokens --state-hover .08, --state-press .1, --state-inset
+- States: hover only where no bespoke hover exists; press everywhere (press beats hover)
+- Status: active
+
+### trust-strip
+- Purpose: the released certification labels (ISO 9001, ISO 37301, TISAX).
+- Renderer: trustStrip() from `certifications`; `<!-- content:trust-strip -->`
+- Status: active; hand-written strips rejected by check:content
+
+### Remaining shared markup (by design, not duplicates)
+- .eyebrow, .display-large, .text-link, .section-lede: primitive classes with page-specific text.
+- .company-values: one CSS component, different content per page (about-us, portfolio).

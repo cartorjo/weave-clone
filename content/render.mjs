@@ -26,6 +26,13 @@ export function pageHero({ id, crumb, parent, modifier, figureClass, copy, figur
   return `<section class="page-hero${modifier ? ` ${modifier}` : ''}"${id ? ` aria-labelledby="${id}"` : ''}><div class="gutter"><div class="container @container"><div class="page-hero__grid @max-content:grid-cols-1"><div class="page-hero__copy">${breadcrumb(crumb, parent)}${copy}</div>${figure == null ? '' : `<figure class="page-hero__visual${figureClass ? ` ${figureClass}` : ''}">${figure}</figure>`}</div></div></div></section>`;
 }
 
+// Released certifications (owner 2026-09-25; TISAX is an assessment, shown
+// as a label). The one list behind every trust strip.
+const certifications = ['ISO 9001', 'ISO 37301', 'TISAX'];
+function trustStrip() {
+  return `<div class="trust-strip">${certifications.map(c => `<span>${c}</span>`).join('')}</div>`;
+}
+
 export function industryCards() {
   // ONE industry tile everywhere, and it is static content: the Branchen
   // detail subpages were removed (owner 24-09), so tiles carry no link, no
@@ -196,6 +203,7 @@ function management() {
 export function fragment(name) {
   switch (name) {
     case 'industry-cards': return industryCards();
+    case 'trust-strip': return trustStrip();
     case 'cta-case-studies': return cta('case-studies');
     case 'cta-portfolio': return cta('portfolio');
     case 'cta-karriere': return cta('karriere');

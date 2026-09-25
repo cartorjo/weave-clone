@@ -58,6 +58,8 @@ for (const dir of ['pages', 'sections']) for (const f of readdirSync(resolve(roo
   const src = readFileSync(resolve(root, dir, f), 'utf8');
   if (/class="page-hero[ "]/.test(src)) failures.push(`${dir}/${f}: hand-written page hero (use <page-hero>)`);
   if (/class="page-breadcrumb"/.test(src)) failures.push(`${dir}/${f}: hand-written breadcrumb (use <page-crumb> or <page-hero crumb>)`);
+  if (/class="page-cta[ "]/.test(src)) failures.push(`${dir}/${f}: hand-written CTA (use <!-- content:cta-<name> -->)`);
+  if (/class="trust-strip"/.test(src)) failures.push(`${dir}/${f}: hand-written trust strip (use <!-- content:trust-strip -->)`);
 }
 // SEO migration: every redirect lands on a real page, and every old emposo.de
 // URL (docs/legacy-urls.txt) is either still a page or 301s somewhere real.
