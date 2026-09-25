@@ -98,6 +98,8 @@
   --color-on-dark: #ffffff;
   --color-on-dark-muted: rgba(255, 255, 255, 0.72);
   --color-on-dark-faint: rgba(255, 255, 255, 0.62);
+  /* Error on ink grounds (M3 error tone 80; the brand palette has no red). */
+  --color-error-on-dark: #ffb4ab;
 
   /* Type roles — the fixed sizes the components actually ship (each is used
      two or more times). Headline sizes are fluid clamp()s owned by their one

@@ -38,8 +38,6 @@
 .contact__note { font-size: var(--text-body-lg); margin-top: var(--space-legacy-5); max-width: 25.2rem; }
 .contact-form { display: grid; gap: 1.26rem 1.08rem; grid-template-columns: 1fr 1fr; }
 .contact-form label { display: grid; font-weight: 600; gap: 0.63rem; text-transform: none; }
-.contact-form input, .contact-form select, .contact-form textarea { appearance: none; background: transparent; border: 0; border-bottom: 1px solid var(--color-line-light-strong); border-radius: 0; color: var(--color-on-dark); font-size: var(--text-lede-lg); font-weight: 400; letter-spacing: 0; outline: none; padding: 0.585rem 0; text-transform: none; transition: border-color var(--duration-fast) var(--ease-em); width: 100%; }
-.contact-form select { background-color: var(--color-ink); grid-area: 2 / 1; padding-right: 1.6rem; }
 /* Chevron and select share one label grid cell, both placed explicitly (auto-
    placement would push the select into a new column). The 1px bottom margin
    centers the chevron on the padding box, above the border line. */
@@ -55,11 +53,8 @@
   pointer-events: none;
   width: 12px;
 }
-@media (hover: hover) { .contact-form :is(input, select, textarea):hover { border-color: var(--color-on-dark-muted); } }
-.contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--color-lemon); }
 .contact-form__hint { border-left: 2px solid var(--color-lemon); color: var(--color-on-dark-muted); font-size: 0.94rem; grid-column: 1 / -1; line-height: 1.35; padding-left: 0.81rem; }
 .contact-form__message { grid-column: 1 / -1; }
-.contact-form textarea { resize: vertical; }
 /* The submit is the header pill (.header-contact, owner 25.09.: both CTAs the
    same). Only grid placement and button resets live here; look, hover and
    focus come from the pill rules. */

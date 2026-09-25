@@ -44,6 +44,23 @@
 }
 @media (width <= theme(--breakpoint-compact)) { .filter-button { font-size: var(--text-body-sm); } }
 
+/* Text field — the contact form's underline field (brand adaptation of the
+   M3 filled field without container): 56px field box; the indicator
+   strengthens on hover, turns lemon and 2px on focus, and error-coloured
+   (with supporting text below, filled by js/06-work.js) when invalid. Only
+   "(optional)" is marked; required fields carry no asterisk (owner rule). */
+.contact-form input, .contact-form select, .contact-form textarea { appearance: none; background: transparent; border: 0; border-bottom: 1px solid var(--color-line-light-strong); border-radius: 0; color: var(--color-on-dark); font-size: var(--text-lede-lg); font-weight: 400; letter-spacing: 0; outline: none; padding: .82rem 0; text-transform: none; transition: border-color var(--duration-fast) var(--ease-em); width: 100%; }
+.contact-form select { background-color: var(--color-ink); grid-area: 2 / 1; padding-right: 1.6rem; }
+@media (hover: hover) { .contact-form :is(input, select, textarea):hover { border-color: var(--color-on-dark-muted); } }
+.contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--color-lemon); }
+.contact-form :is(input, select, textarea):is(:focus, [aria-invalid="true"], :user-invalid) { border-bottom-width: 2px; padding-bottom: calc(.82rem - 1px); }
+.contact-form :is(input, select, textarea):is([aria-invalid="true"], :user-invalid) { border-bottom-color: var(--color-error-on-dark); }
+.contact-form textarea { resize: vertical; }
+.contact-form__support { color: var(--color-error-on-dark); font-size: var(--text-body-sm); font-weight: 400; line-height: 1.35; }
+.contact-form__support:empty { display: none; }
+.contact-form label { align-content: start; }
+.contact-form__select .contact-form__support { grid-row: 3; }
+
 /* Eyebrow — the small bold section label with the lemon rule after it.
    Variants: --light (on ink/deep sections). Kickers in heroes are
    `eyebrow eyebrow--light`. Footer margins live contextually in 08. */

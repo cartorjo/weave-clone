@@ -77,9 +77,39 @@
 
     var form = document.querySelector('[data-contact-form]');
     if (form) {
+      // Errors appear as German supporting text under each field instead of
+      // the browser's bubbles (which follow the browser language). Checked on
+      // submit, then live per field; not on blur, because text appearing
+      // under a field would move the submit button away mid-click.
+      var messages = {
+        name: { valueMissing: 'Bitte geben Sie Ihren Namen an.' },
+        email: { valueMissing: 'Bitte geben Sie Ihre E-Mail-Adresse an.', typeMismatch: 'Bitte geben Sie eine gültige E-Mail-Adresse an, z. B. name@firma.de.' },
+        interest: { valueMissing: 'Bitte wählen Sie aus, worum es geht.' },
+        message: { valueMissing: 'Bitte schreiben Sie uns kurz, worum es geht.' }
+      };
+      var fields = Array.prototype.slice.call(form.querySelectorAll('input, select, textarea'));
+      var check = function (field) {
+        var support = document.getElementById(field.getAttribute('aria-describedby'));
+        var valid = field.checkValidity();
+        var text = '';
+        if (!valid) {
+          var own = messages[field.name] || {};
+          text = (field.validity.valueMissing && own.valueMissing) || (field.validity.typeMismatch && own.typeMismatch) || field.validationMessage;
+        }
+        field.setAttribute('aria-invalid', valid ? 'false' : 'true');
+        if (support) support.textContent = text;
+        return valid;
+      };
+      form.noValidate = true;
+      fields.forEach(function (field) {
+        field.addEventListener('input', function () { if (field.getAttribute('aria-invalid') === 'true') check(field); });
+        field.addEventListener('change', function () { if (field.getAttribute('aria-invalid') === 'true') check(field); });
+      });
       form.addEventListener('submit', function (event) {
         event.preventDefault();
-        if (!form.reportValidity()) return;
+        var firstInvalid = null;
+        fields.forEach(function (field) { if (!check(field) && !firstInvalid) firstInvalid = field; });
+        if (firstInvalid) { firstInvalid.focus(); return; }
         var data = new FormData(form);
         var body = [
           'Name: ' + data.get('name'),
