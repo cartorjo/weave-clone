@@ -18,7 +18,7 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pages from './pages.mjs';
-import { escape, picture, fragment, projectPage } from './content/render.mjs';
+import { escape, picture, fragment, projectPage, pageHero, breadcrumb as breadcrumbMarkup } from './content/render.mjs';
 import { projects, disciplines } from './content/site-data.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
@@ -35,7 +35,7 @@ const website = { '@type': 'WebSite', '@id': `${SITE_ORIGIN}/#website`, name: 'E
 // Share image: the page's own hero photo (case studies: the project image), else the homepage hero.
 const shareImage = page => {
   const key = page.content.startsWith?.('project:') ? projects.find(p => p.slug === page.content.slice(8))?.image
-    : (Array.isArray(page.content) ? page.content : [page.content]).map(f => readFileSync(join(root, f), 'utf8').match(/\{\{image:([a-z0-9-]+):hero\}\}/)?.[1]).find(Boolean);
+    : (Array.isArray(page.content) ? page.content : [page.content]).map(f => { const src = readFileSync(join(root, f), 'utf8'); return src.match(/<page-hero\b[^>]*\bimage="([a-z0-9-]+)"/)?.[1] || src.match(/\{\{image:([a-z0-9-]+):hero\}\}/)?.[1]; }).find(Boolean);
   return images[key] || images['hero-flow'];
 };
 // BreadcrumbList from the page's own visible breadcrumb (existing labels only).
@@ -98,7 +98,19 @@ const icon = (name) => readFileSync(join(root, 'assets', 'icons', `${name}.svg`)
 // logo's rules live in styles/11-components.css.
 const brand = (name) => readFileSync(join(root, 'assets', 'brand', `${name}.svg`), 'utf8').replace(/\s*<style>[\s\S]*?<\/style>/g, '').trim();
 
-const inlinePartials = (html) => html
+// <page-hero id crumb [parent="href|label"] [modifier] [figure-class] [image]>copy</page-hero>
+// and <page-crumb label="…"> expand to the shared renderers, so page sources
+// hold only their copy while the frame is defined once.
+const attrs = raw => Object.fromEntries([...raw.matchAll(/([a-z-]+)="([^"]*)"/g)].map(([, k, v]) => [k, v]));
+const expandComponents = html => html
+  .replace(/<page-hero\b([^>]*)>([\s\S]*?)<\/page-hero>/g, (_, raw, copy) => {
+    const a = attrs(raw);
+    return pageHero({ id: a.id, crumb: a.crumb, parent: a.parent?.split('|'), modifier: a.modifier, figureClass: a['figure-class'],
+      copy: copy.trim(), figure: a.image ? `{{image:${a.image}:hero}}` : null });
+  })
+  .replace(/<page-crumb label="([^"]*)"><\/page-crumb>/g, (_, label) => breadcrumbMarkup(label));
+
+const inlinePartials = (html) => expandComponents(html)
   .replace(/<!-- partial:([a-z0-9-]+) -->/g, (_, name) => partial(name).trim())
   .replace(/<!-- content:([a-z0-9-]+) -->/g, (_, name) => fragment(name))
   .replace(/\{\{brand:([a-z0-9-]+)\}\}/g, (_, name) => brand(name))

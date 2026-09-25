@@ -28,6 +28,9 @@ for (const page of pages) {
     if (!html.includes(tag)) failures.push(`${f}: ${tag} missing`);
   const image = attr(html, /property="og:image" content="https?:\/\/[^/]+([^"]+)"/);
   if (image && !existsSync(resolve(root, image.slice(1)))) failures.push(`${f}: og:image ${image} does not exist`);
+  // The share image is the page's own hero photo whenever it has one.
+  const hero = attr(html, /<img src="([^"]+)"[^>]*fetchpriority="high"/);
+  if (hero && image && hero !== image) failures.push(`${f}: og:image ${image} is not the page's hero ${hero}`);
   const ld = attr(html, /<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
   if (!ld) failures.push(`${f}: JSON-LD missing`);
   else try {
