@@ -86,6 +86,8 @@
   --color-bg-dark-2: #0a0532;
   --color-paper: #f5f0eb;
   --color-line: rgba(10, 5, 50, 0.18);
+  /* Boundary of interactive outlines on white (3.17:1, WCAG 1.4.11). */
+  --color-line-strong: rgba(10, 5, 50, 0.45);
   --color-line-light: rgba(255, 255, 255, 0.22);
   --color-line-light-strong: rgba(255, 255, 255, 0.45);
   /* Header ground: the paper/sand tone at 96 % so the sticky bar reads as part

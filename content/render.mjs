@@ -53,7 +53,7 @@ function filters() {
   const az = choices => choices.sort((a,b)=>a[1].localeCompare(b[1],'de'));
   // "Alle" hangs in its own grid column so wrapped chip lines align with the
   // first named chip, not with "Alle" (owner review 24-09).
-  const chip = (group,[key,name]) => `<button class="filter-button min-h-11${key==='all'?' is-active':''}" type="button" data-filter-group="${group.key}" data-filter-value="${key}" aria-pressed="${key==='all'}">${escape(name)}</button>`;
+  const chip = (group,[key,name]) => `<button class="filter-button min-h-11${key==='all'?' is-active':''}" type="button" data-filter-group="${group.key}" data-filter-value="${key}" aria-pressed="${key==='all'}"><svg class="filter-button__check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>${escape(name)}</button>`;
   const groups = [
     {key:'industry', label:'Branche', aria:'Nach Branche filtern', choices:[['all','Alle'],...az([['aerospace','Aerospace & Defense'],['energy','Energy & Resources'],['health','Health & Pharma'],['industrial','Industrials & Manufacturing'],['automotive','Automotive'],['technology','Technology, Telecoms & Media']])]},
     {key:'discipline', label:'Leistung', aria:'Nach Leistung filtern', choices:[['all','Alle'],...az(disciplines.map(d=>[d.slug,d.name]))]},

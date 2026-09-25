@@ -136,11 +136,6 @@ a.expertise-card:focus-visible { --focus-halo: 0 0 0 var(--invert-bleed) var(--c
 .result-metric strong { font-size: clamp(2.75rem,4.6vw,4.5rem); font-weight: 700; line-height: 1.1; letter-spacing: -.025em; }
 .result-metric strong.result-metric__word { font-size: clamp(2rem,3vw,3rem); }
 .result-metric span { border-top: 3px solid var(--color-lemon); padding-top: .65rem; font-size: var(--text-lede-sm); line-height: 1.4; font-weight: 700; }
-.filter-button { font-size: var(--text-body); letter-spacing: 0; padding: .65rem var(--space-2); }
-.filter-button.is-active { background: var(--color-lemon); border-color: var(--color-lemon); color: var(--color-ink); }
-@media (hover: hover) {
-  .filter-button:hover { background: var(--color-lemon); border-color: var(--color-lemon); color: var(--color-ink); }
-}
 .filter-group > span { font-size: var(--text-body); letter-spacing: 0; }
 .work-count { color: var(--color-ink); }
 
@@ -309,7 +304,6 @@ a.expertise-card:focus-visible { --focus-halo: 0 0 0 var(--invert-bleed) var(--c
   .work-filter { display: flex; flex-direction: column; gap: 1.25rem; }
   .filter-group { display: grid; gap: .6rem; }
   .filter-group > div { gap: var(--space-1); }
-  .filter-button { font-size: var(--text-body-sm); }
   .page-hero__visual { min-height: 16rem; }
   .page-hero__grid { min-height: 0; }
   .connection-model { margin-top: var(--space-5); }

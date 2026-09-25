@@ -30,6 +30,20 @@
   .site-nav > a, .text-link, .expander summary, .mobile-menu summary, .site-logo, .site-footer a, .page-breadcrumb a, a.expertise-card):active::before,
 .reference-card:active .reference-card__copy::before { opacity: var(--state-press); }
 
+/* Filter chip — the one toggle chip (/branchen/, /case-studies/). Resting
+   outline at 3:1; selected = lemon fill, ink outline and a leading check;
+   hover on an unselected chip only tints, so it never looks selected. Selected
+   chips hover and press through the state layer. Arrow keys move between the
+   chips of a group (js/06-work.js). */
+.filter-button { border: 1px solid var(--color-line-strong); border-radius: var(--radius-full); color: var(--color-ink); font-size: var(--text-body); font-weight: 600; letter-spacing: 0; padding: .65rem var(--space-2); transition: background-color var(--duration-fast) var(--ease-em), border-color var(--duration-fast) var(--ease-em), color var(--duration-fast) var(--ease-em); }
+.filter-button__check { display: none; height: .8em; margin-inline-end: .4em; vertical-align: -.05em; width: .8em; }
+.filter-button.is-active { background: var(--color-lemon); border-color: var(--color-ink); color: var(--color-ink); }
+.filter-button.is-active .filter-button__check { display: inline-block; }
+@media (hover: hover) {
+  .filter-button:not(.is-active):hover { background: color-mix(in srgb, var(--color-lemon) 15%, transparent); }
+}
+@media (width <= theme(--breakpoint-compact)) { .filter-button { font-size: var(--text-body-sm); } }
+
 /* Eyebrow — the small bold section label with the lemon rule after it.
    Variants: --light (on ink/deep sections). Kickers in heroes are
    `eyebrow eyebrow--light`. Footer margins live contextually in 08. */

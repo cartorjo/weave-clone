@@ -36,9 +36,25 @@
         var active = candidate.getAttribute('data-filter-value') === value;
         candidate.classList.toggle('is-active', active);
         candidate.setAttribute('aria-pressed', active ? 'true' : 'false');
+        candidate.tabIndex = active ? 0 : -1;
       });
       render();
     }
+
+    // One Tab stop per chip group (the selected chip); arrows move between chips.
+    buttons.forEach(function (button) {
+      button.tabIndex = button.classList.contains('is-active') ? 0 : -1;
+      button.addEventListener('keydown', function (event) {
+        var keys = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1, Home: 'first', End: 'last' };
+        var step = keys[event.key];
+        if (!step) return;
+        var group = buttons.filter(function (b) { return b.getAttribute('data-filter-group') === button.getAttribute('data-filter-group'); });
+        var index = group.indexOf(button);
+        var next = step === 'first' ? 0 : step === 'last' ? group.length - 1 : (index + step + group.length) % group.length;
+        event.preventDefault();
+        group[next].focus();
+      });
+    });
 
     buttons.forEach(function (button) {
       button.addEventListener('click', function () {
