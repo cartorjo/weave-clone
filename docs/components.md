@@ -77,3 +77,24 @@ page-eyebrow, page-kicker, page-display, page-title, page-cta__title,
 display-hero, page-link, lede-boxes, portfolio-model, about-principles,
 about-facts, expertise-proof, expertise-case-strip, header-careers,
 mobile-menu__label, page-rule, case-* (außer case-facets).
+
+## Vertragsvorlage (technical track, B-01)
+
+Every component in the canon above gets one contract in this form
+(English, so the agents in .claude/agents/ can fill it):
+
+```
+## <component-name>
+- Purpose:
+- Renderer: content/render.mjs -> <function> (or: static markup in <file>)
+- CSS: styles/11-components.css -> .<block>
+- Props (required):
+- Props (optional):
+- Slots:
+- States: default, hover, focus-visible, active, disabled, error, success
+- Variants:
+- Accessibility: roles, aria, focus order, contrast checked
+- Example call:
+- Status: active / deprecated (replacement: ...)
+```
+

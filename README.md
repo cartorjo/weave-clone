@@ -13,6 +13,23 @@ npm run build      # one-off production build (assemble + purged CSS)
 npm run check      # build and validate all local links, images, anchors and templates
 npm run build:img  # rebuild responsive images from assets/src/ masters
 npm start          # production: assemble dist/ (only shipped files) and serve it
+npm run smoke      # browser smoke (needs the dev server on :8080): overflow, console,
+                   # CSP, axe, menu/filter/expander/form flows; BASE=… for other hosts
+```
+
+`npm run check` gates every commit: build reproducible, links/anchors/images,
+redirects and legacy URLs (`check:content`), head tags and JSON-LD
+(`check:meta`), and wording unchanged (`check:copy`; owner-approved copy goes
+through `npm run copy:accept`, whose baseline diff is the review surface).
+
+Visual parity for refactors (`tools/visual/`, output in `.visual/`):
+
+```bash
+npm run visual:snapshot -- .visual/before   # computed styles + screenshots, 24 routes × 390/1000/1400
+npm run visual:snapshot -- .visual/after
+npm run visual:diff -- .visual/before .visual/after            # every style transition; empty = no drift
+npm run visual:pixdiff -- .visual/before .visual/after .visual/pix   # region crops before | after | mask
+npm run css:shadowed                         # declarations a later identical selector overrides
 ```
 
 ## How pages are built

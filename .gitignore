@@ -8,3 +8,6 @@ assets/archive/
 
 # Production webroot, assembled by `npm start` (tools/build-dist.mjs)
 dist/
+
+# Visual/smoke harness output (tools/visual/)
+.visual/
