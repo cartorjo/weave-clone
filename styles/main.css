@@ -317,8 +317,8 @@
 
 /* page gutter ("padding-global"): 4.5vw left+right */
 .gutter {
-  padding-left: var(--gutter);
-  padding-right: var(--gutter);
+  padding-inline-start: var(--gutter);
+  padding-inline-end: var(--gutter);
 }
 
 /* full-width container, centered; no max-width below 1440 — gutter does the work.
@@ -332,8 +332,8 @@
   /* Unconditional cap: below ~1477px viewport the 4.5vw gutters keep content
      narrower than the cap anyway, so no breakpoint gate is needed. */
   max-width: var(--container-max);
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
 }
 
 /* ---- Per-section remainders — migration complete -------------------------

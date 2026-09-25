@@ -8,10 +8,10 @@
 
 .hero { background: var(--color-ink); color: var(--color-on-dark); overflow: hidden; }
 .hero__grid { display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(17.1rem, 0.96fr); min-height: min(47.7rem, calc(100vh - 4.86rem)); }
-.hero__copy { align-self: center; display: flex; flex-direction: column; justify-content: center; padding: clamp(1.8rem, 9vw, 9rem) clamp(1rem, 5vw, 6.3rem) clamp(1.6rem, 8vw, 8.1rem) 0; }
+.hero__copy { align-self: center; display: flex; flex-direction: column; justify-content: center; padding-block: clamp(1.8rem, 9vw, 9rem) clamp(1.6rem, 8vw, 8.1rem); padding-inline: 0 clamp(1rem, 5vw, 6.3rem); }
 .hero__intro { align-items: flex-end; border-top: 1px solid var(--color-line-light); display: flex; gap: var(--space-legacy-4); justify-content: space-between; margin-top: clamp(1rem, 5vw, 4.5rem); max-width: 44.1rem; padding-top: 1.215rem; }
 .hero__intro p { color: var(--color-on-dark-muted); font-size: clamp(1.05rem, 1.4vw, 1.305rem); line-height: 1.35; max-width: 25.2rem; }
-.hero__visual { margin: 0 calc(var(--bleed-right) * -1) 0 0; min-height: 100%; overflow: hidden; position: relative; }
+.hero__visual { margin-block: 0 0; margin-inline: 0 calc(var(--bleed-right) * -1); min-height: 100%; overflow: hidden; position: relative; }
 .hero__visual::after { content: ""; inset: 0; position: absolute; pointer-events: none; }
 .hero__visual > picture > img { height: 100%; object-fit: cover; width: 100%; }
 
@@ -48,12 +48,12 @@
   grid-area: 2 / 1;
   height: 8px;
   justify-self: end;
-  margin: 0 0.2rem 1px 0;
+  margin-block: 0 1px; margin-inline: 0 0.2rem;
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='black' stroke-width='1.5'/%3E%3C/svg%3E");
   pointer-events: none;
   width: 12px;
 }
-.contact-form__hint { border-left: 2px solid var(--color-lemon); color: var(--color-on-dark-muted); font-size: 0.94rem; grid-column: 1 / -1; line-height: 1.35; padding-left: 0.81rem; }
+.contact-form__hint { border-inline-start: 2px solid var(--color-lemon); color: var(--color-on-dark-muted); font-size: 0.94rem; grid-column: 1 / -1; line-height: 1.35; padding-inline-start: 0.81rem; }
 .contact-form__message { grid-column: 1 / -1; }
 /* The submit is the header pill (.header-contact, owner 25.09.: both CTAs the
    same). Only grid placement and button resets live here; look, hover and
@@ -77,8 +77,8 @@
 
 @media (width <= theme(--breakpoint-hero)) {
   .hero__grid { grid-template-columns: 1fr; }
-  .hero__copy { min-height: 37.8rem; padding-right: 0; }
-  .hero__visual { aspect-ratio: 16 / 10; margin-left: calc(var(--gutter) * -1); }
+  .hero__copy { min-height: 37.8rem; padding-inline-end: 0; }
+  .hero__visual { aspect-ratio: 16 / 10; margin-inline-start: calc(var(--gutter) * -1); }
   .hero__visual > picture > img { position: absolute; }
   .work__heading, .contact__grid { grid-template-columns: 1fr; }
   .site-footer__top { grid-template-columns: repeat(2, 1fr); }

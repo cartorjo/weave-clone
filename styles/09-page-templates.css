@@ -23,7 +23,7 @@
   height: clamp(9rem, 45vw, 46.8rem);
   pointer-events: none;
   position: absolute;
-  right: clamp(-14rem, -7vw, -4rem);
+  inset-inline-end: clamp(-14rem, -7vw, -4rem);
   top: clamp(-16rem, -9vw, -5rem);
   width: clamp(9rem, 45vw, 46.8rem);
 }
@@ -58,7 +58,7 @@
 .page-hero__visual {
   align-self: stretch;
   background: var(--color-bg-dark-2);
-  margin-right: calc(var(--bleed-right) * -1);
+  margin-inline-end: calc(var(--bleed-right) * -1);
   overflow: hidden;
   position: relative;
 }
@@ -75,7 +75,7 @@
   color: var(--color-ink);
   display: grid;
   gap: var(--space-legacy-1);
-  left: 0;
+  inset-inline-start: 0;
   max-width: 13.5rem;
   padding: 1.215rem var(--space-legacy-3);
   position: absolute;
@@ -97,26 +97,26 @@
   margin-top: var(--spacing-xl);
 }
 .fact-grid > * {
-  border-right: 1px solid var(--line-hairline);
+  border-inline-end: 1px solid var(--line-hairline);
   display: flex;
   flex-direction: column;
   min-height: var(--fact-min, 16rem);
-  padding: var(--spacing-rule) var(--spacing-cell) var(--spacing-cell) 0;
+  padding-block: var(--spacing-rule) var(--spacing-cell); padding-inline: 0 var(--spacing-cell);
 }
-.fact-grid > * + * { padding-left: var(--spacing-cell); }
-.fact-grid > *:last-child { border-right: 0; }
+.fact-grid > * + * { padding-inline-start: var(--spacing-cell); }
+.fact-grid > *:last-child { border-inline-end: 0; }
 .fact-grid--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .fact-grid__label { color: var(--accent-ink); font-size: var(--text-micro); font-weight: 600; letter-spacing: 0.1em; text-transform: none; }
 .fact-grid h3 { font-size: clamp(1.05rem, 2.6vw, 2.6rem); font-weight: 300; letter-spacing: -0.025em; line-height: 0.96; margin-top: auto; padding-top: var(--space-5); }
 .fact-grid p { font-size: var(--text-card); line-height: 1.42; margin-top: var(--space-legacy-2); }
 @media (width < theme(--breakpoint-lg)) {
   .fact-grid--5 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .fact-grid--5 > *:nth-child(2n) { border-right: 0; }
+  .fact-grid--5 > *:nth-child(2n) { border-inline-end: 0; }
   .fact-grid--5 > *:nth-child(n + 3) { border-top: 1px solid var(--line-hairline); }
 }
 @media (width < theme(--breakpoint-sm)) {
   .fact-grid--5 { grid-template-columns: 1fr; }
-  .fact-grid > *, .fact-grid > * + * { border-right: 0; border-top: 1px solid var(--line-hairline); min-height: 0; padding: var(--space-3) 0; }
+  .fact-grid > *, .fact-grid > * + * { border-inline-end: 0; border-top: 1px solid var(--line-hairline); min-height: 0; padding: var(--space-3) 0; }
   .fact-grid > *:first-child { border-top: 0; }
 }
 .page-section[id] { scroll-margin-top: calc(var(--header-h) + 1.5rem); }
@@ -165,7 +165,7 @@
 .portfolio-mode__number { color: var(--color-lemon); font-size: clamp(2rem, 2.6vw, 2.75rem); font-weight: 300; letter-spacing: -0.02em; line-height: 1.1; }
 .portfolio-mode h3 { font-size: clamp(1.05rem, 4vw, 3.78rem); font-weight: 300; letter-spacing: -0.065em; line-height: 1.08; }
 .portfolio-mode__copy { color: var(--color-on-dark-muted); font-size: 1.07rem; line-height: 1.43; max-width: 29.7rem; }
-.portfolio-mode__outcome { align-self: end; border-left: 1px solid var(--color-line-light); color: var(--color-on-dark); padding-left: var(--space-legacy-2); text-transform: none; }
+.portfolio-mode__outcome { align-self: end; border-inline-start: 1px solid var(--color-line-light); color: var(--color-on-dark); padding-inline-start: var(--space-legacy-2); text-transform: none; }
 /* About -------------------------------------------------------------------- */
 .about-hero__visual { background: var(--color-bg-dark-2); }
 
@@ -181,7 +181,7 @@
       .page-section__lede { margin-top: var(--space-legacy-1); }
   .portfolio-mode { grid-template-columns: 3.15rem minmax(0, 1fr); }
   .portfolio-mode__copy { grid-column: 2; }
-  .portfolio-mode__outcome { border-left: 0; grid-column: 2; padding-left: 0; }
+  .portfolio-mode__outcome { border-inline-start: 0; grid-column: 2; padding-inline-start: 0; }
 }
 
 @media (width <= theme(--breakpoint-narrow)) {

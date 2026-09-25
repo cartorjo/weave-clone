@@ -18,12 +18,12 @@
    Menü-Ausnahme der "Unterstrich nur Zahlen"-Regel), CTA als orange Pill mit
    Pfeil-Kreis. */
 .site-nav > a { font-size: var(--text-body); font-weight: 500; letter-spacing: 0; position: relative; }
-.site-nav > a::after { background: var(--color-ink); bottom: .55rem; content: ''; height: 2px; left: 0; position: absolute; right: 0; transform: scaleX(0); transform-origin: left; transition: transform var(--duration-medium) var(--ease-em); }
+.site-nav > a::after { background: var(--color-ink); bottom: .55rem; content: ''; height: 2px; inset-inline-start: 0; position: absolute; inset-inline-end: 0; transform: scaleX(0); transform-origin: left; transition: transform var(--duration-medium) var(--ease-em); }
 @media (hover: hover) {
   .site-nav > a:hover::after { transform: scaleX(1); }
 }
 .site-nav > a:focus-visible::after, .site-nav > a[aria-current]::after { transform: scaleX(1); }
-.header-contact { border-radius: var(--radius-full); font-size: var(--text-body); font-weight: 700; letter-spacing: 0; padding: .4rem var(--space-legacy-1) .4rem 1.4rem; gap: .85rem; transition: background-color var(--duration-medium) var(--ease-em), color var(--duration-medium) var(--ease-em); }
+.header-contact { border-radius: var(--radius-full); font-size: var(--text-body); font-weight: 700; letter-spacing: 0; padding-block: .4rem .4rem; padding-inline: 1.4rem var(--space-legacy-1); gap: .85rem; transition: background-color var(--duration-medium) var(--ease-em), color var(--duration-medium) var(--ease-em); }
 .header-contact__arrow { align-items: center; background: var(--color-ink); border-radius: var(--radius-full); color: var(--color-on-dark); display: inline-flex; flex: none; font-size: var(--text-lede); height: 2.2rem; justify-content: center; width: 2.2rem; transition: background-color var(--duration-medium) var(--ease-em), color var(--duration-medium) var(--ease-em); }
 @media (hover: hover) {
   :is(.header-contact, .mobile-menu__cta):hover { background: var(--color-ink); color: var(--color-on-dark); }
@@ -34,7 +34,7 @@
 /* Mobile-Parität: aria-current ebenfalls als Unterstrich, CTA als Pill-Zeile. */
 .mobile-menu__panel a { font-size: var(--text-body); font-weight: 500; letter-spacing: 0; }
 .mobile-menu__panel a[aria-current] { font-weight: 500; text-decoration: underline; text-decoration-color: var(--color-ink); text-decoration-thickness: 2px; text-underline-offset: .35rem; }
-.mobile-menu__cta { border-radius: var(--radius-full); display: flex; justify-content: space-between; align-items: center; margin: .85rem var(--space-2) var(--space-2); border-bottom: 0; padding: .4rem var(--space-legacy-1) .4rem 1.2rem; font-weight: 700; }
+.mobile-menu__cta { border-radius: var(--radius-full); display: flex; justify-content: space-between; align-items: center; margin: .85rem var(--space-2) var(--space-2); border-bottom: 0; padding-block: .4rem .4rem; padding-inline: 1.2rem var(--space-legacy-1); font-weight: 700; }
 .mobile-menu__cta[aria-current] { text-decoration: none; }
 
 .hero--feedback .hero__grid { position: relative; min-height: 43rem; grid-template-columns: 40% 60%; }
@@ -91,7 +91,7 @@
 .industry-tile img { width: 100%; height: 100%; object-fit: cover; }
 .industry-tile__copy { padding: 1.4rem var(--space-3) var(--space-legacy-4); position: relative; min-height: 10rem; }
 .industry-tile__number { font-size: var(--text-lede); border-bottom: 1px solid currentColor; padding-bottom: .2rem; }
-.industry-tile h3 { font-size: clamp(1.4rem,2.1vw,2rem); font-weight: 400; line-height: 1.2; margin-top: 1.15rem; padding-right: 1.7rem; }
+.industry-tile h3 { font-size: clamp(1.4rem,2.1vw,2rem); font-weight: 400; line-height: 1.2; margin-top: 1.15rem; padding-inline-end: 1.7rem; }
 .industry-tile p { margin-top: var(--space-1); }
 /* Tiles are static content (owner 24-09: Branchen-Unterseiten entfernt) —
    no hover, per the hover-only-on-clickables policy. */
@@ -183,9 +183,9 @@ a.expertise-card:focus-visible { --focus-halo: 0 0 0 var(--invert-bleed) var(--c
    zwischen Engineering und Technology, Promises sitzen auf einer Höhe. */
 .discipline-table { display: grid; grid-auto-flow: column; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto repeat(4, minmax(0, 1fr)); margin-top: var(--space-7); }
 .discipline-table__head { font-size: 2rem; font-weight: 700; color: var(--color-ink); letter-spacing: -.01em; padding-bottom: 1.4rem; }
-.discipline-cell { border-top: 1px solid var(--color-line); display: flex; flex-direction: column; gap: .55rem; padding: 1.6rem 2.4rem 1.6rem 0; }
-.discipline-table > :nth-child(n+6) { border-left: 1px solid var(--color-line); padding-left: 2.4rem; }
-.discipline-cell:nth-child(n+6) { padding-right: 0; }
+.discipline-cell { border-top: 1px solid var(--color-line); display: flex; flex-direction: column; gap: .55rem; padding-block: 1.6rem 1.6rem; padding-inline: 0 2.4rem; }
+.discipline-table > :nth-child(n+6) { border-inline-start: 1px solid var(--color-line); padding-inline-start: 2.4rem; }
+.discipline-cell:nth-child(n+6) { padding-inline-end: 0; }
 .discipline-cell__icon { color: var(--color-lemon); height: 2.4rem; width: 2.4rem; margin-bottom: .35rem; }
 .discipline-cell__icon svg { height: 100%; width: 100%; }
 .discipline-cell h4 { font-size: clamp(1.2rem, 1.8vw, 1.65rem); font-weight: 700; letter-spacing: -.01em; line-height: 1.2; }
@@ -200,8 +200,8 @@ a.expertise-card:focus-visible { --focus-halo: 0 0 0 var(--invert-bleed) var(--c
 .case-facets .result-list li::before { top: .65rem; }
 .case-facets .result-list li:first-child::before { top: .1rem; }
 .page-hero__metric strong.page-hero__metric--word { font-size: clamp(1.1rem, 2vw, 2rem); }
-.result-list li { padding: .7rem 0 .7rem var(--space-3); border-bottom: 1px solid var(--color-line); position: relative; }
-.result-list li::before { content: ''; position: absolute; left: 0; top: 1.35rem; width: .5rem; height: .5rem; background: var(--color-lemon); }
+.result-list li { padding-block: .7rem .7rem; padding-inline: var(--space-3) 0; border-bottom: 1px solid var(--color-line); position: relative; }
+.result-list li::before { content: ''; position: absolute; inset-inline-start: 0; top: 1.35rem; width: .5rem; height: .5rem; background: var(--color-lemon); }
 /* Management als Standardkarten (Review 24-09): sichtbar nur Bild, Name,
    Rolle; Hover/Fokus blendet maximal drei Fakten als navy Overlay über dem
    Foto ein. Fotos einheitlich in Graustufen. */
@@ -264,22 +264,22 @@ a.expertise-card:focus-visible { --focus-halo: 0 0 0 var(--invert-bleed) var(--c
 @media (width <= theme(--breakpoint-hero)) {
     .hero--feedback .hero__grid { display: flex; flex-direction: column; min-height: 0; }
   .hero--feedback .hero__copy { width: 100%; max-width: none; min-height: 0; padding: var(--space-7) 0 var(--space-5); }
-  .hero--feedback .hero__visual { height: 23rem; min-height: 0; margin-left: calc(-1 * var(--gutter)); }
+  .hero--feedback .hero__visual { height: 23rem; min-height: 0; margin-inline-start: calc(-1 * var(--gutter)); }
   .hero--feedback .hero__visual::after { background: var(--scrim-ink-top); }
   .hero--feedback .hero__intro { margin-top: var(--space-4); max-width: 35rem; }
   .hero--feedback .display-large { max-width: none; }
   .page-section__top, .expertise-intro__heading, .work__heading { grid-template-columns: minmax(0,1fr); }
   .page-hero__grid { padding: 0; }
   .page-hero__copy { padding: var(--space-6) 0 var(--space-5); }
-  .page-hero__visual { margin-left: 0; margin-right: 0; min-height: 22rem; aspect-ratio: auto; }
+  .page-hero__visual { margin-inline-start: 0; margin-inline-end: 0; min-height: 22rem; aspect-ratio: auto; }
   .page-hero__visual::after { background: var(--scrim-ink-top); }
   .page-section__lede { max-width: 40rem; }
   .company-facts { grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--space-4); }
   .company-values { grid-template-columns: 1fr; }
   .contact__grid { grid-template-columns: minmax(0, 1fr); }
   .discipline-table { grid-auto-flow: row; grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
-  .discipline-table > :nth-child(n+6) { border-left: 0; padding-left: 0; }
-  .discipline-cell { padding-right: 0; }
+  .discipline-table > :nth-child(n+6) { border-inline-start: 0; padding-inline-start: 0; }
+  .discipline-cell { padding-inline-end: 0; }
   .discipline-table__head:not(:first-child) { margin-top: 2.75rem; }
 }
 @media (width <= theme(--breakpoint-stack)) {

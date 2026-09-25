@@ -50,7 +50,7 @@
    (with supporting text below, filled by js/06-work.js) when invalid. Only
    "(optional)" is marked; required fields carry no asterisk (owner rule). */
 .contact-form input, .contact-form select, .contact-form textarea { appearance: none; background: transparent; border: 0; border-bottom: 1px solid var(--color-line-light-strong); border-radius: 0; color: var(--color-on-dark); font-size: var(--text-lede-lg); font-weight: 400; letter-spacing: 0; outline: none; padding: .82rem 0; text-transform: none; transition: border-color var(--duration-fast) var(--ease-em); width: 100%; }
-.contact-form select { background-color: var(--color-ink); grid-area: 2 / 1; padding-right: 1.6rem; }
+.contact-form select { background-color: var(--color-ink); grid-area: 2 / 1; padding-inline-end: 1.6rem; }
 @media (hover: hover) { .contact-form :is(input, select, textarea):hover { border-color: var(--color-on-dark-muted); } }
 .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--color-lemon); }
 .contact-form :is(input, select, textarea):is(:focus, [aria-invalid="true"], :user-invalid) { border-bottom-width: 2px; padding-bottom: calc(.82rem - 1px); }
@@ -132,7 +132,7 @@
 .job-card__text { font-size: var(--text-body-lg); line-height: 1.55; margin-top: var(--space-legacy-2); max-width: 52rem; }
 .job-card h4 { font-size: var(--text-body); font-weight: 700; margin-top: var(--space-4); }
 .result-list--compact { font-size: var(--text-body); margin-bottom: 0; max-width: 52rem; }
-.result-list--compact li { border-bottom: 0; padding: .35rem 0 .35rem 1.2rem; }
+.result-list--compact li { border-bottom: 0; padding-block: .35rem .35rem; padding-inline: 1.2rem 0; }
 .result-list--compact li::before { height: .4rem; top: .85rem; width: .4rem; }
 
 /* Company-values variants (base trio grid lives in 10): --paper fills the
@@ -149,3 +149,12 @@
    gap: inherit keeps the chip gap in sync with every breakpoint override. */
 .filter-group > div[role="group"] { align-items: start; display: grid; grid-template-columns: auto 1fr; }
 .filter-choices { display: flex; flex-wrap: wrap; gap: inherit; }
+
+/* Right-to-left: layout already mirrors through logical properties; these
+   are the direction-bound details (underline growth, arrow glyphs and their
+   slide, the scrim's side). Graphics keep LTR: the logo's live SVG text
+   would scramble. */
+.site-nav > a:dir(rtl)::after { transform-origin: right; }
+:is(.text-link span[aria-hidden], .header-contact__arrow, .site-footer a span[aria-hidden]):dir(rtl) { scale: -1 1; }
+svg:dir(rtl) { direction: ltr; }
+:root:dir(rtl) { --scrim-ink-side: linear-gradient(270deg, var(--color-ink) 0%, transparent 35%); }
