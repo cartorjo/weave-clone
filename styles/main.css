@@ -74,6 +74,8 @@
   /* Brand color system: orange decoration; midnight blue text and numbers.
      --color-accent-text remains an alias for existing utility classes. */
   --color-lemon: #f7911e;
+  /* Secondary accent: the homepage "How" connection-step icon discs. */
+  --color-info: #4597ce;
   --color-accent-text: #0a0532;
   --color-ink: #0a0532;
   --color-bg: #ffffff;
@@ -82,6 +84,13 @@
   --color-paper: #f5f0eb;
   --color-line: rgba(10, 5, 50, 0.18);
   --color-line-light: rgba(255, 255, 255, 0.22);
+  --color-line-light-strong: rgba(255, 255, 255, 0.45);
+  --color-surface-veil: rgba(255, 255, 255, 0.96);
+  /* On-dark roles (content on ink/deep grounds): primary, secondary and
+     tertiary emphasis. White page/card grounds use --color-bg instead. */
+  --color-on-dark: #ffffff;
+  --color-on-dark-muted: rgba(255, 255, 255, 0.72);
+  --color-on-dark-faint: rgba(255, 255, 255, 0.62);
 
   /* Fluid editorial type scale (correct for the 16px root: floors equal the
      vw term at 320px so type stays fluid on phones; caps restore the designed
@@ -138,6 +147,8 @@
   /* Exactly two elevations. */
   --shadow-raised: 0 8px 24px rgba(10, 5, 50, 0.08);
   --shadow-overlay: 0 20px 48px rgba(10, 5, 50, 0.16);
+  /* Brand shape scale is none + full; 999px on a square renders a circle. */
+  --radius-full: 999px;
 
   /* One house easing. */
   --ease-em: cubic-bezier(0.22, 1, 0.36, 1);
@@ -152,8 +163,8 @@
   --container-max: 84rem; /* 1344px — the designed ~1348px content measure */
   --header-h: 4.875rem; /* 78px */
   --header-h-scrolled: 4.25rem; /* 68px */
-  /* Motion system: fast = colors/underlines, medium = box inverts/overlays/
-     expanders, slow = image zooms. One easing everywhere: --ease-em. */
+  /* Motion system: fast = colors/lines/arrows, medium = box inverts/overlays/
+     underlines/expanders, slow = image zooms. One easing everywhere: --ease-em. */
   --duration-fast: 180ms;
   --duration-medium: 320ms;
   --duration-slow: 560ms;

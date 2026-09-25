@@ -13,14 +13,14 @@
    `eyebrow eyebrow--light`. Footer margins live contextually in 08. */
 .eyebrow { align-items: center; color: var(--color-ink); display: flex; font-size: 1rem; font-weight: 700; gap: .675rem; letter-spacing: 0; line-height: 1.35; margin-bottom: 1.35rem; text-transform: none; }
 .eyebrow::after { background: var(--color-lemon); content: ''; height: 3px; width: 2.5rem; }
-.eyebrow--light { color: #fff; }
+.eyebrow--light { color: var(--color-on-dark); }
 
 /* Display heading — the one big-heading class (former display-hero,
    page-display, page-title, page-cta__title). Variant: --light. Contextual
    widths for heroes/statement live below; everything else is uniform. */
 :root { --display-size: clamp(2.4rem, 5.8vw, 5.5rem); --display-leading: 1.08; }
 .display-large { color: var(--color-ink); font-size: var(--display-size); font-weight: 300; letter-spacing: -.025em; line-height: var(--display-leading); max-width: 20ch; }
-.display-large--light { color: #fff; }
+.display-large--light { color: var(--color-on-dark); }
 .display-large em { color: inherit; font-style: normal; font-weight: 700; }
 /* Subpage rhythm: headings under an eyebrow keep the former page-title gap;
    CTA titles sit flush (they never had one). */
@@ -46,7 +46,7 @@
   .text-link:hover span[aria-hidden] { transform: translateX(.35rem); }
 }
 .text-link:focus-visible span[aria-hidden] { transform: translateX(.35rem); }
-.text-link--light { color: #fff; }
+.text-link--light { color: var(--color-on-dark); }
 .text-link--light span[aria-hidden] { color: var(--color-lemon); }
 
 /* Fact grid label variant (the base grid lives in 09): --display renders
@@ -71,7 +71,7 @@
 .job-card { border-bottom: 1px solid var(--color-line); padding: clamp(1.8rem, 4vw, 3rem) 0; }
 .job-card h3 { font-size: clamp(1.5rem, 2.6vw, 2.4rem); font-weight: 300; letter-spacing: -.02em; }
 .job-card__meta { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.1rem; }
-.job-card__meta span { border: 1px solid var(--color-line); border-radius: 100rem; font-size: .85rem; font-weight: 600; padding: .4rem .85rem; }
+.job-card__meta span { border: 1px solid var(--color-line); border-radius: var(--radius-full); font-size: .85rem; font-weight: 600; padding: .4rem .85rem; }
 .job-card__tagline { font-size: 1.1rem; font-weight: 700; margin-top: 1.6rem; }
 .job-card__text { font-size: 1.05rem; line-height: 1.55; margin-top: .9rem; max-width: 52rem; }
 .job-card h4 { font-size: 1rem; font-weight: 700; margin-top: 2rem; }

@@ -8,16 +8,16 @@
    sections independent.
    -------------------------------------------------------------------------- */
 
-.subpage { background: #fff; }
+.subpage { background: var(--color-bg); }
 .subpage main { overflow: clip; }
 .page-hero {
   background: var(--color-ink);
-  color: #fff;
+  color: var(--color-on-dark);
   overflow: hidden;
   position: relative;
 }
 .page-hero::before {
-  border: 1px solid rgba(255,255,255,0.18);
+  border: 1px solid var(--color-line-light);
   border-radius: 50%;
   content: "";
   height: clamp(9rem, 45vw, 46.8rem);
@@ -40,7 +40,7 @@
 .page-hero__copy { max-width: 48.6rem; }
 .page-breadcrumb {
   align-items: center;
-  color: rgba(255,255,255,0.66);
+  color: var(--color-on-dark-faint);
   display: flex;
   font-size: 0.74rem;
   font-weight: 600;
@@ -54,7 +54,7 @@
 .page-breadcrumb span[aria-hidden="true"] { color: var(--color-lemon); }
 .page-hero__intro {
   border-top: 1px solid var(--color-line-light);
-  color: rgba(255,255,255,0.76);
+  color: var(--color-on-dark-muted);
   font-size: clamp(1.05rem, 1.55vw, 1.332rem);
   line-height: 1.37;
   margin-top: clamp(0.8rem, 4vw, 3.375rem);
@@ -79,7 +79,7 @@
 .page-hero__visual img { height: 100%; object-fit: cover; width: 100%; }
 .page-hero__visual figcaption {
   bottom: 1.26rem;
-  color: rgba(255,255,255,0.75);
+  color: var(--color-on-dark-muted);
   display: flex;
   font-size: 0.68rem;
   font-weight: 600;
@@ -143,8 +143,8 @@
 }
 .page-section[id] { scroll-margin-top: calc(var(--header-h) + 1.5rem); }
 .page-section--paper { background: var(--color-paper); }
-.page-section--dark { background: var(--color-ink); color: #fff; --line-hairline: var(--color-line-light); --accent-ink: var(--color-lemon); }
-.page-section--deep { background: var(--color-bg-dark-2); color: #fff; --line-hairline: var(--color-line-light); --accent-ink: var(--color-lemon); }
+.page-section--dark { background: var(--color-ink); color: var(--color-on-dark); --line-hairline: var(--color-line-light); --accent-ink: var(--color-lemon); }
+.page-section--deep { background: var(--color-bg-dark-2); color: var(--color-on-dark); --line-hairline: var(--color-line-light); --accent-ink: var(--color-lemon); }
 .page-section__top {
   align-items: end;
   display: grid;
@@ -157,7 +157,7 @@
   line-height: 1.4;
   max-width: 28.8rem;
 }
-.page-section__lede--light { color: rgba(255,255,255,0.7); }
+.page-section__lede--light { color: var(--color-on-dark-muted); }
 
 /* Expertise ---------------------------------------------------------------- */
 .expertise-list { margin-top: 2.07rem; }
@@ -185,8 +185,8 @@
 }
 .portfolio-mode__number { color: var(--color-lemon); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; padding-top: 0.585rem; }
 .portfolio-mode h3 { font-size: clamp(1.05rem, 4vw, 3.78rem); font-weight: 300; letter-spacing: -0.065em; line-height: 1.08; }
-.portfolio-mode__copy { color: rgba(255,255,255,0.74); font-size: 1.07rem; line-height: 1.43; max-width: 29.7rem; }
-.portfolio-mode__outcome { align-self: end; border-left: 1px solid var(--color-line-light); color: #fff; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.07em; line-height: 1.35; max-width: 11.7rem; padding-left: 0.9rem; text-transform: none; }
+.portfolio-mode__copy { color: var(--color-on-dark-muted); font-size: 1.07rem; line-height: 1.43; max-width: 29.7rem; }
+.portfolio-mode__outcome { align-self: end; border-left: 1px solid var(--color-line-light); color: var(--color-on-dark); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.07em; line-height: 1.35; max-width: 11.7rem; padding-left: 0.9rem; text-transform: none; }
 /* About -------------------------------------------------------------------- */
 .about-hero__visual { background: var(--color-bg-dark-2); }
 .about-locations { display: grid; gap: clamp(1.4rem, 7vw, 7.2rem); grid-template-columns: minmax(18rem, 0.8fr) minmax(18rem, 1.2fr); }
@@ -197,7 +197,7 @@
   position: relative;
 }
 .about-locations__map::before,
-.about-locations__map::after { border: 1px solid rgba(255,255,255,0.24); content: ""; position: absolute; }
+.about-locations__map::after { border: 1px solid var(--color-line-light); content: ""; position: absolute; }
 .about-locations__map::before { height: 72%; left: 17%; top: 12%; width: 68%; }
 .about-locations__map::after { border-radius: 50%; height: 40%; left: 31%; top: 29%; width: 40%; }
 .about-locations__map span { background: var(--color-lemon); height: 0.585rem; position: absolute; width: 0.585rem; z-index: 1; }
@@ -205,7 +205,7 @@
 .about-locations__map span:nth-child(2) { left: 44%; top: 54%; }
 .about-locations__map span:nth-child(3) { left: 60%; top: 39%; }
 .about-locations__map span:nth-child(4) { left: 73%; top: 67%; }
-.about-locations__map strong { bottom: 1.35rem; color: rgba(255,255,255,0.78); font-size: 0.68rem; font-weight: 600; left: 1.35rem; letter-spacing: 0.1em; position: absolute; text-transform: none; }
+.about-locations__map strong { bottom: 1.35rem; color: var(--color-on-dark-muted); font-size: 0.68rem; font-weight: 600; left: 1.35rem; letter-spacing: 0.1em; position: absolute; text-transform: none; }
 .about-locations__copy { align-self: center; }
 .about-locations__copy h2 { font-size: clamp(1.2rem, 4.8vw, 4.86rem); font-weight: 300; letter-spacing: -0.025em; line-height: 1.08; max-width: 10ch; }
 .about-locations__copy h2 em { color: var(--color-lemon); font-style: normal; font-weight: 600; }
@@ -214,6 +214,7 @@
 .location-list div { border-bottom: 1px solid var(--color-line); display: flex; font-size: 0.8rem; font-weight: 600; justify-content: space-between; letter-spacing: 0.06em; padding: 0.9rem 0; text-transform: none; }
 .location-list div:nth-child(odd) { margin-right: 1.35rem; }
 .location-list span { color: var(--color-ink); }
+.location-list strong { font-weight: 700; }
 
 .page-cta {
   align-items: end;
@@ -222,7 +223,7 @@
   grid-template-columns: minmax(0, 1.1fr) minmax(16.2rem, 0.9fr);
 }
 .page-cta__copy { border-top: 1px solid var(--color-line-light); padding-top: 1.17rem; }
-.page-cta__copy p { color: rgba(255,255,255,0.72); font-size: 1.16rem; line-height: 1.42; max-width: 27rem; }
+.page-cta__copy p { color: var(--color-on-dark-muted); font-size: 1.16rem; line-height: 1.42; max-width: 27rem; }
 .page-cta__copy .text-link { margin-top: 1.8rem; }
 
 

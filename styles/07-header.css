@@ -10,7 +10,7 @@
    10-feedback.css. */
 
 .skip-link {
-  background: #fff;
+  background: var(--color-bg);
   color: var(--color-ink);
   left: 0.75rem;
   padding: 0.8rem 1rem;
@@ -18,7 +18,7 @@
   text-decoration: none;
   top: 0.75rem;
   transform: translateY(-180%);
-  transition: transform var(--duration-fast) ease;
+  transition: transform var(--duration-fast) var(--ease-em);
   z-index: 100;
 }
 .skip-link:focus { transform: translateY(0); }
@@ -27,10 +27,10 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.96);
+  background: var(--color-surface-veil);
   border-bottom: 1px solid var(--color-line);
   backdrop-filter: blur(14px);
-  transition: box-shadow var(--duration-fast) ease;
+  transition: box-shadow var(--duration-fast) var(--ease-em);
 }
 .site-header.is-scrolled { box-shadow: var(--shadow-raised); }
 
@@ -64,7 +64,7 @@
   letter-spacing: var(--tracking-caps);
   text-decoration: none;
   text-transform: none;
-  transition: color var(--duration-fast) ease;
+  transition: color var(--duration-fast) var(--ease-em);
   white-space: nowrap;
 }
 
@@ -81,7 +81,7 @@
   padding: 0.875rem 1.375rem;
   text-decoration: none;
   text-transform: none;
-  transition: background-color var(--duration-fast) ease, color var(--duration-fast) ease;
+  transition: background-color var(--duration-fast) var(--ease-em), color var(--duration-fast) var(--ease-em);
   white-space: nowrap;
 }
 
@@ -107,7 +107,7 @@
 .mobile-menu summary span:last-child { font-size: 1.3em; line-height: 1; transition: transform var(--duration-fast) var(--ease-em); }
 .mobile-menu[open] summary span:last-child { transform: rotate(45deg); }
 .mobile-menu__panel {
-  background: #fff;
+  background: var(--color-bg);
   border: 1px solid var(--color-line);
   box-shadow: var(--shadow-overlay);
   display: grid;
