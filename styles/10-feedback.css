@@ -178,7 +178,8 @@ a.expertise-card:focus-visible p { color: inherit; }
 .page-hero__visual > picture > img { position: absolute; inset: 0; }
 .page-hero::before { display: none; }
 .page-hero__intro { line-height: 1.5; color: var(--color-on-dark); }
-.page-cta { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,.8fr); gap: 3rem; align-items: end; }
+/* Column gap 10rem (owner 25.09.): heading and copy sit clearly apart; row gap stays 3rem for the stacked layout. */
+.page-cta { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,.8fr); gap: 3rem 10rem; align-items: end; }
 .page-cta__copy p { line-height: 1.55; }
 .page-section__top { gap: 3rem; }
 .page-section__lede > p + p { margin-top: 1rem; }
@@ -269,6 +270,7 @@ a.expertise-card:focus-visible p { color: inherit; }
   .reference-grid--collage { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .reference-grid--collage .reference-card { grid-column: auto; }
   .page-hero__grid, .page-section__top, .expertise-intro__heading { gap: 2rem; }
+  .page-cta { column-gap: 4rem; }
   .contact__grid { gap: 3rem; }
 }
 @media (max-width:900px) {
