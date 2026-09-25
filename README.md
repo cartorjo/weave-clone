@@ -104,8 +104,10 @@ including `<style>` inside inlined SVGs (assemble.mjs strips the logo's).
 The contact form prepares a `mailto:` message to info@emposo.eu (the shared
 inbox, also for career enquiries) and explains the handoff to the
 visitor's email program. No form backend is configured. Company is optional,
-so career enquiries can use the same form. The site is indexable (launch SEO,
-2026-09-25): assemble.mjs emits canonical, Open Graph/Twitter tags and
+so career enquiries can use the same form. Indexing is switched per deployment:
+`npm start` sends `X-Robots-Tag: noindex, nofollow` on every response unless
+the host sets `INDEXABLE=true`. Railway previews stay out of search by default;
+set it only on the emposo.de production deployment. For launch, assemble.mjs emits canonical, Open Graph/Twitter tags and
 JSON-LD (Organization/WebSite/WebPage) per page from one `SITE_ORIGIN`, plus
 `robots.txt` and `sitemap.xml`; only 404.html is `noindex`. The old emposo.de
 URLs (`docs/legacy-urls.txt`) 301 via `serve.json` redirects, and
