@@ -114,9 +114,9 @@
 .fact-grid > * + * { padding-left: var(--spacing-cell); }
 .fact-grid > *:last-child { border-right: 0; }
 .fact-grid--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-.fact-grid__label { color: var(--accent-ink); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: none; }
+.fact-grid__label { color: var(--accent-ink); font-size: var(--text-micro); font-weight: 600; letter-spacing: 0.1em; text-transform: none; }
 .fact-grid h3 { font-size: clamp(1.05rem, 2.6vw, 2.6rem); font-weight: 300; letter-spacing: -0.025em; line-height: 0.96; margin-top: auto; padding-top: 2.5rem; }
-.fact-grid p { font-size: 0.96rem; line-height: 1.42; margin-top: 0.9rem; }
+.fact-grid p { font-size: var(--text-card); line-height: 1.42; margin-top: 0.9rem; }
 @media (max-width: 991px) {
   .fact-grid--5 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .fact-grid--5 > *:nth-child(2n) { border-right: 0; }
@@ -158,7 +158,7 @@
 .expertise-card:last-child { border-bottom: 1px solid var(--color-line); }
 .expertise-card__number { color: var(--color-lemon); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: none; }
 .expertise-card h3 { font-size: clamp(1.05rem, 2.4vw, 2.295rem); font-weight: 300; letter-spacing: -0.025em; line-height: 1.08; max-width: 15ch; }
-.expertise-card p { color: var(--color-ink); font-size: 0.96rem; line-height: 1.38; max-width: 28.8rem; }
+.expertise-card p { color: var(--color-ink); font-size: var(--text-card); line-height: 1.38; max-width: 28.8rem; }
 
 /* Portfolio ---------------------------------------------------------------- */
 .portfolio-modes { border-top: 1px solid var(--color-line-light); margin-top: clamp(1.6rem, 8vw, 7.2rem); }
@@ -174,7 +174,7 @@
 .portfolio-mode__number { color: var(--color-lemon); font-size: clamp(2rem, 2.6vw, 2.75rem); font-weight: 300; letter-spacing: -0.02em; line-height: 1.1; }
 .portfolio-mode h3 { font-size: clamp(1.05rem, 4vw, 3.78rem); font-weight: 300; letter-spacing: -0.065em; line-height: 1.08; }
 .portfolio-mode__copy { color: var(--color-on-dark-muted); font-size: 1.07rem; line-height: 1.43; max-width: 29.7rem; }
-.portfolio-mode__outcome { align-self: end; border-left: 1px solid var(--color-line-light); color: var(--color-on-dark); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.07em; line-height: 1.35; max-width: 11.7rem; padding-left: 0.9rem; text-transform: none; }
+.portfolio-mode__outcome { align-self: end; border-left: 1px solid var(--color-line-light); color: var(--color-on-dark); font-size: var(--text-overline); font-weight: 600; letter-spacing: 0.07em; line-height: 1.35; max-width: 11.7rem; padding-left: 0.9rem; text-transform: none; }
 /* About -------------------------------------------------------------------- */
 .about-hero__visual { background: var(--color-bg-dark-2); }
 

@@ -50,8 +50,9 @@ homepage "How" connection-step icons), hairlines (`--color-line`, and on dark gr
 roles (`--color-on-dark` #fff, `--color-on-dark-muted` 72 %,
 `--color-on-dark-faint` 62 % white — no white literals in component CSS;
 white page/card grounds use `--color-bg`), the sticky-header
-`--color-surface-veil`, the fluid type scale (`--text-display-1` …
-`--text-eyebrow`), the spacing scale (`--spacing-section` is the shared
+`--color-surface-veil`, the type roles (`--text-micro` … `--text-lede-lg`,
+the sizes components share; one-off fluid headlines stay with their component,
+the display heading reads `--display-size`), the spacing scale (`--spacing-section` is the shared
 vertical rhythm), two shadows, one easing, and `--font-sans` (self-hosted
 Roboto, weights 300–700). Component CSS lives in
 `styles/07-header.css` (header/megamenu), `08-editorial.css` (homepage
