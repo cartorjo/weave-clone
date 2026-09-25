@@ -32,7 +32,7 @@
 .filter-group { align-items: baseline; display: contents; }
 .filter-group > span { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.09em; text-transform: none; }
 .filter-group > div { display: flex; flex-wrap: wrap; gap: 0.45rem; }
-.filter-button { border: 1px solid var(--color-line); border-radius: 100rem; color: var(--color-ink); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.035em; padding: 0.585rem 0.81rem; transition: background-color var(--duration-fast) var(--ease-em), border-color var(--duration-fast) var(--ease-em), color var(--duration-fast) var(--ease-em); }
+.filter-button { border: 1px solid var(--color-line); border-radius: var(--radius-full); color: var(--color-ink); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.035em; padding: 0.585rem 0.81rem; transition: background-color var(--duration-fast) var(--ease-em), border-color var(--duration-fast) var(--ease-em), color var(--duration-fast) var(--ease-em); }
 .work-count { color: var(--color-ink); font-size: 0.85rem; margin-top: 2.25rem; }
 .work-empty { border-top: 1px solid var(--color-line); font-size: 1.2rem; margin-top: 2.25rem; padding-top: 1.125rem; }
 
