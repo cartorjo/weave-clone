@@ -10,7 +10,7 @@
     "import:feedback-images": "node tools/import-feedback-assets.mjs",
     "build:img": "node tools/optimize-images.mjs",
     "build:brand-img": "node tools/optimize-brand-images.mjs",
-    "check": "npm run build && npm run check:content && npm run check:copy && git diff --exit-code",
+    "check": "npm run build && npm run check:content && npm run check:meta && npm run check:copy && git diff --exit-code",
     "watch:html": "node --watch --watch-path=sections --watch-path=pages --watch-path=partials --watch-path=js assemble.mjs",
     "build": "npm run assemble && npm run build:css",
     "serve": "serve . -l 8080",
@@ -18,7 +18,8 @@
     "dev": "concurrently \"npm:watch:css\" \"npm:watch:html\" \"npm run serve\"",
     "build:dist": "node tools/build-dist.mjs",
     "check:copy": "node tools/check-copy.mjs",
-    "copy:accept": "node tools/check-copy.mjs --accept"
+    "copy:accept": "node tools/check-copy.mjs --accept",
+    "check:meta": "node tools/check-meta.mjs"
   },
   "dependencies": {
     "serve": "^14.2.6"
