@@ -85,7 +85,9 @@
   --color-line: rgba(10, 5, 50, 0.18);
   --color-line-light: rgba(255, 255, 255, 0.22);
   --color-line-light-strong: rgba(255, 255, 255, 0.45);
-  --color-surface-veil: rgba(255, 255, 255, 0.96);
+  /* Header ground: the paper/sand tone at 96 % so the sticky bar reads as part
+     of the site, not of the browser chrome (Owner 25.09.). Same RGB as --color-paper. */
+  --color-surface-veil: rgba(245, 240, 235, 0.96);
   /* On-dark roles (content on ink/deep grounds): primary, secondary and
      tertiary emphasis. White page/card grounds use --color-bg instead. */
   --color-on-dark: #ffffff;
@@ -161,6 +163,10 @@
   /* Composite/geometry tokens with no fitting @theme namespace. */
   --gutter: 4.5vw;
   --container-max: 84rem; /* 1344px — the designed ~1348px content measure */
+  /* Distance from the container's right edge to the viewport edge: the gutter
+     while the container is fluid, the centred leftover once it hits --container-max.
+     Hero visuals bleed by this so the photo always touches the browser edge. */
+  --bleed-right: max(var(--gutter), (100vw - var(--container-max)) / 2);
   --header-h: 4.875rem; /* 78px */
   --header-h-scrolled: 4.25rem; /* 68px */
   /* Motion system: fast = colors/lines/arrows, medium = box inverts/overlays/
@@ -168,6 +174,9 @@
   --duration-fast: 180ms;
   --duration-medium: 320ms;
   --duration-slow: 560ms;
+  /* State layers: content-color overlay opacity per interaction state. */
+  --state-hover: .08;
+  --state-press: .1;
   /* Hairline color for the numbered fact grids; dark sections flip it to
      --color-line-light (see .page-section--dark/--deep). */
   --line-hairline: var(--color-line);

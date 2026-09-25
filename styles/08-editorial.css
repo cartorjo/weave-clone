@@ -11,10 +11,9 @@
 .hero__copy { align-self: center; display: flex; flex-direction: column; justify-content: center; padding: clamp(1.8rem, 9vw, 9rem) clamp(1rem, 5vw, 6.3rem) clamp(1.6rem, 8vw, 8.1rem) 0; }
 .hero__intro { align-items: flex-end; border-top: 1px solid var(--color-line-light); display: flex; gap: 1.8rem; justify-content: space-between; margin-top: clamp(1rem, 5vw, 4.5rem); max-width: 44.1rem; padding-top: 1.215rem; }
 .hero__intro p { color: var(--color-on-dark-muted); font-size: clamp(1.05rem, 1.4vw, 1.305rem); line-height: 1.35; max-width: 25.2rem; }
-.hero__visual { margin: 0 calc(var(--gutter) * -1) 0 0; min-height: 100%; overflow: hidden; position: relative; }
+.hero__visual { margin: 0 calc(var(--bleed-right) * -1) 0 0; min-height: 100%; overflow: hidden; position: relative; }
 .hero__visual::after { background: linear-gradient(180deg, rgba(10, 5, 50, 0.04), rgba(10, 5, 50, 0.6)); content: ""; inset: 0; position: absolute; pointer-events: none; }
 .hero__visual > picture > img { height: 100%; object-fit: cover; width: 100%; }
-.hero__visual figcaption { bottom: 1.62rem; color: var(--color-on-dark-muted); display: flex; font-size: 0.72rem; font-weight: 600; justify-content: space-between; left: 1.62rem; letter-spacing: 0.08em; position: absolute; right: 1.62rem; text-transform: none; z-index: 1; }
 
 /* Section rhythm lives once in 09-page-templates.css (.page-section on the
    --spacing-section token); .journeys/.career carry the class in markup. */
@@ -59,12 +58,15 @@
   pointer-events: none;
   width: 12px;
 }
+@media (hover: hover) { .contact-form :is(input, select, textarea):hover { border-color: var(--color-on-dark-muted); } }
 .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--color-lemon); }
 .contact-form__hint { border-left: 2px solid var(--color-lemon); color: var(--color-on-dark-muted); font-size: 0.94rem; grid-column: 1 / -1; line-height: 1.35; padding-left: 0.81rem; }
 .contact-form__message { grid-column: 1 / -1; }
 .contact-form textarea { resize: vertical; }
-.contact-form button { align-items: center; background: var(--color-lemon); color: var(--color-ink); display: inline-flex; font-size: 0.82rem; font-weight: 600; gap: 0.9rem; grid-column: 1 / -1; justify-content: space-between; letter-spacing: 0.08em; margin-top: 0.9rem; padding: 1.17rem 1.35rem; text-transform: none; transition: background-color var(--duration-fast) var(--ease-em), color var(--duration-fast) var(--ease-em); }
-.contact-form button:hover { background: var(--color-on-dark); color: var(--color-ink); }
+/* The submit is the header pill (.header-contact, owner 25.09.: both CTAs the
+   same). Only grid placement and button resets live here; look, hover and
+   focus come from the pill rules. */
+.contact-form button { border: 0; cursor: pointer; font-family: inherit; grid-column: 1 / -1; justify-self: start; margin-top: 0.9rem; }
 
 .site-footer { background: var(--color-bg-dark-2); color: var(--color-on-dark); padding: clamp(1.4rem, 7vw, 6.3rem) 0 1.8rem; }
 .site-footer__top { display: grid; gap: clamp(1rem, 5vw, 4.5rem); grid-template-columns: 1.15fr 0.8fr 0.68fr 0.8fr; }
@@ -95,7 +97,6 @@
   .hero__copy { min-height: 31.5rem; padding-bottom: 3.6rem; padding-top: 3.6rem; }
   .hero__intro { align-items: start; flex-direction: column; }
   .hero__visual { aspect-ratio: 4 / 3; }
-  .hero__visual figcaption { bottom: 0.9rem; font-size: 0.62rem; left: 0.9rem; right: 0.9rem; }
   .work-filter { grid-template-columns: 1fr; }
   .filter-group { display: grid; gap: 0.72rem; }
   .contact-form { grid-template-columns: 1fr; }
