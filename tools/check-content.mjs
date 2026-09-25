@@ -16,7 +16,7 @@ for (const [file,html] of documents) {
   // Retired component classes (canon: styles/11-components.css + docs/components.md).
   // case-facets is the one live case-* class; everything else of that family is gone.
   for (const [,classes] of html.matchAll(/\bclass="([^"]+)"/g)) {
-    const retired = classes.match(/\b(?:page-eyebrow|page-kicker|page-display|page-title|page-cta__title|display-hero|page-link|lede-boxes|portfolio-model|about-principles|about-facts|expertise-proof|expertise-case-strip|header-careers|mobile-menu__label|page-rule|fact-grid--stats|management-card__more|case-(?!facets\b)[a-z][a-z-]*)\b/);
+    const retired = classes.match(/\b(?:page-eyebrow|page-kicker|page-display|page-title|page-cta__title|display-hero|page-link|lede-boxes|portfolio-model|about-principles|about-facts|expertise-proof|expertise-case-strip|header-careers|mobile-menu__label|page-rule|fact-grid--stats|management-card__more|about-locations(?:__[a-z]+)?|location-list|case-(?!facets\b)[a-z][a-z-]*)\b/);
     if (retired) { failures.push(`${file}: retired class "${retired[0]}"`); break; }
   }
   for (const match of html.matchAll(/\b(?:href|src)="([^"]+)"/g)) {

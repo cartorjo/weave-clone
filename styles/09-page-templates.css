@@ -177,32 +177,6 @@
 .portfolio-mode__outcome { align-self: end; border-left: 1px solid var(--color-line-light); color: var(--color-on-dark); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.07em; line-height: 1.35; max-width: 11.7rem; padding-left: 0.9rem; text-transform: none; }
 /* About -------------------------------------------------------------------- */
 .about-hero__visual { background: var(--color-bg-dark-2); }
-.about-locations { display: grid; gap: clamp(1.4rem, 7vw, 7.2rem); grid-template-columns: minmax(18rem, 0.8fr) minmax(18rem, 1.2fr); }
-.about-locations__map {
-  aspect-ratio: 1 / 0.9;
-  background: var(--color-bg-dark-2);
-  overflow: hidden;
-  position: relative;
-}
-.about-locations__map::before,
-.about-locations__map::after { border: 1px solid var(--color-line-light); content: ""; position: absolute; }
-.about-locations__map::before { height: 72%; left: 17%; top: 12%; width: 68%; }
-.about-locations__map::after { border-radius: 50%; height: 40%; left: 31%; top: 29%; width: 40%; }
-.about-locations__map span { background: var(--color-lemon); height: 0.585rem; position: absolute; width: 0.585rem; z-index: 1; }
-.about-locations__map span:nth-child(1) { left: 35%; top: 35%; }
-.about-locations__map span:nth-child(2) { left: 44%; top: 54%; }
-.about-locations__map span:nth-child(3) { left: 60%; top: 39%; }
-.about-locations__map span:nth-child(4) { left: 73%; top: 67%; }
-.about-locations__map strong { bottom: 1.35rem; color: var(--color-on-dark-muted); font-size: 0.68rem; font-weight: 600; left: 1.35rem; letter-spacing: 0.1em; position: absolute; text-transform: none; }
-.about-locations__copy { align-self: center; }
-.about-locations__copy h2 { font-size: clamp(1.2rem, 4.8vw, 4.86rem); font-weight: 300; letter-spacing: -0.025em; line-height: 1.08; max-width: 10ch; }
-.about-locations__copy h2 em { color: var(--color-lemon); font-style: normal; font-weight: 600; }
-.about-locations__copy p { font-size: 1.16rem; line-height: 1.42; margin-top: 1.53rem; max-width: 32.4rem; }
-.location-list { border-top: 1px solid var(--color-line); display: grid; gap: 0; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 2.34rem; }
-.location-list div { border-bottom: 1px solid var(--color-line); display: flex; font-size: 0.8rem; font-weight: 600; justify-content: space-between; letter-spacing: 0.06em; padding: 0.9rem 0; text-transform: none; }
-.location-list div:nth-child(odd) { margin-right: 1.35rem; }
-.location-list span { color: var(--color-ink); }
-.location-list strong { font-weight: 700; }
 
 .page-cta {
   align-items: end;
@@ -219,7 +193,6 @@
   .page-hero__grid,
   .page-section__top,
   .page-section__top--wide,
-  .about-locations,
   .page-cta { grid-template-columns: 1fr; }
   .page-hero__visual { aspect-ratio: 16 / 10; margin-left: calc(var(--gutter) * -1); min-height: 0; }
   .page-hero__grid { min-height: 0; }
@@ -234,8 +207,6 @@
   .page-breadcrumb { margin-bottom: 2.25rem; }
   .page-hero__visual { aspect-ratio: 4 / 3; }
   .page-hero__metric { padding: 0.99rem; }
-  .location-list { grid-template-columns: 1fr; }
-  .location-list div:nth-child(odd) { margin-right: 0; }
 }
 
 /* Enhancement-only UI ships hidden; js/06-work.js reveals it after init. */
