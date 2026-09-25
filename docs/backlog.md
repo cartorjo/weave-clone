@@ -25,7 +25,7 @@ decisions below.
 
 ## Sprint 1 - foundations
 
-- B-01 Component inventory and contracts (M, T) - PARTIAL
+- B-01 Component inventory and contracts (M, T) - DONE (f66429a; contracts at the end of docs/components.md)
   Done: German canon in docs/components.md for the main components (eyebrow,
   display heading, text link, fact grid, box trio, CTA, reference card,
   industry tile, expander, management card, job card, tag, filter chip, facts,
@@ -58,25 +58,26 @@ decisions below.
   POST backend changes hosting (Railway process + mail delivery) and needs a
   success page ("[TEXT: owner]"). Decide before building.
 
-- B-06 Card type-eyebrow and date slots (S, T) - TODO (re-scoped)
+- B-06 Card type-eyebrow and date slots (S, T) - CLOSED (not needed: cards already carry industry/discipline eyebrows; no type or date data exists, and empty props would be dead code)
   Renderer accepts type and date props; values only from existing site-data
   fields (no new labels); empty slots render nothing. No dates exist today.
   Agents: design-system-engineer -> frontend-engineer -> qa-reviewer.
 
 ## Sprint 2 - templates, navigation, aesthetics
 
-- B-07 Consolidate renderers (M, R) - PARTIAL
+- B-07 Consolidate renderers (M, R) - DONE (443183d, f66429a: pageHero/breadcrumb/trustStrip; guards in check:content)
   Done: cta() (6ed20d4), chip() (e4cf4a1), companyFacts(), jobsList(),
   picture(decorative). Remaining: whatever B-01 lists as duplicated markup.
   visual:diff must be 0.
   Agents: design-system-engineer -> frontend-engineer -> a11y-perf-reviewer ->
   qa-reviewer.
 
-- B-08 Page template standardization (M, R/A) - TODO (re-scoped)
+- B-08 Page template standardization (M, R/A) - PARTIAL (443183d: one hero/breadcrumb frame for every subpage; case studies end with related + CTA)
   Shared templates with fixed slots for Leistungen, Branchen and case
   studies; related slot filled from existing site-data by tag; CTA slot uses
-  existing CTA text only. Breadcrumbs exist on every subpage except /sitemap/
-  (add it there; the label is the existing page name).
+  existing CTA text only. Remaining NEEDS-OWNER: /branchen/ has no closing CTA
+  (adding one is a page-structure decision); /about-us/ stays without, since the
+  owner removed its closing CTA (d97eb48, 24.09).
   Agents: ux-ia-architect -> design-system-engineer -> frontend-engineer ->
   seo-specialist + a11y-perf-reviewer -> qa-reviewer.
 
@@ -120,7 +121,7 @@ decisions below.
   reported.
   Agents: a11y-perf-reviewer -> frontend-engineer -> qa-reviewer.
 
-- B-13 Filters without JS (S-M, T) - TODO (re-scoped)
+- B-13 Filters without JS (S-M, T) - PARTIAL (without JS every project stays visible, gated by smoke; real no-JS filtering needs a radio-input rework or per-filter URLs = NEEDS-OWNER)
   The filterable grids exist on /branchen/ and /case-studies/ (keyboard model
   e4cf4a1). Remaining: a no-JS path (all projects stay visible today; decide
   between static filtered views and query-string handling).
