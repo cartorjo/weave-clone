@@ -34,6 +34,11 @@ statt eine Parallel-Klasse zu erfinden.
   Text-Controls bekommen eine Pill mit .6rem Überstand, Karten reichen bis zum
   Navy-Halo (1.1rem). `::before` ist auf diesen Komponenten dafür reserviert.
   Formularfelder: Hover verstärkt die Linie (`--color-on-dark-muted`).
+- **Zielgröße 44px (Owner-Entscheid 25.09.):** Mindesthöhe klickbarer
+  Elemente 44px (`min-h-11`, `.text-link`) — WCAG 2.5.5 AAA erfüllt,
+  bewusste Abweichung von M3s 48dp. Breadcrumb-Links bekommen die 44px per
+  überstehender Box, ohne die Zeile zu erhöhen. Inline-Links im Fließtext
+  (z. B. Datenschutz im Formularhinweis) sind nach WCAG 2.5.8 ausgenommen.
 - **Orange Linien** (#F7911E) nur unter Zahlen/Labels — Ausnahme: der
   aktive/gehoverte Menülink trägt einen 2px-Ink-Unterstrich (Owner-Entscheid
   24.09., gilt nur im Menü).
