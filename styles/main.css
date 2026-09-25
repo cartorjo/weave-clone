@@ -102,7 +102,6 @@
      component; the display heading reads --display-size (11-components.css).
      Names avoid Tailwind's default text-xs/sm/base/lg so no utility changes. */
   --text-micro: 0.72rem;
-  --text-overline: 0.75rem;
   --text-caption: 0.8125rem;
   --text-label: 0.85rem;
   --text-body-sm: 0.95rem;
