@@ -14,8 +14,9 @@
     "watch:html": "node --watch --watch-path=sections --watch-path=pages --watch-path=partials --watch-path=js assemble.mjs",
     "build": "npm run assemble && npm run build:css",
     "serve": "serve . -l 8080",
-    "start": "serve . -l ${PORT:-8080}",
-    "dev": "concurrently \"npm:watch:css\" \"npm:watch:html\" \"npm run serve\""
+    "start": "node tools/build-dist.mjs && serve dist -l ${PORT:-8080}",
+    "dev": "concurrently \"npm:watch:css\" \"npm:watch:html\" \"npm run serve\"",
+    "build:dist": "node tools/build-dist.mjs"
   },
   "dependencies": {
     "serve": "^14.2.6"
