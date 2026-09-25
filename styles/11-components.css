@@ -24,6 +24,7 @@
 :is(.reference-card__copy, a.expertise-card) { --state-inset: -1.1rem; }
 @media (hover: hover) {
   :is(.filter-button.is-active, .mobile-menu__panel a:not(.mobile-menu__cta), .expander summary, .mobile-menu summary, .site-logo):hover::before { opacity: var(--state-hover); }
+  :is(.filter-button.is-active, .mobile-menu__panel a:not(.mobile-menu__cta), .expander summary, .mobile-menu summary, .site-logo):hover:active::before { opacity: var(--state-press); }
 }
 :is(.header-contact, .mobile-menu__cta, .filter-button, .contact-form button, .mobile-menu__panel a,
   .site-nav > a, .text-link, .expander summary, .mobile-menu summary, .site-logo, .site-footer a, .page-breadcrumb a, a.expertise-card):active::before,
