@@ -82,10 +82,10 @@
   bottom: 0;
   color: var(--color-ink);
   display: grid;
-  gap: 0.45rem;
+  gap: var(--space-legacy-1);
   left: 0;
   max-width: 13.5rem;
-  padding: 1.215rem 1.35rem;
+  padding: 1.215rem var(--space-legacy-3);
   position: absolute;
   z-index: 2;
 }
@@ -115,8 +115,8 @@
 .fact-grid > *:last-child { border-right: 0; }
 .fact-grid--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .fact-grid__label { color: var(--accent-ink); font-size: var(--text-micro); font-weight: 600; letter-spacing: 0.1em; text-transform: none; }
-.fact-grid h3 { font-size: clamp(1.05rem, 2.6vw, 2.6rem); font-weight: 300; letter-spacing: -0.025em; line-height: 0.96; margin-top: auto; padding-top: 2.5rem; }
-.fact-grid p { font-size: var(--text-card); line-height: 1.42; margin-top: 0.9rem; }
+.fact-grid h3 { font-size: clamp(1.05rem, 2.6vw, 2.6rem); font-weight: 300; letter-spacing: -0.025em; line-height: 0.96; margin-top: auto; padding-top: var(--space-5); }
+.fact-grid p { font-size: var(--text-card); line-height: 1.42; margin-top: var(--space-legacy-2); }
 @media (max-width: 991px) {
   .fact-grid--5 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .fact-grid--5 > *:nth-child(2n) { border-right: 0; }
@@ -124,7 +124,7 @@
 }
 @media (max-width: 639px) {
   .fact-grid--5 { grid-template-columns: 1fr; }
-  .fact-grid > *, .fact-grid > * + * { border-right: 0; border-top: 1px solid var(--line-hairline); min-height: 0; padding: 1.5rem 0; }
+  .fact-grid > *, .fact-grid > * + * { border-right: 0; border-top: 1px solid var(--line-hairline); min-height: 0; padding: var(--space-3) 0; }
   .fact-grid > *:first-child { border-top: 0; }
 }
 .page-section[id] { scroll-margin-top: calc(var(--header-h) + 1.5rem); }
@@ -174,7 +174,7 @@
 .portfolio-mode__number { color: var(--color-lemon); font-size: clamp(2rem, 2.6vw, 2.75rem); font-weight: 300; letter-spacing: -0.02em; line-height: 1.1; }
 .portfolio-mode h3 { font-size: clamp(1.05rem, 4vw, 3.78rem); font-weight: 300; letter-spacing: -0.065em; line-height: 1.08; }
 .portfolio-mode__copy { color: var(--color-on-dark-muted); font-size: 1.07rem; line-height: 1.43; max-width: 29.7rem; }
-.portfolio-mode__outcome { align-self: end; border-left: 1px solid var(--color-line-light); color: var(--color-on-dark); font-size: var(--text-overline); font-weight: 600; letter-spacing: 0.07em; line-height: 1.35; max-width: 11.7rem; padding-left: 0.9rem; text-transform: none; }
+.portfolio-mode__outcome { align-self: end; border-left: 1px solid var(--color-line-light); color: var(--color-on-dark); font-size: var(--text-overline); font-weight: 600; letter-spacing: 0.07em; line-height: 1.35; max-width: 11.7rem; padding-left: var(--space-legacy-2); text-transform: none; }
 /* About -------------------------------------------------------------------- */
 .about-hero__visual { background: var(--color-bg-dark-2); }
 
@@ -187,7 +187,7 @@
 .page-cta__copy { border-top: 1px solid var(--color-line-light); padding-top: 1.17rem; }
 .page-cta__copy p { color: var(--color-on-dark-muted); font-size: 1.16rem; line-height: 1.42; max-width: 27rem; }
 .page-cta__copy p + p { margin-top: 1.2rem; }
-.page-cta__copy .text-link { margin-top: 1.8rem; }
+.page-cta__copy .text-link { margin-top: var(--space-legacy-4); }
 
 
 @media (max-width: 900px) {
@@ -197,15 +197,15 @@
   .page-cta { grid-template-columns: 1fr; }
   .page-hero__visual { aspect-ratio: 16 / 10; margin-left: calc(var(--gutter) * -1); min-height: 0; }
   .page-hero__grid { min-height: 0; }
-  .page-section__lede { margin-top: 0.45rem; }
+  .page-section__lede { margin-top: var(--space-legacy-1); }
   .portfolio-mode { grid-template-columns: 3.15rem minmax(0, 1fr); }
   .portfolio-mode__copy { grid-column: 2; }
   .portfolio-mode__outcome { border-left: 0; grid-column: 2; padding-left: 0; }
 }
 
 @media (max-width: 650px) {
-  .page-hero__grid { padding-top: 3.6rem; }
-  .page-breadcrumb { margin-bottom: 2.25rem; }
+  .page-hero__grid { padding-top: var(--space-legacy-8); }
+  .page-breadcrumb { margin-bottom: var(--space-legacy-5); }
   .page-hero__visual { aspect-ratio: 4 / 3; }
   .page-hero__metric { padding: 0.99rem; }
 }

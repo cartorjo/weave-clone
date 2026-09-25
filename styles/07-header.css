@@ -13,7 +13,7 @@
   background: var(--color-bg);
   color: var(--color-ink);
   left: 0.75rem;
-  padding: 0.8rem 1rem;
+  padding: 0.8rem var(--space-2);
   position: fixed;
   text-decoration: none;
   top: 0.75rem;
@@ -37,7 +37,7 @@
 .site-header__inner {
   display: flex;
   align-items: center;
-  gap: var(--spacing-md);
+  gap: var(--space-3);
   min-height: var(--header-h);
   transition: min-height var(--duration-fast) var(--ease-em);
 }
@@ -99,7 +99,7 @@
   gap: 0.75rem;
   letter-spacing: var(--tracking-caps);
   list-style: none;
-  padding: 1.125rem 0 1.125rem 1.35rem;
+  padding: 1.125rem 0 1.125rem var(--space-legacy-3);
   text-transform: none;
   white-space: nowrap;
 }
@@ -128,7 +128,7 @@
   font-weight: 600;
   letter-spacing: var(--tracking-caps);
   min-height: 2.75rem;
-  padding: 0.7rem 1.35rem;
+  padding: 0.7rem var(--space-legacy-3);
   text-decoration: none;
   text-transform: none;
 }
