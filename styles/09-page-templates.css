@@ -46,7 +46,7 @@
 /* 44px target without growing the 1.5em row: the box overhangs into the
    surrounding space. */
 .page-breadcrumb a { align-items: center; display: inline-flex; margin-block: calc((1.5em - 2.75rem) / 2); min-height: 2.75rem; }
-.page-breadcrumb a:hover { color: var(--color-lemon); }
+@media (hover: hover) { .page-breadcrumb a:hover { color: var(--color-lemon); } }
 .page-breadcrumb span[aria-hidden="true"] { color: var(--color-lemon); }
 .page-hero__intro {
   border-top: 1px solid var(--color-line-light);

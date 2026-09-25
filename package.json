@@ -25,7 +25,8 @@
     "visual:diff": "node tools/visual/diff.mjs",
     "visual:pixdiff": "node tools/visual/pixdiff.mjs",
     "css:shadowed": "node tools/visual/shadowed.mjs",
-    "visual:components": "node tools/visual/components.mjs"
+    "visual:components": "node tools/visual/components.mjs",
+    "contrast": "node tools/visual/contrast.mjs"
   },
   "dependencies": {
     "serve": "^14.2.6"
