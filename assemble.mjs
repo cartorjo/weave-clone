@@ -46,7 +46,9 @@ const icon = (name) => readFileSync(join(root, 'assets', 'icons', `${name}.svg`)
 // Brand SVGs (assets/brand/) are inlined verbatim: the logo uses currentColor
 // for its ink parts, so it renders dark blue in the header and white in the
 // footer, and its live "The Outcome Factory" text uses the page's Roboto.
-const brand = (name) => readFileSync(join(root, 'assets', 'brand', `${name}.svg`), 'utf8').trim();
+// Their <style> blocks are dropped: the strict CSP forbids inline styles, so the
+// logo's rules live in styles/11-components.css.
+const brand = (name) => readFileSync(join(root, 'assets', 'brand', `${name}.svg`), 'utf8').replace(/\s*<style>[\s\S]*?<\/style>/g, '').trim();
 
 const inlinePartials = (html) => html
   .replace(/<!-- partial:([a-z0-9-]+) -->/g, (_, name) => partial(name).trim())

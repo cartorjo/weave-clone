@@ -12,6 +12,7 @@ npm run dev        # assemble + tailwind watch + local server (port 8080)
 npm run build      # one-off production build (assemble + purged CSS)
 npm run check      # build and validate all local links, images, anchors and templates
 npm run build:img  # rebuild responsive images from assets/src/ masters
+npm start          # production: assemble dist/ (only shipped files) and serve it
 ```
 
 ## How pages are built
@@ -91,8 +92,12 @@ Markup pattern:
 ```
 
 Hero images use `fetchpriority="high"` and are never lazy-loaded.
-`serve.json` sets `Content-Type: image/avif` (the bundled dev server's mime
-table predates AVIF); production hosts must send it too.
+`serve.json` holds the production headers (strict CSP, HSTS, nosniff,
+referrer/permissions policy, caching) and `Content-Type: image/avif` (the
+bundled server's mime table predates AVIF). `npm start` copies only the
+shipped files into `dist/` (tools/build-dist.mjs) and serves that. The repo
+working tree is never the webroot. The CSP forbids inline styles and scripts,
+including `<style>` inside inlined SVGs (assemble.mjs strips the logo's).
 
 ## Contact & launch state
 

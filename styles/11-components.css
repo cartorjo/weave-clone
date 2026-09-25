@@ -61,6 +61,17 @@
 .contact-form label { align-content: start; }
 .contact-form__select .contact-form__support { grid-row: 3; }
 
+/* Logo (assets/brand/emposo-logo-neu26.svg, inlined in header and footer):
+   its own <style> is stripped at assembly (CSP), so its rules live here. */
+.emlogo-ls1 { letter-spacing: .09em; }
+.emlogo-ls2 { letter-spacing: .11em; }
+.emlogo-ls3 { letter-spacing: .1em; }
+.emlogo-ls4 { letter-spacing: .08em; }
+.emlogo-text { font-family: "Roboto", system-ui, sans-serif; font-size: 17.43px; font-weight: 700; }
+.emlogo-text, .emlogo-ink { fill: currentColor; }
+.emlogo-accent { fill: var(--color-lemon); }
+.emlogo-rule { fill: none; stroke: currentColor; stroke-miterlimit: 10; }
+
 /* Eyebrow — the small bold section label with the lemon rule after it.
    Variants: --light (on ink/deep sections). Kickers in heroes are
    `eyebrow eyebrow--light`. Footer margins live contextually in 08. */
