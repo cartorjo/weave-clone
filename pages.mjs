@@ -106,7 +106,11 @@ export default [
   })),
   ...['cookies','barrierefreiheit','sitemap'].map(name=>({
     out:`${name}/index.html`, title:`${{cookies:'Cookies',sitemap:'Sitemap',barrierefreiheit:'Barrierefreiheit'}[name]} | Emposo`,
-    description:'Informationen zur Emposo Website.',
+    description:{
+      cookies:'Cookies bei Emposo: Die Website setzt keine Analyse- oder Marketing-Cookies ein; Filter und Formular arbeiten lokal in Ihrem Browser.',
+      barrierefreiheit:'Barrierefreiheit der Emposo Website: Tastaturbedienung, skalierbare Schrift, reduzierte Bewegung und wie Sie uns eine Barriere melden.',
+      sitemap:'Sitemap der Emposo Website: alle Seiten zu Leistungen, Branchen, Projekten und Unternehmen auf einen Blick.',
+    }[name],
     nav:'none', bodyClass:'subpage wrap-anywhere',
     content:`pages/${name}.html`, scripts:['00-core','01-header'],
   })),

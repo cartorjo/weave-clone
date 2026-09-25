@@ -21,6 +21,10 @@ import pages from './pages.mjs';
 import { escape, picture, fragment, projectPage } from './content/render.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
+// The production origin every page declares as canonical (the site stays
+// noindex until launch; this only fixes which URL a page claims to be).
+const SITE_ORIGIN = 'https://emposo.de';
+const canonicalPath = out => out === 'index.html' ? '/' : out.endsWith('/index.html') ? `/${out.slice(0, -'index.html'.length)}` : null;
 const partial = (name) => readFileSync(join(root, 'partials', `${name}.html`), 'utf8');
 
 const head = partial('head');
@@ -83,6 +87,7 @@ for (const page of pages) {
   const pageHead = head
     .replaceAll('{{TITLE}}', () => escape(page.title))
     .replaceAll('{{DESCRIPTION}}', () => escape(page.description))
+    .replaceAll('{{CANONICAL}}', () => { const path = canonicalPath(page.out); return path ? `  <link rel="canonical" href="${SITE_ORIGIN}${path}">\n` : ''; })
     .replaceAll('{{BODY_CLASS}}', () => page.bodyClass)
     .replaceAll('{{SCRIPTS}}', () => scripts);
   const content = pageContent(page);
