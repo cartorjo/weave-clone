@@ -11,7 +11,8 @@ for (const [file,html] of documents) {
   if (new Set(ids).size !== ids.length) failures.push(`${file}: duplicate IDs`);
   if ([...html.matchAll(/<h1\b/g)].length !== 1) failures.push(`${file}: expected exactly one h1`);
   if (/\{\{|<!-- (?:content|partial):/.test(html)) failures.push(`${file}: unresolved template`);
-  if (/Hays-Gruppe|↗/.test(html)) failures.push(`${file}: superseded branding or arrow`);
+  // The privacy policy is the group's legal text, taken verbatim; it may name the Hays-Gruppe.
+  if ((file === 'datenschutzerklaerung/index.html' ? /↗/ : /Hays-Gruppe|↗/).test(html)) failures.push(`${file}: superseded branding or arrow`);
   // Retired component classes (canon: styles/11-components.css + docs/components.md).
   // case-facets is the one live case-* class; everything else of that family is gone.
   for (const [,classes] of html.matchAll(/\bclass="([^"]+)"/g)) {

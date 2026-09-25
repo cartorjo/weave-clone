@@ -95,6 +95,15 @@ export default [
     description:project.headline, nav:'case-studies', navExact:false,
     bodyClass:'subpage wrap-anywhere', content:`project:${project.slug}`, scripts:['00-core','01-header'],
   })),
+  ...[
+    ['impressum','Impressum','Impressum der Emposo GmbH: Anschrift, Kontakt, Geschäftsführung, Handelsregister und inhaltlich Verantwortliche.'],
+    ['datenschutzerklaerung','Datenschutzerklärung','Datenschutzerklärung der Emposo GmbH: wie personenbezogene Daten erfasst, genutzt, gespeichert und geschützt werden.'],
+    ['nutzungsbestimmungen','Nutzungsbestimmungen','Nutzungsbestimmungen der Emposo-Website: zulässige Nutzung, Links, geistiges Eigentum, Haftung und anwendbares Recht.'],
+  ].map(([name,label,description])=>({
+    out:`${name}/index.html`, title:`${label} | Emposo`, description,
+    nav:'none', bodyClass:'subpage wrap-anywhere',
+    content:`pages/${name}.html`, scripts:['00-core','01-header'],
+  })),
   ...['cookies','barrierefreiheit','sitemap','zertifizierungen'].map(name=>({
     out:`${name}/index.html`, title:`${{cookies:'Cookies',sitemap:'Sitemap',barrierefreiheit:'Barrierefreiheit',zertifizierungen:'Zertifizierungen'}[name]} | Emposo`,
     description:name==='zertifizierungen'
