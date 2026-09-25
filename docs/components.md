@@ -78,6 +78,34 @@ display-hero, page-link, lede-boxes, portfolio-model, about-principles,
 about-facts, expertise-proof, expertise-case-strip, header-careers,
 mobile-menu__label, page-rule, case-* (außer case-facets).
 
+## Kontrast-Nachweis (B-10, gemessen 2026-09-26)
+
+`npm run contrast` misst jede Komponente in Ruhe, Hover, Fokus und gedrückt
+gegen den tatsächlichen Grund (Vorfahren-Gründe und State-Layer
+verrechnet) und scheitert unter WCAG AA (Text 4.5:1, groß 3:1; Grenzen
+und Fokusring 3:1). Minimum über alle Zustände:
+
+| Komponente | min. Text | min. Grenze | Fokusring |
+| --- | --- | --- | --- |
+| nav link | 13.91:1 | – | 17.25:1 |
+| header CTA | 8.35:1 | – | 17.25:1 |
+| mobile menu toggle | 13.91:1 | – | 17.25:1 |
+| mobile menu link | 16.35:1 | – | – |
+| mobile menu CTA | 8.35:1 | – | 19.43:1 |
+| filter chip | 15.63:1 | 3.17:1 | – |
+| filter chip selected | 6.86:1 | 19.43:1 | 19.43:1 |
+| reference card | 19.43:1 | – | 19.43:1 |
+| text link (light) | 15.63:1 | – | 19.43:1 |
+| text link (on dark) | 15.61:1 | – | 19.43:1 |
+| expander toggle | 13.84:1 | – | 17.16:1 |
+| breadcrumb link (on dark) | 7.5:1 | – | 19.43:1 |
+| breadcrumb link (light) | 15.63:1 | – | 19.43:1 |
+| footer link | 7.5:1 | – | 19.43:1 |
+| text field | 19.43:1 | 4.41:1 | 19.43:1 |
+| form submit | 8.35:1 | – | 19.43:1 |
+| expertise card | 15.61:1 | – | 19.43:1 |
+| tag (static) | 19.43:1 | – | – |
+
 ## Vertragsvorlage (technical track, B-01)
 
 Every component in the canon above gets one contract in this form

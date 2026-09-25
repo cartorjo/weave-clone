@@ -226,6 +226,10 @@ a.expertise-card:focus-visible { --focus-halo: 0 0 0 var(--invert-bleed) var(--c
 /* Breadcrumbs on light sections (e.g. /cookies/) need ink, not the
    washed white meant for dark page heroes. */
 .page-section:not(.page-section--dark):not(.page-section--deep) .page-breadcrumb { color: var(--color-ink); }
+/* Lemon text fails on light grounds (2.33:1): there the hover keeps the ink
+   and shows the menu's 2px ink underline instead. */
+@media (hover: hover) { .page-section:not(.page-section--dark):not(.page-section--deep) .page-breadcrumb a:hover { color: inherit; text-decoration: underline 2px var(--color-ink); text-underline-offset: .3em; } }
+.page-section:not(.page-section--dark):not(.page-section--deep) .page-breadcrumb a:focus-visible { text-decoration: underline 2px var(--color-ink); text-underline-offset: .3em; }
 .legal-copy > a { margin-top: var(--space-8); }
 .legal-copy h2 { font-size: var(--text-headline-sm); font-weight: 700; line-height: 1.2; margin-top: var(--space-16); }
 .legal-copy h3 { font-size: 1.3rem; font-weight: 700; line-height: 1.3; margin-top: var(--space-12); }

@@ -14,12 +14,14 @@ npm run check      # build and validate all local links, images, anchors and tem
 npm run build:img  # rebuild responsive images from assets/src/ masters
 npm start          # production: assemble dist/ (only shipped files) and serve it
 npm run smoke      # browser smoke (needs the dev server on :8080): overflow, console,
-                   # CSP, axe, menu/filter/expander/form flows; BASE=… for other hosts
+                   # CSP, axe (0 violations), no-JS text parity, images ≤ 750 KiB/page
+                   # (1400×1 and 390×2), menu/filter/expander/form flows; BASE=… for other hosts
 ```
 
 `npm run check` gates every commit: build reproducible, links/anchors/images,
 redirects and legacy URLs (`check:content`), head tags and JSON-LD
-(`check:meta`), and wording unchanged (`check:copy`; owner-approved copy goes
+(`check:meta`), no-JS safety and the CSS budget (≤ 64 KiB, ≤ 14 KiB gzip),
+and wording unchanged (`check:copy`; owner-approved copy goes
 through `npm run copy:accept`, whose baseline diff is the review surface).
 
 Visual parity for refactors (`tools/visual/`, output in `.visual/`):

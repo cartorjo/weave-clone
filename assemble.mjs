@@ -19,7 +19,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pages from './pages.mjs';
 import { escape, picture, fragment, projectPage } from './content/render.mjs';
-import { projects } from './content/site-data.mjs';
+import { projects, disciplines } from './content/site-data.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
 // The production origin every page declares as canonical (the site stays
@@ -38,7 +38,19 @@ const shareImage = page => {
     : (Array.isArray(page.content) ? page.content : [page.content]).map(f => readFileSync(join(root, f), 'utf8').match(/\{\{image:([a-z0-9-]+):hero\}\}/)?.[1]).find(Boolean);
   return images[key] || images['hero-flow'];
 };
-const seoMeta = page => {
+// BreadcrumbList from the page's own visible breadcrumb (existing labels only).
+const unescape = t => t.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').trim();
+const breadcrumb = (body, url) => {
+  const crumb = body.match(/<p class="page-breadcrumb">([\s\S]*?)<\/p>/)?.[1];
+  if (!crumb) return null;
+  const links = [...crumb.matchAll(/<a href="([^"]+)">([\s\S]*?)<\/a>/g)].map(([, href, name]) => ({ name: unescape(name), item: `${SITE_ORIGIN}${href}` }));
+  const tail = crumb.slice(crumb.lastIndexOf('</span>') + 7);
+  // A trail that ends at its parent link names the page by its own H1.
+  const current = /<a /.test(tail) ? unescape(body.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1] || '') : unescape(tail);
+  const items = [...links, ...(current ? [{ name: current, item: url }] : [])];
+  return { '@type': 'BreadcrumbList', itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, item: it.item })) };
+};
+const seoMeta = (page, body) => {
   const path = canonicalPath(page.out);
   if (!path) return '  <meta name="robots" content="noindex">\n';
   const url = `${SITE_ORIGIN}${path}`, img = shareImage(page);
@@ -48,6 +60,14 @@ const seoMeta = page => {
   tags.push('  <meta name="twitter:card" content="summary_large_image">');
   const graph = { '@context': 'https://schema.org', '@graph': [organization, website,
     { '@type': 'WebPage', '@id': url, url, name: page.title, description: page.description, inLanguage: 'de-DE', isPartOf: { '@id': website['@id'] }, primaryImageOfPage: `${SITE_ORIGIN}${img.src}` }] };
+  const crumbs = breadcrumb(body, url);
+  if (crumbs) { graph['@graph'].push(crumbs); graph['@graph'][2].breadcrumb = { '@id': `${url}#breadcrumb` }; crumbs['@id'] = `${url}#breadcrumb`; }
+  // Leistungen: one Service per discipline, with the name and topic line the page shows.
+  if (page.out === 'portfolio/index.html') for (const d of disciplines)
+    graph['@graph'].push({ '@type': 'Service', name: d.name, description: d.topics, provider: { '@id': organization['@id'] }, areaServed: 'DE' });
+  // Case study: Article from the project data (no author/date: the data has none).
+  const project = page.content.startsWith?.('project:') && projects.find(p => p.slug === page.content.slice(8));
+  if (project) graph['@graph'].push({ '@type': 'Article', '@id': `${url}#article`, headline: project.name, description: project.headline, image: `${SITE_ORIGIN}${img.src}`, inLanguage: 'de-DE', publisher: { '@id': organization['@id'] }, mainEntityOfPage: { '@id': url } });
   // JSON-LD is a data block, not script: the CSP's script-src does not apply.
   tags.push(`  <script type="application/ld+json">${JSON.stringify(graph).replace(/</g, '\\u003c')}</script>`);
   return tags.join('\n') + '\n';
@@ -111,22 +131,22 @@ const headerInlined = inlinePartials(header);
 const footerInlined = inlinePartials(footer);
 
 for (const page of pages) {
+  const body = inlinePartials(pageContent(page));
   const scripts = page.scripts.map((s) => `  <script defer src="/js/${s}.js"></script>`).join('\n');
   // Escaped, and via replacer functions so `$…` in copy is never treated as
   // a replacement pattern.
   const pageHead = head
     .replaceAll('{{TITLE}}', () => escape(page.title))
     .replaceAll('{{DESCRIPTION}}', () => escape(page.description))
-    .replaceAll('{{META}}', () => seoMeta(page))
+    .replaceAll('{{META}}', () => seoMeta(page, body))
     .replaceAll('{{CANONICAL}}', () => { const path = canonicalPath(page.out); return path ? `  <link rel="canonical" href="${SITE_ORIGIN}${path}">\n` : ''; })
     .replaceAll('{{BODY_CLASS}}', () => page.bodyClass)
     .replaceAll('{{SCRIPTS}}', () => scripts);
-  const content = pageContent(page);
   const html =
     pageHead +
     stampNav(headerInlined, page) +
     '<main id="main" tabindex="-1">\n' +
-    inlinePartials(content) +
+    body +
     '\n</main>\n' +
     footerInlined;
   const outPath = join(root, page.out);

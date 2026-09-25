@@ -23,6 +23,14 @@
       menu.addEventListener('click', function (event) {
         if (event.target.closest('a')) menu.open = false;
       });
+      // A disclosure, not a dialog: no focus trap, but it closes once focus
+      // or a click leaves it, so it never lingers over the page.
+      menu.addEventListener('focusout', function (event) {
+        if (menu.open && event.relatedTarget && !menu.contains(event.relatedTarget)) menu.open = false;
+      });
+      document.addEventListener('click', function (event) {
+        if (menu.open && !menu.contains(event.target)) menu.open = false;
+      });
 
       wideNav.addEventListener('change', function (event) {
         if (event.matches) menu.open = false;

@@ -1,5 +1,6 @@
 // Verify the generated site as a connected set of documents. No server needed.
-import { readFileSync, existsSync, realpathSync } from 'node:fs';
+import { readFileSync, existsSync, realpathSync, statSync } from 'node:fs';
+import { gzipSync } from 'node:zlib';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pages from '../pages.mjs';
@@ -19,6 +20,14 @@ for (const [file,html] of documents) {
     const retired = classes.match(/\b(?:page-eyebrow|page-kicker|page-display|page-title|page-cta__title|display-hero|page-link|lede-boxes|portfolio-model|about-principles|about-facts|expertise-proof|expertise-case-strip|header-careers|mobile-menu__label|page-rule|fact-grid--stats|management-card__more|about-locations(?:__[a-z]+)?|location-list|case-(?!facets\b)[a-z][a-z-]*)\b/);
     if (retired) { failures.push(`${file}: retired class "${retired[0]}"`); break; }
   }
+  // No-JS safety: content never depends on JS. Only the filter bar (useless
+  // without its handlers) may ship hidden as .js-only, and every Kennzahl
+  // carries its final value in the HTML (the countup only animates it).
+  for (const [, cls] of html.matchAll(/\bclass="([^"]*\bjs-only\b[^"]*)"/g))
+    if (!/\bwork-filter\b/.test(cls)) failures.push(`${file}: .js-only on "${cls}" hides content without JS`);
+  const facts = [...html.matchAll(/class="company-facts__value"[^>]*>([^<]*)</g)].map(m => m[1]);
+  if (html.includes('class="company-facts"') && !facts.length) failures.push(`${file}: Kennzahlen without .company-facts__value`);
+  for (const value of facts) if (!/[1-9]/.test(value)) failures.push(`${file}: Kennzahl "${value}" is not its final value in HTML`);
   for (const match of html.matchAll(/\b(?:href|src)="([^"]+)"/g)) {
     const href = match[1];
     if (/^(?:https?:|mailto:|tel:|data:)/.test(href)) continue;
@@ -63,5 +72,10 @@ for (const path of legacy) {
   if (rule && isPage(path)) failures.push(`legacy ${path}: is a live page but also redirected by ${rule.source}`);
   if (!rule && !isPage(path)) failures.push(`legacy ${path}: neither a page nor redirected`);
 }
+// Performance budget: the stylesheet stays small (images are budgeted in smoke).
+const CSS_BUDGET = { raw: 64 * 1024, gzip: 14 * 1024 };
+const css = readFileSync(resolve(root, 'css', 'site.css'));
+const cssSize = { raw: css.length, gzip: gzipSync(css).length };
+if (cssSize.raw > CSS_BUDGET.raw || cssSize.gzip > CSS_BUDGET.gzip) failures.push(`css/site.css ${(cssSize.raw / 1024).toFixed(1)} KiB (${(cssSize.gzip / 1024).toFixed(1)} KiB gzip) exceeds budget 64/14 KiB`);
 if (failures.length) { console.error(failures.join('\n')); process.exitCode=1; }
-else console.log(`Content check passed: ${documents.size} pages; local links, anchors, images, headings and templates; ${redirects.length} redirects, ${legacy.length} legacy URLs.`);
+else console.log(`Content check passed: ${documents.size} pages; local links, anchors, images, headings and templates; ${redirects.length} redirects, ${legacy.length} legacy URLs; css ${(cssSize.raw / 1024).toFixed(1)} KiB / ${(cssSize.gzip / 1024).toFixed(1)} KiB gzip.`);
