@@ -61,6 +61,29 @@ await pool(CORE.flatMap(r => [390, 1400].map(w => ({ r, w }))), 4, async ({ r, w
   } finally { await page.close(); }
 });
 
+// 2b. no-JS: every text visible with JS is visible without it (the filter bar,
+// shipped .js-only because it does nothing without JS, is the one exception).
+const visibleLines = () => {
+  const skip = el => el.closest('.work-filter, [data-contact-hint]');
+  const out = new Set();
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  for (let n; (n = walker.nextNode());) {
+    const el = n.parentElement, t = n.textContent.replace(/\s+/g, ' ').trim();
+    if (!t || skip(el) || !el.getClientRects().length || getComputedStyle(el).visibility === 'hidden') continue;
+    out.add(t);
+  }
+  return [...out];
+};
+for (const r of CORE) {
+  const off = await browser.newPage(); await off.setJavaScriptEnabled(false); await off.setViewport({ width: 1400, height: 900 });
+  await off.goto(BASE + r, { waitUntil: 'networkidle0' });
+  const noJs = new Set(await off.evaluate(visibleLines)); await off.close();
+  const { page } = await open(r, 1400, { motion: 'reduce' });
+  const withJs = await page.evaluate(visibleLines); await page.close();
+  const missing = withJs.filter(t => !noJs.has(t));
+  for (const t of missing.slice(0, 5)) fail(`no-js ${slug(r)}: "${t.slice(0, 60)}" only visible with JS`);
+}
+
 // 3. functional flows
 const flows = [
   ['nav', '/', async (page, w) => {
@@ -125,7 +148,7 @@ for (const [name, route, fn] of flows) for (const w of [390, 1000, 1400]) {
 }
 await browser.close();
 if (opt('out')) writeFileSync(opt('out'), JSON.stringify({ fails, info }, null, 1));
-console.log(`# smoke: ${routes.length} routes × ${widths.length} widths, axe ${CORE.length}×2, ${flows.length} flows ×3 widths`);
+console.log(`# smoke: ${routes.length} routes × ${widths.length} widths, axe ${CORE.length}×2, no-JS text ${CORE.length}, ${flows.length} flows ×3 widths`);
 console.log(`nav at 1240: ${JSON.stringify(Object.entries(info.navAt1240 || {}).reduce((m, [, v]) => (m[v] = (m[v] || 0) + 1, m), {}))}`);
 console.log(fails.length ? `FAIL (${fails.length}):\n` + fails.map(f => '- ' + f).join('\n') : 'PASS: no failures');
 process.exitCode = fails.length ? 1 : 0;

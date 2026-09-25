@@ -19,6 +19,14 @@ for (const [file,html] of documents) {
     const retired = classes.match(/\b(?:page-eyebrow|page-kicker|page-display|page-title|page-cta__title|display-hero|page-link|lede-boxes|portfolio-model|about-principles|about-facts|expertise-proof|expertise-case-strip|header-careers|mobile-menu__label|page-rule|fact-grid--stats|management-card__more|about-locations(?:__[a-z]+)?|location-list|case-(?!facets\b)[a-z][a-z-]*)\b/);
     if (retired) { failures.push(`${file}: retired class "${retired[0]}"`); break; }
   }
+  // No-JS safety: content never depends on JS. Only the filter bar (useless
+  // without its handlers) may ship hidden as .js-only, and every Kennzahl
+  // carries its final value in the HTML (the countup only animates it).
+  for (const [, cls] of html.matchAll(/\bclass="([^"]*\bjs-only\b[^"]*)"/g))
+    if (!/\bwork-filter\b/.test(cls)) failures.push(`${file}: .js-only on "${cls}" hides content without JS`);
+  const facts = [...html.matchAll(/class="company-facts__value"[^>]*>([^<]*)</g)].map(m => m[1]);
+  if (html.includes('class="company-facts"') && !facts.length) failures.push(`${file}: Kennzahlen without .company-facts__value`);
+  for (const value of facts) if (!/[1-9]/.test(value)) failures.push(`${file}: Kennzahl "${value}" is not its final value in HTML`);
   for (const match of html.matchAll(/\b(?:href|src)="([^"]+)"/g)) {
     const href = match[1];
     if (/^(?:https?:|mailto:|tel:|data:)/.test(href)) continue;
