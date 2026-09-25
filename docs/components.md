@@ -89,15 +89,15 @@ und Fokusring 3:1). Minimum über alle Zustände:
 | --- | --- | --- | --- |
 | nav link | 13.91:1 | – | 17.25:1 |
 | header CTA | 8.35:1 | – | 17.25:1 |
-| mobile menu toggle | 13.91:1 | – | – |
-| mobile menu link | 15.63:1 | – | 19.43:1 |
+| mobile menu toggle | 13.91:1 | – | 17.25:1 |
+| mobile menu link | 16.35:1 | – | – |
 | mobile menu CTA | 8.35:1 | – | 19.43:1 |
 | filter chip | 15.63:1 | 3.17:1 | – |
 | filter chip selected | 6.86:1 | 19.43:1 | 19.43:1 |
 | reference card | 19.43:1 | – | 19.43:1 |
 | text link (light) | 15.63:1 | – | 19.43:1 |
 | text link (on dark) | 15.61:1 | – | 19.43:1 |
-| expander toggle | 13.84:1 | – | – |
+| expander toggle | 13.84:1 | – | 17.16:1 |
 | breadcrumb link (on dark) | 7.5:1 | – | 19.43:1 |
 | breadcrumb link (light) | 15.63:1 | – | 19.43:1 |
 | footer link | 7.5:1 | – | 19.43:1 |

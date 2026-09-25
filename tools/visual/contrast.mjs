@@ -72,11 +72,11 @@ for (const [name, route, width, sel, opts] of COMPONENTS) {
     await page.mouse.move(0, 0); await page.evaluate(() => document.activeElement?.blur());
     if (state === 'hover' || state === 'press') await page.hover(sel);
     if (state === 'press') await page.mouse.down();
-    if (state === 'focus') { await page.evaluate(s => { const t = document.createElement('button'); t.id = '__probe'; document.querySelector(s).before(t); t.focus(); }, sel); await page.keyboard.press('Tab'); }
+    // real keyboard focus: Tab until the component itself is focused
+    if (state === 'focus') for (let i = 0; i < 120 && !(await page.evaluate(s => document.activeElement === document.querySelector(s), sel)); i++) await page.keyboard.press('Tab');
     await wait();
     states[state] = await page.evaluate(measure, sel, opts);
     if (state === 'press') await page.mouse.up();
-    if (state === 'focus') await page.evaluate(() => document.getElementById('__probe')?.remove());
   }
   await page.close();
   for (const [state, m] of Object.entries(states)) {
