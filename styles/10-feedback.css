@@ -253,7 +253,7 @@ a.expertise-card:focus-visible { --focus-halo: 0 0 0 var(--invert-bleed) var(--c
 @media (hover:hover) and (prefers-reduced-motion:no-preference) {
   .reference-card:hover img { transform: scale(1.03); }
 }
-@media (width < theme(--breakpoint-nav)) { .site-header__inner { min-height: 5rem; } .site-logo { width: 11rem; } }
+@media (width < theme(--breakpoint-nav)) { .site-header__inner { min-height: 5rem; } .site-logo { width: min(11rem, 100vw - 2 * var(--gutter) - 7.5rem); } }
 @media (width <= theme(--breakpoint-tablet)) {
   .connection-model { grid-template-columns: minmax(0,1.25fr) minmax(0,.75fr); }
   .connection-step { gap: var(--space-2); }
