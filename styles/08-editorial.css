@@ -14,7 +14,6 @@
 .hero__visual { margin: 0 calc(var(--bleed-right) * -1) 0 0; min-height: 100%; overflow: hidden; position: relative; }
 .hero__visual::after { background: linear-gradient(180deg, rgba(10, 5, 50, 0.04), rgba(10, 5, 50, 0.6)); content: ""; inset: 0; position: absolute; pointer-events: none; }
 .hero__visual > picture > img { height: 100%; object-fit: cover; width: 100%; }
-.hero__visual figcaption { bottom: 1.62rem; color: var(--color-on-dark-muted); display: flex; font-size: 0.72rem; font-weight: 600; justify-content: space-between; left: 1.62rem; letter-spacing: 0.08em; position: absolute; right: 1.62rem; text-transform: none; z-index: 1; }
 
 /* Section rhythm lives once in 09-page-templates.css (.page-section on the
    --spacing-section token); .journeys/.career carry the class in markup. */
@@ -96,7 +95,6 @@
   .hero__copy { min-height: 31.5rem; padding-bottom: 3.6rem; padding-top: 3.6rem; }
   .hero__intro { align-items: start; flex-direction: column; }
   .hero__visual { aspect-ratio: 4 / 3; }
-  .hero__visual figcaption { bottom: 0.9rem; font-size: 0.62rem; left: 0.9rem; right: 0.9rem; }
   .work-filter { grid-template-columns: 1fr; }
   .filter-group { display: grid; gap: 0.72rem; }
   .contact-form { grid-template-columns: 1fr; }

@@ -77,20 +77,6 @@
   position: absolute;
 }
 .page-hero__visual img { height: 100%; object-fit: cover; width: 100%; }
-.page-hero__visual figcaption {
-  bottom: 1.26rem;
-  color: var(--color-on-dark-muted);
-  display: flex;
-  font-size: 0.68rem;
-  font-weight: 600;
-  justify-content: space-between;
-  left: 1.26rem;
-  letter-spacing: 0.08em;
-  position: absolute;
-  right: 1.26rem;
-  text-transform: none;
-  z-index: 1;
-}
 .page-hero__metric {
   background: var(--color-lemon);
   bottom: 0;
