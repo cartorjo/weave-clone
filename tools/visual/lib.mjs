@@ -17,7 +17,8 @@ export async function allRoutes() {
 export const slug = r => r === '/' ? 'home' : r.replace(/^\/|\/$/g, '').replaceAll('/', '_').replace('.html', '');
 
 export function launch() {
-  return puppeteer.launch({ executablePath: CHROME, headless: 'new', args: ['--hide-scrollbars'] });
+  // GitHub's Ubuntu runners restrict Chrome's sandbox; local runs keep it.
+  return puppeteer.launch({ executablePath: CHROME, headless: 'new', args: ['--hide-scrollbars', ...(process.env.CI ? ['--no-sandbox'] : [])] });
 }
 
 export async function pool(items, n, fn) {
