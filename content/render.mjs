@@ -76,8 +76,21 @@ export function jobsList() {
   return `<div class="job-list">${jobs.map(job=>`<article class="job-card" id="${job.slug}"><h3>${escape(job.title)}</h3><p class="job-card__meta">${job.meta.map(m=>`<span class="tag">${escape(m)}</span>`).join('')}</p><p class="job-card__tagline">${escape(job.tagline)}</p><p class="job-card__text">${escape(job.intro[0])}</p><details class="expander"><summary class="min-h-11"><span class="expander__open">Zur vollständigen Ausschreibung</span><span class="expander__close">Weniger anzeigen</span></summary>${job.intro.slice(1).map(text=>`<p class="job-card__text">${escape(text)}</p>`).join('')}${job.sections.map(section=>`<h4>${escape(section.title)}</h4><ul class="result-list result-list--compact">${section.items.map(item=>`<li>${escape(item)}</li>`).join('')}</ul>`).join('')}<p class="job-card__text">${escape(job.apply)}</p></details></article>`).join('')}</div>`;
 }
 
-function cta() {
-  return `<section class="page-section page-section--deep"><div class="gutter"><div class="container @container"><div class="page-cta @max-content:grid-cols-1"><div><p class="eyebrow eyebrow--light">Ihr nächster Schritt</p><h2 class="display-large display-large--light">Jetzt Kontakt aufnehmen!</h2></div><div class="page-cta__copy"><p>Ob konkretes Vorhaben, erste Orientierung oder weitere Fragen: Erzählen Sie uns kurz, worum es geht.</p><a class="text-link text-link--light" href="/kontakt/">Projekt besprechen <span aria-hidden="true">→</span></a></div></div></div></div></section>`;
+// The one CTA block. Variants are content, never copied markup; pages include
+// them as <!-- content:cta-<name> -->, case studies use the default.
+const ctas = {
+  default: { title: 'Jetzt Kontakt aufnehmen!', copy: ['Ob konkretes Vorhaben, erste Orientierung oder weitere Fragen: Erzählen Sie uns kurz, worum es geht.'], link: true },
+  'case-studies': { title: 'Lassen Sie uns Ihr nächstes Ergebnis <em>definieren.</em>', copy: ['Wir starten mit Ihrer Herausforderung und dem gewünschten Outcome.'], link: true },
+  portfolio: { id: 'portfolio-cta-title', title: 'Welche Leistung sollen wir für Sie <em>liefern?</em>', copy: ['Von der bestehenden Leistung bis zum neuen Use Case: Sprechen wir über die Ergebnisdefinition und den sinnvollsten Einstieg.'], link: true },
+  karriere: { id: 'karriere-statement-title', eyebrow: 'Warum Emposo', title: 'Wir entwickeln nicht nur Technologien.<br>Wir schaffen <em>Ergebnisse.</em>', copy: ['Dafür suchen wir Menschen, die neugierig sind, Verantwortung übernehmen und Dinge ins Ziel bringen wollen. Ob Engineering, Software, AI, Cyber Security oder Projektmanagement: Bei Emposo arbeitest Du an Projekten, die sichtbar etwas bewegen. Gemeinsam mit erfahrenen Kolleginnen und Kollegen, starken Kunden und der Skalierungskraft der Hays Gruppe.', '<strong>Tomorrow, created today.</strong>'], link: false },
+};
+function cta(name = 'default') {
+  const c = ctas[name];
+  if (!c) throw new Error(`Unknown CTA: ${name}`);
+  const labelled = c.id ? ` aria-labelledby="${c.id}"` : '';
+  const id = c.id ? ` id="${c.id}"` : '';
+  const link = c.link ? '<a class="text-link text-link--light" href="/kontakt/">Projekt besprechen <span aria-hidden="true">→</span></a>' : '';
+  return `<section class="page-section page-section--deep"${labelled}><div class="gutter"><div class="container @container"><div class="page-cta @max-content:grid-cols-1"><div><p class="eyebrow eyebrow--light">${c.eyebrow || 'Ihr nächster Schritt'}</p><h2 class="display-large display-large--light"${id}>${c.title}</h2></div><div class="page-cta__copy">${c.copy.map(p => `<p>${p}</p>`).join('')}${link}</div></div></div></div></section>`;
 }
 
 export function projectPage(slug) {
@@ -165,6 +178,9 @@ function management() {
 export function fragment(name) {
   switch (name) {
     case 'industry-cards': return industryCards();
+    case 'cta-case-studies': return cta('case-studies');
+    case 'cta-portfolio': return cta('portfolio');
+    case 'cta-karriere': return cta('karriere');
     case 'company-facts': return companyFacts();
     case 'jobs': return jobsList();
     case 'projects-featured': return projectCards(projects.filter(p=>['data2ai-platform','engineering-wissensbasis','mlops-medizinprodukte','multi-site-transition'].includes(p.slug)), false, true);
