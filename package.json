@@ -19,15 +19,22 @@
     "build:dist": "node tools/build-dist.mjs",
     "check:copy": "node tools/check-copy.mjs",
     "copy:accept": "node tools/check-copy.mjs --accept",
-    "check:meta": "node tools/check-meta.mjs"
+    "check:meta": "node tools/check-meta.mjs",
+    "smoke": "node tools/visual/smoke.mjs",
+    "visual:snapshot": "node tools/visual/snapshot.mjs",
+    "visual:diff": "node tools/visual/diff.mjs",
+    "visual:pixdiff": "node tools/visual/pixdiff.mjs",
+    "css:shadowed": "node tools/visual/shadowed.mjs"
   },
   "dependencies": {
     "serve": "^14.2.6"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.3.3",
+    "axe-core": "4.13.0",
     "concurrently": "^9.1.2",
     "esbuild": "^0.28.2",
+    "puppeteer-core": "24.43.1",
     "sharp": "^0.35.4",
     "tailwindcss": "^4.3.3"
   }
