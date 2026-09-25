@@ -43,5 +43,25 @@ for (const [file,html] of documents) {
     }
   }
 }
+// SEO migration: every redirect lands on a real page, and every old emposo.de
+// URL (docs/legacy-urls.txt) is either still a page or 301s somewhere real.
+// Matching mirrors serve-handler: trailing slash stripped, `*` = any rest.
+const serveConfig = JSON.parse(readFileSync(resolve(root,'serve.json'),'utf8'));
+const redirects = serveConfig.redirects || [];
+const pageFile = pathname => { const p = decodeURIComponent(pathname); return p.endsWith('/') ? p.slice(1)+'index.html' : p.slice(1); };
+const isPage = pathname => existsSync(resolve(root, pageFile(pathname)));
+for (const {source, destination} of redirects) {
+  const target = new URL(destination, 'https://local.test');
+  if (!isPage(target.pathname)) failures.push(`serve.json: redirect ${source} → missing ${destination}`);
+  if (target.hash && !documents.get(pageFile(target.pathname))?.includes(`id="${target.hash.slice(1)}"`)) failures.push(`serve.json: redirect ${source} → missing anchor ${destination}`);
+}
+const strip = p => p.length > 1 ? p.replace(/\/$/, '') : p;
+const redirected = path => redirects.find(({source}) => new RegExp(`^${source.replace(/[.+?^${}()|[\]\\]/g, '\\$&').replace('*', '.*')}$`).test(strip(path)));
+const legacy = readFileSync(resolve(root,'docs','legacy-urls.txt'),'utf8').split('\n').filter(l => l && !l.startsWith('#'));
+for (const path of legacy) {
+  const rule = redirected(path);
+  if (rule && isPage(path)) failures.push(`legacy ${path}: is a live page but also redirected by ${rule.source}`);
+  if (!rule && !isPage(path)) failures.push(`legacy ${path}: neither a page nor redirected`);
+}
 if (failures.length) { console.error(failures.join('\n')); process.exitCode=1; }
-else console.log(`Content check passed: ${documents.size} pages; local links, anchors, images, headings and templates.`);
+else console.log(`Content check passed: ${documents.size} pages; local links, anchors, images, headings and templates; ${redirects.length} redirects, ${legacy.length} legacy URLs.`);

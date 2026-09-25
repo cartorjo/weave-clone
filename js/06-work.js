@@ -36,9 +36,25 @@
         var active = candidate.getAttribute('data-filter-value') === value;
         candidate.classList.toggle('is-active', active);
         candidate.setAttribute('aria-pressed', active ? 'true' : 'false');
+        candidate.tabIndex = active ? 0 : -1;
       });
       render();
     }
+
+    // One Tab stop per chip group (the selected chip); arrows move between chips.
+    buttons.forEach(function (button) {
+      button.tabIndex = button.classList.contains('is-active') ? 0 : -1;
+      button.addEventListener('keydown', function (event) {
+        var keys = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1, Home: 'first', End: 'last' };
+        var step = keys[event.key];
+        if (!step) return;
+        var group = buttons.filter(function (b) { return b.getAttribute('data-filter-group') === button.getAttribute('data-filter-group'); });
+        var index = group.indexOf(button);
+        var next = step === 'first' ? 0 : step === 'last' ? group.length - 1 : (index + step + group.length) % group.length;
+        event.preventDefault();
+        group[next].focus();
+      });
+    });
 
     buttons.forEach(function (button) {
       button.addEventListener('click', function () {
@@ -61,9 +77,39 @@
 
     var form = document.querySelector('[data-contact-form]');
     if (form) {
+      // Errors appear as German supporting text under each field instead of
+      // the browser's bubbles (which follow the browser language). Checked on
+      // submit, then live per field; not on blur, because text appearing
+      // under a field would move the submit button away mid-click.
+      var messages = {
+        name: { valueMissing: 'Bitte geben Sie Ihren Namen an.' },
+        email: { valueMissing: 'Bitte geben Sie Ihre E-Mail-Adresse an.', typeMismatch: 'Bitte geben Sie eine gültige E-Mail-Adresse an, z. B. name@firma.de.' },
+        interest: { valueMissing: 'Bitte wählen Sie aus, worum es geht.' },
+        message: { valueMissing: 'Bitte schreiben Sie uns kurz, worum es geht.' }
+      };
+      var fields = Array.prototype.slice.call(form.querySelectorAll('input, select, textarea'));
+      var check = function (field) {
+        var support = document.getElementById(field.getAttribute('aria-describedby'));
+        var valid = field.checkValidity();
+        var text = '';
+        if (!valid) {
+          var own = messages[field.name] || {};
+          text = (field.validity.valueMissing && own.valueMissing) || (field.validity.typeMismatch && own.typeMismatch) || field.validationMessage;
+        }
+        field.setAttribute('aria-invalid', valid ? 'false' : 'true');
+        if (support) support.textContent = text;
+        return valid;
+      };
+      form.noValidate = true;
+      fields.forEach(function (field) {
+        field.addEventListener('input', function () { if (field.getAttribute('aria-invalid') === 'true') check(field); });
+        field.addEventListener('change', function () { if (field.getAttribute('aria-invalid') === 'true') check(field); });
+      });
       form.addEventListener('submit', function (event) {
         event.preventDefault();
-        if (!form.reportValidity()) return;
+        var firstInvalid = null;
+        fields.forEach(function (field) { if (!check(field) && !firstInvalid) firstInvalid = field; });
+        if (firstInvalid) { firstInvalid.focus(); return; }
         var data = new FormData(form);
         var body = [
           'Name: ' + data.get('name'),
@@ -74,7 +120,7 @@
           'Nachricht:',
           data.get('message')
         ].join('\n');
-        window.location.href = 'mailto:jose.caravaca@emposo.eu?subject=' + encodeURIComponent('Emposo Anfrage: ' + data.get('interest')) + '&body=' + encodeURIComponent(body);
+        window.location.href = 'mailto:info@emposo.eu?subject=' + encodeURIComponent('Emposo Anfrage: ' + data.get('interest')) + '&body=' + encodeURIComponent(body);
       });
     }
   });

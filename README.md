@@ -12,6 +12,24 @@ npm run dev        # assemble + tailwind watch + local server (port 8080)
 npm run build      # one-off production build (assemble + purged CSS)
 npm run check      # build and validate all local links, images, anchors and templates
 npm run build:img  # rebuild responsive images from assets/src/ masters
+npm start          # production: assemble dist/ (only shipped files) and serve it
+npm run smoke      # browser smoke (needs the dev server on :8080): overflow, console,
+                   # CSP, axe, menu/filter/expander/form flows; BASE=… for other hosts
+```
+
+`npm run check` gates every commit: build reproducible, links/anchors/images,
+redirects and legacy URLs (`check:content`), head tags and JSON-LD
+(`check:meta`), and wording unchanged (`check:copy`; owner-approved copy goes
+through `npm run copy:accept`, whose baseline diff is the review surface).
+
+Visual parity for refactors (`tools/visual/`, output in `.visual/`):
+
+```bash
+npm run visual:snapshot -- .visual/before   # computed styles + screenshots, 24 routes × 390/1000/1400
+npm run visual:snapshot -- .visual/after
+npm run visual:diff -- .visual/before .visual/after            # every style transition; empty = no drift
+npm run visual:pixdiff -- .visual/before .visual/after .visual/pix   # region crops before | after | mask
+npm run css:shadowed                         # declarations a later identical selector overrides
 ```
 
 ## How pages are built
@@ -50,8 +68,9 @@ homepage "How" connection-step icons), hairlines (`--color-line`, and on dark gr
 roles (`--color-on-dark` #fff, `--color-on-dark-muted` 72 %,
 `--color-on-dark-faint` 62 % white — no white literals in component CSS;
 white page/card grounds use `--color-bg`), the sticky-header
-`--color-surface-veil`, the fluid type scale (`--text-display-1` …
-`--text-eyebrow`), the spacing scale (`--spacing-section` is the shared
+`--color-surface-veil`, the type roles (`--text-micro` … `--text-lede-lg`,
+the sizes components share; one-off fluid headlines stay with their component,
+the display heading reads `--display-size`), the spacing scale (`--spacing-section` is the shared
 vertical rhythm), two shadows, one easing, and `--font-sans` (self-hosted
 Roboto, weights 300–700). Component CSS lives in
 `styles/07-header.css` (header/megamenu), `08-editorial.css` (homepage
@@ -90,14 +109,26 @@ Markup pattern:
 ```
 
 Hero images use `fetchpriority="high"` and are never lazy-loaded.
-`serve.json` sets `Content-Type: image/avif` (the bundled dev server's mime
-table predates AVIF); production hosts must send it too.
+`serve.json` holds the production headers (strict CSP, HSTS, nosniff,
+referrer/permissions policy, caching) and `Content-Type: image/avif` (the
+bundled server's mime table predates AVIF). `npm start` copies only the
+shipped files into `dist/` (tools/build-dist.mjs) and serves that. The repo
+working tree is never the webroot. The CSP forbids inline styles and scripts,
+including `<style>` inside inlined SVGs (assemble.mjs strips the logo's).
 
 ## Contact & launch state
 
-The contact form prepares a `mailto:` message and explains the handoff to the
+The contact form prepares a `mailto:` message to info@emposo.eu (the shared
+inbox, also for career enquiries) and explains the handoff to the
 visitor's email program. No form backend is configured. Company is optional,
-so career enquiries can use the same form. All pages retain preview `noindex`.
+so career enquiries can use the same form. Indexing is switched per deployment:
+`npm start` sends `X-Robots-Tag: noindex, nofollow` on every response unless
+the host sets `INDEXABLE=true`. Railway previews stay out of search by default;
+set it only on the emposo.de production deployment. For launch, assemble.mjs emits canonical, Open Graph/Twitter tags and
+JSON-LD (Organization/WebSite/WebPage) per page from one `SITE_ORIGIN`, plus
+`robots.txt` and `sitemap.xml`; only 404.html is `noindex`. The old emposo.de
+URLs (`docs/legacy-urls.txt`) 301 via `serve.json` redirects, and
+`npm run check:content` fails if any old URL or redirect target stops resolving.
 The footer links to Emposo's existing imprint and privacy notice, and to local
 cookie information, accessibility information and a sitemap.
 

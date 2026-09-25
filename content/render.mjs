@@ -5,10 +5,12 @@ const disciplineBySlug = Object.fromEntries(disciplines.map(d => [d.slug, d]));
 export const escape = value => String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const arrow = '<span aria-hidden="true">→</span>';
 
-export function picture(key, sizes = '(max-width: 700px) 100vw, 50vw', priority = false) {
+// decorative: the image adds nothing beyond adjacent text (card photo, portrait
+// beside the name), so it gets alt="" instead of repeating or padding it.
+export function picture(key, sizes = '(max-width: 700px) 100vw, 50vw', priority = false, decorative = false) {
   const asset = assets[key];
   if (!asset) throw new Error(`Unknown supplied image: ${key}`);
-  return `<picture>${['avif','webp'].map(format => `<source type="image/${format}" srcset="${asset.variants.filter(v=>v.format===format).map(v=>`${v.src} ${v.width}w`).join(', ')}" sizes="${sizes}">`).join('')}<img src="${asset.src}" alt="${escape(asset.alt)}" width="${asset.width}" height="${asset.height}" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"></picture>`;
+  return `<picture>${['avif','webp'].map(format => `<source type="image/${format}" srcset="${asset.variants.filter(v=>v.format===format).map(v=>`${v.src} ${v.width}w`).join(', ')}" sizes="${sizes}">`).join('')}<img src="${asset.src}" alt="${decorative ? '' : escape(asset.alt)}" width="${asset.width}" height="${asset.height}" ${priority ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"></picture>`;
 }
 
 export function industryCards() {
@@ -42,7 +44,7 @@ export function projectCards(selection = projects, filterable = false, collage =
   const sizes = index => collage
     ? (index === 1 || index === 2 ? '(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 58vw' : '(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 42vw')
     : '(max-width: 700px) 100vw, 50vw';
-  return `<div class="reference-grid${collage ? ' reference-grid--collage' : ''}"${filterable ? ' data-project-grid' : ''}>${selection.map((project,index)=>`<a class="reference-card" href="/case-studies/${project.slug}/"${filterable ? ` data-project data-industry="${project.filter}" data-discipline="${project.discipline}"` : ''}><figure>${picture(project.image,sizes(index))}</figure><div class="reference-card__copy"><div class="reference-card__meta"><span>${escape(project.industry)}</span><span>${escape(disciplineBySlug[project.discipline].name)}</span></div><h3>${escape(project.name)}</h3><p>${escape(project.headline)}</p>${metric(project)}<span class="text-link">Case Study lesen ${arrow}</span></div></a>`).join('')}</div>`;
+  return `<div class="reference-grid${collage ? ' reference-grid--collage' : ''}"${filterable ? ' data-project-grid' : ''}>${selection.map((project,index)=>`<a class="reference-card" href="/case-studies/${project.slug}/"${filterable ? ` data-project data-industry="${project.filter}" data-discipline="${project.discipline}"` : ''}><figure>${picture(project.image,sizes(index),false,true)}</figure><div class="reference-card__copy"><div class="reference-card__meta"><span>${escape(project.industry)}</span><span>${escape(disciplineBySlug[project.discipline].name)}</span></div><h3>${escape(project.name)}</h3><p>${escape(project.headline)}</p>${metric(project)}<span class="text-link">Case Study lesen ${arrow}</span></div></a>`).join('')}</div>`;
 }
 
 function filters() {
@@ -53,7 +55,7 @@ function filters() {
   const az = choices => choices.sort((a,b)=>a[1].localeCompare(b[1],'de'));
   // "Alle" hangs in its own grid column so wrapped chip lines align with the
   // first named chip, not with "Alle" (owner review 24-09).
-  const chip = (group,[key,name]) => `<button class="filter-button min-h-11${key==='all'?' is-active':''}" type="button" data-filter-group="${group.key}" data-filter-value="${key}" aria-pressed="${key==='all'}">${escape(name)}</button>`;
+  const chip = (group,[key,name]) => `<button class="filter-button min-h-11${key==='all'?' is-active':''}" type="button" data-filter-group="${group.key}" data-filter-value="${key}" aria-pressed="${key==='all'}"><svg class="filter-button__check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>${escape(name)}</button>`;
   const groups = [
     {key:'industry', label:'Branche', aria:'Nach Branche filtern', choices:[['all','Alle'],...az([['aerospace','Aerospace & Defense'],['energy','Energy & Resources'],['health','Health & Pharma'],['industrial','Industrials & Manufacturing'],['automotive','Automotive'],['technology','Technology, Telecoms & Media']])]},
     {key:'discipline', label:'Leistung', aria:'Nach Leistung filtern', choices:[['all','Alle'],...az(disciplines.map(d=>[d.slug,d.name]))]},
@@ -69,15 +71,31 @@ export function disciplineGrid() {
   return `<div class="discipline-table">${['Engineering','Technology'].map(group=>`<h3 class="discipline-table__head">${group}</h3>${disciplines.filter(d=>d.group===group).map(cell).join('')}`).join('')}</div>`;
 }
 
+// Applications and enquiries go to the shared inbox (owner decision 2026-09-25).
+const APPLY_EMAIL = 'info@emposo.eu';
+
 export function jobsList() {
   // Stellenausschreibungen (owner deck 24-09) on /karriere/: flat IA — no
   // subpages, the full posting sits in the canonical expander. Visible state:
   // title, meta chips, tagline and the first paragraph.
-  return `<div class="job-list">${jobs.map(job=>`<article class="job-card" id="${job.slug}"><h3>${escape(job.title)}</h3><p class="job-card__meta">${job.meta.map(m=>`<span>${escape(m)}</span>`).join('')}</p><p class="job-card__tagline">${escape(job.tagline)}</p><p class="job-card__text">${escape(job.intro[0])}</p><details class="expander"><summary class="min-h-11"><span class="expander__open">Zur vollständigen Ausschreibung</span><span class="expander__close">Weniger anzeigen</span></summary>${job.intro.slice(1).map(text=>`<p class="job-card__text">${escape(text)}</p>`).join('')}${job.sections.map(section=>`<h4>${escape(section.title)}</h4><ul class="result-list result-list--compact">${section.items.map(item=>`<li>${escape(item)}</li>`).join('')}</ul>`).join('')}<p class="job-card__text">${escape(job.apply)}</p></details></article>`).join('')}</div>`;
+  return `<div class="job-list">${jobs.map(job=>`<article class="job-card" id="${job.slug}"><h3>${escape(job.title)}</h3><p class="job-card__meta">${job.meta.map(m=>`<span class="tag">${escape(m)}</span>`).join('')}</p><p class="job-card__tagline">${escape(job.tagline)}</p><p class="job-card__text">${escape(job.intro[0])}</p><details class="expander"><summary class="min-h-11"><span class="expander__open">Zur vollständigen Ausschreibung</span><span class="expander__close">Weniger anzeigen</span><span class="sr-only"> – ${escape(job.title)}</span></summary>${job.intro.slice(1).map(text=>`<p class="job-card__text">${escape(text)}</p>`).join('')}${job.sections.map(section=>`<h4>${escape(section.title)}</h4><ul class="result-list result-list--compact">${section.items.map(item=>`<li>${escape(item)}</li>`).join('')}</ul>`).join('')}<p class="job-card__text">${escape(job.apply)}</p><p class="job-card__apply"><a class="text-link" href="mailto:${APPLY_EMAIL}?subject=${encodeURIComponent(`Bewerbung: ${job.title}`)}">Bewerbung an ${APPLY_EMAIL}<span class="sr-only"> – ${escape(job.title)}</span> <span aria-hidden="true">→</span></a></p></details></article>`).join('')}</div><p class="job-list__apply">Keine passende Position dabei? Schick uns Deine Initiativbewerbung an <a href="mailto:${APPLY_EMAIL}?subject=Initiativbewerbung">${APPLY_EMAIL}</a>.</p>`;
 }
 
-function cta() {
-  return `<section class="page-section page-section--deep"><div class="gutter"><div class="container"><div class="page-cta"><div><p class="eyebrow eyebrow--light">Ihr nächster Schritt</p><h2 class="display-large display-large--light">Jetzt Kontakt aufnehmen!</h2></div><div class="page-cta__copy"><p>Ob konkretes Vorhaben, erste Orientierung oder weitere Fragen: Erzählen Sie uns kurz, worum es geht.</p><a class="text-link text-link--light" href="/kontakt/">Projekt besprechen <span aria-hidden="true">→</span></a></div></div></div></div></section>`;
+// The one CTA block. Variants are content, never copied markup; pages include
+// them as <!-- content:cta-<name> -->, case studies use the default.
+const ctas = {
+  default: { title: 'Jetzt Kontakt aufnehmen!', copy: ['Ob konkretes Vorhaben, erste Orientierung oder weitere Fragen: Erzählen Sie uns kurz, worum es geht.'], link: true },
+  'case-studies': { title: 'Lassen Sie uns Ihr nächstes Ergebnis <em>definieren.</em>', copy: ['Wir starten mit Ihrer Herausforderung und dem gewünschten Outcome.'], link: true },
+  portfolio: { id: 'portfolio-cta-title', title: 'Welche Leistung sollen wir für Sie <em>liefern?</em>', copy: ['Von der bestehenden Leistung bis zum neuen Use Case: Sprechen wir über die Ergebnisdefinition und den sinnvollsten Einstieg.'], link: true },
+  karriere: { id: 'karriere-statement-title', eyebrow: 'Warum Emposo', title: 'Wir entwickeln nicht nur Technologien.<br>Wir schaffen <em>Ergebnisse.</em>', copy: ['Dafür suchen wir Menschen, die neugierig sind, Verantwortung übernehmen und Dinge ins Ziel bringen wollen. Ob Engineering, Software, AI, Cyber Security oder Projektmanagement: Bei Emposo arbeitest Du an Projekten, die sichtbar etwas bewegen. Gemeinsam mit erfahrenen Kolleginnen und Kollegen, starken Kunden und der Skalierungskraft der Hays Gruppe.', '<strong>Tomorrow, created today.</strong>'], link: false },
+};
+function cta(name = 'default') {
+  const c = ctas[name];
+  if (!c) throw new Error(`Unknown CTA: ${name}`);
+  const labelled = c.id ? ` aria-labelledby="${c.id}"` : '';
+  const id = c.id ? ` id="${c.id}"` : '';
+  const link = c.link ? '<a class="text-link text-link--light" href="/kontakt/">Projekt besprechen <span aria-hidden="true">→</span></a>' : '';
+  return `<section class="page-section page-section--deep"${labelled}><div class="gutter"><div class="container @container"><div class="page-cta @max-content:grid-cols-1"><div><p class="eyebrow eyebrow--light">${c.eyebrow || 'Ihr nächster Schritt'}</p><h2 class="display-large display-large--light"${id}>${c.title}</h2></div><div class="page-cta__copy">${c.copy.map(p => `<p>${p}</p>`).join('')}${link}</div></div></div></div></section>`;
 }
 
 export function projectPage(slug) {
@@ -92,7 +110,7 @@ export function projectPage(slug) {
     ...projects.filter(other=>other.slug!==p.slug && other.discipline===p.discipline),
     ...projects.filter(other=>other.slug!==p.slug && other.discipline!==p.discipline && other.industry===p.industry),
   ].slice(0,2);
-  return `<section class="page-hero"><div class="gutter"><div class="container"><div class="page-hero__grid"><div class="page-hero__copy"><p class="page-breadcrumb"><a href="/">Startseite</a><span aria-hidden="true">/</span><a href="/case-studies/">Projekte</a></p><p class="eyebrow eyebrow--light">${escape(p.industry)}</p><h1 class="display-large display-large--light">${escape(p.name)}</h1><p class="page-hero__intro">${escape(p.headline)}</p></div><figure class="page-hero__visual">${picture(p.image,'(max-width: 900px) 100vw, 50vw',true)}<div class="page-hero__metric"><strong${p.metric.length>8?' class="page-hero__metric--word"':''}>${escape(p.metric)}</strong><span>${escape(p.label)}</span></div></figure></div></div></div></section>
+  return `<section class="page-hero"><div class="gutter"><div class="container @container"><div class="page-hero__grid @max-content:grid-cols-1"><div class="page-hero__copy"><p class="page-breadcrumb"><a href="/">Startseite</a><span aria-hidden="true">/</span><a href="/case-studies/">Projekte</a></p><p class="eyebrow eyebrow--light">${escape(p.industry)}</p><h1 class="display-large display-large--light">${escape(p.name)}</h1><p class="page-hero__intro">${escape(p.headline)}</p></div><figure class="page-hero__visual">${picture(p.image,'(max-width: 900px) 100vw, 50vw',true)}<div class="page-hero__metric"><strong${p.metric.length>8?' class="page-hero__metric--word"':''}>${escape(p.metric)}</strong><span>${escape(p.label)}</span></div></figure></div></div></div></section>
   <section class="page-section"><div class="gutter"><div class="container"><h2 class="display-large" id="projekt-title">Projekt</h2><p class="section-lede">${escape(p.industry)} · ${escape(d.name)}</p><div class="company-values case-facets"><article><span class="company-values__icon" aria-hidden="true">{{icon:document-paper-line}}</span><h3>Herausforderung</h3><p>${escape(p.challenge)}</p></article><article><span class="company-values__icon" aria-hidden="true">{{icon:lightbulb-shine-line}}</span><h3>Lösung</h3><p>${escape(p.solution)}</p></article><article><span class="company-values__icon" aria-hidden="true">{{icon:check-discount-line}}</span><h3>Ergebnis</h3><ul class="result-list">${p.results.map(r=>`<li>${escape(r)}</li>`).join('')}</ul></article></div><p class="section-more"><a class="text-link" href="/portfolio/">${escape(d.name)} ${arrow}</a></p></div></div></section>
   <section class="page-section page-section--paper"><div class="gutter"><div class="container"><p class="eyebrow">Weitere Projekte</p><h2 class="display-large">Expertise, die Ergebnisse liefert.</h2>${projectCards(related)}<p class="section-more"><a class="text-link" href="/case-studies/">Alle Projekte ${arrow}</a></p></div></div></section>${cta()}`;
 }
@@ -156,8 +174,8 @@ function management() {
   };
   const cards = profiles.map(person=>{
     const {teaser, rest} = splitBio(person.bio);
-    const more = `<details class="expander"><summary class="min-h-11"><span class="expander__open">Mehr lesen</span><span class="expander__close">Weniger anzeigen</span></summary>${rest.map(text=>`<p class="management-card__bio">${escape(text)}</p>`).join('')}${person.link ? `<p class="management-card__bio"><a class="text-link" href="${person.link.href}">${escape(person.name)} auf LinkedIn ${arrow}</a></p>` : ''}</details>`;
-    return `<article class="management-card"><figure>${picture(person.image,'(max-width: 700px) 100vw, 33vw')}</figure><h3>${escape(person.name)}</h3><p class="management-card__role">${person.roles.map(escape).join('<br>')}</p>${teaser.map(text=>`<p class="management-card__bio">${escape(text)}</p>`).join('')}${more}</article>`;
+    const more = `<details class="expander"><summary class="min-h-11"><span class="expander__open">Mehr lesen</span><span class="expander__close">Weniger anzeigen</span><span class="sr-only"> – ${escape(person.name)}</span></summary>${rest.map(text=>`<p class="management-card__bio">${escape(text)}</p>`).join('')}${person.link ? `<p class="management-card__bio"><a class="text-link" href="${person.link.href}">${escape(person.name)} auf LinkedIn ${arrow}</a></p>` : ''}</details>`;
+    return `<article class="management-card"><figure>${picture(person.image,'(max-width: 700px) 100vw, 33vw',false,true)}</figure><h3>${escape(person.name)}</h3><p class="management-card__role">${person.roles.map(escape).join('<br>')}</p>${teaser.map(text=>`<p class="management-card__bio">${escape(text)}</p>`).join('')}${more}</article>`;
   }).join('');
   return `<section class="page-section page-section--paper" id="management" aria-labelledby="management-title"><div class="gutter"><div class="container"><p class="eyebrow">Management</p><h2 class="display-large" id="management-title">Menschen, die Verantwortung übernehmen.</h2><div class="management-cards">${cards}</div></div></div></section>`;
 }
@@ -165,6 +183,9 @@ function management() {
 export function fragment(name) {
   switch (name) {
     case 'industry-cards': return industryCards();
+    case 'cta-case-studies': return cta('case-studies');
+    case 'cta-portfolio': return cta('portfolio');
+    case 'cta-karriere': return cta('karriere');
     case 'company-facts': return companyFacts();
     case 'jobs': return jobsList();
     case 'projects-featured': return projectCards(projects.filter(p=>['data2ai-platform','engineering-wissensbasis','mlops-medizinprodukte','multi-site-transition'].includes(p.slug)), false, true);

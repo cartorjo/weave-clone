@@ -12,8 +12,8 @@
 .skip-link {
   background: var(--color-bg);
   color: var(--color-ink);
-  left: 0.75rem;
-  padding: 0.8rem 1rem;
+  inset-inline-start: 0.75rem;
+  padding: var(--space-3) var(--space-4);
   position: fixed;
   text-decoration: none;
   top: 0.75rem;
@@ -37,20 +37,16 @@
 .site-header__inner {
   display: flex;
   align-items: center;
-  gap: var(--spacing-md);
-  min-height: var(--header-h);
   transition: min-height var(--duration-fast) var(--ease-em);
 }
 .site-header.is-scrolled .site-header__inner { min-height: var(--header-h-scrolled); }
 
-.site-logo { display: flex; align-items: center; flex: none; min-height: 2.75rem; width: 9.675rem; max-width: 50%; text-decoration: none; }
-.site-logo img { width: 100%; height: auto; }
+.site-logo { display: flex; align-items: center; flex: none; min-height: 2.75rem; max-width: 50%; text-decoration: none; }
 
 .site-nav {
   display: flex;
   align-items: center;
-  margin-left: auto;
-  gap: clamp(1.125rem, 0.5rem + 1vw, 1.75rem);
+  margin-inline-start: auto;
   min-width: 0;
 }
 
@@ -59,9 +55,6 @@
   color: var(--color-ink);
   display: flex;
   flex: none;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: var(--tracking-caps);
   text-decoration: none;
   text-transform: none;
   transition: color var(--duration-fast) var(--ease-em);
@@ -74,32 +67,26 @@
   color: var(--color-ink);
   display: inline-flex;
   flex: none;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  gap: 0.6rem;
-  letter-spacing: var(--tracking-caps);
-  padding: 0.875rem 1.375rem;
   text-decoration: none;
   text-transform: none;
-  transition: background-color var(--duration-fast) var(--ease-em), color var(--duration-fast) var(--ease-em);
   white-space: nowrap;
 }
 
 /* Mobile menu ---------------------------------------------------------------
    One grouped list with every destination (the old flat menu hid all
    sub-pages). Native <details>; 44px targets; scrolls inside 100dvh. */
-.mobile-menu { flex: none; margin-left: auto; position: relative; }
+.mobile-menu { flex: none; margin-inline-start: auto; position: relative; }
 .mobile-menu summary {
   align-items: center;
   color: var(--color-ink);
   cursor: pointer;
   display: flex;
-  font-size: 0.8125rem;
+  font-size: var(--text-caption);
   font-weight: 600;
-  gap: 0.75rem;
+  gap: var(--space-3);
   letter-spacing: var(--tracking-caps);
   list-style: none;
-  padding: 1.125rem 0 1.125rem 1.35rem;
+  padding-block: var(--space-4) var(--space-4); padding-inline: var(--space-6) 0;
   text-transform: none;
   white-space: nowrap;
 }
@@ -114,7 +101,7 @@
   max-height: calc(100dvh - var(--header-h) - 1.5rem);
   overflow-y: auto;
   position: absolute;
-  right: 0;
+  inset-inline-end: 0;
   top: calc(100% + 0.5rem);
   width: var(--spacing-menu);
   z-index: 60;
@@ -124,11 +111,8 @@
   border-bottom: 1px solid var(--color-line);
   color: var(--color-ink);
   display: flex;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: var(--tracking-caps);
   min-height: 2.75rem;
-  padding: 0.7rem 1.35rem;
+  padding: var(--space-3) var(--space-6);
   text-decoration: none;
   text-transform: none;
 }

@@ -5,3 +5,9 @@ node_modules/
 # kept local-only — regenerate or copy from the design pipeline
 assets/generated/*.png
 assets/archive/
+
+# Production webroot, assembled by `npm start` (tools/build-dist.mjs)
+dist/
+
+# Visual/smoke harness output (tools/visual/)
+.visual/
