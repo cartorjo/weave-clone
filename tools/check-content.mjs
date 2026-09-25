@@ -1,5 +1,6 @@
 // Verify the generated site as a connected set of documents. No server needed.
-import { readFileSync, existsSync, realpathSync } from 'node:fs';
+import { readFileSync, existsSync, realpathSync, statSync } from 'node:fs';
+import { gzipSync } from 'node:zlib';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pages from '../pages.mjs';
@@ -71,5 +72,10 @@ for (const path of legacy) {
   if (rule && isPage(path)) failures.push(`legacy ${path}: is a live page but also redirected by ${rule.source}`);
   if (!rule && !isPage(path)) failures.push(`legacy ${path}: neither a page nor redirected`);
 }
+// Performance budget: the stylesheet stays small (images are budgeted in smoke).
+const CSS_BUDGET = { raw: 64 * 1024, gzip: 14 * 1024 };
+const css = readFileSync(resolve(root, 'css', 'site.css'));
+const cssSize = { raw: css.length, gzip: gzipSync(css).length };
+if (cssSize.raw > CSS_BUDGET.raw || cssSize.gzip > CSS_BUDGET.gzip) failures.push(`css/site.css ${(cssSize.raw / 1024).toFixed(1)} KiB (${(cssSize.gzip / 1024).toFixed(1)} KiB gzip) exceeds budget 64/14 KiB`);
 if (failures.length) { console.error(failures.join('\n')); process.exitCode=1; }
-else console.log(`Content check passed: ${documents.size} pages; local links, anchors, images, headings and templates; ${redirects.length} redirects, ${legacy.length} legacy URLs.`);
+else console.log(`Content check passed: ${documents.size} pages; local links, anchors, images, headings and templates; ${redirects.length} redirects, ${legacy.length} legacy URLs; css ${(cssSize.raw / 1024).toFixed(1)} KiB / ${(cssSize.gzip / 1024).toFixed(1)} KiB gzip.`);
