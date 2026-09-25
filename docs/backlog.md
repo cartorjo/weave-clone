@@ -150,6 +150,15 @@ decisions below.
 - B-22 Metadata length guidance (NEEDS-OWNER): check:meta lists 22
   descriptions under 140 characters and 2 case-study titles over 60.
   Rewording is owner work.
-- B-23 WordPress port parity (M) - TODO outside this repo: mirror PRs #1-#3
-  into emposo-wp (its redirect map targets /expertise/* routes the static site
-  does not have).
+- B-23 WordPress port parity (L) - NEEDS-OWNER (platform decision)
+  Measured 2026-09-26: emposo-wp pins reference/static at c471ef0, 141
+  commits / 47 source files behind this repo. Its route contract has 42
+  routes; 19 no longer exist here (/expertise/ + 11 subpages, 4
+  /portfolio/<mode>/ pages, 5 /branchen/<industry>/ pages, /zertifizierungen/),
+  and its PHP templates and CSS are hand ports (5 of 6 stylesheets already
+  differ from the pin). Catching up = re-port, not sync (several days).
+  Decide first which platform goes live on emposo.de: if the static site
+  launches, the WordPress port is paused; if WordPress launches, it must be
+  re-ported, and the SEO work (301 map, noindex switch) moves to its
+  Cloudflare rules / wp-config. Done meanwhile: emposo-wp#37 mirrors the
+  2026-09-25 hero/header/CTA fixes.
