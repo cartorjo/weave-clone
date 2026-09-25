@@ -1,0 +1,37 @@
+name: check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # Build reproducible, links/redirects/legacy URLs, head tags + JSON-LD,
+      # wording unchanged (copy gate), no-JS and CSS budget.
+      - run: npm run check
+      - name: Serve the site
+        run: |
+          npx serve . -l 8080 > /tmp/serve.log 2>&1 &
+          for i in $(seq 1 30); do curl -sf http://localhost:8080/ >/dev/null && break; sleep 1; done
+      # Browser gates: overflow, console, CSP, axe, no-JS parity, image budget, flows.
+      - name: Smoke
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+        run: npm run smoke
+      - name: Contrast (WCAG AA, every component state)
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+        run: npm run contrast
