@@ -1,5 +1,5 @@
 // Verify the generated site as a connected set of documents. No server needed.
-import { readFileSync, existsSync, realpathSync, statSync } from 'node:fs';
+import { readFileSync, existsSync, realpathSync, statSync, readdirSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -51,6 +51,13 @@ for (const [file,html] of documents) {
       if (!existsSync(resolve(root,src.slice(1)))) failures.push(`${file}: missing responsive image ${src}`);
     }
   }
+}
+// Shared frames are rendered, never hand-written: page sources use
+// <page-hero> / <page-crumb> (content/render.mjs pageHero(), breadcrumb()).
+for (const dir of ['pages', 'sections']) for (const f of readdirSync(resolve(root, dir)).filter(f => f.endsWith('.html'))) {
+  const src = readFileSync(resolve(root, dir, f), 'utf8');
+  if (/class="page-hero[ "]/.test(src)) failures.push(`${dir}/${f}: hand-written page hero (use <page-hero>)`);
+  if (/class="page-breadcrumb"/.test(src)) failures.push(`${dir}/${f}: hand-written breadcrumb (use <page-crumb> or <page-hero crumb>)`);
 }
 // SEO migration: every redirect lands on a real page, and every old emposo.de
 // URL (docs/legacy-urls.txt) is either still a page or 301s somewhere real.
