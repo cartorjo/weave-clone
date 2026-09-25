@@ -161,8 +161,8 @@
   --container-max: 84rem; /* 1344px — the designed ~1348px content measure */
   --header-h: 4.875rem; /* 78px */
   --header-h-scrolled: 4.25rem; /* 68px */
-  /* Motion system: fast = colors/underlines, medium = box inverts/overlays/
-     expanders, slow = image zooms. One easing everywhere: --ease-em. */
+  /* Motion system: fast = colors/lines/arrows, medium = box inverts/overlays/
+     underlines/expanders, slow = image zooms. One easing everywhere: --ease-em. */
   --duration-fast: 180ms;
   --duration-medium: 320ms;
   --duration-slow: 560ms;

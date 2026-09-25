@@ -32,7 +32,7 @@
 .filter-group { align-items: baseline; display: contents; }
 .filter-group > span { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.09em; text-transform: none; }
 .filter-group > div { display: flex; flex-wrap: wrap; gap: 0.45rem; }
-.filter-button { border: 1px solid var(--color-line); border-radius: 100rem; color: var(--color-ink); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.035em; padding: 0.585rem 0.81rem; transition: background-color var(--duration-fast) ease, border-color var(--duration-fast) ease, color var(--duration-fast) ease; }
+.filter-button { border: 1px solid var(--color-line); border-radius: 100rem; color: var(--color-ink); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.035em; padding: 0.585rem 0.81rem; transition: background-color var(--duration-fast) var(--ease-em), border-color var(--duration-fast) var(--ease-em), color var(--duration-fast) var(--ease-em); }
 .work-count { color: var(--color-ink); font-size: 0.85rem; margin-top: 2.25rem; }
 .work-empty { border-top: 1px solid var(--color-line); font-size: 1.2rem; margin-top: 2.25rem; padding-top: 1.125rem; }
 
@@ -42,7 +42,7 @@
 .contact__note { color: var(--color-on-dark-faint); font-size: 1.05rem; line-height: 1.4; margin-top: 2.25rem; max-width: 25.2rem; }
 .contact-form { display: grid; gap: 1.26rem 1.08rem; grid-template-columns: 1fr 1fr; }
 .contact-form label { color: var(--color-on-dark-muted); display: grid; font-size: 0.75rem; font-weight: 600; gap: 0.63rem; letter-spacing: 0.08em; text-transform: none; }
-.contact-form input, .contact-form select, .contact-form textarea { appearance: none; background: transparent; border: 0; border-bottom: 1px solid var(--color-line-light-strong); border-radius: 0; color: var(--color-on-dark); font-size: 1.2rem; font-weight: 400; letter-spacing: 0; outline: none; padding: 0.585rem 0; text-transform: none; transition: border-color var(--duration-fast) ease; width: 100%; }
+.contact-form input, .contact-form select, .contact-form textarea { appearance: none; background: transparent; border: 0; border-bottom: 1px solid var(--color-line-light-strong); border-radius: 0; color: var(--color-on-dark); font-size: 1.2rem; font-weight: 400; letter-spacing: 0; outline: none; padding: 0.585rem 0; text-transform: none; transition: border-color var(--duration-fast) var(--ease-em); width: 100%; }
 .contact-form select { background-color: var(--color-ink); grid-area: 2 / 1; padding-right: 1.6rem; }
 /* Chevron and select share one label grid cell, both placed explicitly (auto-
    placement would push the select into a new column). The 1px bottom margin
@@ -63,7 +63,7 @@
 .contact-form__hint { border-left: 2px solid var(--color-lemon); color: var(--color-on-dark-muted); font-size: 0.94rem; grid-column: 1 / -1; line-height: 1.35; padding-left: 0.81rem; }
 .contact-form__message { grid-column: 1 / -1; }
 .contact-form textarea { resize: vertical; }
-.contact-form button { align-items: center; background: var(--color-lemon); color: var(--color-ink); display: inline-flex; font-size: 0.82rem; font-weight: 600; gap: 0.9rem; grid-column: 1 / -1; justify-content: space-between; letter-spacing: 0.08em; margin-top: 0.9rem; padding: 1.17rem 1.35rem; text-transform: none; transition: background-color var(--duration-fast) ease, color var(--duration-fast) ease; }
+.contact-form button { align-items: center; background: var(--color-lemon); color: var(--color-ink); display: inline-flex; font-size: 0.82rem; font-weight: 600; gap: 0.9rem; grid-column: 1 / -1; justify-content: space-between; letter-spacing: 0.08em; margin-top: 0.9rem; padding: 1.17rem 1.35rem; text-transform: none; transition: background-color var(--duration-fast) var(--ease-em), color var(--duration-fast) var(--ease-em); }
 .contact-form button:hover { background: var(--color-on-dark); color: var(--color-ink); }
 
 .site-footer { background: var(--color-bg-dark-2); color: var(--color-on-dark); padding: clamp(1.4rem, 7vw, 6.3rem) 0 1.8rem; }
