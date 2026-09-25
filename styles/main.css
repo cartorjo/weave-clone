@@ -175,6 +175,9 @@
   --duration-fast: 180ms;
   --duration-medium: 320ms;
   --duration-slow: 560ms;
+  /* Read by js/07-countup.js (ease-out cubic in JS, which cannot consume a
+     CSS curve). Lenis smooth scroll runs at lerp 0.1 (js/00-core.js). */
+  --duration-countup: 900ms;
   /* State layers: content-color overlay opacity per interaction state. */
   --state-hover: .08;
   --state-press: .1;

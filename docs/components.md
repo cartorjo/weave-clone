@@ -11,7 +11,9 @@ statt eine Parallel-Klasse zu erfinden.
 - **Motion-Tokens:** `--duration-fast` 180ms (Farben, Linien, Pfeile),
   `--duration-medium` 320ms (Box-Invertierung, Overlays, Unterstriche),
   `--duration-slow` 560ms (Bild-Zooms). Easing immer `var(--ease-em)`.
-  Countup-JS: 900ms (js/07-countup.js, bindet `.company-facts__value`).
+  Countup: `--duration-countup` 900ms, von js/07-countup.js gelesen (bindet
+  `.company-facts__value`; Ease-out-cubic in JS). Lenis-Scroll: lerp 0.1
+  (js/00-core.js).
 - **Hover-Policy:** Hover nur auf Klickbarem. Alle Hover-Regeln in
   `@media (hover: hover)`, jeweils mit ungegatetem `:focus-visible`-Zwilling.
   Kein font-weight-Wechsel im Hover (Reflow). Navy-Box-Bleed auf Karten
