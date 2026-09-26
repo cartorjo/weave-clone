@@ -135,7 +135,7 @@ a.expertise-card:focus-visible { --focus-halo: 0 0 0 var(--invert-bleed) var(--c
 .result-metric { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-2); margin-top: var(--space-6); margin-bottom: var(--space-2); color: var(--color-ink); }
 .result-metric strong { font-size: var(--text-figure-lg); font-weight: 700; line-height: var(--leading-heading); letter-spacing: var(--tracking-display); }
 .result-metric strong.result-metric__word { font-size: var(--text-figure-md); }
-.result-metric span { border-top: 3px solid var(--color-lemon); padding-top: var(--space-3); font-size: var(--text-lede-sm); line-height: var(--leading-compact); font-weight: 700; }
+.result-metric span { border-top: var(--rule-accent) solid var(--color-lemon); padding-top: var(--space-3); font-size: var(--text-lede-sm); line-height: var(--leading-compact); font-weight: 700; }
 .filter-group > span { font-size: var(--text-body); letter-spacing: 0; }
 .work-count { color: var(--color-ink); }
 
@@ -145,7 +145,7 @@ a.expertise-card:focus-visible { --focus-halo: 0 0 0 var(--invert-bleed) var(--c
 .company-facts__icon { color: var(--color-lemon); display: block; height: var(--icon-sm); margin-bottom: var(--space-4); width: var(--icon-sm); }
 .company-facts__icon svg { height: 100%; width: 100%; }
 .company-facts dt { font-size: var(--text-figure-lg); font-weight: 300; line-height: var(--leading-heading); letter-spacing: var(--tracking-display); }
-.company-facts dd { font-size: var(--text-body); border-top: 3px solid var(--color-lemon); margin-top: var(--space-3); padding-top: var(--space-3); width: fit-content; }
+.company-facts dd { font-size: var(--text-body); border-top: var(--rule-accent) solid var(--color-lemon); margin-top: var(--space-3); padding-top: var(--space-3); width: fit-content; }
 /* Kennzahlen sind nicht klickbar — keine Hover-Effekte (owner review 24-09). */
 .trust-strip { display: flex; flex-wrap: wrap; gap: var(--space-4) var(--space-8); padding-top: var(--space-10); margin-top: var(--space-8); border-top: 1px solid var(--color-line); }
 .trust-strip span { font-size: var(--text-body-lg); font-weight: 700; }
@@ -189,10 +189,10 @@ a.expertise-card:focus-visible { --focus-halo: 0 0 0 var(--invert-bleed) var(--c
 .discipline-cell__icon { color: var(--color-lemon); height: var(--icon-xs); width: var(--icon-xs); margin-bottom: var(--space-1); }
 .discipline-cell__icon svg { height: 100%; width: 100%; }
 .discipline-cell h4 { font-size: var(--text-title-fluid); font-weight: 700; letter-spacing: var(--tracking-snug); line-height: var(--leading-title); }
-.discipline-cell > p { font-size: var(--text-cell); line-height: var(--leading-text); max-width: 30rem; }
+.discipline-cell > p { font-size: var(--text-body-sm); line-height: var(--leading-text); max-width: 30rem; }
 .discipline-cell__promise { margin-top: auto; padding-top: var(--space-4); font-weight: 700; font-size: var(--text-body-sm); }
 .expertise-card__number, .fact-grid__label { font-size: var(--text-body-sm); letter-spacing: 0; }
-.expertise-card__number { border-bottom: 2px solid var(--color-lemon); display: inline-block; padding-bottom: var(--space-1); width: fit-content; }
+.expertise-card__number { border-bottom: var(--rule-accent) solid var(--color-lemon); display: inline-block; padding-bottom: var(--space-1); width: fit-content; }
 .result-list { font-size: var(--text-lede-lg); line-height: var(--leading-prose); margin-bottom: var(--space-10); }
 /* Projekt-Detailseite nach Sabrinas Vorlage (Review 24-09): drei Icon-Spalten. */
 .case-facets .result-list { font-size: var(--text-body-lg); margin-bottom: 0; }
@@ -215,7 +215,7 @@ a.expertise-card:focus-visible { --focus-halo: 0 0 0 var(--invert-bleed) var(--c
    der Mehr-lesen-Expander haelt Rest-Bio + LinkedIn (Fakten entfernt 24-09). */
 .management-card__bio { font-size: var(--text-body); line-height: var(--leading-copy); margin-top: var(--space-4); }
 .company-values { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: var(--space-8); margin-top: var(--space-12); }
-.company-values article { border-top: 3px solid var(--color-lemon); padding-top: var(--space-6); }
+.company-values article { border-top: var(--rule-accent) solid var(--color-lemon); padding-top: var(--space-6); }
 .company-values :is(h2, h3) { font-size: var(--text-values-heading); margin-bottom: var(--space-4); }
 .company-values p { font-size: var(--text-lede-sm); line-height: var(--leading-prose); }
 .company-values__icon { color: var(--color-lemon); display: block; height: var(--icon-sm); margin-bottom: var(--space-4); width: var(--icon-sm); }

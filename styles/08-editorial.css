@@ -53,7 +53,7 @@
   pointer-events: none;
   width: 12px;
 }
-.contact-form__hint { border-inline-start: 2px solid var(--color-lemon); color: var(--color-on-dark-muted); font-size: var(--text-hint); grid-column: 1 / -1; line-height: var(--leading-label); padding-inline-start: var(--space-3); }
+.contact-form__hint { border-inline-start: var(--rule-accent) solid var(--color-lemon); color: var(--color-on-dark-muted); font-size: var(--text-body-sm); grid-column: 1 / -1; line-height: var(--leading-label); padding-inline-start: var(--space-3); }
 .contact-form__message { grid-column: 1 / -1; }
 /* The submit is the header pill (.header-contact, owner 25.09.: both CTAs the
    same). Only grid placement and button resets live here; look, hover and
