@@ -87,7 +87,9 @@
    page-display, page-title, page-cta__title). Variant: --light. Contextual
    widths for heroes/statement live below; everything else is uniform. */
 :root { --display-size: clamp(2.4rem, 5.8vw, 5.5rem); --display-leading: 1.08; }
-.display-large { color: var(--color-ink); font-size: var(--display-size); font-weight: 300; letter-spacing: var(--tracking-display); line-height: var(--display-leading); max-width: 20ch; }
+/* Capped by the viewport so enlarged text (200%) never pushes an unhyphenated
+   word off screen; browsers without German hyphenation (Linux) cannot split. */
+.display-large { color: var(--color-ink); font-size: min(var(--display-size), 12vw); font-weight: 300; letter-spacing: var(--tracking-display); line-height: var(--display-leading); max-width: 20ch; }
 .display-large--light { color: var(--color-on-dark); }
 .display-large em { color: inherit; font-style: normal; font-weight: 700; }
 /* Subpage rhythm: headings under an eyebrow keep the former page-title gap;
