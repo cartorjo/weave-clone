@@ -226,7 +226,7 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   weights 300/400 at one size). Acceptance: <= 6 h3 styles; crops per page.
   Agents: design-system-engineer -> a11y-perf-reviewer -> qa-reviewer.
 
-- B-38 Merge near-duplicate values (S, A) - TODO
+- B-38 Merge near-duplicate values (S, A) - AWAITING OWNER APPROVAL (small text .94/.96/.98 -> --text-body-sm .95, --text-small .9 stays; orange rules 3px -> --rule-accent 2px; ink aliases --color-accent-text/--color-bg-dark-2 removed, 0 visual change. Breakpoint pairs NOT merged: each token is also a .container max-width step, so merging 992/1000 narrowed the container at 1000 and flipped @max-content layouts on 16 routes; needs its own item)
   0.9-0.98rem small text -> 2 roles; one orange-rule weight (2px vs 3px);
   close breakpoint pairs (640/650, 992/1000); ink aliases. Crops per page.
   Agents: design-system-engineer -> qa-reviewer.
