@@ -12,6 +12,7 @@ npm run dev        # assemble + tailwind watch + local server (port 8080)
 npm run build      # one-off production build (assemble + purged CSS)
 npm run check      # build and validate all local links, images, anchors and templates
 npm run build:img  # rebuild responsive images from assets/src/ masters
+npm run build:share # 1200x630 share crops of each page's hero (assets/share/, og:image)
 npm start          # production: assemble dist/ (only shipped files) and serve it
 npm run smoke      # browser smoke (needs the dev server on :8080): overflow, console,
                    # CSP, axe (0 violations), no-JS text parity, images ≤ 750 KiB/page
