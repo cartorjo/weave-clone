@@ -246,8 +246,8 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   loading the URL restores it; no JS = all projects visible (smoke).
   Agents: ux-ia-architect -> frontend-engineer -> a11y-perf-reviewer -> qa-reviewer.
 
-- B-48 Reference cases from the 2026-09-24 deck (M) - IN REVIEW (branch
-  feat/reference-cases-2026-09-24): 15 cases from
+- B-48 Reference cases from the 2026-09-24 deck (M) - NEEDS-OWNER (draft PR #26,
+  decisions on the owner review page, section "Reference cases"): 15 cases from
   2026-09-24-emposo-reference-cases-v14-container-format.pptx (Downloads copy,
   rev. 3 of 2026-09-26; the OneDrive copy's hidden slides and its SOP/Curricula
   case stay out) added to content/site-data.mjs with the slide bullets
