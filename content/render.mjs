@@ -14,10 +14,12 @@ export function picture(key, sizes = '(max-width: 700px) 100vw, 50vw', priority 
 }
 
 // The one breadcrumb: Startseite, an optional parent [href, label], the page label.
+// A navigation landmark with an ordered list; the page's own label is
+// aria-current (B-43, label approved 2026-09-26).
 export function breadcrumb(label, parent) {
   const sep = '<span aria-hidden="true">/</span>';
-  const trail = [parent && `<a href="${parent[0]}">${parent[1]}</a>`, label].filter(Boolean).join(sep);
-  return `<p class="page-breadcrumb"><a href="/">Startseite</a>${sep}${trail}</p>`;
+  const items = ['<a href="/">Startseite</a>', parent && `<a href="${parent[0]}">${parent[1]}</a>`, label && `<span aria-current="page">${label}</span>`].filter(Boolean);
+  return `<nav class="page-breadcrumb" aria-label="Brotkrümelnavigation"><ol>${items.map((item, i) => `<li>${i ? sep : ''}${item}</li>`).join('')}</ol></nav>`;
 }
 
 // The one subpage hero frame. Pages supply only their copy (eyebrow, H1,

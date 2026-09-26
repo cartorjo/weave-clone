@@ -319,8 +319,8 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   them". Values no project carries (today aerospace, technology,
   produktion-industrialisierung, software-cloud) render `disabled` at build
   time, labels unchanged; they re-enable when a matching reference is added.
-- B-43 [drafts on the owner review page 2026-09-26] Breadcrumb as nav landmark (S) - NEEDS-OWNER: nav > ol with
-  aria-current needs a nav label ([TEXT: owner]).
+- B-43 Breadcrumb as nav landmark (S) - DONE, owner approved 2026-09-26: nav
+  aria-label "Brotkrümelnavigation" > ol, aria-current on the page label; pixel-identical (0 of 67 shots changed).
 - B-44 [drafts on the owner review page 2026-09-26] One listing URL (M) - NEEDS-OWNER: /branchen/ and /case-studies/ render
   the same project list; either /branchen/ links to /case-studies/ or
   /case-studies/ gets a nav entry ([TEXT: owner] label).

@@ -42,12 +42,12 @@ const shareImage = page => { const key = shareKey(root, page); return { src: sha
 // BreadcrumbList from the page's own visible breadcrumb (existing labels only).
 const unescape = t => t.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').trim();
 const breadcrumb = (body, url) => {
-  const crumb = body.match(/<p class="page-breadcrumb">([\s\S]*?)<\/p>/)?.[1];
+  const crumb = body.match(/<nav class="page-breadcrumb"[^>]*>([\s\S]*?)<\/nav>/)?.[1];
   if (!crumb) return null;
   const links = [...crumb.matchAll(/<a href="([^"]+)">([\s\S]*?)<\/a>/g)].map(([, href, name]) => ({ name: unescape(name), item: `${SITE_ORIGIN}${href}` }));
-  const tail = crumb.slice(crumb.lastIndexOf('</span>') + 7);
   // A trail that ends at its parent link names the page by its own H1.
-  const current = /<a /.test(tail) ? unescape(body.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1] || '') : unescape(tail);
+  const own = crumb.match(/<span aria-current="page">([\s\S]*?)<\/span>/)?.[1];
+  const current = own ? unescape(own) : unescape(body.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1] || '');
   const items = [...links, ...(current ? [{ name: current, item: url }] : [])];
   return { '@type': 'BreadcrumbList', itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, item: it.item })) };
 };
