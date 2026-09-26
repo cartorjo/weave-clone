@@ -3,6 +3,16 @@
   "trailingSlash": true,
   "redirects": [
     {
+      "source": "/case-studies/technische-dokumentation",
+      "destination": "/case-studies/technische-dokumentation-halbleiter/",
+      "type": 301
+    },
+    {
+      "source": "/case-studies/fahrzeugfunktionen",
+      "destination": "/case-studies/funktionsbetreuung-infotainment/",
+      "type": 301
+    },
+    {
       "source": "/about",
       "destination": "/about-us/",
       "type": 301

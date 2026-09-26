@@ -46,8 +46,9 @@ plus per-page content, driven by the `pages.mjs` manifest:
 - `pages.mjs` — route, title, description, active-nav key (`nav`, optional
   `navGroup`/`navExact` for section ancestors), body class and script list
   per page.
-- `content/site-data.mjs` — the eight disciplines, five industries, and ten
-  reference projects from the September 2026 workbook. Preserve qualifiers
+- `content/site-data.mjs` — the eight disciplines, five industries, and 23
+  reference projects: eight from the September 2026 workbook plus fifteen from
+  the 2026-09-24 reference-cases deck (bullets verbatim). Preserve qualifiers
   such as “over 70%” and “up to EUR 80,000” when editing project claims.
 - `content/render.mjs` — shared cards, filters, management and detail-page
   renderers. `project:<slug>` and `industry:<slug>` manifest entries render

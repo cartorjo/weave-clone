@@ -246,6 +246,30 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   loading the URL restores it; no JS = all projects visible (smoke).
   Agents: ux-ia-architect -> frontend-engineer -> a11y-perf-reviewer -> qa-reviewer.
 
+- B-48 Reference cases from the 2026-09-24 deck (M) - IN REVIEW (branch
+  feat/reference-cases-2026-09-24): 15 cases from
+  2026-09-24-emposo-reference-cases-v14-container-format.pptx (Downloads copy,
+  rev. 3 of 2026-09-26; the OneDrive copy's hidden slides and its SOP/Curricula
+  case stay out) added to content/site-data.mjs with the slide bullets
+  verbatim; technische-dokumentation and fahrzeugfunktionen replaced by their
+  deck versions (301s in serve.json). projectPage() renders bullet columns and
+  the optional `facts` list; workbook cases unchanged. Owner decisions
+  2026-09-26: publish contract volumes and client descriptors as in the deck;
+  extend the template rather than condense. Edited on purpose: "TISAX AL3" ->
+  "TISAX" (no TISAX level, docs/facts.md).
+  NEEDS-OWNER before copy:accept: (1) metric + label per case (15 drafts);
+  (2) industry labels "Halbleiter" and "Mittelstand & KRITIS", and whether the
+  pentest case may enable the aerospace chip; (3) discipline for the
+  Antriebssteuergeräte case (engineering-services vs system-engineering) and the
+  Pharma-Diagnostik case (test-validierung vs cyber-compliance); (4) photos for
+  Kreislaufwirtschaft (reuses `software`) and Infotainment (reuses
+  `automotive`), and whether the "parking-1" photo belongs to Infotainment
+  rather than Penetrationstests; (5) pentest figures 30 vs "23 Aufträge seit
+  09/2023" (deck inconsistency); (6) eyebrow "23 Projekte. Messbare
+  Ergebnisse."; (7) 13 alt texts in tools/import-feedback-assets.mjs.
+  Acceptance: npm run check 0 after copy:accept; smoke green with 23 cards;
+  visual:diff 0 on the eight untouched case routes; 301s resolve.
+
 ## Later / owner decisions
 
 - B-15 English route scaffold /en/ with hreflang (L) - NEEDS-OWNER (content needed)

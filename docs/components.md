@@ -186,6 +186,14 @@ source or content/site-data.mjs (never from the renderer).
 - Accessibility: one link per card; photo decorative (alt=""), the title names the link
 - Status: active
 
+### case-facets
+- Purpose: the "Projekt" section of a case study: optional facts list, then the three icon columns Herausforderung / Lösung / Ergebnis.
+- Renderer: projectPage(slug) with column(value); CSS: 10-feedback.css -> .company-values.case-facets, .result-list; 11-components.css -> .result-list--compact (`.project-facts` is a hook only, no rules yet)
+- Props (data): challenge and solution as one sentence (`<p>`, workbook cases) or as a bullet list (`<ul class="result-list">`, 2026-09-24 deck cases); results always a list; optional facts[] (the deck's "Projekt" box, split at its " I " separators) rendered as `.result-list--compact.project-facts` between the lede and the columns
+- Icons: document-paper-line, lightbulb-shine-line, check-discount-line (the deck's column icons are the same files)
+- Content rule: strings verbatim from the owner's deck; metric/label/industry labels are drafts until copy:accept
+- Status: active
+
 ### industry-tile
 - Purpose: static industry content tile (owner 24.09: no link, no hover).
 - Renderer: industryCards(); CSS: .industry-tile, __copy, __number
