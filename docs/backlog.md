@@ -324,8 +324,8 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
 - B-44 [drafts on the owner review page 2026-09-26] One listing URL (M) - NEEDS-OWNER: /branchen/ and /case-studies/ render
   the same project list; either /branchen/ links to /case-studies/ or
   /case-studies/ gets a nav entry ([TEXT: owner] label).
-- B-45 [drafts on the owner review page 2026-09-26] Keep-exploring links on /karriere/ and /kontakt/ (S) - NEEDS-OWNER:
-  a heading ([TEXT: owner]) plus existing link labels.
+- B-45 Keep-exploring links on /karriere/ and /kontakt/ (S) - DONE, owner approved 2026-09-26:
+  "Weiter entdecken" + Leistungen, Branchen, Case Studies, Über uns (keepExploring() in content/render.mjs).
 - B-46 [drafts on the owner review page 2026-09-26] Metadata facts (S) - NEEDS-OWNER: sameAs profile URLs, Article
   author/publication dates, home title order, "Case Study" vs "Projekte".
 
