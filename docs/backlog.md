@@ -246,8 +246,8 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   loading the URL restores it; no JS = all projects visible (smoke).
   Agents: ux-ia-architect -> frontend-engineer -> a11y-perf-reviewer -> qa-reviewer.
 
-- B-48 Reference cases from the 2026-09-24 deck (M) - NEEDS-OWNER (draft PR #26,
-  decisions on the owner review page, section "Reference cases"): 15 cases from
+- B-48 Reference cases from the 2026-09-24 deck (M) - DONE (PR #26; owner
+  approved all 39 review items 2026-09-26 "All approve", copy:accept run): 15 cases from
   2026-09-24-emposo-reference-cases-v14-container-format.pptx (Downloads copy,
   rev. 3 of 2026-09-26; the OneDrive copy's hidden slides and its SOP/Curricula
   case stay out) added to content/site-data.mjs with the slide bullets
@@ -257,7 +257,7 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   2026-09-26: publish contract volumes and client descriptors as in the deck;
   extend the template rather than condense. Edited on purpose: "TISAX AL3" ->
   "TISAX" (no TISAX level, docs/facts.md).
-  NEEDS-OWNER before copy:accept: (1) metric + label per case (15 drafts);
+  Approved as drafted 2026-09-26: (1) metric + label per case (15 drafts);
   (2) industry labels "Halbleiter" and "Mittelstand & KRITIS", and whether the
   pentest case may enable the aerospace chip; (3) discipline for the
   Antriebssteuergeräte case (engineering-services vs system-engineering) and the
