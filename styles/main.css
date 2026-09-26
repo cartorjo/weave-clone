@@ -226,8 +226,6 @@
   /* State layers: content-color overlay opacity per interaction state. */
   --state-hover: .08;
   --state-press: .1;
-  /* Disabled controls (filter values without a reference): content opacity. */
-  --state-disabled: .38;
   /* Minimum interactive target (owner decision: 44px, not M3 48dp). */
   --target-min: 2.75rem;
   /* Icon and icon-chip sizes. */

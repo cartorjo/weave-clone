@@ -14,7 +14,6 @@ decisions below.
 - 44px minimum target (min-h-11, .text-link) instead of M3 48dp.
 - Required form fields unmarked; only "(optional)" is marked.
 - #4597ce stays as --color-info.
-- Filter values without a reference are disabled, not hidden (26.09., B-42).
 - Spacing tokenized as shipped (--space-legacy-*); an 8px snap is B-18.
 - Industry tiles are static content, not links (24.09).
 - Karriere gets an application route to info@emposo.eu (2026-09-25; this
@@ -149,6 +148,22 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   select's min-content, 445px in 355px) and the homepage reference cards.
   Acceptance: Page.setFontSizes 32 at 390: no element in main past x=390 on
   / and /kontakt/; default size visual:diff 0.
+  Note (2026-09-26): the gate assumes German hyphenation. On the Linux runner
+  Chrome downloads the dictionary ~65 s after launch, so the first documents
+  measured were un-hyphenated (PR #12 red on home only; #13's 12vw cap on
+  .display-large papered over that one route). The smoke now waits for
+  hyphenation before the 200% stage. The un-hyphenated case is B-47.
+- B-47 Headings without a hyphenation dictionary at 200% text (M, A) - NEEDS-OWNER:
+  with auto-hyphenation off, 26 elements on 11 routes overflow at 390 with
+  32px text (run 36228119775): card h3s such as "Herausforderung" (54.4px,
+  needs ~450px), "Zulassungs- und Homologationstests" and "Langzeit-
+  Werkprogramm" (48px), plus the article/p they push out. Affects Linux
+  Chrome before its dictionary component arrives and offline installs; Firefox,
+  Safari and Android Chrome ship German hyphenation. Options: cap card
+  headings by the viewport like #13 did for .display-large (min(size, Nvw)),
+  or accept the state and keep the rule "display type never breaks mid-word".
+  Owner decides whether this state must be supported; if yes, kind A with
+  before/after crops at 390/200%, default-size visual:diff 0.
   Agents: design-system-engineer -> frontend-engineer -> a11y-perf-reviewer -> qa-reviewer.
 
 - B-26 Smoke covers every route (S, T) - DONE (415609e)
@@ -276,10 +291,8 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   re-ported, and the SEO work (301 map, noindex switch) moves to its
   Cloudflare rules / wp-config. Done meanwhile: emposo-wp#37 mirrors the
   2026-09-25 hero/header/CTA fixes.
-- B-42 Zero-result filter chips (S) - DONE: owner decision 26.09. "disable
-  them". Values no project carries (today aerospace, technology,
-  produktion-industrialisierung, software-cloud) render `disabled` at build
-  time, labels unchanged; they re-enable when a matching reference is added.
+- B-42 Zero-result filter chips (S) - NEEDS-OWNER: 4 of 15 values match no
+  project; hide them (removes rendered strings) or keep the full A-Z set.
 - B-43 Breadcrumb as nav landmark (S) - NEEDS-OWNER: nav > ol with
   aria-current needs a nav label ([TEXT: owner]).
 - B-44 One listing URL (M) - NEEDS-OWNER: /branchen/ and /case-studies/ render

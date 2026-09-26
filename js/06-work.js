@@ -48,7 +48,7 @@
         var keys = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1, Home: 'first', End: 'last' };
         var step = keys[event.key];
         if (!step) return;
-        var group = buttons.filter(function (b) { return !b.disabled && b.getAttribute('data-filter-group') === button.getAttribute('data-filter-group'); });
+        var group = buttons.filter(function (b) { return b.getAttribute('data-filter-group') === button.getAttribute('data-filter-group'); });
         var index = group.indexOf(button);
         var next = step === 'first' ? 0 : step === 'last' ? group.length - 1 : (index + step + group.length) % group.length;
         event.preventDefault();
@@ -66,7 +66,7 @@
 
     var industryFromQuery = new URLSearchParams(window.location.search).get('branche');
     if (industryFromQuery && buttons.some(function (button) {
-      return !button.disabled && button.getAttribute('data-filter-group') === 'industry' && button.getAttribute('data-filter-value') === industryFromQuery;
+      return button.getAttribute('data-filter-group') === 'industry' && button.getAttribute('data-filter-value') === industryFromQuery;
     })) selectFilter('industry', industryFromQuery);
 
     // The filter UI is meaningless without this script: it ships hidden
