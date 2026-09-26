@@ -53,6 +53,8 @@ if (args[0] === '--compose') {
     const el = await page.$(selector);
     if (!el) { console.log(`skip ${name}: ${selector} not found`); continue; }
     await el.evaluate(e => e.scrollIntoView({ block: 'start' }));
+    // the sticky header would cover the top of every other component (CSSOM, CSP-safe)
+    await page.evaluate(own => { const h = document.querySelector('.site-header'); if (h && !own) h.style.visibility = 'hidden'; }, name.startsWith('header'));
     await new Promise(r => setTimeout(r, 300));
     await el.screenshot({ path: `${out}/${name}.png` });
   }
