@@ -203,6 +203,12 @@
   --space-24: 6rem;
   --space-28: 7rem;
   --space-40: 10rem;
+  /* Fluid spacing steps (B-39): the only clamp()ed gaps, paddings and margins
+     outside the section rhythm; floors and caps sit on the 8px grid. */
+  --space-fluid-sm: clamp(1rem, 2.5vw, 2.5rem);
+  --space-fluid-md: clamp(1rem, 4vw, 3.5rem);
+  --space-fluid-lg: clamp(1rem, 5vw, 5rem);
+  --space-fluid-xl: clamp(1.5rem, 8vw, 7rem);
   /* Composite/geometry tokens with no fitting @theme namespace. */
   --gutter: 4.5vw;
   --container-max: 84rem; /* 1344px — the designed ~1348px content measure */

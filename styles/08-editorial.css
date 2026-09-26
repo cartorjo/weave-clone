@@ -8,8 +8,8 @@
 
 .hero { background: var(--color-ink); color: var(--color-on-dark); overflow: hidden; }
 .hero__grid { display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(17.1rem, 0.96fr); min-height: min(47.7rem, calc(100vh - var(--header-h))); }
-.hero__copy { align-self: center; display: flex; flex-direction: column; justify-content: center; padding-block: clamp(1.8rem, 9vw, 9rem) clamp(1.6rem, 8vw, 8.1rem); padding-inline: 0 clamp(1rem, 5vw, 6.3rem); }
-.hero__intro { align-items: flex-end; border-top: 1px solid var(--color-line-light); display: flex; gap: var(--space-8); justify-content: space-between; margin-top: clamp(1rem, 5vw, 4.5rem); max-width: 44.1rem; padding-top: var(--space-4); }
+.hero__copy { align-self: center; display: flex; flex-direction: column; justify-content: center; padding-block: var(--space-fluid-xl) var(--space-fluid-xl); padding-inline: 0 var(--space-fluid-lg); }
+.hero__intro { align-items: flex-end; border-top: 1px solid var(--color-line-light); display: flex; gap: var(--space-8); justify-content: space-between; margin-top: var(--space-fluid-lg); max-width: 44.1rem; padding-top: var(--space-4); }
 .hero__intro p { color: var(--color-on-dark-muted); font-size: var(--text-lede-fluid); line-height: var(--leading-label); max-width: 25.2rem; }
 .hero__visual { margin-block: 0 0; margin-inline: 0 calc(var(--bleed-right) * -1); min-height: 100%; overflow: hidden; position: relative; }
 .hero__visual::after { content: ""; inset: 0; position: absolute; pointer-events: none; }
@@ -26,7 +26,7 @@
 .work { background: var(--color-bg); }
 .work__heading { align-items: end; display: grid; gap: var(--space-10); grid-template-columns: minmax(0, 1.35fr) minmax(13.5rem, 0.65fr); }
 .work__heading > p { font-size: var(--text-lede-lg); line-height: var(--leading-label); max-width: 25.2rem; }
-.work-filter { border-top: 1px solid var(--color-line); display: grid; gap: var(--space-4); grid-template-columns: auto 1fr; margin-top: clamp(1.6rem, 8vw, 6.3rem); padding-top: var(--space-4); }
+.work-filter { border-top: 1px solid var(--color-line); display: grid; gap: var(--space-4); grid-template-columns: auto 1fr; margin-top: var(--space-fluid-xl); padding-top: var(--space-4); }
 .filter-group { align-items: baseline; display: contents; }
 .filter-group > span { font-weight: 600; text-transform: none; }
 .filter-group > div { display: flex; flex-wrap: wrap; gap: var(--space-2); }
@@ -60,15 +60,15 @@
    focus come from the pill rules. */
 .contact-form button { border: 0; cursor: pointer; font-family: inherit; grid-column: 1 / -1; justify-self: start; margin-top: var(--space-4); }
 
-.site-footer { padding: clamp(1.4rem, 7vw, 6.3rem) 0 var(--space-8); }
-.site-footer__top { display: grid; gap: clamp(1rem, 5vw, 4.5rem); grid-template-columns: 1.15fr 0.8fr 0.68fr 0.8fr; }
+.site-footer { padding: var(--space-fluid-xl) 0 var(--space-8); }
+.site-footer__top { display: grid; gap: var(--space-fluid-lg); grid-template-columns: 1.15fr 0.8fr 0.68fr 0.8fr; }
 .site-footer__contact > p:not(.eyebrow) { color: var(--color-on-dark-faint); font-size: var(--text-body); line-height: var(--leading-label); margin-top: var(--space-6); }
 .site-footer nav, .site-footer__contact { display: grid; align-content: start; gap: var(--space-3); }
 .site-footer nav .eyebrow, .site-footer__contact .eyebrow { margin: 0 0 var(--space-4); }
 .site-footer a { color: var(--color-on-dark); font-size: var(--text-small); text-decoration: none; }
 .site-footer a:hover { color: var(--color-lemon); }
 .site-footer__contact > a { align-items: center; display: inline-flex; font-weight: 600; gap: var(--space-3); }
-.site-footer__bottom { border-top: 1px solid var(--color-line-light); display: flex; font-size: var(--text-micro); justify-content: space-between; margin-top: clamp(1.4rem, 7vw, 6.3rem); padding-top: var(--space-6); }
+.site-footer__bottom { border-top: 1px solid var(--color-line-light); display: flex; font-size: var(--text-micro); justify-content: space-between; margin-top: var(--space-fluid-xl); padding-top: var(--space-6); }
 .site-footer__bottom div { display: flex; gap: var(--space-6); }
 .site-footer__bottom a { color: inherit; font-size: inherit; }
 

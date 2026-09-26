@@ -39,7 +39,7 @@
   display: flex;
   font-weight: 600;
   gap: var(--space-2);
-  margin-bottom: clamp(1.2rem, 6vw, 5.4rem);
+  margin-bottom: var(--space-fluid-lg);
   text-transform: none;
 }
 .page-breadcrumb a { color: inherit; text-decoration: none; }
@@ -51,7 +51,7 @@
 .page-hero__intro {
   border-top: 1px solid var(--color-line-light);
   font-size: var(--text-lede-fluid);
-  margin-top: clamp(0.8rem, 4vw, 3.375rem);
+  margin-top: var(--space-fluid-md);
   max-width: 34.2rem;
   padding-top: var(--space-4);
 }
@@ -142,7 +142,7 @@
   color: var(--color-ink);
   display: grid;
   gap: var(--space-4);
-  padding: clamp(0.52rem, 2.6vw, 2.43rem) 0;
+  padding: var(--space-fluid-sm) 0;
   text-decoration: none;
 }
 .expertise-card:last-child { border-bottom: 1px solid var(--color-line); }
@@ -151,13 +151,13 @@
 .expertise-card p { color: var(--color-ink); font-size: var(--text-card); line-height: 1.38; max-width: 28.8rem; }
 
 /* Portfolio ---------------------------------------------------------------- */
-.portfolio-modes { border-top: 1px solid var(--color-line-light); margin-top: clamp(1.6rem, 8vw, 7.2rem); }
+.portfolio-modes { border-top: 1px solid var(--color-line-light); margin-top: var(--space-fluid-xl); }
 .portfolio-mode {
   border-bottom: 1px solid var(--color-line-light);
   display: grid;
-  gap: clamp(1rem, 5vw, 5.4rem);
+  gap: var(--space-fluid-lg);
   grid-template-columns: 3.78rem minmax(12.6rem, 0.9fr) minmax(16.2rem, 1.1fr) auto;
-  padding: clamp(0.8rem, 4vw, 3.69rem) 0;
+  padding: var(--space-fluid-md) 0;
 }
 /* Row numbers read as display digits like the 5-Stufen phases (owner review
    25-09: at least 2em) — Kennzahlen scale, light weight, lemon. */
