@@ -71,7 +71,7 @@ export default [
     nav: 'branchen',
     bodyClass: 'subpage wrap-anywhere',
     content: 'pages/branchen.html',
-    scripts: ['00-core', '01-header', '06-work'],
+    scripts: ['00-core', '01-header'],
   },
   {
     out: 'karriere/index.html',
