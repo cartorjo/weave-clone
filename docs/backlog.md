@@ -261,7 +261,7 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   German form error messages in js/06-work.js; the screen-reader suffixes
   " – <Name>" on expander toggles. Approve or reword; changes go through
   npm run copy:accept.
-- B-22 Metadata length guidance (NEEDS-OWNER): check:meta lists 22
+- B-22 Metadata length guidance (NEEDS-OWNER, drafts on the owner review page 2026-09-26): check:meta lists 22
   descriptions under 140 characters and 2 case-study titles over 60.
   Rewording is owner work.
 - B-23 WordPress port parity (L) - NEEDS-OWNER (platform decision)
@@ -280,12 +280,19 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   them". Values no project carries (today aerospace, technology,
   produktion-industrialisierung, software-cloud) render `disabled` at build
   time, labels unchanged; they re-enable when a matching reference is added.
-- B-43 Breadcrumb as nav landmark (S) - NEEDS-OWNER: nav > ol with
+- B-43 [drafts on the owner review page 2026-09-26] Breadcrumb as nav landmark (S) - NEEDS-OWNER: nav > ol with
   aria-current needs a nav label ([TEXT: owner]).
-- B-44 One listing URL (M) - NEEDS-OWNER: /branchen/ and /case-studies/ render
+- B-44 [drafts on the owner review page 2026-09-26] One listing URL (M) - NEEDS-OWNER: /branchen/ and /case-studies/ render
   the same project list; either /branchen/ links to /case-studies/ or
   /case-studies/ gets a nav entry ([TEXT: owner] label).
-- B-45 Keep-exploring links on /karriere/ and /kontakt/ (S) - NEEDS-OWNER:
+- B-45 [drafts on the owner review page 2026-09-26] Keep-exploring links on /karriere/ and /kontakt/ (S) - NEEDS-OWNER:
   a heading ([TEXT: owner]) plus existing link labels.
-- B-46 Metadata facts (S) - NEEDS-OWNER: sameAs profile URLs, Article
+- B-46 [drafts on the owner review page 2026-09-26] Metadata facts (S) - NEEDS-OWNER: sameAs profile URLs, Article
   author/publication dates, home title order, "Case Study" vs "Projekte".
+
+- B-47 Smoke axe flake on case-study heroes (S, T) - DONE: CI runs 36259919492
+  and 36265832580 reported axe color-contrast x26 on a case-study hero at 390
+  (on-dark text measured on white); not reproducible locally (0/24 at 6x CPU
+  throttle). Smoke now waits for fonts, eager images and two frames before
+  axe and reruns axe once on violations; a real contrast bug fails both runs
+  (negative-tested: 34 failures, 0 marked as flake).
