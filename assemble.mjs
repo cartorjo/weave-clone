@@ -96,7 +96,9 @@ const lastModified = page => {
 };
 // First published = the day of the commit that first added the page's output
 // (owner decision 2026-09-26, B-46); a page not yet committed counts as today.
-const firstPublished = page => git(['log', '--diff-filter=A', '--format=%cs', '--', page.out]).split('\n').filter(Boolean).pop() || today();
+// Without a repository the committed page already carries that date.
+const committedPublished = page => { try { return readFileSync(join(root, page.out), 'utf8').match(/"datePublished":"(\d{4}-\d{2}-\d{2})"/)?.[1]; } catch { return undefined; } };
+const firstPublished = page => (gitAvailable ? git(['log', '--diff-filter=A', '--format=%cs', '--', page.out]).split('\n').filter(Boolean).pop() : committedPublished(page)) || today();
 const canonicalPath = out => out === 'index.html' ? '/' : out.endsWith('/index.html') ? `/${out.slice(0, -'index.html'.length)}` : null;
 const partial = (name) => readFileSync(join(root, 'partials', `${name}.html`), 'utf8');
 

@@ -5,8 +5,8 @@
 // nav: which header item is highlighted. navExact: false marks an ancestor
 // (aria-current="true" instead of "page"), e.g. a case-study detail page.
 import { projects } from './content/site-data.mjs';
-// Owner-approved meta descriptions (B-22, 2026-09-26) and the two titles over
-// 60 characters, which drop the "Case Study" segment.
+// Owner-approved meta descriptions (B-22, 2026-09-26). The two approved
+// shorter titles belonged to cases replaced by B-48 and are gone with them.
 const caseMeta = {
   'engineering-wissensbasis': { description: 'Von Wochen auf Stunden: Engineering-Wissen wird ausführbar. Eine vernetzte Wissensbasis senkt den Aufwand bei Testspezifikationen um 83 %, voll nachvollziehbar.' },
   'rechenzentrums-umzug': { description: 'Transformation ohne eine Minute migrationsbedingten Stillstand: Ein Rechenzentrum zieht um, während Produktion und Logistik durchgängig verfügbar bleiben.' },
@@ -15,8 +15,6 @@ const caseMeta = {
   'multi-site-transition': { description: '27+ Beauftragungen termingerecht und auditfest abgenommen: ein Transition-Programm über mehrere Standorte, mit Rollout-Blueprint für weitere Standorte.' },
   'homologationstests': { description: 'Markteinführung über mehrere Fahrzeugwellen abgesichert: Zulassungs- und Homologationstests mit eingehaltenen Terminen und revisionssicheren Nachweisen.' },
   'managed-service': { description: 'Langfristige Betriebssicherheit mit klaren SLAs: ein Managed Service seit 2018, mit über 8 Jahren stabilem Betrieb und ohne SLA-Verletzungen im Energiesektor.' },
-  'fahrzeugfunktionen': { title: 'Fahrzeugfunktionen als Langzeit-Werkprogramm | Emposo', description: 'Fünf Jahre planbare Lieferung kompletter Funktionsumfänge: ein Langzeit-Werkprogramm mit termingerechter Lieferung sowie Planungs- und Budgetsicherheit.' },
-  'technische-dokumentation': { title: 'Technische Dokumentation als Dauerleistung | Emposo', description: '800 technische Dokumente pro Jahr, skalierbar geliefert: technische Dokumentation als Dauerleistung, die Produktfreigaben seit mehr als 6 Jahren absichert.' },
 };
 
 export default [
