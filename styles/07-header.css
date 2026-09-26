@@ -4,7 +4,7 @@
      every section below it;
    - the flex row has an explicit gap, so the CTA can never touch Karriere;
    - every top-bar item is flex:none + nowrap, and below --breakpoint-nav
-     (1280px, mirrored in js/01-header.js) the desktop items disappear
+     (--breakpoint-nav, 75rem = 1200px, mirrored in js/01-header.js) the desktop items disappear
      entirely — there is no width at which the bar can overflow or overlap.
    Link styling (Edenspiekermann-style underlines, pill CTA) lives in
    10-feedback.css. */
@@ -41,7 +41,7 @@
 }
 .site-header.is-scrolled .site-header__inner { min-height: var(--header-h-scrolled); }
 
-.site-logo { display: flex; align-items: center; flex: none; min-height: 2.75rem; max-width: 50%; text-decoration: none; }
+.site-logo { display: flex; align-items: center; flex: none; min-height: var(--target-min); max-width: 50%; text-decoration: none; }
 
 .site-nav {
   display: flex;
@@ -111,7 +111,7 @@
   border-bottom: 1px solid var(--color-line);
   color: var(--color-ink);
   display: flex;
-  min-height: 2.75rem;
+  min-height: var(--target-min);
   padding: var(--space-3) var(--space-6);
   text-decoration: none;
   text-transform: none;

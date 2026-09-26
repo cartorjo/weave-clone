@@ -50,8 +50,8 @@ await pool(jobs, 6, async ({ r, w }) => {
   } finally { await page.close(); }
 });
 
-// 2. axe on core routes (CSP bypassed only here so axe can be injected)
-await pool(CORE.flatMap(r => [390, 1400].map(w => ({ r, w }))), 4, async ({ r, w }) => {
+// 2. axe on every route (CSP bypassed only here so axe can be injected)
+await pool(routes.flatMap(r => [390, 1400].map(w => ({ r, w }))), 4, async ({ r, w }) => {
   const { page } = await open(r, w, { bypassCSP: true, motion: 'reduce' });
   try {
     await page.evaluate(AXE);
@@ -84,17 +84,65 @@ for (const r of CORE) {
   for (const t of missing.slice(0, 5)) fail(`no-js ${slug(r)}: "${t.slice(0, 60)}" only visible with JS`);
 }
 
-// 2c. image weight budget per core page (all lazy images loaded), desktop and phone ×2.
-const IMAGE_BUDGET = 750 * 1024;
+// 2c. image and font weight budgets per core page (all lazy images loaded), desktop and phone ×2.
+const IMAGE_BUDGET = 750 * 1024, FONT_BUDGET = 100 * 1024;
 for (const [w, dpr] of [[1400, 1], [390, 2]]) for (const r of CORE) {
   const page = await browser.newPage(); await page.setCacheEnabled(false); await page.setViewport({ width: w, height: 900, deviceScaleFactor: dpr });
-  let bytes = 0; const pending = [];
-  page.on('response', res => { if (res.request().resourceType() === 'image') pending.push(res.buffer().then(b => { bytes += b.length; }).catch(() => {})); });
+  let bytes = 0, fonts = 0; const pending = [];
+  page.on('response', res => { const t = res.request().resourceType(); if (t === 'image' || t === 'font') pending.push(res.buffer().then(b => { if (t === 'image') bytes += b.length; else fonts += b.length; }).catch(() => {})); });
   await page.goto(BASE + r, { waitUntil: 'networkidle0' });
   await page.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 600) { scrollTo(0, y); await new Promise(x => setTimeout(x, 60)); } });
   await new Promise(x => setTimeout(x, 800)); await Promise.all(pending); await page.close();
   (info.imageKiB ??= {})[`${slug(r)}@${w}x${dpr}`] = Math.round(bytes / 1024);
   if (bytes > IMAGE_BUDGET) fail(`${slug(r)}@${w}x${dpr}: images ${Math.round(bytes / 1024)} KiB exceed the 750 KiB budget`);
+  (info.fontKiB ??= {})[`${slug(r)}@${w}x${dpr}`] = Math.round(fonts / 1024);
+  if (fonts > FONT_BUDGET) fail(`${slug(r)}@${w}x${dpr}: fonts ${Math.round(fonts / 1024)} KiB exceed the 100 KiB budget`);
+}
+
+// 2d. 200% text: no content in main may extend past the viewport (WCAG 1.4.4/1.4.10).
+await pool(routes.flatMap(r => [390, 1400].map(w => ({ r, w }))), 4, async ({ r, w }) => {
+  const page = await browser.newPage(); await page.setCacheEnabled(false);
+  const cdp = await page.createCDPSession(); await cdp.send('Page.setFontSizes', { fontSizes: { standard: 32 } });
+  await page.setViewport({ width: w, height: 900 }); await page.goto(BASE + r, { waitUntil: 'networkidle0' });
+  const over = await page.evaluate(() => [...document.querySelectorAll('main *')].filter(e => { const b = e.getBoundingClientRect(); return b.width && b.right > innerWidth + 0.5 && !e.closest('.legal-table'); })
+    .slice(0, 2).map(e => `${e.tagName.toLowerCase()}.${[...e.classList].slice(0, 2).join('.')} to x=${Math.round(e.getBoundingClientRect().right)}`));
+  for (const o of over) fail(`${slug(r)}@${w} 200% text: ${o} (viewport ${w})`);
+  await page.close();
+});
+
+// 2e. keyboard: a Tab walk through each template reaches the footer, never
+// sticks on one element, and every stop shows a visible outline.
+for (const r of ['/', '/branchen/', '/case-studies/data2ai-platform/', '/about-us/', '/karriere/', '/kontakt/', '/impressum/']) for (const w of [390, 1400]) {
+  const { page } = await open(r, w, { motion: 'reduce' });
+  const seen = []; let problem = null;
+  for (let i = 0; i < 90 && !problem; i++) {
+    await page.keyboard.press('Tab');
+    const st = await page.evaluate(() => { const e = document.activeElement; if (!e || e === document.body) return null; const c = getComputedStyle(e);
+      return { id: `${e.tagName}#${[...document.querySelectorAll('*')].indexOf(e)} ${(e.getAttribute('href') || e.name || e.textContent.trim()).slice(0, 24)}`, outline: c.outlineStyle !== 'none' && parseFloat(c.outlineWidth) > 0, inFooter: !!e.closest('footer') }; });
+    if (!st) continue;
+    if (!st.outline) problem = `stop "${st.id}" has no visible outline`;
+    seen.push(st.id);
+    if (st.inFooter) break;
+    if (seen.length > 3 && seen.slice(-3).every(x => x === st.id)) problem = `focus stuck on "${st.id}"`;
+  }
+  if (!problem && !seen.length) problem = 'no focusable stop reached';
+  if (problem) fail(`keyboard ${slug(r)}@${w}: ${problem}`);
+  await page.close();
+}
+
+// 2f. one URL form: every sitemap URL answers 200 at its canonical (trailing
+// slash) form, and the slashless form redirects to it (serve.json trailingSlash).
+{
+  const sitemap = readFileSync(new URL('../../sitemap.xml', import.meta.url), 'utf8');
+  for (const loc of [...sitemap.matchAll(/<loc>https?:\/\/[^/]+([^<]*)<\/loc>/g)].map(m => m[1])) {
+    const ok = await fetch(BASE + loc, { redirect: 'manual' });
+    if (ok.status !== 200) fail(`url ${loc}: ${ok.status}, expected 200`);
+    if (loc !== '/') {
+      const bare = await fetch(BASE + loc.replace(/\/$/, ''), { redirect: 'manual' });
+      const to = bare.headers.get('location') || '';
+      if (bare.status !== 301 || new URL(to, BASE).pathname !== loc) fail(`url ${loc.replace(/\/$/, '')}: ${bare.status} -> ${to || '-'}, expected 301 -> ${loc}`);
+    }
+  }
 }
 
 // 3. functional flows
@@ -161,8 +209,9 @@ for (const [name, route, fn] of flows) for (const w of [390, 1000, 1400]) {
 }
 await browser.close();
 if (opt('out')) writeFileSync(opt('out'), JSON.stringify({ fails, info }, null, 1));
-console.log(`# smoke: ${routes.length} routes × ${widths.length} widths, axe ${CORE.length}×2, no-JS text ${CORE.length}, ${flows.length} flows ×3 widths`);
+console.log(`# smoke: ${routes.length} routes × ${widths.length} widths, axe ${routes.length}×2, 200% text ${routes.length}×2, keyboard 7×2, no-JS text ${CORE.length}, ${flows.length} flows ×3 widths`);
 console.log(`image KiB (max ${Math.max(...Object.values(info.imageKiB || {0: 0}))} of 750): ${JSON.stringify(info.imageKiB)}`);
+console.log(`font KiB (max ${Math.max(...Object.values(info.fontKiB || {0: 0}))} of 100)`);
 console.log(`nav at 1240: ${JSON.stringify(Object.entries(info.navAt1240 || {}).reduce((m, [, v]) => (m[v] = (m[v] || 0) + 1, m), {}))}`);
 console.log(fails.length ? `FAIL (${fails.length}):\n` + fails.map(f => '- ' + f).join('\n') : 'PASS: no failures');
 process.exitCode = fails.length ? 1 : 0;
