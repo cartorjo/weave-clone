@@ -188,7 +188,7 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   Owner signs off the exported asset.
   Agents: design-system-engineer -> frontend-engineer -> qa-reviewer.
 
-- B-32 Share images at 1200x630 (S-M, A) - TODO
+- B-32 Share images at 1200x630 (S-M, A) - AWAITING OWNER APPROVAL (14 centre crops in assets/share/ via npm run build:share, one source of truth content/share.mjs; check:meta compares og:image with the hero's crop and requires 1200x630)
   Crops of each hero (no new photography) so summary_large_image does not
   cut 3:2 images; check:meta compares og:image with the hero's crop instead
   of the hero file. Owner approves the crops.

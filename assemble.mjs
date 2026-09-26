@@ -20,6 +20,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pages from './pages.mjs';
 import { escape, picture, fragment, projectPage, pageHero, breadcrumb as breadcrumbMarkup } from './content/render.mjs';
+import { shareKey, shareSrc, SHARE } from './content/share.mjs';
 import { projects, disciplines } from './content/site-data.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
@@ -33,12 +34,8 @@ const organization = { '@type': 'Organization', '@id': `${SITE_ORIGIN}/#organiza
   address: { '@type': 'PostalAddress', streetAddress: 'Glücksteinallee 67', postalCode: '68163', addressLocality: 'Mannheim', addressCountry: 'DE' },
   parentOrganization: { '@type': 'Organization', name: 'Hays Holding GmbH' } };
 const website = { '@type': 'WebSite', '@id': `${SITE_ORIGIN}/#website`, name: 'Emposo', url: `${SITE_ORIGIN}/`, inLanguage: 'de-DE', publisher: { '@id': organization['@id'] } };
-// Share image: the page's own hero photo (case studies: the project image), else the homepage hero.
-const shareImage = page => {
-  const key = page.content.startsWith?.('project:') ? projects.find(p => p.slug === page.content.slice(8))?.image
-    : (Array.isArray(page.content) ? page.content : [page.content]).map(f => { const src = readFileSync(join(root, f), 'utf8'); return src.match(/<page-hero\b[^>]*\bimage="([a-z0-9-]+)"/)?.[1] || src.match(/\{\{image:([a-z0-9-]+):hero\}\}/)?.[1]; }).find(Boolean);
-  return images[key] || images['hero-flow'];
-};
+// Share image: a 1200x630 crop of the page's hero (content/share.mjs, B-32).
+const shareImage = page => { const key = shareKey(root, page); return { src: shareSrc(key), width: SHARE.width, height: SHARE.height, alt: images[key].alt }; };
 // BreadcrumbList from the page's own visible breadcrumb (existing labels only).
 const unescape = t => t.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').trim();
 const breadcrumb = (body, url) => {
