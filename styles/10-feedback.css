@@ -12,7 +12,7 @@
 .site-logo svg { width: 100%; height: auto; }
 .site-footer__brand svg { display: block; max-width: 13rem; width: 100%; height: auto; }
 .site-header__inner { gap: var(--space-8); min-height: var(--header-h); }
-.site-nav { gap: clamp(1.75rem, 2.5vw, 3rem); }
+.site-nav { gap: var(--space-fluid-sm); }
 /* Menü nach Edenspiekermann-Vorbild (owner 24-09): ruhige Links in normaler
    Stärke, aktive Seite und Hover mit einslidendem Ink-Unterstrich (bewusste
    Menü-Ausnahme der "Unterstrich nur Zahlen"-Regel), CTA als orange Pill mit
