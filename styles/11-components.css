@@ -180,3 +180,8 @@
 :is(.text-link span[aria-hidden], .header-contact__arrow, .site-footer a span[aria-hidden]):dir(rtl) { scale: -1 1; }
 svg:dir(rtl) { direction: ltr; }
 :root:dir(rtl) { --scrim-ink-side: linear-gradient(270deg, var(--color-ink) 0%, transparent 35%); }
+
+/* Keep exploring — onward links where a page would dead-end (B-45): the
+   headline-sm role and a wrapping row of text links. */
+.explore__title { font-size: var(--text-headline-sm); font-weight: 400; line-height: var(--leading-title); }
+.explore__links { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-8); list-style: none; margin: var(--space-6) 0 0; padding: 0; }

@@ -14,10 +14,12 @@ export function picture(key, sizes = '(max-width: 700px) 100vw, 50vw', priority 
 }
 
 // The one breadcrumb: Startseite, an optional parent [href, label], the page label.
+// A navigation landmark with an ordered list; the page's own label is
+// aria-current (B-43, label approved 2026-09-26).
 export function breadcrumb(label, parent) {
   const sep = '<span aria-hidden="true">/</span>';
-  const trail = [parent && `<a href="${parent[0]}">${parent[1]}</a>`, label].filter(Boolean).join(sep);
-  return `<p class="page-breadcrumb"><a href="/">Startseite</a>${sep}${trail}</p>`;
+  const items = ['<a href="/">Startseite</a>', parent && `<a href="${parent[0]}">${parent[1]}</a>`, label && `<span aria-current="page">${label}</span>`].filter(Boolean);
+  return `<nav class="page-breadcrumb" aria-label="Brotkrümelnavigation"><ol>${items.map((item, i) => `<li>${i ? sep : ''}${item}</li>`).join('')}</ol></nav>`;
 }
 
 // The one subpage hero frame. Pages supply only their copy (eyebrow, H1,
@@ -217,6 +219,14 @@ function management() {
   return `<section class="page-section page-section--paper" id="management" aria-labelledby="management-title"><div class="gutter"><div class="container"><p class="eyebrow">Management</p><h2 class="display-large" id="management-title">Menschen, die Verantwortung übernehmen.</h2><div class="management-cards">${cards}</div></div></div></section>`;
 }
 
+// Keep exploring: onward links at the end of pages that would otherwise dead-end
+// (/karriere/, /kontakt/; B-45, heading approved 2026-09-26). Labels are the
+// site's existing link labels.
+const EXPLORE = [['/portfolio/', 'Leistungen'], ['/branchen/', 'Branchen'], ['/case-studies/', 'Case Studies'], ['/about-us/', 'Über uns']];
+function keepExploring() {
+  return `<section class="page-section explore" aria-labelledby="explore-title"><div class="gutter"><div class="container"><h2 class="explore__title" id="explore-title">Weiter entdecken</h2><ul class="explore__links">${EXPLORE.map(([href, label]) => `<li><a class="text-link" href="${href}">${label} <span aria-hidden="true">→</span></a></li>`).join('')}</ul></div></div></section>`;
+}
+
 export function fragment(name) {
   switch (name) {
     case 'industry-cards': return industryCards();
@@ -226,6 +236,7 @@ export function fragment(name) {
     case 'cta-karriere': return cta('karriere');
     case 'company-facts': return companyFacts();
     case 'jobs': return jobsList();
+    case 'keep-exploring': return keepExploring();
     case 'projects-featured': return projectCards(projects.filter(p=>['data2ai-platform','engineering-wissensbasis','mlops-medizinprodukte','multi-site-transition'].includes(p.slug)), false, true);
     case 'projects-all': return filters();
     case 'disciplines': return disciplineGrid();

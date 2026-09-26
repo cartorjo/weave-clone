@@ -35,6 +35,8 @@ const organization = { '@type': 'Organization', '@id': `${SITE_ORIGIN}/#organiza
   // Standalone PNG of the header logo (ink on white, tagline rendered, B-31).
   logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/assets/brand/emposo-logo-organization.png`, width: 896, height: 288 },
   contactPoint: { '@type': 'ContactPoint', contactType: 'customer service', email: 'info@emposo.eu', telephone: '+49 621 1788 0' },
+  // The profile emposo.de links today (owner-approved 2026-09-26, B-46).
+  sameAs: ['https://www.linkedin.com/company/emposo/'],
   parentOrganization: { '@type': 'Organization', name: 'Hays Holding GmbH' } };
 const website = { '@type': 'WebSite', '@id': `${SITE_ORIGIN}/#website`, name: 'Emposo', url: `${SITE_ORIGIN}/`, inLanguage: 'de-DE', publisher: { '@id': organization['@id'] } };
 // Share image: a 1200x630 crop of the page's hero (content/share.mjs, B-32).
@@ -42,12 +44,12 @@ const shareImage = page => { const key = shareKey(root, page); return { src: sha
 // BreadcrumbList from the page's own visible breadcrumb (existing labels only).
 const unescape = t => t.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').trim();
 const breadcrumb = (body, url) => {
-  const crumb = body.match(/<p class="page-breadcrumb">([\s\S]*?)<\/p>/)?.[1];
+  const crumb = body.match(/<nav class="page-breadcrumb"[^>]*>([\s\S]*?)<\/nav>/)?.[1];
   if (!crumb) return null;
   const links = [...crumb.matchAll(/<a href="([^"]+)">([\s\S]*?)<\/a>/g)].map(([, href, name]) => ({ name: unescape(name), item: `${SITE_ORIGIN}${href}` }));
-  const tail = crumb.slice(crumb.lastIndexOf('</span>') + 7);
   // A trail that ends at its parent link names the page by its own H1.
-  const current = /<a /.test(tail) ? unescape(body.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1] || '') : unescape(tail);
+  const own = crumb.match(/<span aria-current="page">([\s\S]*?)<\/span>/)?.[1];
+  const current = own ? unescape(own) : unescape(body.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1] || '');
   const items = [...links, ...(current ? [{ name: current, item: url }] : [])];
   return { '@type': 'BreadcrumbList', itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, item: it.item })) };
 };
@@ -66,9 +68,10 @@ const seoMeta = (page, body) => {
   // Leistungen: one Service per discipline, with the name and topic line the page shows.
   if (page.out === 'portfolio/index.html') for (const d of disciplines)
     graph['@graph'].push({ '@type': 'Service', '@id': `${url}#${d.slug}`, url: `${url}#${d.slug}`, name: d.name, description: d.topics, provider: { '@id': organization['@id'] }, areaServed: 'DE' });
-  // Case study: Article from the project data (no author/date: the data has none).
+  // Case study: Article from the project data. Author is the organization;
+  // datePublished is the day the case study went online on this site (B-46).
   const project = page.content.startsWith?.('project:') && projects.find(p => p.slug === page.content.slice(8));
-  if (project) graph['@graph'].push({ '@type': 'Article', '@id': `${url}#article`, headline: project.name, description: project.headline, image: `${SITE_ORIGIN}${img.src}`, inLanguage: 'de-DE', publisher: { '@id': organization['@id'] }, mainEntityOfPage: { '@id': url } });
+  if (project) graph['@graph'].push({ '@type': 'Article', '@id': `${url}#article`, headline: project.name, description: project.headline, image: `${SITE_ORIGIN}${img.src}`, inLanguage: 'de-DE', author: { '@id': organization['@id'] }, publisher: { '@id': organization['@id'] }, datePublished: firstPublished(page), dateModified: lastModified(page), mainEntityOfPage: { '@id': url } });
   // JSON-LD is a data block, not script: the CSP's script-src does not apply.
   tags.push(`  <script type="application/ld+json">${JSON.stringify(graph).replace(/</g, '\\u003c')}</script>`);
   return tags.join('\n') + '\n';
@@ -91,6 +94,11 @@ const lastModified = page => {
   if (git(['status', '--porcelain', '--', ...files])) return today();
   return git(['log', '-1', '--format=%cs', '--', ...files]);
 };
+// First published = the day of the commit that first added the page's output
+// (owner decision 2026-09-26, B-46); a page not yet committed counts as today.
+// Without a repository the committed page already carries that date.
+const committedPublished = page => { try { return readFileSync(join(root, page.out), 'utf8').match(/"datePublished":"(\d{4}-\d{2}-\d{2})"/)?.[1]; } catch { return undefined; } };
+const firstPublished = page => (gitAvailable ? git(['log', '--diff-filter=A', '--format=%cs', '--', page.out]).split('\n').filter(Boolean).pop() : committedPublished(page)) || today();
 const canonicalPath = out => out === 'index.html' ? '/' : out.endsWith('/index.html') ? `/${out.slice(0, -'index.html'.length)}` : null;
 const partial = (name) => readFileSync(join(root, 'partials', `${name}.html`), 'utf8');
 
