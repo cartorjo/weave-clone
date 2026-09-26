@@ -147,7 +147,7 @@
 }
 .expertise-card:last-child { border-bottom: 1px solid var(--color-line); }
 .expertise-card__number { color: var(--color-lemon); font-size: var(--text-index); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: none; }
-.expertise-card h3 { font-size: var(--text-headline-light); font-weight: 300; letter-spacing: var(--tracking-display); line-height: var(--leading-display); max-width: 15ch; }
+.expertise-card h3 { font-size: var(--text-headline-md); font-weight: 400; letter-spacing: var(--tracking-tight); line-height: var(--leading-headline); max-width: 15ch; }
 .expertise-card p { color: var(--color-ink); font-size: var(--text-card); line-height: 1.38; max-width: 28.8rem; }
 
 /* Portfolio ---------------------------------------------------------------- */

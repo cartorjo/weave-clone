@@ -116,10 +116,7 @@
   --text-lede: 1.15rem;
   --text-lede-lg: 1.2rem;
   /* Component-specific sizes, one token each until B-38 merges near twins. */
-  --text-table-head: 2rem;
   --text-sitemap-heading: 1.75rem;
-  --text-values-heading: 1.7rem;
-  --text-person-name: 1.55rem;
   --text-legal-h3: 1.3rem;
   --text-join-glyph: 3rem;
   --text-arrow: 1.65rem;
@@ -152,6 +149,8 @@
   --tracking-wide: 0.1em;
   /* Line-height roles (Tailwind's own tight/snug/normal/relaxed stay untouched). */
   --leading-display: 1.08;
+  /* Card and section headlines (h3 headline role, B-37). */
+  --leading-headline: 1.16;
   --leading-heading: 1.1;
   --leading-title: 1.2;
   --leading-label: 1.35;

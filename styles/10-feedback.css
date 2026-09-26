@@ -64,7 +64,7 @@
 .expertise-pair figure { aspect-ratio: 16/9; overflow: hidden; }
 .expertise-pair img { width: 100%; height: 100%; object-fit: cover; }
 .expertise-pair > div > div { display: flex; align-items: center; justify-content: space-between; margin-top: var(--space-6); }
-.expertise-pair h3 { font-size: var(--text-headline-md); letter-spacing: var(--tracking-tight); }
+.expertise-pair h3 { font-size: var(--text-headline-md); letter-spacing: var(--tracking-tight); line-height: var(--leading-headline); }
 .expertise-pair p { margin-top: var(--space-2); font-size: var(--text-lede-sm); }
 .expertise-pair__join { position: absolute; left: 50%; top: 26%; transform: translate(-50%,-50%); width: var(--icon-xl); height: var(--icon-xl); display: grid; place-items: center; color: var(--color-ink); background: var(--color-lemon); font-size: var(--text-join-glyph); z-index: 2; border-radius: var(--radius-full); }
 
@@ -77,7 +77,7 @@
 .connection-step__icon { width: var(--icon-lg); height: var(--icon-lg); border-radius: var(--radius-full); padding: var(--space-4); background: var(--color-lemon); color: var(--color-ink); }
 .connection-step__icon svg { height: 100%; width: 100%; }
 .connection-step--how .connection-step__icon { background: var(--color-info); }
-.connection-step h3 { font-size: var(--text-title-fluid); font-weight: 700; line-height: var(--leading-title); }
+.connection-step h3 { font-size: var(--text-title-fluid); font-weight: 700; letter-spacing: var(--tracking-snug); line-height: var(--leading-title); }
 .connection-step p { font-size: var(--text-lede-sm); line-height: var(--leading-body); margin-top: var(--space-3); }
 .connection-model__visual { display: grid; align-content: center; position: relative; }
 .connection-model__visual img { width: 100%; height: auto; }
@@ -112,7 +112,7 @@
 .reference-card__copy .text-link { transition: color var(--duration-medium) var(--ease-em); }
 .reference-card__copy .text-link span { transition: transform var(--duration-medium) var(--ease-em), color var(--duration-medium) var(--ease-em); }
 .reference-card__meta { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); font-size: var(--text-body-sm); font-weight: 500; margin-top: var(--space-6); line-height: var(--leading-compact); }
-.reference-card h3 { font-size: var(--text-headline-md); line-height: 1.16; letter-spacing: var(--tracking-tight); margin-top: var(--space-4); }
+.reference-card h3 { font-size: var(--text-headline-md); line-height: var(--leading-headline); letter-spacing: var(--tracking-tight); margin-top: var(--space-4); }
 .reference-card__copy > p { font-size: var(--text-lede-sm); line-height: var(--leading-body); margin-top: var(--space-3); max-width: 35rem; }
 .reference-card__copy > .text-link { margin-top: var(--space-6); align-self: flex-start; }
 /* Der blaue Kasten (owner correction): reference-card copy blocks and linked
@@ -182,7 +182,7 @@ a.expertise-card:focus-visible { --focus-halo: 0 0 0 var(--invert-bleed) var(--c
 /* Disziplinen als ruhige 2×4-Tabelle: Spaltenfluss teilt die Zeilenhöhen
    zwischen Engineering und Technology, Promises sitzen auf einer Höhe. */
 .discipline-table { display: grid; grid-auto-flow: column; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto repeat(4, minmax(0, 1fr)); margin-top: var(--space-14); }
-.discipline-table__head { font-size: var(--text-table-head); font-weight: 700; color: var(--color-ink); letter-spacing: var(--tracking-snug); padding-bottom: var(--space-6); }
+.discipline-table__head { font-size: var(--text-headline-sm); font-weight: 400; color: var(--color-ink); line-height: var(--leading-title); padding-bottom: var(--space-6); }
 .discipline-cell { border-top: 1px solid var(--color-line); display: flex; flex-direction: column; gap: var(--space-2); padding-block: var(--space-6) var(--space-6); padding-inline: 0 var(--space-10); }
 .discipline-table > :nth-child(n+6) { border-inline-start: 1px solid var(--color-line); padding-inline-start: var(--space-10); }
 .discipline-cell:nth-child(n+6) { padding-inline-end: 0; }
@@ -209,14 +209,14 @@ a.expertise-card:focus-visible { --focus-halo: 0 0 0 var(--invert-bleed) var(--c
 .management-card { position: relative; }
 .management-card figure { aspect-ratio: 3 / 2; overflow: hidden; background: var(--color-bg); }
 .management-card img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); }
-.management-card h3 { font-size: var(--text-person-name); font-weight: 700; letter-spacing: var(--tracking-snug); margin-top: var(--space-4); }
+.management-card h3 { font-size: var(--text-title-fluid); font-weight: 700; letter-spacing: var(--tracking-snug); line-height: var(--leading-title); margin-top: var(--space-4); }
 .management-card__role { font-size: var(--text-body-sm); font-weight: 600; line-height: var(--leading-compact); margin-top: var(--space-1); }
 /* Das Foto ist nicht klickbar und traegt keinen Hover (owner review 24-09);
    der Mehr-lesen-Expander haelt Rest-Bio + LinkedIn (Fakten entfernt 24-09). */
 .management-card__bio { font-size: var(--text-body); line-height: var(--leading-copy); margin-top: var(--space-4); }
 .company-values { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: var(--space-8); margin-top: var(--space-12); }
 .company-values article { border-top: 3px solid var(--color-lemon); padding-top: var(--space-6); }
-.company-values :is(h2, h3) { font-size: var(--text-values-heading); margin-bottom: var(--space-4); }
+.company-values :is(h2, h3) { font-size: var(--text-headline-sm); font-weight: 400; line-height: var(--leading-title); margin-bottom: var(--space-4); }
 .company-values p { font-size: var(--text-lede-sm); line-height: var(--leading-prose); }
 .company-values__icon { color: var(--color-lemon); display: block; height: var(--icon-sm); margin-bottom: var(--space-4); width: var(--icon-sm); }
 .company-values__icon svg { height: 100%; width: 100%; }
