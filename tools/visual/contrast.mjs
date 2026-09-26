@@ -12,7 +12,7 @@ const COMPONENTS = [
   ['mobile menu toggle', '/', 390, '#mobile-menu > summary', {}],
   ['mobile menu link', '/', 390, '#mobile-menu .mobile-menu__panel a:not(.mobile-menu__cta)', { open: '#mobile-menu' }],
   ['mobile menu CTA', '/', 390, '#mobile-menu .mobile-menu__cta', { open: '#mobile-menu' }],
-  ['filter chip', '/branchen/', 1400, '.filter-button:not(.is-active)', { boundary: true }],
+  ['filter chip', '/branchen/', 1400, '.filter-button:enabled:not(.is-active)', { boundary: true }],
   ['filter chip selected', '/branchen/', 1400, '.filter-button.is-active', { boundary: true }],
   ['reference card', '/branchen/', 1400, '.reference-card:not([hidden])', { text: '.reference-card__copy h3' }],
   ['text link (light)', '/barrierefreiheit/', 1400, '.text-link:not(.text-link--light)', {}],
