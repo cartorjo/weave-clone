@@ -10,7 +10,7 @@ export const SHOTS = [
   ['hero', '/', 1400, '.hero'], ['page-hero', '/portfolio/', 1400, '.page-hero'],
   ['expertise', '/', 1400, '.expertise-intro, .services'], ['industry-tiles', '/', 1400, '.industry-cards'],
   ['reference-cards', '/', 1400, '.reference-grid'], ['company-facts', '/about-us/', 1400, '.company-facts'],
-  ['filter-chips', '/branchen/', 1400, '.work-filter'], ['filter-chips-mobile', '/branchen/', 390, '.work-filter'],
+  ['filter-chips', '/case-studies/', 1400, '.work-filter'], ['filter-chips-mobile', '/case-studies/', 390, '.work-filter'],
   ['fact-grid', '/portfolio/', 1400, '.fact-grid'], ['disciplines', '/portfolio/', 1400, '.discipline-table'],
   ['management', '/about-us/', 1400, '.management-card'], ['jobs', '/karriere/', 1400, '.job-card'],
   ['cta', '/portfolio/', 1400, '.page-cta'], ['contact-form', '/kontakt/', 1400, '.contact-form'],

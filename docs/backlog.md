@@ -246,7 +246,7 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   loading the URL restores it; no JS = all projects visible (smoke).
   Agents: ux-ia-architect -> frontend-engineer -> a11y-perf-reviewer -> qa-reviewer.
 
-- B-48 Reference cases from the 2026-09-24 deck (M) - DONE (PR #26; owner
+- B-48 Reference cases from the 2026-09-24 deck (M) - DONE (PR #26, 060f3e3; owner
   approved all 39 review items 2026-09-26 "All approve", copy:accept run): 15 cases from
   2026-09-24-emposo-reference-cases-v14-container-format.pptx (Downloads copy,
   rev. 3 of 2026-09-26; the OneDrive copy's hidden slides and its SOP/Curricula
@@ -321,9 +321,14 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   time, labels unchanged; they re-enable when a matching reference is added.
 - B-43 Breadcrumb as nav landmark (S) - DONE, owner approved 2026-09-26: nav
   aria-label "Brotkrümelnavigation" > ol, aria-current on the page label; pixel-identical (0 of 67 shots changed).
-- B-44 [drafts on the owner review page 2026-09-26] One listing URL (M) - NEEDS-OWNER: /branchen/ and /case-studies/ render
-  the same project list; either /branchen/ links to /case-studies/ or
-  /case-studies/ gets a nav entry ([TEXT: owner] label).
+- B-44 One listing URL (M) - DONE, owner approved 2026-09-26: /branchen/ keeps
+  the industries; its project section links "Alle Projekte" to /case-studies/,
+  the only filterable list; the homepage "Alle Referenzen" link points there.
+  Smoke/contrast/crops moved their filter checks to /case-studies/.
+- B-50 Metadata for the 15 B-48 cases (S) - NEEDS-OWNER: their descriptions
+  are the short headlines (56-80 chars) and 8 titles exceed 60 characters.
+  Same treatment as B-22 (drafts from on-page sentences, drop "| Case Study"
+  on long titles) needs per-string approval.
 - B-45 Keep-exploring links on /karriere/ and /kontakt/ (S) - DONE, owner approved 2026-09-26:
   "Weiter entdecken" + Leistungen, Branchen, Case Studies, Über uns (keepExploring() in content/render.mjs).
 - B-46 Metadata facts (S) - DONE, owner approved 2026-09-26: Organization sameAs
