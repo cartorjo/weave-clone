@@ -134,7 +134,7 @@ decisions below.
 
 Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
 
-- B-24 Header-height token matches the real header (S, R) - TODO
+- B-24 Header-height token matches the real header (S, R) - DONE (5db69fe)
   --header-h says 78px; the header renders 97px at 1400 (min-height 6rem)
   and 80px at 390, so anchored sections land with ~6px clearance and the
   mobile-menu max-height and hero literal 4.86rem are off.
@@ -143,39 +143,39 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   the header; visual:diff 0 apart from scroll-margin.
   Agents: design-system-engineer -> frontend-engineer -> qa-reviewer.
 
-- B-25 Reflow at 200% text (S, T) - TODO
+- B-25 Reflow at 200% text (S, T) - DONE (7302372) (also fixed: mobile collage cards were 259px in a 355px column)
   At 390 with 32px text, /kontakt/ clips its form (grid track resolves to the
   select's min-content, 445px in 355px) and the homepage reference cards.
   Acceptance: Page.setFontSizes 32 at 390: no element in main past x=390 on
   / and /kontakt/; default size visual:diff 0.
   Agents: design-system-engineer -> frontend-engineer -> a11y-perf-reviewer -> qa-reviewer.
 
-- B-26 Smoke covers every route (S, T) - TODO (after B-25)
+- B-26 Smoke covers every route (S, T) - DONE (415609e)
   axe on 24 routes x 390/1400, a 200%-text check, and a Tab walk (trap / no
   outline fails) in npm run smoke; an injected regression turns it red.
   Agents: frontend-engineer -> a11y-perf-reviewer -> qa-reviewer.
 
-- B-27 Discipline anchors and Service.url (S, T) - TODO
+- B-27 Discipline anchors and Service.url (S, T) - DONE (e50a17b)
   Each .discipline-cell on /portfolio/ gets its slug as id; the case-study
   discipline link goes to /portfolio/#<slug>; each Service node gets that
   url. Acceptance: check:content validates the anchors, check:meta the
   Service urls; check:copy unchanged.
   Agents: frontend-engineer -> seo-specialist -> qa-reviewer.
 
-- B-28 Related slot always shows 2 cards (S, T) - TODO
+- B-28 Related slot always shows 2 cards (S, T) - DONE (eaaa247)
   3 case studies (managed-service, multi-site-transition,
   technische-dokumentation) show 1. Fill from other projects in a fixed order
   once discipline/industry matches run out; no new strings.
   Agents: frontend-engineer -> qa-reviewer.
 
-- B-29 One URL form at the server (S, T) - TODO
+- B-29 One URL form at the server (S, T) - DONE (7a4df91) (known serve limits: /404 answers 200 as the noindex error page; legacy URLs take 2 hops)
   /x and /x/ both answer 200; /x/index.html takes 2 hops to the
   non-canonical form; /404 answers 200. Acceptance (smoke, local serve):
   every sitemap URL 200; slashless form one 301 to the slash form;
   /x/index.html <= 2 hops to the canonical; /404 and /nope/ answer 404.
   Agents: seo-specialist -> frontend-engineer -> qa-reviewer.
 
-- B-30 lastmod and dateModified from git (S, T) - TODO
+- B-30 lastmod and dateModified from git (S, T) - DONE (9746ae5)
   sitemap.xml <lastmod> and WebPage.dateModified from the last commit date
   of each page's sources (a real date, never invented); check:meta asserts
   presence and agreement.
@@ -193,7 +193,7 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   of the hero file. Owner approves the crops.
   Agents: a11y-perf-reviewer -> frontend-engineer -> qa-reviewer.
 
-- B-33 Font payload budget (S-M, T) - TODO
+- B-33 Font payload budget (S-M, T) - DONE (3e1519c) (139 -> 85 KiB, pixel-identical; arrows keep rendering in the fallback font)
   Fonts are 139 KiB on every route (5 faces, 2 preloaded) and
   00-fonts.css is a second blocking stylesheet. Measure the faces each route
   uses, then subset or drop faces without visual change and fold the
@@ -201,19 +201,19 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   a budget; one blocking stylesheet; visual:diff 0.
   Agents: a11y-perf-reviewer -> design-system-engineer -> frontend-engineer -> qa-reviewer.
 
-- B-34 ~800w rung for industry tiles (S, T) - TODO
+- B-34 ~800w rung for industry tiles (S, T) - DONE (8fe680a) (/branchen/ 591 -> 437 KiB at 390x2)
   /branchen/ at 390x2 loads 1091w tiles for a 710px need. Acceptance:
   /branchen/ <= 450 KiB images at 390x2; visual:diff 0.
   Agents: frontend-engineer -> a11y-perf-reviewer -> qa-reviewer.
 
-- B-35 Tokens for the remaining literals (S, R) - TODO
+- B-35 Tokens for the remaining literals (S, R) - DONE (25a50bf)
   --target-min (44px, today spelled 44px / 2.75rem / min-h-11), icon sizes,
   letter-spacing and line-height roles, and the 5 headline rems B-19 missed,
   all at current values. Acceptance: no such literals in styles/07-11;
   visual:diff 0.
   Agents: design-system-engineer -> qa-reviewer.
 
-- B-36 Contracts for shared frames; canon drift (S, docs) - TODO
+- B-36 Contracts for shared frames; canon drift (S, docs) - DONE (38f0e4c)
   Contracts for page-section, site-footer, reference-grid, section-more,
   legal-copy and 7 smaller blocks; fix the canon rows that contradict the
   code (job card "KEIN Bewerben-Link", Kennzahlen on Karriere, "Stand"
