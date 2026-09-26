@@ -115,6 +115,22 @@
   --text-lede-sm: 1.1rem;
   --text-lede: 1.15rem;
   --text-lede-lg: 1.2rem;
+  /* Component-specific sizes, one token each until B-38 merges near twins. */
+  --text-table-head: 2rem;
+  --text-sitemap-heading: 1.75rem;
+  --text-values-heading: 1.7rem;
+  --text-person-name: 1.55rem;
+  --text-legal-h3: 1.3rem;
+  --text-join-glyph: 3rem;
+  --text-arrow: 1.65rem;
+  --text-expander-plus: 1.35rem;
+  --text-small: 0.9rem;
+  --text-hint: 0.94rem;
+  --text-cell: 0.98rem;
+  --text-badge: 0.76rem;
+  --text-index: 0.7rem;
+  --text-mode-copy: 1.07rem;
+  --text-cta-copy: 1.16rem;
 
   /* Fluid headline and figure roles (one clamp per role; floors are the
      320px size, caps the ≥1440px size). */
@@ -128,6 +144,21 @@
   --text-figure-lg: clamp(2.75rem, 4.8vw, 4.875rem); /* Kennzahlen and card metrics */
 
   --tracking-caps: 0.01em;
+  --tracking-caps-slight: 0.01em;
+  --tracking-snug: -0.01em;
+  --tracking-tight: -0.02em;
+  --tracking-display: -0.025em;
+  --tracking-portfolio-mode: -0.065em;
+  --tracking-wide: 0.1em;
+  /* Line-height roles (Tailwind's own tight/snug/normal/relaxed stay untouched). */
+  --leading-display: 1.08;
+  --leading-heading: 1.1;
+  --leading-title: 1.2;
+  --leading-label: 1.35;
+  --leading-compact: 1.4;
+  --leading-text: 1.45;
+  --leading-copy: 1.55;
+  --leading-prose: 1.6;
   --leading-body: 1.5;
 
   /* Fluid/structural spacing. --spacing-section is the shared vertical
@@ -195,6 +226,15 @@
   /* State layers: content-color overlay opacity per interaction state. */
   --state-hover: .08;
   --state-press: .1;
+  /* Minimum interactive target (owner decision: 44px, not M3 48dp). */
+  --target-min: 2.75rem;
+  /* Icon and icon-chip sizes. */
+  --icon-2xs: 2.2rem;
+  --icon-xs: 2.4rem;
+  --icon-sm: 2.6rem;
+  --icon-md: 3rem;
+  --icon-lg: 4rem;
+  --icon-xl: 4.5rem;
   /* Ink scrims over hero photos: from the copy side, or from the top once stacked. */
   --scrim-ink-side: linear-gradient(90deg, var(--color-ink) 0%, transparent 35%);
   --scrim-ink-top: linear-gradient(180deg, var(--color-ink), transparent 35%);

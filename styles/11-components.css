@@ -60,7 +60,7 @@
 .contact-form :is(input, select, textarea):is(:focus, [aria-invalid="true"], :user-invalid) { border-bottom-width: 2px; padding-bottom: calc(var(--space-3) - 1px); }
 .contact-form :is(input, select, textarea):is([aria-invalid="true"], :user-invalid) { border-bottom-color: var(--color-error-on-dark); }
 .contact-form textarea { resize: vertical; }
-.contact-form__support { color: var(--color-error-on-dark); font-size: var(--text-body-sm); font-weight: 400; line-height: 1.35; }
+.contact-form__support { color: var(--color-error-on-dark); font-size: var(--text-body-sm); font-weight: 400; line-height: var(--leading-label); }
 .contact-form__support:empty { display: none; }
 .contact-form label { align-content: start; }
 .contact-form__select .contact-form__support { grid-row: 3; }
@@ -79,7 +79,7 @@
 /* Eyebrow — the small bold section label with the lemon rule after it.
    Variants: --light (on ink/deep sections). Kickers in heroes are
    `eyebrow eyebrow--light`. Footer margins live contextually in 08. */
-.eyebrow { align-items: center; color: var(--color-ink); display: flex; font-size: var(--text-body); font-weight: 700; gap: var(--space-3); letter-spacing: 0; line-height: 1.35; margin-bottom: var(--space-6); text-transform: none; }
+.eyebrow { align-items: center; color: var(--color-ink); display: flex; font-size: var(--text-body); font-weight: 700; gap: var(--space-3); letter-spacing: 0; line-height: var(--leading-label); margin-bottom: var(--space-6); text-transform: none; }
 .eyebrow::after { background: var(--color-lemon); content: ''; height: 3px; width: 2.5rem; }
 .eyebrow--light { color: var(--color-on-dark); }
 
@@ -87,7 +87,7 @@
    page-display, page-title, page-cta__title). Variant: --light. Contextual
    widths for heroes/statement live below; everything else is uniform. */
 :root { --display-size: clamp(2.4rem, 5.8vw, 5.5rem); --display-leading: 1.08; }
-.display-large { color: var(--color-ink); font-size: var(--display-size); font-weight: 300; letter-spacing: -.025em; line-height: var(--display-leading); max-width: 20ch; }
+.display-large { color: var(--color-ink); font-size: var(--display-size); font-weight: 300; letter-spacing: var(--tracking-display); line-height: var(--display-leading); max-width: 20ch; }
 .display-large--light { color: var(--color-on-dark); }
 .display-large em { color: inherit; font-style: normal; font-weight: 700; }
 /* Subpage rhythm: headings under an eyebrow keep the former page-title gap;
@@ -108,8 +108,8 @@
 /* Text link — the one arrow link (former page-link). The arrow is always a
    markup span (<span aria-hidden="true">→</span>); --light for dark sections
    (white text, lemon arrow). No underline in any state (owner rule). */
-.text-link { align-items: center; color: var(--color-ink); display: inline-flex; flex: none; font-size: var(--text-body); font-weight: 700; gap: var(--space-4); letter-spacing: 0; line-height: 1.4; min-height: 44px; text-decoration: none; text-transform: none; }
-.text-link span[aria-hidden] { color: currentColor; font-size: 1.65rem; transition: transform var(--duration-fast) var(--ease-em); }
+.text-link { align-items: center; color: var(--color-ink); display: inline-flex; flex: none; font-size: var(--text-body); font-weight: 700; gap: var(--space-4); letter-spacing: 0; line-height: var(--leading-compact); min-height: var(--target-min); text-decoration: none; text-transform: none; }
+.text-link span[aria-hidden] { color: currentColor; font-size: var(--text-arrow); transition: transform var(--duration-fast) var(--ease-em); }
 @media (hover: hover) {
   .text-link:hover span[aria-hidden] { transform: translateX(.35rem); }
 }
@@ -120,14 +120,14 @@
 /* Fact grid label variant (the base grid lives in 09): --display renders
    phase digits at Kennzahlen scale with the lemon rule (owner: numbers must
    outrank the copy). */
-.fact-grid__label--display { border-bottom: 2px solid var(--color-lemon); color: var(--color-ink); font-size: var(--text-figure-md); font-weight: 300; letter-spacing: -.02em; line-height: 1.1; padding-bottom: var(--space-1); width: fit-content; }
+.fact-grid__label--display { border-bottom: 2px solid var(--color-lemon); color: var(--color-ink); font-size: var(--text-figure-md); font-weight: 300; letter-spacing: var(--tracking-tight); line-height: var(--leading-heading); padding-bottom: var(--space-1); width: fit-content; }
 
 /* Expander — the canonical details/summary (Mehr-lesen pattern): open/close
    label spans + rotating lemon plus. Consumers: management cards, job
    postings. Former management-card__more. */
 .expander summary { align-items: center; color: var(--color-ink); cursor: pointer; display: inline-flex; font-size: var(--text-body-sm); font-weight: 700; gap: var(--space-2); list-style: none; margin-top: var(--space-2); }
 .expander summary::-webkit-details-marker { display: none; }
-.expander summary::after { color: var(--color-lemon); content: '+'; font-size: 1.35rem; line-height: 1; transition: transform var(--duration-medium) var(--ease-em); }
+.expander summary::after { color: var(--color-lemon); content: '+'; font-size: var(--text-expander-plus); line-height: 1; transition: transform var(--duration-medium) var(--ease-em); }
 .expander[open] summary::after { transform: rotate(45deg); }
 .expander[open] .expander__open { display: none; }
 .expander:not([open]) .expander__close { display: none; }
@@ -137,16 +137,16 @@
    Copy verbatim from the owner's Stellen deck; lists reuse result-list. */
 .job-list { border-top: 1px solid var(--color-line); margin-top: var(--space-12); }
 .job-card { border-bottom: 1px solid var(--color-line); padding: clamp(1.8rem, 4vw, 3rem) 0; }
-.job-card h3 { font-size: var(--text-headline-md); font-weight: 300; letter-spacing: -.02em; }
+.job-card h3 { font-size: var(--text-headline-md); font-weight: 300; letter-spacing: var(--tracking-tight); }
 .job-card__meta { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
 /* Tag — a static label (no action): filled on its ground (white on the
    paper sections), no outline, so it never borrows the interactive chip's
    resting look. */
 .tag { background: var(--color-bg); border-radius: var(--radius-full); font-size: var(--text-label); font-weight: 600; padding: var(--space-2) var(--space-3); }
 .job-card__tagline { font-size: var(--text-lede-sm); font-weight: 700; margin-top: var(--space-6); }
-.job-card__text { font-size: var(--text-body-lg); line-height: 1.55; margin-top: var(--space-4); max-width: 52rem; }
+.job-card__text { font-size: var(--text-body-lg); line-height: var(--leading-copy); margin-top: var(--space-4); max-width: 52rem; }
 .job-card__apply { margin-top: var(--space-6); }
-.job-list__apply { font-size: var(--text-body-lg); line-height: 1.55; margin-top: var(--space-10); }
+.job-list__apply { font-size: var(--text-body-lg); line-height: var(--leading-copy); margin-top: var(--space-10); }
 .job-list__apply a { text-decoration: underline; text-underline-offset: .15em; }
 .job-card h4 { font-size: var(--text-body); font-weight: 700; margin-top: var(--space-8); }
 .result-list--compact { font-size: var(--text-body); margin-bottom: 0; max-width: 52rem; }
