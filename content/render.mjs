@@ -69,13 +69,18 @@ export function projectCards(selection = projects, filterable = false, collage =
 
 function filters() {
   // Dimensions per workbook v2: Branche + Leistungen (the eight service-portfolio
-  // terms), not Wirkung. All eight disciplines are offered; the empty state
-  // covers the ones without a published reference yet. Buttons sort A–Z
+  // terms), not Wirkung. All eight disciplines are offered; values without a
+  // published reference are disabled, the empty state covers combinations. Buttons sort A–Z
   // (owner review 24-09), "Alle" stays first.
   const az = choices => choices.sort((a,b)=>a[1].localeCompare(b[1],'de'));
   // "Alle" hangs in its own grid column so wrapped chip lines align with the
   // first named chip, not with "Alle" (owner review 24-09).
-  const chip = (group,[key,name]) => `<button class="filter-button min-h-11${key==='all'?' is-active':''}" type="button" data-filter-group="${group.key}" data-filter-value="${key}" aria-pressed="${key==='all'}"><svg class="filter-button__check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>${escape(name)}</button>`;
+  // A value no project carries is rendered disabled, not hidden (owner 26.09.,
+  // B-42); it re-enables itself once a reference with that value is added.
+  // Matching mirrors js/06-work.js (space-separated attribute values).
+  const attr = {industry:'filter', discipline:'discipline'};
+  const empty = (group,key) => key!=='all' && !projects.some(p=>String(p[attr[group.key]]).split(/\s+/).includes(key));
+  const chip = (group,[key,name]) => `<button class="filter-button min-h-11${key==='all'?' is-active':''}" type="button" data-filter-group="${group.key}" data-filter-value="${key}" aria-pressed="${key==='all'}"${empty(group,key)?' disabled':''}><svg class="filter-button__check" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>${escape(name)}</button>`;
   const groups = [
     {key:'industry', label:'Branche', aria:'Nach Branche filtern', choices:[['all','Alle'],...az([['aerospace','Aerospace & Defense'],['energy','Energy & Resources'],['health','Health & Pharma'],['industrial','Industrials & Manufacturing'],['automotive','Automotive'],['technology','Technology, Telecoms & Media']])]},
     {key:'discipline', label:'Leistung', aria:'Nach Leistung filtern', choices:[['all','Alle'],...az(disciplines.map(d=>[d.slug,d.name]))]},

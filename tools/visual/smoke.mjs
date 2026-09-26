@@ -173,7 +173,7 @@ const flows = [
   ...['/branchen/', '/case-studies/'].map(route => ['filters', route, async (page) => {
     const before = await page.evaluate(() => ({ chips: document.querySelectorAll('.filter-button').length, visible: [...document.querySelectorAll('[data-project]')].filter(p => !p.hidden).length, total: document.querySelectorAll('[data-project]').length }));
     if (!before.chips) return 'no filter chips';
-    const target = await page.evaluate(() => { const b = [...document.querySelectorAll('.filter-button[data-filter-value]')].find(b => b.dataset.filterValue !== 'all'); b.scrollIntoView({ block: 'center' }); return b.dataset.filterGroup + '=' + b.dataset.filterValue; });
+    const target = await page.evaluate(() => { const b = [...document.querySelectorAll('.filter-button[data-filter-value]')].find(b => b.dataset.filterValue !== 'all' && !b.disabled); b.scrollIntoView({ block: 'center' }); return b.dataset.filterGroup + '=' + b.dataset.filterValue; });
     const [g, v] = target.split('=');
     await page.click(`.filter-button[data-filter-group="${g}"][data-filter-value="${v}"]`);
     const after = await page.evaluate((g, v) => ({ pressed: document.querySelector(`.filter-button[data-filter-group="${g}"][data-filter-value="${v}"]`).getAttribute('aria-pressed'), visible: [...document.querySelectorAll('[data-project]')].filter(p => !p.hidden).length, count: document.getElementById('project-count')?.textContent }), g, v);

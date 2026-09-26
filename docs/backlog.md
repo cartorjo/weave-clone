@@ -14,6 +14,7 @@ decisions below.
 - 44px minimum target (min-h-11, .text-link) instead of M3 48dp.
 - Required form fields unmarked; only "(optional)" is marked.
 - #4597ce stays as --color-info.
+- Filter values without a reference are disabled, not hidden (26.09., B-42).
 - Spacing tokenized as shipped (--space-legacy-*); an 8px snap is B-18.
 - Industry tiles are static content, not links (24.09).
 - Karriere gets an application route to info@emposo.eu (2026-09-25; this
@@ -275,8 +276,10 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   re-ported, and the SEO work (301 map, noindex switch) moves to its
   Cloudflare rules / wp-config. Done meanwhile: emposo-wp#37 mirrors the
   2026-09-25 hero/header/CTA fixes.
-- B-42 Zero-result filter chips (S) - NEEDS-OWNER: 4 of 15 values match no
-  project; hide them (removes rendered strings) or keep the full A-Z set.
+- B-42 Zero-result filter chips (S) - DONE: owner decision 26.09. "disable
+  them". Values no project carries (today aerospace, technology,
+  produktion-industrialisierung, software-cloud) render `disabled` at build
+  time, labels unchanged; they re-enable when a matching reference is added.
 - B-43 Breadcrumb as nav landmark (S) - NEEDS-OWNER: nav > ol with
   aria-current needs a nav label ([TEXT: owner]).
 - B-44 One listing URL (M) - NEEDS-OWNER: /branchen/ and /case-studies/ render
