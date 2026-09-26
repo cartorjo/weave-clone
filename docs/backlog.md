@@ -107,12 +107,10 @@ decisions below.
 ## Sprint 3 - discoverability and performance
 
 - B-11 Structured data and sitemap (S-M, T) - DONE (b1df34f)
-  Done: Organization + WebSite + WebPage on every page, sitemap.xml,
-  robots.txt, 301s for all 53 legacy URLs (gated), noindex via INDEXABLE.
-  Remaining: BreadcrumbList on subpages, Service on Leistungen, Article on
-  case studies, using only fields that exist in data (no invented
-  author/date); validated in check:meta.
-  Agents: seo-specialist -> frontend-engineer -> qa-reviewer.
+  Done: Organization + WebSite + WebPage on every page, BreadcrumbList on
+  every subpage, Service x8 on /portfolio/, Article on case studies, sitemap,
+  robots, 301s for all 53 legacy URLs, noindex via INDEXABLE; gated in
+  check:meta. Follow-ups: B-30, B-31.
 
 - B-12 Image and font performance budget (S-M, T) - DONE (73f5b0f)
   Done: 960w rung, hero fetchpriority, fonts preloaded with font-display:
@@ -131,6 +129,121 @@ decisions below.
   Done: npm run smoke runs axe on the core routes plus overflow, console,
   CSP and flow checks. Remaining: document thresholds; CI only if the owner
   wants it (Lighthouse in CI is a recorded won't-do in emposo-wp).
+
+## Sprint 4 - from the 2026-09-26 benchmark review (docs/review/benchmark-patterns.md)
+
+Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
+
+- B-24 Header-height token matches the real header (S, R) - TODO
+  --header-h says 78px; the header renders 97px at 1400 (min-height 6rem)
+  and 80px at 390, so anchored sections land with ~6px clearance and the
+  mobile-menu max-height and hero literal 4.86rem are off.
+  Acceptance: --header-h/--header-h-scrolled equal the measured heights;
+  header, hero and scroll-margin read the tokens; anchors land >= 16px below
+  the header; visual:diff 0 apart from scroll-margin.
+  Agents: design-system-engineer -> frontend-engineer -> qa-reviewer.
+
+- B-25 Reflow at 200% text (S, T) - TODO
+  At 390 with 32px text, /kontakt/ clips its form (grid track resolves to the
+  select's min-content, 445px in 355px) and the homepage reference cards.
+  Acceptance: Page.setFontSizes 32 at 390: no element in main past x=390 on
+  / and /kontakt/; default size visual:diff 0.
+  Agents: design-system-engineer -> frontend-engineer -> a11y-perf-reviewer -> qa-reviewer.
+
+- B-26 Smoke covers every route (S, T) - TODO (after B-25)
+  axe on 24 routes x 390/1400, a 200%-text check, and a Tab walk (trap / no
+  outline fails) in npm run smoke; an injected regression turns it red.
+  Agents: frontend-engineer -> a11y-perf-reviewer -> qa-reviewer.
+
+- B-27 Discipline anchors and Service.url (S, T) - TODO
+  Each .discipline-cell on /portfolio/ gets its slug as id; the case-study
+  discipline link goes to /portfolio/#<slug>; each Service node gets that
+  url. Acceptance: check:content validates the anchors, check:meta the
+  Service urls; check:copy unchanged.
+  Agents: frontend-engineer -> seo-specialist -> qa-reviewer.
+
+- B-28 Related slot always shows 2 cards (S, T) - TODO
+  3 case studies (managed-service, multi-site-transition,
+  technische-dokumentation) show 1. Fill from other projects in a fixed order
+  once discipline/industry matches run out; no new strings.
+  Agents: frontend-engineer -> qa-reviewer.
+
+- B-29 One URL form at the server (S, T) - TODO
+  /x and /x/ both answer 200; /x/index.html takes 2 hops to the
+  non-canonical form; /404 answers 200. Acceptance (smoke, local serve):
+  every sitemap URL 200; slashless form one 301 to the slash form;
+  /x/index.html <= 2 hops to the canonical; /404 and /nope/ answer 404.
+  Agents: seo-specialist -> frontend-engineer -> qa-reviewer.
+
+- B-30 lastmod and dateModified from git (S, T) - TODO
+  sitemap.xml <lastmod> and WebPage.dateModified from the last commit date
+  of each page's sources (a real date, never invented); check:meta asserts
+  presence and agreement.
+  Agents: seo-specialist -> frontend-engineer -> qa-reviewer.
+
+- B-31 Organization logo and contactPoint (S, A) - TODO
+  A standalone PNG of the existing brand logo (fixed colours, text outlined,
+  >= 112px) and contactPoint from the email/phone already in the graph.
+  Owner signs off the exported asset.
+  Agents: design-system-engineer -> frontend-engineer -> qa-reviewer.
+
+- B-32 Share images at 1200x630 (S-M, A) - TODO
+  Crops of each hero (no new photography) so summary_large_image does not
+  cut 3:2 images; check:meta compares og:image with the hero's crop instead
+  of the hero file. Owner approves the crops.
+  Agents: a11y-perf-reviewer -> frontend-engineer -> qa-reviewer.
+
+- B-33 Font payload budget (S-M, T) - TODO
+  Fonts are 139 KiB on every route (5 faces, 2 preloaded) and
+  00-fonts.css is a second blocking stylesheet. Measure the faces each route
+  uses, then subset or drop faces without visual change and fold the
+  stylesheet into site.css. Acceptance: smoke reports font KiB per route with
+  a budget; one blocking stylesheet; visual:diff 0.
+  Agents: a11y-perf-reviewer -> design-system-engineer -> frontend-engineer -> qa-reviewer.
+
+- B-34 ~800w rung for industry tiles (S, T) - TODO
+  /branchen/ at 390x2 loads 1091w tiles for a 710px need. Acceptance:
+  /branchen/ <= 450 KiB images at 390x2; visual:diff 0.
+  Agents: frontend-engineer -> a11y-perf-reviewer -> qa-reviewer.
+
+- B-35 Tokens for the remaining literals (S, R) - TODO
+  --target-min (44px, today spelled 44px / 2.75rem / min-h-11), icon sizes,
+  letter-spacing and line-height roles, and the 5 headline rems B-19 missed,
+  all at current values. Acceptance: no such literals in styles/07-11;
+  visual:diff 0.
+  Agents: design-system-engineer -> qa-reviewer.
+
+- B-36 Contracts for shared frames; canon drift (S, docs) - TODO
+  Contracts for page-section, site-footer, reference-grid, section-more,
+  legal-copy and 7 smaller blocks; fix the canon rows that contradict the
+  code (job card "KEIN Bewerben-Link", Kennzahlen on Karriere, "Stand"
+  date) and the stale 1280px comment in 07-header.css.
+  Agents: design-system-engineer -> qa-reviewer.
+
+- B-37 One line-height and weight per headline role (M, A) - TODO
+  h3 renders in 12 styles at 1400 (inherited 1.5 on large headlines,
+  weights 300/400 at one size). Acceptance: <= 6 h3 styles; crops per page.
+  Agents: design-system-engineer -> a11y-perf-reviewer -> qa-reviewer.
+
+- B-38 Merge near-duplicate values (S, A) - TODO
+  0.9-0.98rem small text -> 2 roles; one orange-rule weight (2px vs 3px);
+  close breakpoint pairs (640/650, 992/1000); ink aliases. Crops per page.
+  Agents: design-system-engineer -> qa-reviewer.
+
+- B-39 Named fluid spacing steps (M, A) - TODO
+  14 one-off spacing clamps with minimums off the 8px grid -> 3-4 named
+  fluid steps. Crops at 390/1000/1400.
+  Agents: design-system-engineer -> frontend-engineer -> qa-reviewer.
+
+- B-40 Footer bottom row on one baseline (S, A) - TODO
+  Copyright sits ~13px above the legal links' baseline. Acceptance: same
+  baseline within 1px at 1000/1400.
+  Agents: design-system-engineer -> qa-reviewer.
+
+- B-41 Filter state in the URL (S-M, T) - TODO
+  Selecting a filter writes ?branche= / ?leistung= (history.replaceState);
+  loading the URL restores it; no JS = all projects visible (smoke).
+  Agents: ux-ia-architect -> frontend-engineer -> a11y-perf-reviewer -> qa-reviewer.
 
 ## Later / owner decisions
 
@@ -162,3 +275,14 @@ decisions below.
   re-ported, and the SEO work (301 map, noindex switch) moves to its
   Cloudflare rules / wp-config. Done meanwhile: emposo-wp#37 mirrors the
   2026-09-25 hero/header/CTA fixes.
+- B-42 Zero-result filter chips (S) - NEEDS-OWNER: 4 of 15 values match no
+  project; hide them (removes rendered strings) or keep the full A-Z set.
+- B-43 Breadcrumb as nav landmark (S) - NEEDS-OWNER: nav > ol with
+  aria-current needs a nav label ([TEXT: owner]).
+- B-44 One listing URL (M) - NEEDS-OWNER: /branchen/ and /case-studies/ render
+  the same project list; either /branchen/ links to /case-studies/ or
+  /case-studies/ gets a nav entry ([TEXT: owner] label).
+- B-45 Keep-exploring links on /karriere/ and /kontakt/ (S) - NEEDS-OWNER:
+  a heading ([TEXT: owner]) plus existing link labels.
+- B-46 Metadata facts (S) - NEEDS-OWNER: sameAs profile URLs, Article
+  author/publication dates, home title order, "Case Study" vs "Projekte".
