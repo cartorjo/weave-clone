@@ -1,6 +1,17 @@
 {
   "directoryListing": false,
+  "trailingSlash": true,
   "redirects": [
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "type": 301
+    },
+    {
+      "source": "/:path*/index.html",
+      "destination": "/:path*/",
+      "type": 301
+    },
     {
       "source": "/about",
       "destination": "/about-us/",

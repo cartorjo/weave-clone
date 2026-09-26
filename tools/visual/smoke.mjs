@@ -128,6 +128,21 @@ for (const r of ['/', '/branchen/', '/case-studies/data2ai-platform/', '/about-u
   await page.close();
 }
 
+// 2f. one URL form: every sitemap URL answers 200 at its canonical (trailing
+// slash) form, and the slashless form redirects to it (serve.json trailingSlash).
+{
+  const sitemap = readFileSync(new URL('../../sitemap.xml', import.meta.url), 'utf8');
+  for (const loc of [...sitemap.matchAll(/<loc>https?:\/\/[^/]+([^<]*)<\/loc>/g)].map(m => m[1])) {
+    const ok = await fetch(BASE + loc, { redirect: 'manual' });
+    if (ok.status !== 200) fail(`url ${loc}: ${ok.status}, expected 200`);
+    if (loc !== '/') {
+      const bare = await fetch(BASE + loc.replace(/\/$/, ''), { redirect: 'manual' });
+      const to = bare.headers.get('location') || '';
+      if (bare.status !== 301 || new URL(to, BASE).pathname !== loc) fail(`url ${loc.replace(/\/$/, '')}: ${bare.status} -> ${to || '-'}, expected 301 -> ${loc}`);
+    }
+  }
+}
+
 // 3. functional flows
 const flows = [
   ['nav', '/', async (page, w) => {
