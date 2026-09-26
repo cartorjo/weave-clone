@@ -54,8 +54,14 @@ await pool(jobs, 6, async ({ r, w }) => {
 await pool(routes.flatMap(r => [390, 1400].map(w => ({ r, w }))), 4, async ({ r, w }) => {
   const { page } = await open(r, w, { bypassCSP: true, motion: 'reduce' });
   try {
+    // B-47: axe once saw the hero's on-dark text on white in CI (hero not
+    // painted yet). Wait for the hero image, fonts and two frames; rerun once
+    // on violations: a real contrast bug is deterministic and fails twice.
+    await page.evaluate(async () => { await document.fonts.ready; await Promise.all([...document.images].filter(i => i.loading !== 'lazy').map(i => i.decode().catch(() => {}))); await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); });
     await page.evaluate(AXE);
-    const v = await page.evaluate(async () => (await axe.run(document, { runOnly: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'] })).violations.map(x => ({ id: x.id, impact: x.impact, n: x.nodes.length, sel: x.nodes.slice(0, 2).map(n => n.target.join(' ')) })));
+    const audit = () => page.evaluate(async () => (await axe.run(document, { runOnly: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'] })).violations.map(x => ({ id: x.id, impact: x.impact, n: x.nodes.length, sel: x.nodes.slice(0, 2).map(n => n.target.join(' ')) })));
+    let v = await audit();
+    if (v.length) { const again = await audit(); if (!again.length) console.log(`note: ${slug(r)}@${w} axe flaked once (${v.map(x => x.id).join(', ')}), clean on rerun`); v = again; }
     (info.axe ??= {})[`${slug(r)}@${w}`] = v;
     for (const x of v) fail(`${slug(r)}@${w}: axe ${x.id} (${x.impact}) ×${x.n} e.g. ${x.sel.join(' | ')}`);
   } finally { await page.close(); }
