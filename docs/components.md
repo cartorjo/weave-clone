@@ -1,6 +1,6 @@
 # Komponenten-Kanon
 
-Stand: 24.09.2026 (Konsolidierungs-Pass). Kanonische Klassen leben in
+Stand: 26.09.2026 (Konsolidierung 24.09., technical track 25./26.09.). Kanonische Klassen leben in
 `styles/11-components.css` (letzter Import — gewinnt Gleichstände gegen
 07–10). `tools/check-content.mjs` lehnt die pensionierten Klassennamen im
 generierten Output ab; wer eine neue Variante braucht, erweitert den Kanon
@@ -45,7 +45,9 @@ statt eine Parallel-Klasse zu erfinden.
 - **Keine Seiten-Forks:** dieselbe Komponente verhält sich auf jeder Seite
   gleich (Owner 24.09.). Die frühere Startseiten-Sonderform (statische
   Branchen-Kacheln, pfeillose Karten-Links) ist aufgehoben; Varianten sind
-  Modifier im Kanon, keine Parallel-Implementierungen.
+  Modifier im Kanon, keine Parallel-Implementierungen. Auf der Startseite
+  sind nur Referenzkarten Links (29dd713); alle Komponenten dort verhalten
+  sich wie auf jeder anderen Seite (Branchen-Kacheln überall statisch).
 
 ## Kanon-Komponenten
 
@@ -64,8 +66,8 @@ statt eine Parallel-Klasse zu erfinden.
 | Branchen-Kachel | `.industry-tile` | EIN Verhalten überall (Owner 24.09., zweiter Entscheid am selben Tag): statische Inhaltskachel — kein Link, kein Pfeil, kein Hover, da die Branchen-Unterseiten entfernt wurden. Bild, Nummer, Name, optionale Subline. |
 | Expander | `.expander`, `__open`, `__close` | DER kanonische `<details>`-Expander (Mehr-lesen-Muster): Open/Close-Label-Spans, rotierendes Lemon-Plus. Konsumenten: Management-Karten, Stellenausschreibungen. Ersetzt management-card__more. |
 | Management-Karte | `.management-card` | Foto (grayscale, kein Hover), Name, Rolle, 48-Wort-Teaser; Rest-Bio + LinkedIn im `.expander`. |
-| Stellenausschreibung | `.job-list`, `.job-card`, `__meta`, `__tagline`, `__text` (+ `.result-list--compact`) | Karriere-Stellen aus `jobs` in site-data.mjs via `jobsList()` (`content:jobs`): Titel, statische Meta-Tags (`.tag`: weiß gefüllt, ohne Outline — nie im Chip-Look), Tagline, erster Absatz sichtbar; volle Ausschreibung im `.expander`, KEIN Bewerben-Link (Owner 25.09.: Karriere ohne CTAs). Owner-Copy wörtlich, keine Unterseiten. |
-| Kennzahlen | `.company-facts`, `__icon`, `__value` — NUR via `companyFacts()` in content/render.mjs (`content:company-facts`) | EINE homogene Zahlenreihe mit EINEM Inhalt (Owner 24.09., Startseiten-Version ist die Referenz): 2014 / 250+ / 2.900+ / 4, identisch auf Startseite, Über-uns und Karriere. Werte, Icons und Labels leben einmal in `companyFactData` — Markup nie von Hand schreiben, Labels nie pro Seite forken. Nicht klickbar → kein Hover. |
+| Stellenausschreibung | `.job-list`, `.job-card`, `__meta`, `__tagline`, `__text` (+ `.result-list--compact`) | Karriere-Stellen aus `jobs` in site-data.mjs via `jobsList()` (`content:jobs`): Titel, statische Meta-Tags (`.tag`: weiß gefüllt, ohne Outline — nie im Chip-Look), Tagline, erster Absatz sichtbar; volle Ausschreibung im `.expander`, endet mit dem Bewerbungslink „Bewerbung an info@emposo.eu“ (mailto, Betreff = Stelle; Owner 25.09., B-16) und der Initiativbewerbungs-Zeile unter der Liste. Die Kartenflächen bleiben linkfrei. Owner-Copy wörtlich, keine Unterseiten. |
+| Kennzahlen | `.company-facts`, `__icon`, `__value` — NUR via `companyFacts()` in content/render.mjs (`content:company-facts`) | EINE homogene Zahlenreihe mit EINEM Inhalt (Owner 24.09., Startseiten-Version ist die Referenz): 2014 / 250+ / 2.900+ / 4, identisch auf Startseite und Über-uns (Karriere seit 826952c, 24.09., ohne Kennzahlen). Werte, Icons und Labels leben einmal in `companyFactData` — Markup nie von Hand schreiben, Labels nie pro Seite forken. Nicht klickbar → kein Hover. |
 | Header/Menü | `.site-nav`, `.header-contact`, `.mobile-menu` | Der Formular-Submit auf /kontakt/ ist dieselbe `.header-contact`-Pille (Owner 25.09.). Grund = Sand (`--color-surface-veil`, Papier-RGB bei 96 %, Owner 25.09.) — hebt die Leiste vom Browser ab. Links weight 500; Hover/aktiv = 2px-Ink-Unterstrich (scaleX). CTA = Lemon-Pill mit Ink-Pfeilkreis, Hover/Fokus invertiert (Desktop und Mobile-Menü teilen eine Regel). Inline-Navigation ab `--breakpoint-nav` 75rem (1200px bei Standard-Textgröße; größere Browserschrift übergibt ans Mobile-Menü), Sync mit js/01-header.js. |
 
 ## Bewusste Zwillinge (keine Duplikate)
@@ -234,3 +236,47 @@ source or content/site-data.mjs (never from the renderer).
 ### Remaining shared markup (by design, not duplicates)
 - .eyebrow, .display-large, .text-link, .section-lede: primitive classes with page-specific text.
 - .company-values: one CSS component, different content per page (about-us, portfolio).
+
+### Shared frames (B-36)
+
+#### page-section
+- Purpose: the vertical section frame of every page (24/24).
+- Markup: `<section class="page-section[ --paper| --dark| --deep]">` > `.gutter` > `.container`.
+- CSS: 09-page-templates.css `.page-section` (padding-block `--spacing-section`), variants set the ground; --dark/--deep flip `color`, `--line-hairline` and `--accent-ink` for on-dark content.
+- Props: variant (none = white, paper, dark, deep); optional id (anchor; scroll-margin clears the header, B-24); optional aria-labelledby (its H2).
+- Accessibility: one H2 per section when it has a heading; on-dark text uses the --color-on-dark roles (>= 7.58:1).
+- Status: active.
+
+#### site-footer
+- Purpose: the global footer (partials/footer.html), on every page.
+- CSS: 08-editorial.css / 10-feedback.css `.site-footer`, `__top`, `__brand`, `__contact`, `__bottom`.
+- Slots: brand (logo SVG + screen-reader name), two labelled navs, contact column, bottom row (copyright + legal links).
+- States: links hover lemon, focus-visible ring, press (state layer).
+- Accessibility: contentinfo landmark without a redundant label; every link >= 44px tall.
+- Status: active. Known: copyright sits ~13px above the legal links' baseline (B-40).
+
+#### reference-grid
+- Purpose: the grid of reference cards.
+- Renderer: projectCards(selection, filterable, collage).
+- CSS: 10-feedback.css `.reference-grid`, `--collage` (12-column mixed sizes on desktop; stacks below `--breakpoint-stack`, spans reset via `:nth-child(n)`, B-25).
+- Variants: default 2-up, collage (home), filterable (data-project attributes for js/06-work.js).
+- Status: active.
+
+#### section-more
+- Purpose: the closing text link of a section (e.g. "Alle Referenzen"), 11 pages.
+- CSS: `.section-more` wrapping one `.text-link`.
+- Status: active.
+
+#### legal-copy
+- Purpose: long-form legal/info pages (Impressum, Datenschutz, Nutzungsbestimmungen, Cookies, Barrierefreiheit).
+- CSS: 10-feedback.css `.legal-copy` (55rem measure; h2/h3/list/inline-link/table styles; `.legal-table` = labelled, focusable scroll region).
+- Accessibility: tables scroll inside `role="region"` with a numbered aria-label and tabindex=0; inline links underlined.
+- Status: active.
+
+#### Smaller blocks
+- **management-card** (about-us): renderer management(); photo (decorative, grayscale), name (h3), role, teaser; rest in `.expander`.
+- **fact-grid** (portfolio 5-step model): hairline cell grid, `__label--display` digits with lemon rule; not for Kennzahlen.
+- **discipline-table** (portfolio): renderer disciplineGrid(); `.discipline-cell` per discipline with its slug as id (B-27 anchor target).
+- **connection-step** (home): icon chip (`--icon-lg`, `--color-info` on the "how" variant), h3, text.
+- **portfolio-mode** (portfolio): number, h3, copy, outcome; ids optimieren/transformieren/skalieren/verzahnen.
+- **work-filter / work-count / work-empty**: the filter bar (.js-only), live count, empty state with the contact route; see filter-chip.
