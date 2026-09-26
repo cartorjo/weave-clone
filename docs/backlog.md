@@ -295,7 +295,7 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   German form error messages in js/06-work.js; the screen-reader suffixes
   " – <Name>" on expander toggles. Approve or reword; changes go through
   npm run copy:accept.
-- B-22 Metadata length guidance (NEEDS-OWNER, drafts on the owner review page 2026-09-26): check:meta lists 22
+- B-22 Metadata length guidance - DONE, owner approved 2026-09-26: 23 descriptions at 140-160 characters (drafts reused on-page sentences), the two long case-study titles drop "| Case Study"; check:meta now lists no length guidance. Was: check:meta listed 22
   descriptions under 140 characters and 2 case-study titles over 60.
   Rewording is owner work.
   Update B-48 (2026-09-26): the two long titles belong to the replaced routes
