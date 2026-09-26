@@ -6,6 +6,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pages from '../pages.mjs';
+import { shareSrc, SHARE } from '../content/share.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const failures = [], owner = [];
@@ -29,9 +30,10 @@ for (const page of pages) {
     if (!html.includes(tag)) failures.push(`${f}: ${tag} missing`);
   const image = attr(html, /property="og:image" content="https?:\/\/[^/]+([^"]+)"/);
   if (image && !existsSync(resolve(root, image.slice(1)))) failures.push(`${f}: og:image ${image} does not exist`);
-  // The share image is the page's own hero photo whenever it has one.
-  const hero = attr(html, /<img src="([^"]+)"[^>]*fetchpriority="high"/);
-  if (hero && image && hero !== image) failures.push(`${f}: og:image ${image} is not the page's hero ${hero}`);
+  // The share image is the 1200x630 crop of the page's own hero whenever it has one (B-32).
+  const hero = attr(html, /<img src="\/assets\/supplied\/([a-z0-9-]+)-\d+\.jpg"[^>]*fetchpriority="high"/);
+  if (hero && image && image !== shareSrc(hero)) failures.push(`${f}: og:image ${image} is not the crop of the page's hero (${shareSrc(hero)})`);
+  if (attr(html, /property="og:image:width" content="(\d+)"/) !== String(SHARE.width) || attr(html, /property="og:image:height" content="(\d+)"/) !== String(SHARE.height)) failures.push(`${f}: og:image is not ${SHARE.width}x${SHARE.height}`);
   const ld = attr(html, /<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
   if (!ld) failures.push(`${f}: JSON-LD missing`);
   else try {

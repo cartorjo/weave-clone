@@ -9,6 +9,7 @@
     "check:content": "node tools/check-content.mjs",
     "import:feedback-images": "node tools/import-feedback-assets.mjs",
     "build:img": "node tools/optimize-images.mjs",
+    "build:share": "node tools/share-images.mjs",
     "build:brand-img": "node tools/optimize-brand-images.mjs",
     "check": "npm run build && npm run check:content && npm run check:meta && npm run check:copy && git diff --exit-code",
     "watch:html": "node --watch --watch-path=sections --watch-path=pages --watch-path=partials --watch-path=js assemble.mjs",
