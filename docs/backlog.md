@@ -288,6 +288,11 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
 - B-22 Metadata length guidance (NEEDS-OWNER, drafts on the owner review page 2026-09-26): check:meta lists 22
   descriptions under 140 characters and 2 case-study titles over 60.
   Rewording is owner work.
+  Update B-48 (2026-09-26): the two long titles belong to the replaced routes
+  fahrzeugfunktionen and technische-dokumentation (their approved drafts are
+  moot); the 15 deck cases add 9 titles over 60 characters and 15
+  descriptions of 56-80 characters (the deck subtitles, verbatim). Same rule
+  as approved: drop the "| Case Study" segment where a title exceeds 60.
 - B-23 WordPress port parity (L) - NEEDS-OWNER (platform decision)
   Measured 2026-09-26: emposo-wp pins reference/static at c471ef0, 141
   commits / 47 source files behind this repo. Its route contract has 42
