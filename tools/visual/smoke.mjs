@@ -179,9 +179,19 @@ const flows = [
     const after = await page.evaluate((g, v) => ({ pressed: document.querySelector(`.filter-button[data-filter-group="${g}"][data-filter-value="${v}"]`).getAttribute('aria-pressed'), visible: [...document.querySelectorAll('[data-project]')].filter(p => !p.hidden).length, count: document.getElementById('project-count')?.textContent }), g, v);
     if (after.pressed !== 'true') return `chip ${target} not pressed after click`;
     if (after.visible > before.total) return 'visible > total';
+    // B-41: the selection is in the URL and a fresh load restores it
+    const param = { industry: 'branche', discipline: 'leistung' }[g];
+    const search = await page.evaluate(() => location.search);
+    if (search !== `?${param}=${v}`) return `URL after click is "${search}", expected ?${param}=${v}`;
+    const fresh = await page.browser().newPage();
+    await fresh.goto(page.url(), { waitUntil: 'networkidle0' });
+    const restored = await fresh.evaluate((g, v) => ({ pressed: document.querySelector(`.filter-button[data-filter-group="${g}"][data-filter-value="${v}"]`).getAttribute('aria-pressed'), visible: [...document.querySelectorAll('[data-project]')].filter(p => !p.hidden).length }), g, v);
+    await fresh.close();
+    if (restored.pressed !== 'true' || restored.visible !== after.visible) return `reload of ${search} restored ${JSON.stringify(restored)}, expected ${after.visible} visible`;
     await page.click(`.filter-button[data-filter-group="${g}"][data-filter-value="all"]`);
     const reset = await page.evaluate(() => [...document.querySelectorAll('[data-project]')].filter(p => !p.hidden).length);
     if (reset !== before.visible) return `reset shows ${reset}, expected ${before.visible}`;
+    if (await page.evaluate(() => location.search)) return 'URL keeps a query after reset to "Alle"';
   }]),
   ...['/about-us/', '/karriere/'].map(route => ['expander', route, async (page) => {
     const n = await page.evaluate(() => { const d = document.querySelector('details.expander'); d?.scrollIntoView({ block: 'center' }); return document.querySelectorAll('details.expander').length; });

@@ -241,7 +241,7 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   baseline within 1px at 1000/1400.
   Agents: design-system-engineer -> qa-reviewer.
 
-- B-41 Filter state in the URL (S-M, T) - TODO
+- B-41 Filter state in the URL (S-M, T) - DONE (filters write ?branche= / ?leistung= via replaceState, a load restores them, disabled/unknown values ignored; smoke asserts URL + reload, negative-tested)
   Selecting a filter writes ?branche= / ?leistung= (history.replaceState);
   loading the URL restores it; no JS = all projects visible (smoke).
   Agents: ux-ia-architect -> frontend-engineer -> a11y-perf-reviewer -> qa-reviewer.

@@ -28,6 +28,19 @@
       if (empty) empty.hidden = visible !== 0;
     }
 
+    // The selection lives in the URL (?branche= / ?leistung=), so a filtered
+    // list can be shared and survives reload and back/forward (B-41).
+    var params = { industry: 'branche', discipline: 'leistung' };
+
+    function writeUrl() {
+      var url = new URL(window.location.href);
+      Object.keys(params).forEach(function (group) {
+        if (state[group] === 'all') url.searchParams.delete(params[group]);
+        else url.searchParams.set(params[group], state[group]);
+      });
+      if (url.href !== window.location.href) window.history.replaceState(window.history.state, '', url.href);
+    }
+
     function selectFilter(group, value) {
       if (!group || !value) return;
       state[group] = value;
@@ -61,13 +74,18 @@
         var group = button.getAttribute('data-filter-group');
         var value = button.getAttribute('data-filter-value');
         selectFilter(group, value);
+        writeUrl();
       });
     });
 
-    var industryFromQuery = new URLSearchParams(window.location.search).get('branche');
-    if (industryFromQuery && buttons.some(function (button) {
-      return !button.disabled && button.getAttribute('data-filter-group') === 'industry' && button.getAttribute('data-filter-value') === industryFromQuery;
-    })) selectFilter('industry', industryFromQuery);
+    // Restore a shared selection; unknown or disabled values are ignored.
+    var query = new URLSearchParams(window.location.search);
+    Object.keys(params).forEach(function (group) {
+      var value = query.get(params[group]);
+      if (value && buttons.some(function (button) {
+        return !button.disabled && button.getAttribute('data-filter-group') === group && button.getAttribute('data-filter-value') === value;
+      })) selectFilter(group, value);
+    });
 
     // The filter UI is meaningless without this script: it ships hidden
     // (.js-only) and is revealed only once the handlers are attached.
