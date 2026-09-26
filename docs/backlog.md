@@ -182,7 +182,7 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   presence and agreement.
   Agents: seo-specialist -> frontend-engineer -> qa-reviewer.
 
-- B-31 Organization logo and contactPoint (S, A) - TODO
+- B-31 Organization logo and contactPoint (S, A) - DONE, owner approved 2026-09-26 (assets/brand/emposo-logo-organization.png 896x288, header logo ink on white; contactPoint customer service + existing email/phone; new string "customer service" needs approval)
   A standalone PNG of the existing brand logo (fixed colours, text outlined,
   >= 112px) and contactPoint from the email/phone already in the graph.
   Owner signs off the exported asset.
@@ -221,17 +221,17 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   date) and the stale 1280px comment in 07-header.css.
   Agents: design-system-engineer -> qa-reviewer.
 
-- B-37 One line-height and weight per headline role (M, A) - TODO
+- B-37 One line-height and weight per headline role (M, A) - DONE, owner approved 2026-09-26 (12 -> 6 h3 styles at 390/1000/1400: display, figure, headline, headline-sm, title, legal)
   h3 renders in 12 styles at 1400 (inherited 1.5 on large headlines,
   weights 300/400 at one size). Acceptance: <= 6 h3 styles; crops per page.
   Agents: design-system-engineer -> a11y-perf-reviewer -> qa-reviewer.
 
-- B-38 Merge near-duplicate values (S, A) - TODO
+- B-38 Merge near-duplicate values (S, A) - DONE, owner approved 2026-09-26 (small text .94/.96/.98 -> --text-body-sm .95, --text-small .9 stays; orange rules 3px -> --rule-accent 2px; ink aliases --color-accent-text/--color-bg-dark-2 removed, 0 visual change. Breakpoint pairs NOT merged: each token is also a .container max-width step, so merging 992/1000 narrowed the container at 1000 and flipped @max-content layouts on 16 routes; needs its own item)
   0.9-0.98rem small text -> 2 roles; one orange-rule weight (2px vs 3px);
   close breakpoint pairs (640/650, 992/1000); ink aliases. Crops per page.
   Agents: design-system-engineer -> qa-reviewer.
 
-- B-39 Named fluid spacing steps (M, A) - TODO
+- B-39 Named fluid spacing steps (M, A) - DONE, owner approved 2026-09-26 (16 one-off clamps -> --space-fluid-sm/md/lg/xl on the 8px grid; decorative negative insets excluded)
   14 one-off spacing clamps with minimums off the 8px grid -> 3-4 named
   fluid steps. Crops at 390/1000/1400.
   Agents: design-system-engineer -> frontend-engineer -> qa-reviewer.

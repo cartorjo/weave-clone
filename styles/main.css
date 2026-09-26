@@ -75,15 +75,12 @@
   /* Container size read by the @max-content: variant (hero/CTA collapse). */
   --container-content: 56rem;
 
-  /* Brand color system: orange decoration; midnight blue text and numbers.
-     --color-accent-text remains an alias for existing utility classes. */
+  /* Brand color system: orange decoration; midnight blue text and numbers. */
   --color-lemon: #f7911e;
   /* Secondary accent: the homepage "How" connection-step icon discs. */
   --color-info: #4597ce;
-  --color-accent-text: #0a0532;
   --color-ink: #0a0532;
   --color-bg: #ffffff;
-  --color-bg-dark-2: #0a0532;
   --color-paper: #f5f0eb;
   --color-line: rgba(10, 5, 50, 0.18);
   /* Boundary of interactive outlines on white (3.17:1, WCAG 1.4.11). */
@@ -109,24 +106,18 @@
   --text-caption: 0.8125rem;
   --text-label: 0.85rem;
   --text-body-sm: 0.95rem;
-  --text-card: 0.96rem;
   --text-body: 1rem;
   --text-body-lg: 1.05rem;
   --text-lede-sm: 1.1rem;
   --text-lede: 1.15rem;
   --text-lede-lg: 1.2rem;
   /* Component-specific sizes, one token each until B-38 merges near twins. */
-  --text-table-head: 2rem;
   --text-sitemap-heading: 1.75rem;
-  --text-values-heading: 1.7rem;
-  --text-person-name: 1.55rem;
   --text-legal-h3: 1.3rem;
   --text-join-glyph: 3rem;
   --text-arrow: 1.65rem;
   --text-expander-plus: 1.35rem;
   --text-small: 0.9rem;
-  --text-hint: 0.94rem;
-  --text-cell: 0.98rem;
   --text-badge: 0.76rem;
   --text-index: 0.7rem;
   --text-mode-copy: 1.07rem;
@@ -152,6 +143,8 @@
   --tracking-wide: 0.1em;
   /* Line-height roles (Tailwind's own tight/snug/normal/relaxed stay untouched). */
   --leading-display: 1.08;
+  /* Card and section headlines (h3 headline role, B-37). */
+  --leading-headline: 1.16;
   --leading-heading: 1.1;
   --leading-title: 1.2;
   --leading-label: 1.35;
@@ -203,6 +196,12 @@
   --space-24: 6rem;
   --space-28: 7rem;
   --space-40: 10rem;
+  /* Fluid spacing steps (B-39): the only clamp()ed gaps, paddings and margins
+     outside the section rhythm; floors and caps sit on the 8px grid. */
+  --space-fluid-sm: clamp(1rem, 2.5vw, 2.5rem);
+  --space-fluid-md: clamp(1rem, 4vw, 3.5rem);
+  --space-fluid-lg: clamp(1rem, 5vw, 5rem);
+  --space-fluid-xl: clamp(1.5rem, 8vw, 7rem);
   /* Composite/geometry tokens with no fitting @theme namespace. */
   --gutter: 4.5vw;
   --container-max: 84rem; /* 1344px — the designed ~1348px content measure */
@@ -226,6 +225,8 @@
   /* State layers: content-color overlay opacity per interaction state. */
   --state-hover: .08;
   --state-press: .1;
+  /* The one weight of orange accent rules (borders under/over figures, hints). */
+  --rule-accent: 2px;
   /* Disabled controls (filter values without a reference): content opacity. */
   --state-disabled: .38;
   /* Minimum interactive target (owner decision: 44px, not M3 48dp). */
@@ -247,7 +248,7 @@
   --line-hairline: var(--color-line);
   /* Accent used AS TEXT: the AA-safe shade on light surfaces; dark sections
      flip it to the brand orange (which passes on navy). */
-  --accent-ink: var(--color-accent-text);
+  --accent-ink: var(--color-ink);
 }
 /* Below the inline nav the header is 80px (same unlayered :root, so it wins). */
 @media (width < theme(--breakpoint-nav)) { :root { --header-h: 5rem; } }
