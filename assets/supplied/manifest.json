@@ -1719,5 +1719,850 @@
         "bytes": 35060
       }
     ]
+  },
+  "antriebssteuerung": {
+    "source": "Software Antriebssteuerung-AdobeStock_341431108.jpg",
+    "alt": "Fahrzeugdiagnose mit einem robusten Prüf-Notebook in der Werkstatt",
+    "src": "/assets/supplied/antriebssteuerung-1600.jpg",
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      {
+        "src": "/assets/supplied/antriebssteuerung-640.avif",
+        "width": 640,
+        "height": 360,
+        "format": "avif",
+        "bytes": 17196
+      },
+      {
+        "src": "/assets/supplied/antriebssteuerung-640.webp",
+        "width": 640,
+        "height": 360,
+        "format": "webp",
+        "bytes": 30218
+      },
+      {
+        "src": "/assets/supplied/antriebssteuerung-800.avif",
+        "width": 800,
+        "height": 450,
+        "format": "avif",
+        "bytes": 23065
+      },
+      {
+        "src": "/assets/supplied/antriebssteuerung-800.webp",
+        "width": 800,
+        "height": 450,
+        "format": "webp",
+        "bytes": 41266
+      },
+      {
+        "src": "/assets/supplied/antriebssteuerung-960.avif",
+        "width": 960,
+        "height": 540,
+        "format": "avif",
+        "bytes": 28282
+      },
+      {
+        "src": "/assets/supplied/antriebssteuerung-960.webp",
+        "width": 960,
+        "height": 540,
+        "format": "webp",
+        "bytes": 50770
+      },
+      {
+        "src": "/assets/supplied/antriebssteuerung-1600.avif",
+        "width": 1600,
+        "height": 900,
+        "format": "avif",
+        "bytes": 57514
+      },
+      {
+        "src": "/assets/supplied/antriebssteuerung-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "format": "webp",
+        "bytes": 97408
+      }
+    ]
+  },
+  "gewichtsmanagement": {
+    "source": "Gewichtsmanagement-AdobeStock_305628594.jpg",
+    "alt": "Ingenieur betrachtet das leuchtende Gitternetzmodell eines Fahrzeugs",
+    "src": "/assets/supplied/gewichtsmanagement-1600.jpg",
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      {
+        "src": "/assets/supplied/gewichtsmanagement-640.avif",
+        "width": 640,
+        "height": 360,
+        "format": "avif",
+        "bytes": 25379
+      },
+      {
+        "src": "/assets/supplied/gewichtsmanagement-640.webp",
+        "width": 640,
+        "height": 360,
+        "format": "webp",
+        "bytes": 41372
+      },
+      {
+        "src": "/assets/supplied/gewichtsmanagement-800.avif",
+        "width": 800,
+        "height": 450,
+        "format": "avif",
+        "bytes": 37321
+      },
+      {
+        "src": "/assets/supplied/gewichtsmanagement-800.webp",
+        "width": 800,
+        "height": 450,
+        "format": "webp",
+        "bytes": 61480
+      },
+      {
+        "src": "/assets/supplied/gewichtsmanagement-960.avif",
+        "width": 960,
+        "height": 540,
+        "format": "avif",
+        "bytes": 50912
+      },
+      {
+        "src": "/assets/supplied/gewichtsmanagement-960.webp",
+        "width": 960,
+        "height": 540,
+        "format": "webp",
+        "bytes": 83466
+      },
+      {
+        "src": "/assets/supplied/gewichtsmanagement-1600.avif",
+        "width": 1600,
+        "height": 900,
+        "format": "avif",
+        "bytes": 125389
+      },
+      {
+        "src": "/assets/supplied/gewichtsmanagement-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "format": "webp",
+        "bytes": 196920
+      }
+    ]
+  },
+  "pharma-qualitaet": {
+    "source": "Pharma-Qualitätssicherung-GettyImages-544457191.jpg",
+    "alt": "Laborfachkraft in Schutzkleidung am Mikroskop neben einer Bioreaktoranlage",
+    "src": "/assets/supplied/pharma-qualitaet-1600.jpg",
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      {
+        "src": "/assets/supplied/pharma-qualitaet-640.avif",
+        "width": 640,
+        "height": 360,
+        "format": "avif",
+        "bytes": 18218
+      },
+      {
+        "src": "/assets/supplied/pharma-qualitaet-640.webp",
+        "width": 640,
+        "height": 360,
+        "format": "webp",
+        "bytes": 29928
+      },
+      {
+        "src": "/assets/supplied/pharma-qualitaet-800.avif",
+        "width": 800,
+        "height": 450,
+        "format": "avif",
+        "bytes": 24384
+      },
+      {
+        "src": "/assets/supplied/pharma-qualitaet-800.webp",
+        "width": 800,
+        "height": 450,
+        "format": "webp",
+        "bytes": 40054
+      },
+      {
+        "src": "/assets/supplied/pharma-qualitaet-960.avif",
+        "width": 960,
+        "height": 540,
+        "format": "avif",
+        "bytes": 30215
+      },
+      {
+        "src": "/assets/supplied/pharma-qualitaet-960.webp",
+        "width": 960,
+        "height": 540,
+        "format": "webp",
+        "bytes": 48028
+      },
+      {
+        "src": "/assets/supplied/pharma-qualitaet-1600.avif",
+        "width": 1600,
+        "height": 900,
+        "format": "avif",
+        "bytes": 60431
+      },
+      {
+        "src": "/assets/supplied/pharma-qualitaet-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "format": "webp",
+        "bytes": 89420
+      }
+    ]
+  },
+  "ki-testspezifikation": {
+    "source": "KI-Testspezifikation-AdobeStock_1891097286.jpg",
+    "alt": "Hand tippt auf ein Tablet, darüber ein Schaubild vernetzter KI-Agenten",
+    "src": "/assets/supplied/ki-testspezifikation-1600.jpg",
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      {
+        "src": "/assets/supplied/ki-testspezifikation-640.avif",
+        "width": 640,
+        "height": 360,
+        "format": "avif",
+        "bytes": 11846
+      },
+      {
+        "src": "/assets/supplied/ki-testspezifikation-640.webp",
+        "width": 640,
+        "height": 360,
+        "format": "webp",
+        "bytes": 17228
+      },
+      {
+        "src": "/assets/supplied/ki-testspezifikation-800.avif",
+        "width": 800,
+        "height": 450,
+        "format": "avif",
+        "bytes": 15946
+      },
+      {
+        "src": "/assets/supplied/ki-testspezifikation-800.webp",
+        "width": 800,
+        "height": 450,
+        "format": "webp",
+        "bytes": 23640
+      },
+      {
+        "src": "/assets/supplied/ki-testspezifikation-960.avif",
+        "width": 960,
+        "height": 540,
+        "format": "avif",
+        "bytes": 19619
+      },
+      {
+        "src": "/assets/supplied/ki-testspezifikation-960.webp",
+        "width": 960,
+        "height": 540,
+        "format": "webp",
+        "bytes": 29302
+      },
+      {
+        "src": "/assets/supplied/ki-testspezifikation-1600.avif",
+        "width": 1600,
+        "height": 900,
+        "format": "avif",
+        "bytes": 41457
+      },
+      {
+        "src": "/assets/supplied/ki-testspezifikation-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "format": "webp",
+        "bytes": 60364
+      }
+    ]
+  },
+  "technische-dokumentation-dita": {
+    "source": "Technische Dokumentation-AdobeStock_550744833.jpg",
+    "alt": "Hände an einem Laptop, darüber eine Ordnerstruktur mit Dokumenten",
+    "src": "/assets/supplied/technische-dokumentation-dita-1600.jpg",
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      {
+        "src": "/assets/supplied/technische-dokumentation-dita-640.avif",
+        "width": 640,
+        "height": 360,
+        "format": "avif",
+        "bytes": 9821
+      },
+      {
+        "src": "/assets/supplied/technische-dokumentation-dita-640.webp",
+        "width": 640,
+        "height": 360,
+        "format": "webp",
+        "bytes": 14700
+      },
+      {
+        "src": "/assets/supplied/technische-dokumentation-dita-800.avif",
+        "width": 800,
+        "height": 450,
+        "format": "avif",
+        "bytes": 13244
+      },
+      {
+        "src": "/assets/supplied/technische-dokumentation-dita-800.webp",
+        "width": 800,
+        "height": 450,
+        "format": "webp",
+        "bytes": 20376
+      },
+      {
+        "src": "/assets/supplied/technische-dokumentation-dita-960.avif",
+        "width": 960,
+        "height": 540,
+        "format": "avif",
+        "bytes": 16671
+      },
+      {
+        "src": "/assets/supplied/technische-dokumentation-dita-960.webp",
+        "width": 960,
+        "height": 540,
+        "format": "webp",
+        "bytes": 25738
+      },
+      {
+        "src": "/assets/supplied/technische-dokumentation-dita-1600.avif",
+        "width": 1600,
+        "height": 900,
+        "format": "avif",
+        "bytes": 35914
+      },
+      {
+        "src": "/assets/supplied/technische-dokumentation-dita-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "format": "webp",
+        "bytes": 53752
+      }
+    ]
+  },
+  "projektsteuerung": {
+    "source": "Projektsteuerung-GettyImages-2255324297.jpg",
+    "alt": "Zwei Entwickler besprechen Code vor mehreren Monitoren",
+    "src": "/assets/supplied/projektsteuerung-1600.jpg",
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      {
+        "src": "/assets/supplied/projektsteuerung-640.avif",
+        "width": 640,
+        "height": 360,
+        "format": "avif",
+        "bytes": 13573
+      },
+      {
+        "src": "/assets/supplied/projektsteuerung-640.webp",
+        "width": 640,
+        "height": 360,
+        "format": "webp",
+        "bytes": 19676
+      },
+      {
+        "src": "/assets/supplied/projektsteuerung-800.avif",
+        "width": 800,
+        "height": 450,
+        "format": "avif",
+        "bytes": 18660
+      },
+      {
+        "src": "/assets/supplied/projektsteuerung-800.webp",
+        "width": 800,
+        "height": 450,
+        "format": "webp",
+        "bytes": 27000
+      },
+      {
+        "src": "/assets/supplied/projektsteuerung-960.avif",
+        "width": 960,
+        "height": 540,
+        "format": "avif",
+        "bytes": 23404
+      },
+      {
+        "src": "/assets/supplied/projektsteuerung-960.webp",
+        "width": 960,
+        "height": 540,
+        "format": "webp",
+        "bytes": 33488
+      },
+      {
+        "src": "/assets/supplied/projektsteuerung-1600.avif",
+        "width": 1600,
+        "height": 900,
+        "format": "avif",
+        "bytes": 47565
+      },
+      {
+        "src": "/assets/supplied/projektsteuerung-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "format": "webp",
+        "bytes": 64244
+      }
+    ]
+  },
+  "lieferanten-entwicklung": {
+    "source": "Lieferanten-Entwicklung-AdobeStock_555709912.jpg",
+    "alt": "Zwei Fachkräfte mit Schutzhelmen prüfen Anlagendaten auf einem Tablet in der Fertigung",
+    "src": "/assets/supplied/lieferanten-entwicklung-1600.jpg",
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      {
+        "src": "/assets/supplied/lieferanten-entwicklung-640.avif",
+        "width": 640,
+        "height": 360,
+        "format": "avif",
+        "bytes": 22652
+      },
+      {
+        "src": "/assets/supplied/lieferanten-entwicklung-640.webp",
+        "width": 640,
+        "height": 360,
+        "format": "webp",
+        "bytes": 39962
+      },
+      {
+        "src": "/assets/supplied/lieferanten-entwicklung-800.avif",
+        "width": 800,
+        "height": 450,
+        "format": "avif",
+        "bytes": 32639
+      },
+      {
+        "src": "/assets/supplied/lieferanten-entwicklung-800.webp",
+        "width": 800,
+        "height": 450,
+        "format": "webp",
+        "bytes": 57244
+      },
+      {
+        "src": "/assets/supplied/lieferanten-entwicklung-960.avif",
+        "width": 960,
+        "height": 540,
+        "format": "avif",
+        "bytes": 42554
+      },
+      {
+        "src": "/assets/supplied/lieferanten-entwicklung-960.webp",
+        "width": 960,
+        "height": 540,
+        "format": "webp",
+        "bytes": 74398
+      },
+      {
+        "src": "/assets/supplied/lieferanten-entwicklung-1600.avif",
+        "width": 1600,
+        "height": 900,
+        "format": "avif",
+        "bytes": 97461
+      },
+      {
+        "src": "/assets/supplied/lieferanten-entwicklung-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "format": "webp",
+        "bytes": 154804
+      }
+    ]
+  },
+  "betriebsanleitung": {
+    "source": "TechnischeDokumentation-AdobeStock_2051971830.jpg",
+    "alt": "Person blättert in einem digitalen Benutzerhandbuch über einem Tablet",
+    "src": "/assets/supplied/betriebsanleitung-1600.jpg",
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      {
+        "src": "/assets/supplied/betriebsanleitung-640.avif",
+        "width": 640,
+        "height": 360,
+        "format": "avif",
+        "bytes": 9639
+      },
+      {
+        "src": "/assets/supplied/betriebsanleitung-640.webp",
+        "width": 640,
+        "height": 360,
+        "format": "webp",
+        "bytes": 14964
+      },
+      {
+        "src": "/assets/supplied/betriebsanleitung-800.avif",
+        "width": 800,
+        "height": 450,
+        "format": "avif",
+        "bytes": 12532
+      },
+      {
+        "src": "/assets/supplied/betriebsanleitung-800.webp",
+        "width": 800,
+        "height": 450,
+        "format": "webp",
+        "bytes": 19928
+      },
+      {
+        "src": "/assets/supplied/betriebsanleitung-960.avif",
+        "width": 960,
+        "height": 540,
+        "format": "avif",
+        "bytes": 15552
+      },
+      {
+        "src": "/assets/supplied/betriebsanleitung-960.webp",
+        "width": 960,
+        "height": 540,
+        "format": "webp",
+        "bytes": 24510
+      },
+      {
+        "src": "/assets/supplied/betriebsanleitung-1600.avif",
+        "width": 1600,
+        "height": 900,
+        "format": "avif",
+        "bytes": 33949
+      },
+      {
+        "src": "/assets/supplied/betriebsanleitung-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "format": "webp",
+        "bytes": 48270
+      }
+    ]
+  },
+  "virtuelles-kraftwerk": {
+    "source": "Virtuelles Kraftwerk-AdobeStock_1407699569.jpg",
+    "alt": "Hände auf einer Laptop-Tastatur, darüber ein Smart-Grid-Schaubild zum Stromverbrauch",
+    "src": "/assets/supplied/virtuelles-kraftwerk-1600.jpg",
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      {
+        "src": "/assets/supplied/virtuelles-kraftwerk-640.avif",
+        "width": 640,
+        "height": 360,
+        "format": "avif",
+        "bytes": 12615
+      },
+      {
+        "src": "/assets/supplied/virtuelles-kraftwerk-640.webp",
+        "width": 640,
+        "height": 360,
+        "format": "webp",
+        "bytes": 19464
+      },
+      {
+        "src": "/assets/supplied/virtuelles-kraftwerk-800.avif",
+        "width": 800,
+        "height": 450,
+        "format": "avif",
+        "bytes": 17356
+      },
+      {
+        "src": "/assets/supplied/virtuelles-kraftwerk-800.webp",
+        "width": 800,
+        "height": 450,
+        "format": "webp",
+        "bytes": 27166
+      },
+      {
+        "src": "/assets/supplied/virtuelles-kraftwerk-960.avif",
+        "width": 960,
+        "height": 540,
+        "format": "avif",
+        "bytes": 21824
+      },
+      {
+        "src": "/assets/supplied/virtuelles-kraftwerk-960.webp",
+        "width": 960,
+        "height": 540,
+        "format": "webp",
+        "bytes": 34470
+      },
+      {
+        "src": "/assets/supplied/virtuelles-kraftwerk-1600.avif",
+        "width": 1600,
+        "height": 900,
+        "format": "avif",
+        "bytes": 45944
+      },
+      {
+        "src": "/assets/supplied/virtuelles-kraftwerk-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "format": "webp",
+        "bytes": 72330
+      }
+    ]
+  },
+  "penetrationstests": {
+    "source": "Penetrationstests-parking-1-Emposo Webseite.jpg",
+    "alt": "Heck eines SUV mit visualisierten Parksensoren vor einem Poller",
+    "src": "/assets/supplied/penetrationstests-1600.jpg",
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      {
+        "src": "/assets/supplied/penetrationstests-640.avif",
+        "width": 640,
+        "height": 360,
+        "format": "avif",
+        "bytes": 10582
+      },
+      {
+        "src": "/assets/supplied/penetrationstests-640.webp",
+        "width": 640,
+        "height": 360,
+        "format": "webp",
+        "bytes": 17060
+      },
+      {
+        "src": "/assets/supplied/penetrationstests-800.avif",
+        "width": 800,
+        "height": 450,
+        "format": "avif",
+        "bytes": 14767
+      },
+      {
+        "src": "/assets/supplied/penetrationstests-800.webp",
+        "width": 800,
+        "height": 450,
+        "format": "webp",
+        "bytes": 23516
+      },
+      {
+        "src": "/assets/supplied/penetrationstests-960.avif",
+        "width": 960,
+        "height": 540,
+        "format": "avif",
+        "bytes": 19081
+      },
+      {
+        "src": "/assets/supplied/penetrationstests-960.webp",
+        "width": 960,
+        "height": 540,
+        "format": "webp",
+        "bytes": 29654
+      },
+      {
+        "src": "/assets/supplied/penetrationstests-1600.avif",
+        "width": 1600,
+        "height": 900,
+        "format": "avif",
+        "bytes": 39615
+      },
+      {
+        "src": "/assets/supplied/penetrationstests-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "format": "webp",
+        "bytes": 57696
+      }
+    ]
+  },
+  "cybersecurity-medizin": {
+    "source": "Cybersecurity-AdobeStock_1359219322.jpg",
+    "alt": "Drei Fachleute vor einem Bildschirm mit Schloss-Symbol und Sicherheitsgrafiken",
+    "src": "/assets/supplied/cybersecurity-medizin-1600.jpg",
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      {
+        "src": "/assets/supplied/cybersecurity-medizin-640.avif",
+        "width": 640,
+        "height": 360,
+        "format": "avif",
+        "bytes": 18213
+      },
+      {
+        "src": "/assets/supplied/cybersecurity-medizin-640.webp",
+        "width": 640,
+        "height": 360,
+        "format": "webp",
+        "bytes": 30546
+      },
+      {
+        "src": "/assets/supplied/cybersecurity-medizin-800.avif",
+        "width": 800,
+        "height": 450,
+        "format": "avif",
+        "bytes": 25905
+      },
+      {
+        "src": "/assets/supplied/cybersecurity-medizin-800.webp",
+        "width": 800,
+        "height": 450,
+        "format": "webp",
+        "bytes": 43878
+      },
+      {
+        "src": "/assets/supplied/cybersecurity-medizin-960.avif",
+        "width": 960,
+        "height": 540,
+        "format": "avif",
+        "bytes": 33491
+      },
+      {
+        "src": "/assets/supplied/cybersecurity-medizin-960.webp",
+        "width": 960,
+        "height": 540,
+        "format": "webp",
+        "bytes": 56816
+      },
+      {
+        "src": "/assets/supplied/cybersecurity-medizin-1600.avif",
+        "width": 1600,
+        "height": 900,
+        "format": "avif",
+        "bytes": 78897
+      },
+      {
+        "src": "/assets/supplied/cybersecurity-medizin-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "format": "webp",
+        "bytes": 128008
+      }
+    ]
+  },
+  "risikomanagement": {
+    "source": "Informationssicherheits-Risikomanagement-AdobeStock_2157639186.jpg",
+    "alt": "Person mit Tablet, darüber medizinische Symbole und Diagramme in Blau",
+    "src": "/assets/supplied/risikomanagement-1600.jpg",
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      {
+        "src": "/assets/supplied/risikomanagement-640.avif",
+        "width": 640,
+        "height": 360,
+        "format": "avif",
+        "bytes": 11923
+      },
+      {
+        "src": "/assets/supplied/risikomanagement-640.webp",
+        "width": 640,
+        "height": 360,
+        "format": "webp",
+        "bytes": 16698
+      },
+      {
+        "src": "/assets/supplied/risikomanagement-800.avif",
+        "width": 800,
+        "height": 450,
+        "format": "avif",
+        "bytes": 16113
+      },
+      {
+        "src": "/assets/supplied/risikomanagement-800.webp",
+        "width": 800,
+        "height": 450,
+        "format": "webp",
+        "bytes": 22358
+      },
+      {
+        "src": "/assets/supplied/risikomanagement-960.avif",
+        "width": 960,
+        "height": 540,
+        "format": "avif",
+        "bytes": 19861
+      },
+      {
+        "src": "/assets/supplied/risikomanagement-960.webp",
+        "width": 960,
+        "height": 540,
+        "format": "webp",
+        "bytes": 26884
+      },
+      {
+        "src": "/assets/supplied/risikomanagement-1600.avif",
+        "width": 1600,
+        "height": 900,
+        "format": "avif",
+        "bytes": 39195
+      },
+      {
+        "src": "/assets/supplied/risikomanagement-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "format": "webp",
+        "bytes": 53462
+      }
+    ]
+  },
+  "fuzzing": {
+    "source": "Fuzzing-AdobeStock_1951615053.jpg",
+    "alt": "Hände auf einer Laptop-Tastatur, darüber Warnsymbole und Programmcode",
+    "src": "/assets/supplied/fuzzing-1600.jpg",
+    "width": 1600,
+    "height": 900,
+    "variants": [
+      {
+        "src": "/assets/supplied/fuzzing-640.avif",
+        "width": 640,
+        "height": 360,
+        "format": "avif",
+        "bytes": 13420
+      },
+      {
+        "src": "/assets/supplied/fuzzing-640.webp",
+        "width": 640,
+        "height": 360,
+        "format": "webp",
+        "bytes": 20282
+      },
+      {
+        "src": "/assets/supplied/fuzzing-800.avif",
+        "width": 800,
+        "height": 450,
+        "format": "avif",
+        "bytes": 18510
+      },
+      {
+        "src": "/assets/supplied/fuzzing-800.webp",
+        "width": 800,
+        "height": 450,
+        "format": "webp",
+        "bytes": 28322
+      },
+      {
+        "src": "/assets/supplied/fuzzing-960.avif",
+        "width": 960,
+        "height": 540,
+        "format": "avif",
+        "bytes": 23498
+      },
+      {
+        "src": "/assets/supplied/fuzzing-960.webp",
+        "width": 960,
+        "height": 540,
+        "format": "webp",
+        "bytes": 35764
+      },
+      {
+        "src": "/assets/supplied/fuzzing-1600.avif",
+        "width": 1600,
+        "height": 900,
+        "format": "avif",
+        "bytes": 52116
+      },
+      {
+        "src": "/assets/supplied/fuzzing-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "format": "webp",
+        "bytes": 73734
+      }
+    ]
   }
 }

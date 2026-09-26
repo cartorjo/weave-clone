@@ -55,6 +55,12 @@ function companyFacts() {
   return `<dl class="company-facts">${companyFactData.map(f=>`<div><dt><span class="company-facts__icon">{{icon:${f.icon}}}</span><span class="company-facts__value">${f.value}</span></dt><dd>${escape(f.label)}</dd></div>`).join('')}</dl>`;
 }
 
+// A case column: the workbook cases carry one sentence (<p>), the 2026-09-24
+// deck cases carry the slide's bullets (<ul>). Same markup as the Ergebnis list.
+const column = value => Array.isArray(value)
+  ? `<ul class="result-list">${value.map(item=>`<li>${escape(item)}</li>`).join('')}</ul>`
+  : `<p>${escape(value)}</p>`;
+
 function metric(project) {
   return `<div class="result-metric"><strong${project.metric.length>8?' class="result-metric__word"':''}>${escape(project.metric)}</strong><span>${escape(project.label)}</span></div>`;
 }
@@ -129,8 +135,9 @@ export function projectPage(slug) {
   const d = disciplineBySlug[p.discipline];
   // Detail layout per Sabrina's template (review 24-09): hero = image + title
   // (+ outcome metric), then a "Projekt" section with three icon columns
-  // (Herausforderung / Lösung / Ergebnis). The final long-form texts are still
-  // owed by the owner (Roman/Nico) — the columns render the supplied copy.
+  // (Herausforderung / Lösung / Ergebnis). The 2026-09-24 deck adds the slide's
+  // "Projekt" facts (optional `facts`, rendered between lede and columns) and
+  // bullet columns; workbook cases keep their one-sentence columns unchanged.
   // Same discipline, then same industry, then the next projects in data
   // order (wrapping), so the related slot always shows two cards.
   const at = projects.indexOf(p);
@@ -141,7 +148,7 @@ export function projectPage(slug) {
     ...next,
   ])].slice(0,2);
   return `${pageHero({ id: 'project-title', parent: ['/case-studies/', 'Projekte'], copy: `<p class="eyebrow eyebrow--light">${escape(p.industry)}</p><h1 class="display-large display-large--light" id="project-title">${escape(p.name)}</h1><p class="page-hero__intro">${escape(p.headline)}</p>`, figure: `${picture(p.image,'(max-width: 900px) 100vw, 50vw',true)}<div class="page-hero__metric"><strong${p.metric.length>8?' class="page-hero__metric--word"':''}>${escape(p.metric)}</strong><span>${escape(p.label)}</span></div>` })}
-  <section class="page-section"><div class="gutter"><div class="container"><h2 class="display-large" id="projekt-title">Projekt</h2><p class="section-lede">${escape(p.industry)} · ${escape(d.name)}</p><div class="company-values case-facets"><article><span class="company-values__icon" aria-hidden="true">{{icon:document-paper-line}}</span><h3>Herausforderung</h3><p>${escape(p.challenge)}</p></article><article><span class="company-values__icon" aria-hidden="true">{{icon:lightbulb-shine-line}}</span><h3>Lösung</h3><p>${escape(p.solution)}</p></article><article><span class="company-values__icon" aria-hidden="true">{{icon:check-discount-line}}</span><h3>Ergebnis</h3><ul class="result-list">${p.results.map(r=>`<li>${escape(r)}</li>`).join('')}</ul></article></div><p class="section-more"><a class="text-link" href="/portfolio/#${d.slug}">${escape(d.name)} ${arrow}</a></p></div></div></section>
+  <section class="page-section"><div class="gutter"><div class="container"><h2 class="display-large" id="projekt-title">Projekt</h2><p class="section-lede">${escape(p.industry)} · ${escape(d.name)}</p>${p.facts ? `<ul class="result-list result-list--compact project-facts">${p.facts.map(f=>`<li>${escape(f)}</li>`).join('')}</ul>` : ''}<div class="company-values case-facets"><article><span class="company-values__icon" aria-hidden="true">{{icon:document-paper-line}}</span><h3>Herausforderung</h3>${column(p.challenge)}</article><article><span class="company-values__icon" aria-hidden="true">{{icon:lightbulb-shine-line}}</span><h3>Lösung</h3>${column(p.solution)}</article><article><span class="company-values__icon" aria-hidden="true">{{icon:check-discount-line}}</span><h3>Ergebnis</h3><ul class="result-list">${p.results.map(r=>`<li>${escape(r)}</li>`).join('')}</ul></article></div><p class="section-more"><a class="text-link" href="/portfolio/#${d.slug}">${escape(d.name)} ${arrow}</a></p></div></div></section>
   <section class="page-section page-section--paper"><div class="gutter"><div class="container"><p class="eyebrow">Weitere Projekte</p><h2 class="display-large">Expertise, die Ergebnisse liefert.</h2>${projectCards(related)}<p class="section-more"><a class="text-link" href="/case-studies/">Alle Projekte ${arrow}</a></p></div></div></section>${cta()}`;
 }
 

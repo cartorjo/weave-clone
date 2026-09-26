@@ -246,6 +246,30 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   loading the URL restores it; no JS = all projects visible (smoke).
   Agents: ux-ia-architect -> frontend-engineer -> a11y-perf-reviewer -> qa-reviewer.
 
+- B-48 Reference cases from the 2026-09-24 deck (M) - DONE (PR #26; owner
+  approved all 39 review items 2026-09-26 "All approve", copy:accept run): 15 cases from
+  2026-09-24-emposo-reference-cases-v14-container-format.pptx (Downloads copy,
+  rev. 3 of 2026-09-26; the OneDrive copy's hidden slides and its SOP/Curricula
+  case stay out) added to content/site-data.mjs with the slide bullets
+  verbatim; technische-dokumentation and fahrzeugfunktionen replaced by their
+  deck versions (301s in serve.json). projectPage() renders bullet columns and
+  the optional `facts` list; workbook cases unchanged. Owner decisions
+  2026-09-26: publish contract volumes and client descriptors as in the deck;
+  extend the template rather than condense. Edited on purpose: "TISAX AL3" ->
+  "TISAX" (no TISAX level, docs/facts.md).
+  Approved as drafted 2026-09-26: (1) metric + label per case (15 drafts);
+  (2) industry labels "Halbleiter" and "Mittelstand & KRITIS", and whether the
+  pentest case may enable the aerospace chip; (3) discipline for the
+  Antriebssteuergeräte case (engineering-services vs system-engineering) and the
+  Pharma-Diagnostik case (test-validierung vs cyber-compliance); (4) photos for
+  Kreislaufwirtschaft (reuses `software`) and Infotainment (reuses
+  `automotive`), and whether the "parking-1" photo belongs to Infotainment
+  rather than Penetrationstests; (5) pentest figures 30 vs "23 Aufträge seit
+  09/2023" (deck inconsistency); (6) eyebrow "23 Projekte. Messbare
+  Ergebnisse."; (7) 13 alt texts in tools/import-feedback-assets.mjs.
+  Acceptance: npm run check 0 after copy:accept; smoke green with 23 cards;
+  visual:diff 0 on the eight untouched case routes; 301s resolve.
+
 ## Later / owner decisions
 
 - B-15 English route scaffold /en/ with hreflang (L) - NEEDS-OWNER (content needed)
@@ -264,6 +288,11 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
 - B-22 Metadata length guidance (NEEDS-OWNER, drafts on the owner review page 2026-09-26): check:meta lists 22
   descriptions under 140 characters and 2 case-study titles over 60.
   Rewording is owner work.
+  Update B-48 (2026-09-26): the two long titles belong to the replaced routes
+  fahrzeugfunktionen and technische-dokumentation (their approved drafts are
+  moot); the 15 deck cases add 9 titles over 60 characters and 15
+  descriptions of 56-80 characters (the deck subtitles, verbatim). Same rule
+  as approved: drop the "| Case Study" segment where a title exceeds 60.
 - B-23 WordPress port parity (L) - NEEDS-OWNER (platform decision)
   Measured 2026-09-26: emposo-wp pins reference/static at c471ef0, 141
   commits / 47 source files behind this repo. Its route contract has 42

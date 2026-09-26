@@ -52,6 +52,21 @@ const selections = {
   'industry-health': ['/Users/jose/Downloads/OneDrive_1_24-09-2026/GettyImages-1194960360-Health & Pharma.jpg', 'Pipette dosiert Proben in Laborgefäße'],
   'industry-industrials': ['/Users/jose/Downloads/OneDrive_1_24-09-2026/AdobeStock_483288607-Indutrials & Manufacturing.jpg', 'Digital vernetzte Roboter in einer Fahrzeug-Fertigungslinie'],
   'industry-technology': ['/Users/jose/Downloads/OneDrive_1_24-09-2026/AdobeStock_970503738-Technology, Telecoms & Media.jpg', 'Mobilfunkmast über einer abendlichen Stadt'],
+  // 2026-09-24 reference-cases deck (delivered 2026-09-26): 13 case photos, 1600×900 masters.
+  // Alt texts are drafts awaiting owner approval (copy gate).
+  'antriebssteuerung': ['/Users/jose/Downloads/OneDrive_1_26-09-2026/Software Antriebssteuerung-AdobeStock_341431108.jpg', 'Fahrzeugdiagnose mit einem robusten Prüf-Notebook in der Werkstatt'],
+  'gewichtsmanagement': ['/Users/jose/Downloads/OneDrive_1_26-09-2026/Gewichtsmanagement-AdobeStock_305628594.jpg', 'Ingenieur betrachtet das leuchtende Gitternetzmodell eines Fahrzeugs'],
+  'pharma-qualitaet': ['/Users/jose/Downloads/OneDrive_1_26-09-2026/Pharma-Qualitätssicherung-GettyImages-544457191.jpg', 'Laborfachkraft in Schutzkleidung am Mikroskop neben einer Bioreaktoranlage'],
+  'ki-testspezifikation': ['/Users/jose/Downloads/OneDrive_1_26-09-2026/KI-Testspezifikation-AdobeStock_1891097286.jpg', 'Hand tippt auf ein Tablet, darüber ein Schaubild vernetzter KI-Agenten'],
+  'technische-dokumentation-dita': ['/Users/jose/Downloads/OneDrive_1_26-09-2026/Technische Dokumentation-AdobeStock_550744833.jpg', 'Hände an einem Laptop, darüber eine Ordnerstruktur mit Dokumenten'],
+  'projektsteuerung': ['/Users/jose/Downloads/OneDrive_1_26-09-2026/Projektsteuerung-GettyImages-2255324297.jpg', 'Zwei Entwickler besprechen Code vor mehreren Monitoren'],
+  'lieferanten-entwicklung': ['/Users/jose/Downloads/OneDrive_1_26-09-2026/Lieferanten-Entwicklung-AdobeStock_555709912.jpg', 'Zwei Fachkräfte mit Schutzhelmen prüfen Anlagendaten auf einem Tablet in der Fertigung'],
+  'betriebsanleitung': ['/Users/jose/Downloads/OneDrive_1_26-09-2026/TechnischeDokumentation-AdobeStock_2051971830.jpg', 'Person blättert in einem digitalen Benutzerhandbuch über einem Tablet'],
+  'virtuelles-kraftwerk': ['/Users/jose/Downloads/OneDrive_1_26-09-2026/Virtuelles Kraftwerk-AdobeStock_1407699569.jpg', 'Hände auf einer Laptop-Tastatur, darüber ein Smart-Grid-Schaubild zum Stromverbrauch'],
+  'penetrationstests': ['/Users/jose/Downloads/OneDrive_1_26-09-2026/Penetrationstests-parking-1-Emposo Webseite.jpg', 'Heck eines SUV mit visualisierten Parksensoren vor einem Poller'],
+  'cybersecurity-medizin': ['/Users/jose/Downloads/OneDrive_1_26-09-2026/Cybersecurity-AdobeStock_1359219322.jpg', 'Drei Fachleute vor einem Bildschirm mit Schloss-Symbol und Sicherheitsgrafiken'],
+  'risikomanagement': ['/Users/jose/Downloads/OneDrive_1_26-09-2026/Informationssicherheits-Risikomanagement-AdobeStock_2157639186.jpg', 'Person mit Tablet, darüber medizinische Symbole und Diagramme in Blau'],
+  'fuzzing': ['/Users/jose/Downloads/OneDrive_1_26-09-2026/Fuzzing-AdobeStock_1951615053.jpg', 'Hände auf einer Laptop-Tastatur, darüber Warnsymbole und Programmcode'],
 };
 const unknown = (only ?? []).filter(key => !selections[key]);
 if (unknown.length) {
