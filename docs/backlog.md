@@ -270,6 +270,16 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   Acceptance: npm run check 0 after copy:accept; smoke green with 23 cards;
   visual:diff 0 on the eight untouched case routes; 301s resolve.
 
+- B-49 Railway build without .git (S, T) - DONE: every Railway deployment
+  since B-30 (9746ae5, 2026-09-26 morning) failed in `npm run build` with
+  "fatal: not a git repository": Railpack's snapshot has no .git and
+  assemble.mjs asked git for each page's last-modified date. Without a
+  repository the assembler now reuses the dates of the committed sitemap.xml,
+  so the rebuilt output equals the committed one (proved: rsync without .git,
+  assemble + build-dist, 0 differing files). Same PR: share crops for the 13
+  B-48 photos (main had merged B-32 after #26, leaving 15 pages without their
+  1200x630 crop on a rebuild) and the unused collaboration crop removed.
+
 ## Later / owner decisions
 
 - B-15 English route scaffold /en/ with hreflang (L) - NEEDS-OWNER (content needed)

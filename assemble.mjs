@@ -14,7 +14,7 @@
 //   {{CURATTR:key}}        aria-current="page" when page.nav === key
 //                          (aria-current="true" when the page sets navExact: false)
 //   <!-- partial:name -->  inlines partials/name.html (e.g. the contact form)
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -80,7 +80,13 @@ const seoMeta = (page, body) => {
 const git = args => execFileSync('git', args, { cwd: root, encoding: 'utf8' }).trim();
 const today = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
 const pageSources = page => [...(Array.isArray(page.content) ? page.content : page.content.startsWith('project:') ? [] : [page.content]), 'partials', 'content', 'pages.mjs'];
+// Without a repository (Railway's build snapshot ships no .git) the committed
+// sitemap.xml already holds the dates git would answer: reuse them so the
+// rebuilt output equals the committed one; a page not listed there (404) is today.
+const gitAvailable = (() => { try { return git(['rev-parse', '--is-inside-work-tree']) === 'true'; } catch { return false; } })();
+const committedLastmod = new Map(gitAvailable || !existsSync(join(root, 'sitemap.xml')) ? [] : [...readFileSync(join(root, 'sitemap.xml'), 'utf8').matchAll(/<loc>([^<]+)<\/loc><lastmod>([^<]+)<\/lastmod>/g)].map(m => [m[1], m[2]]));
 const lastModified = page => {
+  if (!gitAvailable) return committedLastmod.get(`${SITE_ORIGIN}${canonicalPath(page.out)}`) ?? today();
   const files = pageSources(page);
   if (git(['status', '--porcelain', '--', ...files])) return today();
   return git(['log', '-1', '--format=%cs', '--', ...files]);
