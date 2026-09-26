@@ -20,7 +20,8 @@ copy('robots.txt');
 copy('sitemap.xml');
 // Masters, superseded art and build-time inputs stay out of the webroot:
 // icons are inlined into the HTML, manifests are read by the generators.
-const SKIP_ASSETS = /\/assets\/(src|archive|icons)(\/|$)|\.png$|manifest\.json$/;
+// PNGs are masters/fallback sources, except the Organization logo (JSON-LD, B-31).
+const SKIP_ASSETS = /\/assets\/(src|archive|icons)(\/|$)|(?<!emposo-logo-organization)\.png$|manifest\.json$/;
 copy('assets', src => !SKIP_ASSETS.test(src));
 // Indexing is a deployment decision, safe by default: every host (Railway
 // previews included) sends noindex unless it sets INDEXABLE=true, which only
