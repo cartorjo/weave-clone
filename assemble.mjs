@@ -31,6 +31,9 @@ const images = JSON.parse(readFileSync(join(root, 'assets', 'supplied', 'manifes
 const organization = { '@type': 'Organization', '@id': `${SITE_ORIGIN}/#organization`, name: 'Emposo GmbH', url: `${SITE_ORIGIN}/`,
   email: 'info@emposo.eu', telephone: '+49 621 1788 0',
   address: { '@type': 'PostalAddress', streetAddress: 'Glücksteinallee 67', postalCode: '68163', addressLocality: 'Mannheim', addressCountry: 'DE' },
+  // Standalone PNG of the header logo (ink on white, tagline rendered, B-31).
+  logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/assets/brand/emposo-logo-organization.png`, width: 896, height: 288 },
+  contactPoint: { '@type': 'ContactPoint', contactType: 'customer service', email: 'info@emposo.eu', telephone: '+49 621 1788 0' },
   parentOrganization: { '@type': 'Organization', name: 'Hays Holding GmbH' } };
 const website = { '@type': 'WebSite', '@id': `${SITE_ORIGIN}/#website`, name: 'Emposo', url: `${SITE_ORIGIN}/`, inLanguage: 'de-DE', publisher: { '@id': organization['@id'] } };
 // Share image: the page's own hero photo (case studies: the project image), else the homepage hero.
