@@ -63,7 +63,7 @@ tokens `{{CUR:key: …}}` / `{{CURATTR:key}}` in partials emit per page.
 ## Design tokens
 
 `styles/main.css` holds the Tailwind `@theme`: midnight blue `#0A0532`
-(`--color-ink` and `--color-accent-text`), decorative orange `#F7911E`
+(`--color-ink`), decorative orange `#F7911E`
 (`--color-lemon`), the one secondary accent `#4597CE` (`--color-info`, the
 homepage "How" connection-step icons), hairlines (`--color-line`, and on dark grounds
 `--color-line-light` / `--color-line-light-strong`), the on-dark content
