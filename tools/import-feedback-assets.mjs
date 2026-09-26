@@ -83,7 +83,8 @@ for (const [key, [file, alt, options = {}]] of Object.entries(selected)) {
   const portrait = ['claus-thierbach', 'aleksandar-amidzic', 'markus-auer', 'roman-bretz', 'michael-schmitt', 'marcus-hefele'].includes(key);
   const fullWidth = Math.min(portrait ? 900 : 1600, sourceWidth);
   // 960w: a phone at ~412px × DPR 1.75 needs ~720px; without it the browser takes 1600w.
-  const widths = [...new Set([Math.min(640, fullWidth), ...(fullWidth >= 1280 ? [960] : []), fullWidth])];
+  // 800w: cards and tiles at ~355px × DPR 2 need ~710px.
+  const widths = [...new Set([Math.min(640, fullWidth), ...(fullWidth >= 1000 ? [800] : []), ...(fullWidth >= 1280 ? [960] : []), fullWidth])];
   const variants = [];
   for (const width of widths) {
     for (const format of ['avif', 'webp']) {
