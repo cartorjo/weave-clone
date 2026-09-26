@@ -182,7 +182,7 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   presence and agreement.
   Agents: seo-specialist -> frontend-engineer -> qa-reviewer.
 
-- B-31 Organization logo and contactPoint (S, A) - TODO
+- B-31 Organization logo and contactPoint (S, A) - AWAITING OWNER APPROVAL (assets/brand/emposo-logo-organization.png 896x288, header logo ink on white; contactPoint customer service + existing email/phone; new string "customer service" needs approval)
   A standalone PNG of the existing brand logo (fixed colours, text outlined,
   >= 112px) and contactPoint from the email/phone already in the graph.
   Owner signs off the exported asset.

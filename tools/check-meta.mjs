@@ -40,6 +40,10 @@ for (const page of pages) {
     if (!webPage) failures.push(`${f}: JSON-LD has no WebPage`);
     else if (!/^\d{4}-\d{2}-\d{2}$/.test(webPage.dateModified || '')) failures.push(`${f}: WebPage.dateModified missing`);
     else if (lastmods.get(webPage.url) !== webPage.dateModified) failures.push(`${f}: dateModified ${webPage.dateModified} != sitemap lastmod ${lastmods.get(webPage.url)}`);
+    const org = g?.find(n => n['@type'] === 'Organization');
+    const logo = org?.logo?.url?.replace(/^https?:\/\/[^/]+\//, '');
+    if (!logo || !existsSync(resolve(root, logo))) failures.push(`${f}: Organization.logo ${org?.logo?.url} does not exist`);
+    if (!org?.contactPoint?.email) failures.push(`${f}: Organization.contactPoint missing`);
     const crumbs = g?.find(n => n['@type'] === 'BreadcrumbList');
     if (f !== 'index.html' && !crumbs) failures.push(`${f}: JSON-LD has no BreadcrumbList`);
     if (crumbs && crumbs.itemListElement.some((it, i) => it.position !== i + 1 || !it.name || !/^https:\/\//.test(it.item))) failures.push(`${f}: BreadcrumbList malformed`);
