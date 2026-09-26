@@ -236,7 +236,7 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   fluid steps. Crops at 390/1000/1400.
   Agents: design-system-engineer -> frontend-engineer -> qa-reviewer.
 
-- B-40 Footer bottom row on one baseline (S, A) - TODO
+- B-40 Footer bottom row on one baseline (S, A) - AWAITING OWNER APPROVAL (align-items: baseline; offset 13.4px -> 0 at 1000/1400, 390 unchanged)
   Copyright sits ~13px above the legal links' baseline. Acceptance: same
   baseline within 1px at 1000/1400.
   Agents: design-system-engineer -> qa-reviewer.
