@@ -13,10 +13,10 @@
    presses; hover uses it only where no bespoke hover exists (inverts, colour
    shifts and arrow slides stay as the owner approved them). Text-like controls
    get a pill that bleeds past the label; cards bleed to the navy halo. */
-:is(.header-contact, .mobile-menu__cta, .filter-button:where(:enabled), .contact-form button, .mobile-menu__panel a,
+:is(.header-contact, .mobile-menu__cta, .filter-button, .contact-form button, .mobile-menu__panel a,
   .site-nav > a, .text-link, .expander summary, .mobile-menu summary, .site-logo, .site-footer a, .page-breadcrumb a,
   .reference-card__copy, a.expertise-card) { isolation: isolate; position: relative; }
-:is(.header-contact, .mobile-menu__cta, .filter-button:where(:enabled), .contact-form button, .mobile-menu__panel a,
+:is(.header-contact, .mobile-menu__cta, .filter-button, .contact-form button, .mobile-menu__panel a,
   .site-nav > a, .text-link, .expander summary, .mobile-menu summary, .site-logo, .site-footer a, .page-breadcrumb a,
   .reference-card__copy, a.expertise-card)::before { background: currentColor; border-radius: inherit; content: ''; inset: var(--state-inset, 0); opacity: 0; pointer-events: none; position: absolute; transition: opacity var(--duration-fast) var(--ease-em); z-index: -1; }
 :is(.site-nav > a, .text-link, .expander summary, .mobile-menu summary, .site-logo, .site-footer a, .page-breadcrumb a) { --state-inset: 0 calc(-1 * min(.6rem, var(--gutter) - 1px)); }
@@ -26,23 +26,21 @@
   :is(.filter-button.is-active, .mobile-menu__panel a:not(.mobile-menu__cta), .expander summary, .mobile-menu summary, .site-logo):hover::before { opacity: var(--state-hover); }
   :is(.filter-button.is-active, .mobile-menu__panel a:not(.mobile-menu__cta), .expander summary, .mobile-menu summary, .site-logo):hover:active::before { opacity: var(--state-press); }
 }
-:is(.header-contact, .mobile-menu__cta, .filter-button:where(:enabled), .contact-form button, .mobile-menu__panel a,
+:is(.header-contact, .mobile-menu__cta, .filter-button, .contact-form button, .mobile-menu__panel a,
   .site-nav > a, .text-link, .expander summary, .mobile-menu summary, .site-logo, .site-footer a, .page-breadcrumb a, a.expertise-card):active::before,
 .reference-card:active .reference-card__copy::before { opacity: var(--state-press); }
 
 /* Filter chip — the one toggle chip (/branchen/, /case-studies/). Resting
    outline at 3:1; selected = lemon fill, ink outline and a leading check;
    hover on an unselected chip only tints, so it never looks selected. Selected
-   chips hover and press through the state layer. A value no project carries
-   is disabled: 38 % opacity, no hover, press or Tab stop. Arrow keys move between the
+   chips hover and press through the state layer. Arrow keys move between the
    chips of a group (js/06-work.js). */
 .filter-button { border: 1px solid var(--color-line-strong); border-radius: var(--radius-full); color: var(--color-ink); font-size: var(--text-body); font-weight: 600; letter-spacing: 0; padding: var(--space-3) var(--space-4); transition: background-color var(--duration-fast) var(--ease-em), border-color var(--duration-fast) var(--ease-em), color var(--duration-fast) var(--ease-em); }
 .filter-button__check { display: none; height: .8em; margin-inline-end: .4em; vertical-align: -.05em; width: .8em; }
 .filter-button.is-active { background: var(--color-lemon); border-color: var(--color-ink); color: var(--color-ink); }
 .filter-button.is-active .filter-button__check { display: inline-block; }
-.filter-button:disabled { cursor: default; opacity: var(--state-disabled); }
 @media (hover: hover) {
-  .filter-button:not(.is-active, :disabled):hover { background: color-mix(in srgb, var(--color-lemon) 15%, transparent); }
+  .filter-button:not(.is-active):hover { background: color-mix(in srgb, var(--color-lemon) 15%, transparent); }
 }
 @media (width <= theme(--breakpoint-compact)) { .filter-button { font-size: var(--text-body-sm); } }
 
