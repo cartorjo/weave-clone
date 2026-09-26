@@ -64,7 +64,7 @@ const seoMeta = (page, body) => {
   if (crumbs) { graph['@graph'].push(crumbs); graph['@graph'][2].breadcrumb = { '@id': `${url}#breadcrumb` }; crumbs['@id'] = `${url}#breadcrumb`; }
   // Leistungen: one Service per discipline, with the name and topic line the page shows.
   if (page.out === 'portfolio/index.html') for (const d of disciplines)
-    graph['@graph'].push({ '@type': 'Service', name: d.name, description: d.topics, provider: { '@id': organization['@id'] }, areaServed: 'DE' });
+    graph['@graph'].push({ '@type': 'Service', '@id': `${url}#${d.slug}`, url: `${url}#${d.slug}`, name: d.name, description: d.topics, provider: { '@id': organization['@id'] }, areaServed: 'DE' });
   // Case study: Article from the project data (no author/date: the data has none).
   const project = page.content.startsWith?.('project:') && projects.find(p => p.slug === page.content.slice(8));
   if (project) graph['@graph'].push({ '@type': 'Article', '@id': `${url}#article`, headline: project.name, description: project.headline, image: `${SITE_ORIGIN}${img.src}`, inLanguage: 'de-DE', publisher: { '@id': organization['@id'] }, mainEntityOfPage: { '@id': url } });

@@ -41,6 +41,7 @@ for (const page of pages) {
     if (crumbs && crumbs.itemListElement.some((it, i) => it.position !== i + 1 || !it.name || !/^https:\/\//.test(it.item))) failures.push(`${f}: BreadcrumbList malformed`);
     if (f.startsWith('case-studies/') && f !== 'case-studies/index.html' && !g.some(n => n['@type'] === 'Article')) failures.push(`${f}: case study without Article`);
     if (f === 'portfolio/index.html' && !g.some(n => n['@type'] === 'Service')) failures.push(`${f}: Leistungen without Service`);
+    for (const svc of g.filter(n => n['@type'] === 'Service')) { const id = svc.url?.split('#')[1]; if (!id || !html.includes(`id="${id}"`)) failures.push(`${f}: Service "${svc.name}" url has no anchor on the page`); }
   }
   catch (e) { failures.push(`${f}: JSON-LD invalid (${e.message})`); }
 }
