@@ -119,7 +119,6 @@
   .fact-grid > *, .fact-grid > * + * { border-inline-end: 0; border-top: 1px solid var(--line-hairline); min-height: 0; padding: var(--space-6) 0; }
   .fact-grid > *:first-child { border-top: 0; }
 }
-.page-section[id] { scroll-margin-top: calc(var(--header-h) + 1.5rem); }
 .page-section--paper { background: var(--color-paper); }
 .page-section--dark { background: var(--color-ink); color: var(--color-on-dark); --line-hairline: var(--color-line-light); --accent-ink: var(--color-lemon); }
 .page-section--deep { background: var(--color-bg-dark-2); color: var(--color-on-dark); --line-hairline: var(--color-line-light); --accent-ink: var(--color-lemon); }

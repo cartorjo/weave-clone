@@ -7,7 +7,7 @@
 
 
 .hero { background: var(--color-ink); color: var(--color-on-dark); overflow: hidden; }
-.hero__grid { display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(17.1rem, 0.96fr); min-height: min(47.7rem, calc(100vh - 4.86rem)); }
+.hero__grid { display: grid; grid-template-columns: minmax(0, 1.04fr) minmax(17.1rem, 0.96fr); min-height: min(47.7rem, calc(100vh - var(--header-h))); }
 .hero__copy { align-self: center; display: flex; flex-direction: column; justify-content: center; padding-block: clamp(1.8rem, 9vw, 9rem) clamp(1.6rem, 8vw, 8.1rem); padding-inline: 0 clamp(1rem, 5vw, 6.3rem); }
 .hero__intro { align-items: flex-end; border-top: 1px solid var(--color-line-light); display: flex; gap: var(--space-8); justify-content: space-between; margin-top: clamp(1rem, 5vw, 4.5rem); max-width: 44.1rem; padding-top: var(--space-4); }
 .hero__intro p { color: var(--color-on-dark-muted); font-size: var(--text-lede-fluid); line-height: 1.35; max-width: 25.2rem; }

@@ -179,7 +179,10 @@
      while the container is fluid, the centred leftover once it hits --container-max.
      Hero visuals bleed by this so the photo always touches the browser edge. */
   --bleed-right: max(var(--gutter), (100vw - var(--container-max)) / 2);
-  --header-h: 4.875rem; /* 78px */
+  /* Real header heights: 96px with the inline nav, 80px below it (redefined
+     under --breakpoint-nav below), 68px once scrolled. Anchors,
+     the hero and the mobile menu all read these. */
+  --header-h: 6rem;
   --header-h-scrolled: 4.25rem; /* 68px */
   /* Motion system: fast = colors/lines/arrows, medium = box inverts/overlays/
      underlines/expanders, slow = image zooms. One easing everywhere: --ease-em. */
@@ -204,6 +207,8 @@
      flip it to the brand orange (which passes on navy). */
   --accent-ink: var(--color-accent-text);
 }
+/* Below the inline nav the header is 80px (same unlayered :root, so it wins). */
+@media (width < theme(--breakpoint-nav)) { :root { --header-h: 5rem; } }
 
 /* ---- reset (verbatim from css/00-base.css §1) -----------------------------
    Tailwind's own reset (Preflight) is not imported (see header comment), so
