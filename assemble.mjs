@@ -35,6 +35,8 @@ const organization = { '@type': 'Organization', '@id': `${SITE_ORIGIN}/#organiza
   // Standalone PNG of the header logo (ink on white, tagline rendered, B-31).
   logo: { '@type': 'ImageObject', url: `${SITE_ORIGIN}/assets/brand/emposo-logo-organization.png`, width: 896, height: 288 },
   contactPoint: { '@type': 'ContactPoint', contactType: 'customer service', email: 'info@emposo.eu', telephone: '+49 621 1788 0' },
+  // The profile emposo.de links today (owner-approved 2026-09-26, B-46).
+  sameAs: ['https://www.linkedin.com/company/emposo/'],
   parentOrganization: { '@type': 'Organization', name: 'Hays Holding GmbH' } };
 const website = { '@type': 'WebSite', '@id': `${SITE_ORIGIN}/#website`, name: 'Emposo', url: `${SITE_ORIGIN}/`, inLanguage: 'de-DE', publisher: { '@id': organization['@id'] } };
 // Share image: a 1200x630 crop of the page's hero (content/share.mjs, B-32).
@@ -66,9 +68,10 @@ const seoMeta = (page, body) => {
   // Leistungen: one Service per discipline, with the name and topic line the page shows.
   if (page.out === 'portfolio/index.html') for (const d of disciplines)
     graph['@graph'].push({ '@type': 'Service', '@id': `${url}#${d.slug}`, url: `${url}#${d.slug}`, name: d.name, description: d.topics, provider: { '@id': organization['@id'] }, areaServed: 'DE' });
-  // Case study: Article from the project data (no author/date: the data has none).
+  // Case study: Article from the project data. Author is the organization;
+  // datePublished is the day the case study went online on this site (B-46).
   const project = page.content.startsWith?.('project:') && projects.find(p => p.slug === page.content.slice(8));
-  if (project) graph['@graph'].push({ '@type': 'Article', '@id': `${url}#article`, headline: project.name, description: project.headline, image: `${SITE_ORIGIN}${img.src}`, inLanguage: 'de-DE', publisher: { '@id': organization['@id'] }, mainEntityOfPage: { '@id': url } });
+  if (project) graph['@graph'].push({ '@type': 'Article', '@id': `${url}#article`, headline: project.name, description: project.headline, image: `${SITE_ORIGIN}${img.src}`, inLanguage: 'de-DE', author: { '@id': organization['@id'] }, publisher: { '@id': organization['@id'] }, datePublished: firstPublished(page), dateModified: lastModified(page), mainEntityOfPage: { '@id': url } });
   // JSON-LD is a data block, not script: the CSP's script-src does not apply.
   tags.push(`  <script type="application/ld+json">${JSON.stringify(graph).replace(/</g, '\\u003c')}</script>`);
   return tags.join('\n') + '\n';
@@ -91,6 +94,9 @@ const lastModified = page => {
   if (git(['status', '--porcelain', '--', ...files])) return today();
   return git(['log', '-1', '--format=%cs', '--', ...files]);
 };
+// First published = the day of the commit that first added the page's output
+// (owner decision 2026-09-26, B-46); a page not yet committed counts as today.
+const firstPublished = page => git(['log', '--diff-filter=A', '--format=%cs', '--', page.out]).split('\n').filter(Boolean).pop() || today();
 const canonicalPath = out => out === 'index.html' ? '/' : out.endsWith('/index.html') ? `/${out.slice(0, -'index.html'.length)}` : null;
 const partial = (name) => readFileSync(join(root, 'partials', `${name}.html`), 'utf8');
 

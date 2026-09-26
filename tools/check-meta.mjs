@@ -50,6 +50,7 @@ for (const page of pages) {
     if (f !== 'index.html' && !crumbs) failures.push(`${f}: JSON-LD has no BreadcrumbList`);
     if (crumbs && crumbs.itemListElement.some((it, i) => it.position !== i + 1 || !it.name || !/^https:\/\//.test(it.item))) failures.push(`${f}: BreadcrumbList malformed`);
     if (f.startsWith('case-studies/') && f !== 'case-studies/index.html' && !g.some(n => n['@type'] === 'Article')) failures.push(`${f}: case study without Article`);
+    for (const a of g.filter(n => n['@type'] === 'Article')) if (!/^\d{4}-\d{2}-\d{2}$/.test(a.datePublished || '') || !a.author || a.dateModified < a.datePublished) failures.push(`${f}: Article needs author, datePublished <= dateModified`);
     if (f === 'portfolio/index.html' && !g.some(n => n['@type'] === 'Service')) failures.push(`${f}: Leistungen without Service`);
     for (const svc of g.filter(n => n['@type'] === 'Service')) { const id = svc.url?.split('#')[1]; if (!id || !html.includes(`id="${id}"`)) failures.push(`${f}: Service "${svc.name}" url has no anchor on the page`); }
   }

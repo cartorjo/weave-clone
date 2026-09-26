@@ -326,9 +326,11 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   /case-studies/ gets a nav entry ([TEXT: owner] label).
 - B-45 Keep-exploring links on /karriere/ and /kontakt/ (S) - DONE, owner approved 2026-09-26:
   "Weiter entdecken" + Leistungen, Branchen, Case Studies, Über uns (keepExploring() in content/render.mjs).
-- B-46 [drafts on the owner review page 2026-09-26] Metadata facts (S) - NEEDS-OWNER: sameAs profile URLs, Article
-  author/publication dates, home title order, "Case Study" vs "Projekte".
-
+- B-46 Metadata facts (S) - DONE, owner approved 2026-09-26: Organization sameAs
+  LinkedIn (the profile emposo.de links); Article author = the Organization,
+  datePublished = the day the case study page was first committed (online on
+  this site), dateModified as WebPage; home title order and the "Case Study" /
+  "Projekte" mix stay as they are (owner choice). check:meta requires Article author/dates.
 - B-47 Smoke axe flake on case-study heroes (S, T) - DONE: CI runs 36259919492
   and 36265832580 reported axe color-contrast x26 on a case-study hero at 390
   (on-dark text measured on white); not reproducible locally (0/24 at 6x CPU
