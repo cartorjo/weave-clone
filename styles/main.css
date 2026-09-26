@@ -351,6 +351,7 @@
    sections/*.html; each file below holds only what has no utility
    equivalent: @keyframes bodies and (for 00-base-remainder) skip-link,
    focus, and reduced-motion rules. */
+@import "./00-fonts.css";
 @import "./00-base-remainder.css";
 @import "./07-header.css" layer(components);
 @import "./08-editorial.css" layer(components);

@@ -84,17 +84,19 @@ for (const r of CORE) {
   for (const t of missing.slice(0, 5)) fail(`no-js ${slug(r)}: "${t.slice(0, 60)}" only visible with JS`);
 }
 
-// 2c. image weight budget per core page (all lazy images loaded), desktop and phone ×2.
-const IMAGE_BUDGET = 750 * 1024;
+// 2c. image and font weight budgets per core page (all lazy images loaded), desktop and phone ×2.
+const IMAGE_BUDGET = 750 * 1024, FONT_BUDGET = 100 * 1024;
 for (const [w, dpr] of [[1400, 1], [390, 2]]) for (const r of CORE) {
   const page = await browser.newPage(); await page.setCacheEnabled(false); await page.setViewport({ width: w, height: 900, deviceScaleFactor: dpr });
-  let bytes = 0; const pending = [];
-  page.on('response', res => { if (res.request().resourceType() === 'image') pending.push(res.buffer().then(b => { bytes += b.length; }).catch(() => {})); });
+  let bytes = 0, fonts = 0; const pending = [];
+  page.on('response', res => { const t = res.request().resourceType(); if (t === 'image' || t === 'font') pending.push(res.buffer().then(b => { if (t === 'image') bytes += b.length; else fonts += b.length; }).catch(() => {})); });
   await page.goto(BASE + r, { waitUntil: 'networkidle0' });
   await page.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 600) { scrollTo(0, y); await new Promise(x => setTimeout(x, 60)); } });
   await new Promise(x => setTimeout(x, 800)); await Promise.all(pending); await page.close();
   (info.imageKiB ??= {})[`${slug(r)}@${w}x${dpr}`] = Math.round(bytes / 1024);
   if (bytes > IMAGE_BUDGET) fail(`${slug(r)}@${w}x${dpr}: images ${Math.round(bytes / 1024)} KiB exceed the 750 KiB budget`);
+  (info.fontKiB ??= {})[`${slug(r)}@${w}x${dpr}`] = Math.round(fonts / 1024);
+  if (fonts > FONT_BUDGET) fail(`${slug(r)}@${w}x${dpr}: fonts ${Math.round(fonts / 1024)} KiB exceed the 100 KiB budget`);
 }
 
 // 2d. 200% text: no content in main may extend past the viewport (WCAG 1.4.4/1.4.10).
@@ -209,6 +211,7 @@ await browser.close();
 if (opt('out')) writeFileSync(opt('out'), JSON.stringify({ fails, info }, null, 1));
 console.log(`# smoke: ${routes.length} routes × ${widths.length} widths, axe ${routes.length}×2, 200% text ${routes.length}×2, keyboard 7×2, no-JS text ${CORE.length}, ${flows.length} flows ×3 widths`);
 console.log(`image KiB (max ${Math.max(...Object.values(info.imageKiB || {0: 0}))} of 750): ${JSON.stringify(info.imageKiB)}`);
+console.log(`font KiB (max ${Math.max(...Object.values(info.fontKiB || {0: 0}))} of 100)`);
 console.log(`nav at 1240: ${JSON.stringify(Object.entries(info.navAt1240 || {}).reduce((m, [, v]) => (m[v] = (m[v] || 0) + 1, m), {}))}`);
 console.log(fails.length ? `FAIL (${fails.length}):\n` + fails.map(f => '- ' + f).join('\n') : 'PASS: no failures');
 process.exitCode = fails.length ? 1 : 0;
