@@ -68,7 +68,7 @@
 .site-footer a { color: var(--color-on-dark); font-size: var(--text-small); text-decoration: none; }
 .site-footer a:hover { color: var(--color-lemon); }
 .site-footer__contact > a { align-items: center; display: inline-flex; font-weight: 600; gap: var(--space-3); }
-.site-footer__bottom { border-top: 1px solid var(--color-line-light); display: flex; font-size: var(--text-micro); justify-content: space-between; margin-top: clamp(1.4rem, 7vw, 6.3rem); padding-top: var(--space-6); }
+.site-footer__bottom { align-items: baseline; border-top: 1px solid var(--color-line-light); display: flex; font-size: var(--text-micro); justify-content: space-between; margin-top: clamp(1.4rem, 7vw, 6.3rem); padding-top: var(--space-6); }
 .site-footer__bottom div { display: flex; gap: var(--space-6); }
 .site-footer__bottom a { color: inherit; font-size: inherit; }
 
