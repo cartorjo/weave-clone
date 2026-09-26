@@ -231,7 +231,7 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   close breakpoint pairs (640/650, 992/1000); ink aliases. Crops per page.
   Agents: design-system-engineer -> qa-reviewer.
 
-- B-39 Named fluid spacing steps (M, A) - TODO
+- B-39 Named fluid spacing steps (M, A) - AWAITING OWNER APPROVAL (16 one-off clamps -> --space-fluid-sm/md/lg/xl on the 8px grid; decorative negative insets excluded)
   14 one-off spacing clamps with minimums off the 8px grid -> 3-4 named
   fluid steps. Crops at 390/1000/1400.
   Agents: design-system-engineer -> frontend-engineer -> qa-reviewer.
