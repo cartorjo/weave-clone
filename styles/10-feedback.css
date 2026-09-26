@@ -261,7 +261,8 @@ a.expertise-card:focus-visible { --focus-halo: 0 0 0 var(--invert-bleed) var(--c
   .management-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .industry-tile:nth-child(n+4) figure { aspect-ratio: 16/10; }
   .reference-grid--collage { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .reference-grid--collage .reference-card { grid-column: auto; }
+  /* :nth-child() matches the desktop spans' specificity; a plain reset lost to them. */
+  .reference-grid--collage .reference-card:nth-child(n) { grid-column: auto; }
   .page-hero__grid, .page-section__top, .expertise-intro__heading { gap: var(--space-8); }
   .page-cta { column-gap: var(--space-16); }
   .contact__grid { gap: var(--space-12); }
@@ -290,7 +291,7 @@ a.expertise-card:focus-visible { --focus-halo: 0 0 0 var(--invert-bleed) var(--c
 @media (width <= theme(--breakpoint-stack)) {
   .reference-grid, .reference-grid--collage, .sitemap-grid { grid-template-columns: minmax(0,1fr); }
   .reference-grid { gap: var(--space-12); }
-  .reference-grid--collage .reference-card { grid-column: auto; }
+  .reference-grid--collage .reference-card:nth-child(n) { grid-column: auto; }
   .reference-grid--collage .reference-card:nth-child(1) figure, .reference-grid--collage .reference-card:nth-child(4) figure { aspect-ratio: 4 / 4.5; }
   .connection-model { grid-template-columns: minmax(0,1fr); }
   .connection-model__visual { display: none; }

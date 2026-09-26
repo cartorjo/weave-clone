@@ -51,6 +51,9 @@
    "(optional)" is marked; required fields carry no asterisk (owner rule). */
 .contact-form input, .contact-form select, .contact-form textarea { appearance: none; background: transparent; border: 0; border-bottom: 1px solid var(--color-line-light-strong); border-radius: 0; color: var(--color-on-dark); font-size: var(--text-lede-lg); font-weight: 400; letter-spacing: 0; outline: none; padding: var(--space-3) 0; text-transform: none; transition: border-color var(--duration-fast) var(--ease-em); width: 100%; }
 .contact-form :is(input, select) { min-height: 3.5rem; }
+.contact-form :is(input, select, textarea) { min-width: 0; }
+/* The submit pill may wrap its label when text is enlarged (200% at 390px). */
+.contact-form button { max-width: 100%; white-space: normal; }
 .contact-form select { background-color: var(--color-ink); grid-area: 2 / 1; padding-inline-end: var(--space-6); }
 @media (hover: hover) { .contact-form :is(input, select, textarea):hover { border-color: var(--color-on-dark-muted); } }
 .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--color-lemon); }

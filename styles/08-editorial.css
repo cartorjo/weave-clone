@@ -89,7 +89,7 @@
   .hero__intro { align-items: start; flex-direction: column; }
   .hero__visual { aspect-ratio: 4 / 3; }
   .work-filter { grid-template-columns: 1fr; }
-    .contact-form { grid-template-columns: 1fr; }
+    .contact-form { grid-template-columns: minmax(0, 1fr); }
   .contact-form__hint, .contact-form__message, .contact-form button { grid-column: auto; }
   .site-footer__top { grid-template-columns: 1fr; }
   .site-footer__bottom { align-items: start; flex-direction: column; gap: var(--space-4); }
