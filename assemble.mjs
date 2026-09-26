@@ -15,6 +15,7 @@
 //                          (aria-current="true" when the page sets navExact: false)
 //   <!-- partial:name -->  inlines partials/name.html (e.g. the contact form)
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import pages from './pages.mjs';
@@ -59,7 +60,7 @@ const seoMeta = (page, body) => {
     .map(([p, v]) => `  <meta property="${p}" content="${escape(String(v))}">`);
   tags.push('  <meta name="twitter:card" content="summary_large_image">');
   const graph = { '@context': 'https://schema.org', '@graph': [organization, website,
-    { '@type': 'WebPage', '@id': url, url, name: page.title, description: page.description, inLanguage: 'de-DE', isPartOf: { '@id': website['@id'] }, primaryImageOfPage: `${SITE_ORIGIN}${img.src}` }] };
+    { '@type': 'WebPage', '@id': url, url, name: page.title, description: page.description, inLanguage: 'de-DE', isPartOf: { '@id': website['@id'] }, primaryImageOfPage: `${SITE_ORIGIN}${img.src}`, dateModified: lastModified(page) }] };
   const crumbs = breadcrumb(body, url);
   if (crumbs) { graph['@graph'].push(crumbs); graph['@graph'][2].breadcrumb = { '@id': `${url}#breadcrumb` }; crumbs['@id'] = `${url}#breadcrumb`; }
   // Leistungen: one Service per discipline, with the name and topic line the page shows.
@@ -71,6 +72,18 @@ const seoMeta = (page, body) => {
   // JSON-LD is a data block, not script: the CSP's script-src does not apply.
   tags.push(`  <script type="application/ld+json">${JSON.stringify(graph).replace(/</g, '\\u003c')}</script>`);
   return tags.join('\n') + '\n';
+};
+// Last modified = the day of the last commit touching a page's sources (its
+// own files, the shared partials, the content layer). Uncommitted changes
+// count as today, the day their commit lands, so committed outputs stay
+// reproducible. Day granularity; CI checks out full history.
+const git = args => execFileSync('git', args, { cwd: root, encoding: 'utf8' }).trim();
+const today = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+const pageSources = page => [...(Array.isArray(page.content) ? page.content : page.content.startsWith('project:') ? [] : [page.content]), 'partials', 'content', 'pages.mjs'];
+const lastModified = page => {
+  const files = pageSources(page);
+  if (git(['status', '--porcelain', '--', ...files])) return today();
+  return git(['log', '-1', '--format=%cs', '--', ...files]);
 };
 const canonicalPath = out => out === 'index.html' ? '/' : out.endsWith('/index.html') ? `/${out.slice(0, -'index.html'.length)}` : null;
 const partial = (name) => readFileSync(join(root, 'partials', `${name}.html`), 'utf8');
@@ -166,6 +179,7 @@ for (const page of pages) {
   writeFileSync(outPath, html);
 }
 const routes = pages.map(p => canonicalPath(p.out)).filter(Boolean);
-writeFileSync(join(root, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${routes.map(r => `  <url><loc>${SITE_ORIGIN}${r}</loc></url>`).join('\n')}\n</urlset>\n`);
+const indexed = pages.filter(p => canonicalPath(p.out));
+writeFileSync(join(root, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${indexed.map(p => `  <url><loc>${SITE_ORIGIN}${canonicalPath(p.out)}</loc><lastmod>${lastModified(p)}</lastmod></url>`).join('\n')}\n</urlset>\n`);
 writeFileSync(join(root, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE_ORIGIN}/sitemap.xml\n`);
 console.log(`assembled: ${pages.length} pages, sitemap.xml (${routes.length} URLs), robots.txt`);

@@ -10,6 +10,7 @@ import pages from '../pages.mjs';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const failures = [], owner = [];
 const seen = { title: new Map(), description: new Map() };
+const lastmods = new Map([...readFileSync(resolve(root, 'sitemap.xml'), 'utf8').matchAll(/<loc>([^<]+)<\/loc><lastmod>([^<]+)<\/lastmod>/g)].map(m => [m[1], m[2]]));
 const attr = (html, re) => html.match(re)?.[1];
 for (const page of pages) {
   const html = readFileSync(resolve(root, page.out), 'utf8'), f = page.out;
@@ -35,7 +36,10 @@ for (const page of pages) {
   if (!ld) failures.push(`${f}: JSON-LD missing`);
   else try {
     const g = JSON.parse(ld)['@graph'];
-    if (!g?.some(n => n['@type'] === 'WebPage')) failures.push(`${f}: JSON-LD has no WebPage`);
+    const webPage = g?.find(n => n['@type'] === 'WebPage');
+    if (!webPage) failures.push(`${f}: JSON-LD has no WebPage`);
+    else if (!/^\d{4}-\d{2}-\d{2}$/.test(webPage.dateModified || '')) failures.push(`${f}: WebPage.dateModified missing`);
+    else if (lastmods.get(webPage.url) !== webPage.dateModified) failures.push(`${f}: dateModified ${webPage.dateModified} != sitemap lastmod ${lastmods.get(webPage.url)}`);
     const crumbs = g?.find(n => n['@type'] === 'BreadcrumbList');
     if (f !== 'index.html' && !crumbs) failures.push(`${f}: JSON-LD has no BreadcrumbList`);
     if (crumbs && crumbs.itemListElement.some((it, i) => it.position !== i + 1 || !it.name || !/^https:\/\//.test(it.item))) failures.push(`${f}: BreadcrumbList malformed`);
