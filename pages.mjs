@@ -37,15 +37,6 @@ export default [
     scripts: ['00-core', '01-header'],
   },
   {
-    out: 'case-studies/index.html',
-    title: 'Case Studies | Emposo',
-    description: 'Case Studies von Emposo: Herausforderung, Lieferung und messbare Ergebnisse im Überblick, von Data2AI und MLOps bis zu Managed Service und Homologationstests.',
-    nav: 'case-studies',
-    bodyClass: 'subpage wrap-anywhere',
-    content: 'pages/case-studies.html',
-    scripts: ['00-core', '01-header', '06-work'],
-  },
-  {
     out: 'case-studies/data2ai-platform/index.html',
     title: 'Data2AI Plattform | Case Study | Emposo',
     description: 'Case Study Data2AI Plattform: Aus verteilten Engineering-Daten wird produktive KI, mit 7-facher Produktivitätssteigerung und ROI innerhalb von 9 Monaten.',

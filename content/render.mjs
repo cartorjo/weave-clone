@@ -118,7 +118,6 @@ export function jobsList() {
 // them as <!-- content:cta-<name> -->, case studies use the default.
 const ctas = {
   default: { title: 'Jetzt Kontakt aufnehmen!', copy: ['Ob konkretes Vorhaben, erste Orientierung oder weitere Fragen: Erzählen Sie uns kurz, worum es geht.'], link: true },
-  'case-studies': { title: 'Lassen Sie uns Ihr nächstes Ergebnis <em>definieren.</em>', copy: ['Wir starten mit Ihrer Herausforderung und dem gewünschten Outcome.'], link: true },
   portfolio: { id: 'portfolio-cta-title', title: 'Welche Leistung sollen wir für Sie <em>liefern?</em>', copy: ['Von der bestehenden Leistung bis zum neuen Use Case: Sprechen wir über die Ergebnisdefinition und den sinnvollsten Einstieg.'], link: true },
   karriere: { id: 'karriere-statement-title', eyebrow: 'Warum Emposo', title: 'Wir entwickeln nicht nur Technologien.<br>Wir schaffen <em>Ergebnisse.</em>', copy: ['Dafür suchen wir Menschen, die neugierig sind, Verantwortung übernehmen und Dinge ins Ziel bringen wollen. Ob Engineering, Software, AI, Cyber Security oder Projektmanagement: Bei Emposo arbeitest Du an Projekten, die sichtbar etwas bewegen. Gemeinsam mit erfahrenen Kolleginnen und Kollegen, starken Kunden und der Skalierungskraft der Hays Gruppe.', '<strong>Tomorrow, created today.</strong>'], link: false },
 };
@@ -149,9 +148,9 @@ export function projectPage(slug) {
     ...projects.filter(other=>other.slug!==p.slug && other.discipline!==p.discipline && other.industry===p.industry),
     ...next,
   ])].slice(0,2);
-  return `${pageHero({ id: 'project-title', parent: ['/case-studies/', 'Projekte'], copy: `<p class="eyebrow eyebrow--light">${escape(p.industry)}</p><h1 class="display-large display-large--light" id="project-title">${escape(p.name)}</h1><p class="page-hero__intro">${escape(p.headline)}</p>`, figure: `${picture(p.image,'(max-width: 900px) 100vw, 50vw',true)}<div class="page-hero__metric"><strong${p.metric.length>8?' class="page-hero__metric--word"':''}>${escape(p.metric)}</strong><span>${escape(p.label)}</span></div>` })}
+  return `${pageHero({ id: 'project-title', parent: ['/branchen/#referenzen', 'Projekte'], copy: `<p class="eyebrow eyebrow--light">${escape(p.industry)}</p><h1 class="display-large display-large--light" id="project-title">${escape(p.name)}</h1><p class="page-hero__intro">${escape(p.headline)}</p>`, figure: `${picture(p.image,'(max-width: 900px) 100vw, 50vw',true)}<div class="page-hero__metric"><strong${p.metric.length>8?' class="page-hero__metric--word"':''}>${escape(p.metric)}</strong><span>${escape(p.label)}</span></div>` })}
   <section class="page-section"><div class="gutter"><div class="container"><h2 class="display-large" id="projekt-title">Projekt</h2><p class="section-lede">${escape(p.industry)} · ${escape(d.name)}</p>${p.facts ? `<ul class="result-list result-list--compact project-facts">${p.facts.map(f=>`<li>${escape(f)}</li>`).join('')}</ul>` : ''}<div class="company-values case-facets"><article><span class="company-values__icon" aria-hidden="true">{{icon:document-paper-line}}</span><h3>Herausforderung</h3>${column(p.challenge)}</article><article><span class="company-values__icon" aria-hidden="true">{{icon:lightbulb-shine-line}}</span><h3>Lösung</h3>${column(p.solution)}</article><article><span class="company-values__icon" aria-hidden="true">{{icon:check-discount-line}}</span><h3>Ergebnis</h3><ul class="result-list">${p.results.map(r=>`<li>${escape(r)}</li>`).join('')}</ul></article></div><p class="section-more"><a class="text-link" href="/portfolio/#${d.slug}">${escape(d.name)} ${arrow}</a></p></div></div></section>
-  <section class="page-section page-section--paper"><div class="gutter"><div class="container"><p class="eyebrow">Weitere Projekte</p><h2 class="display-large">Expertise, die Ergebnisse liefert.</h2>${projectCards(related)}<p class="section-more"><a class="text-link" href="/case-studies/">Alle Projekte ${arrow}</a></p></div></div></section>${cta()}`;
+  <section class="page-section page-section--paper"><div class="gutter"><div class="container"><p class="eyebrow">Weitere Projekte</p><h2 class="display-large">Expertise, die Ergebnisse liefert.</h2>${projectCards(related)}<p class="section-more"><a class="text-link" href="/branchen/#referenzen">Alle Projekte ${arrow}</a></p></div></div></section>${cta()}`;
 }
 
 
@@ -222,7 +221,7 @@ function management() {
 // Keep exploring: onward links at the end of pages that would otherwise dead-end
 // (/karriere/, /kontakt/; B-45, heading approved 2026-09-26). Labels are the
 // site's existing link labels.
-const EXPLORE = [['/portfolio/', 'Leistungen'], ['/branchen/', 'Branchen'], ['/case-studies/', 'Case Studies'], ['/about-us/', 'Über uns']];
+const EXPLORE = [['/portfolio/', 'Leistungen'], ['/branchen/', 'Branchen'], ['/about-us/', 'Über uns']];
 function keepExploring() {
   return `<section class="page-section explore" aria-labelledby="explore-title"><div class="gutter"><div class="container"><h2 class="explore__title" id="explore-title">Weiter entdecken</h2><ul class="explore__links">${EXPLORE.map(([href, label]) => `<li><a class="text-link" href="${href}">${label} <span aria-hidden="true">→</span></a></li>`).join('')}</ul></div></div></section>`;
 }
@@ -231,7 +230,6 @@ export function fragment(name) {
   switch (name) {
     case 'industry-cards': return industryCards();
     case 'trust-strip': return trustStrip();
-    case 'cta-case-studies': return cta('case-studies');
     case 'cta-portfolio': return cta('portfolio');
     case 'cta-karriere': return cta('karriere');
     case 'company-facts': return companyFacts();
@@ -241,7 +239,7 @@ export function fragment(name) {
     case 'projects-all': return filters();
     case 'disciplines': return disciplineGrid();
     case 'management': return management();
-    case 'sitemap': return `<div><h2>Leistungen</h2><a href="/">Startseite</a><a href="/portfolio/">Unsere Leistungen</a></div><div><h2>Branchen</h2><a href="/branchen/">Alle Branchen</a><h2>Unternehmen</h2><a href="/about-us/">Über uns</a><a href="/about-us/#management">Management</a><a href="/karriere/">Karriere</a><a href="/kontakt/">Kontakt</a><a href="/cookies/">Cookies</a><a href="/barrierefreiheit/">Barrierefreiheit</a><a href="/impressum/">Impressum</a><a href="/datenschutzerklaerung/">Datenschutz</a><a href="/nutzungsbestimmungen/">Nutzungsbestimmungen</a></div><div><h2>Projekte</h2><a href="/case-studies/">Alle Projekte</a>${projects.map(p=>`<a href="/case-studies/${p.slug}/">${escape(p.name)}</a>`).join('')}</div>`;
+    case 'sitemap': return `<div><h2>Leistungen</h2><a href="/">Startseite</a><a href="/portfolio/">Unsere Leistungen</a></div><div><h2>Branchen</h2><a href="/branchen/">Alle Branchen</a><h2>Unternehmen</h2><a href="/about-us/">Über uns</a><a href="/about-us/#management">Management</a><a href="/karriere/">Karriere</a><a href="/kontakt/">Kontakt</a><a href="/cookies/">Cookies</a><a href="/barrierefreiheit/">Barrierefreiheit</a><a href="/impressum/">Impressum</a><a href="/datenschutzerklaerung/">Datenschutz</a><a href="/nutzungsbestimmungen/">Nutzungsbestimmungen</a></div><div><h2>Projekte</h2><a href="/branchen/#referenzen">Alle Projekte</a>${projects.map(p=>`<a href="/case-studies/${p.slug}/">${escape(p.name)}</a>`).join('')}</div>`;
     default: throw new Error(`Unknown content fragment: ${name}`);
   }
 }
