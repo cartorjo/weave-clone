@@ -1,6 +1,6 @@
 ---
 name: component-refactorer
-description: Moves one leaf (non-interactive) component family onto semantic-token utilities and a composable renderer API for the design-system migration. Use one instance per family (for example links and CTAs, cards, heroes and page frames, lists and grids, footer and breadcrumb, figures and media, font and icon CSS). Instances run in parallel in separate worktrees once the semantic token layer and the helper module are merged.
+description: Moves one leaf (non-interactive) component family onto semantic-token utilities and a composable renderer API for the design-system migration. Use one instance per family (for example links and CTAs, cards, heroes and page frames, lists and grids, footer and breadcrumb, figures and media, font and icon CSS). Families run one at a time, each in its own step worktree, once the semantic token layer and the helper module are merged.
 tools: Read, Grep, Glob, Bash, Edit, Write
 model: inherit
 color: orange
