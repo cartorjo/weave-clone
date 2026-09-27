@@ -11,3 +11,7 @@ dist/
 
 # Visual/smoke harness output (tools/visual/)
 .visual/
+
+# English build (EN=1) until the owner publishes the English copy (docs/i18n.md)
+/en/
+/.i18n/

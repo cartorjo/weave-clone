@@ -1,22 +1,22 @@
-<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<a class="skip-link" href="#main">{{t:skip}}</a>
 <header class="site-header" data-site-header>
   <div class="gutter"><div class="container"><div class="site-header__inner">
-    <a class="site-logo" href="/" aria-label="Emposo — Startseite">{{brand:emposo-logo-neu26}}</a>
-    <nav class="site-nav max-nav:hidden" aria-label="Hauptnavigation">
-      <a class="min-h-11" href="/portfolio/"{{CURATTR:portfolio}}>Leistungen</a>
-      <a class="min-h-11" href="/branchen/"{{CURATTR:branchen}}{{CURATTR:case-studies}}>Branchen &amp; Projekte</a>
-      <a class="min-h-11" href="/about-us/"{{CURATTR:about}}>Über uns</a>
-      <a class="min-h-11" href="/karriere/"{{CURATTR:karriere}}>Karriere</a>
+    <a class="site-logo" href="{{href:/}}" aria-label="{{t:logo.label}}">{{brand:emposo-logo-neu26}}</a>
+    <nav class="site-nav max-nav:hidden" aria-label="{{t:nav.label}}">
+      <a class="min-h-11" href="{{href:/portfolio/}}"{{CURATTR:portfolio}}>{{t:nav.portfolio}}</a>
+      <a class="min-h-11" href="{{href:/branchen/}}"{{CURATTR:branchen}}{{CURATTR:case-studies}}>{{t:nav.branchen}}</a>
+      <a class="min-h-11" href="{{href:/about-us/}}"{{CURATTR:about}}>{{t:nav.about}}</a>
+      <a class="min-h-11" href="{{href:/karriere/}}"{{CURATTR:karriere}}>{{t:nav.karriere}}</a>
     </nav>
-    <a class="header-contact max-nav:hidden min-h-11" href="/kontakt/"{{CURATTR:kontakt}}>Projekt besprechen <span class="header-contact__arrow" aria-hidden="true">→</span></a>
+    <a class="header-contact max-nav:hidden min-h-11" href="{{href:/kontakt/}}"{{CURATTR:kontakt}}>{{t:nav.contact}} <span class="header-contact__arrow" aria-hidden="true">→</span></a>
     <details class="mobile-menu nav:hidden" id="mobile-menu">
-      <summary aria-label="Menü öffnen" class="min-h-11"><span>Menü</span><span aria-hidden="true">+</span></summary>
-      <nav class="mobile-menu__panel" aria-label="Hauptnavigation">
-        <a href="/portfolio/"{{CURATTR:portfolio}}>Leistungen</a>
-        <a href="/branchen/"{{CURATTR:branchen}}{{CURATTR:case-studies}}>Branchen &amp; Projekte</a>
-        <a href="/about-us/"{{CURATTR:about}}>Über uns</a>
-        <a href="/karriere/"{{CURATTR:karriere}}>Karriere</a>
-        <a class="mobile-menu__cta" href="/kontakt/"{{CURATTR:kontakt}}>Projekt besprechen <span class="header-contact__arrow" aria-hidden="true">→</span></a>
+      <summary aria-label="{{t:menu.open}}" class="min-h-11"><span>{{t:menu}}</span><span aria-hidden="true">+</span></summary>
+      <nav class="mobile-menu__panel" aria-label="{{t:nav.label}}">
+        <a href="{{href:/portfolio/}}"{{CURATTR:portfolio}}>{{t:nav.portfolio}}</a>
+        <a href="{{href:/branchen/}}"{{CURATTR:branchen}}{{CURATTR:case-studies}}>{{t:nav.branchen}}</a>
+        <a href="{{href:/about-us/}}"{{CURATTR:about}}>{{t:nav.about}}</a>
+        <a href="{{href:/karriere/}}"{{CURATTR:karriere}}>{{t:nav.karriere}}</a>
+        <a class="mobile-menu__cta" href="{{href:/kontakt/}}"{{CURATTR:kontakt}}>{{t:nav.contact}} <span class="header-contact__arrow" aria-hidden="true">→</span></a>
       </nav>
     </details>
   </div></div></div>
