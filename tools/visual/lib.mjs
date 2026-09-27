@@ -21,6 +21,28 @@ export function launch() {
   return puppeteer.launch({ executablePath: CHROME, headless: 'new', args: ['--hide-scrollbars', ...(process.env.CI ? ['--no-sandbox'] : [])] });
 }
 
+// German hyphenation is not available the moment Chrome starts on Linux: the
+// dictionary is a component Chrome downloads per profile (~65 s on the GitHub
+// runner, measured 2026-09-26), and only documents opened after that hyphenate.
+// macOS has it built in. Layout checks that depend on headings hyphenating must
+// await this; it fails loudly rather than measuring an un-hyphenated page.
+export function hyphenationReady(browser, { deadlineMs = 180000, everyMs = 2000 } = {}) {
+  const t0 = Date.now();
+  const html = '<!doctype html><html lang="de"><body><p id="t" style="width:120px;font:20px sans-serif;hyphens:auto;overflow-wrap:normal">Silbentrennung Herausforderung Homologationstests</p></body></html>';
+  return (async () => {
+    for (;;) {
+      const page = await browser.newPage();
+      await page.setContent(html);
+      const ok = await page.evaluate(() => { const t = document.getElementById('t'); return t.scrollWidth <= t.clientWidth; });
+      await page.close();
+      const seconds = Math.round((Date.now() - t0) / 1000);
+      if (ok) return { ok: true, seconds };
+      if (Date.now() - t0 >= deadlineMs) return { ok: false, seconds };
+      await new Promise(r => setTimeout(r, everyMs));
+    }
+  })();
+}
+
 export async function pool(items, n, fn) {
   const out = new Array(items.length); let i = 0;
   await Promise.all(Array.from({ length: n }, async () => { while (i < items.length) { const k = i++; out[k] = await fn(items[k], k); } }));

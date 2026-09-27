@@ -10,14 +10,16 @@ permissions:
 
 jobs:
   gates:
-    runs-on: ubuntu-latest
+    # Pinned: ubuntu-latest moves to Ubuntu 26 on 2026-10-19; the smoke gates depend on
+    # this image's Chrome path and fonts, so the runner changes deliberately, not by date.
+    runs-on: ubuntu-24.04
     timeout-minutes: 25
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           # lastmod/dateModified come from each page's last source commit.
           fetch-depth: 0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: npm
