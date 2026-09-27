@@ -1,7 +1,6 @@
 // Locales, the English route map and the UI dictionary.
 //
-// German is the source language and the only published locale until the owner
-// approves the English copy (docs/i18n.md). `npm run assemble` builds German
+// German is the source language; English is published (docs/i18n.md). `npm run assemble` builds German
 // only, byte-identical to the pre-i18n build. `EN=1 node assemble.mjs` also
 // builds the English twins into en/ (git-ignored until publication), falling
 // back to German for any string not yet translated and listing every fallback
@@ -10,10 +9,9 @@
 // Paths are copy too: the English slugs below are proposals until approved.
 
 export const DEFAULT_LOCALE = 'de';
-// I18N_PREVIEW_PUBLISHED=1 builds as if English were published (switch and
-// hreflang on German pages too), for review screenshots only. Never commit its
-// output: a normal build restores the German pages.
-export const PUBLISHED = process.env.I18N_PREVIEW_PUBLISHED === '1' ? ['de', 'en'] : ['de'];
+// English published 2026-09-27 (owner decision); the privacy notice is the
+// German text until the official English one arrives.
+export const PUBLISHED = ['de', 'en'];
 export const BUILD_EN = process.env.EN === '1' || PUBLISHED.includes('en');
 
 // German path -> English path. Case studies map through CASE_SLUGS.
@@ -89,6 +87,7 @@ export function dePath(path) {
 export const STRINGS = {
   de: {
     'skip': 'Zum Inhalt springen',
+    'lang.label': 'Sprache:',
     'logo.label': 'Emposo — Startseite',
     'nav.label': 'Hauptnavigation',
     'nav.portfolio': 'Leistungen',
@@ -202,6 +201,7 @@ export const STRINGS = {
   // American English, following the approved glossary (docs/i18n-glossary.md).
   en: {
     'skip': "Skip to content",
+    'lang.label': 'Language:',
     'logo.label': "Emposo — Home",
     'nav.label': "Main navigation",
     'nav.portfolio': "Services",

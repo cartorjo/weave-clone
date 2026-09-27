@@ -93,98 +93,68 @@
       "type": 301
     },
     {
-      "source": "/en/accessibility",
-      "destination": "/barrierefreiheit/",
-      "type": 301
-    },
-    {
-      "source": "/en/privacy-policy",
-      "destination": "/datenschutzerklaerung/",
-      "type": 301
-    },
-    {
       "source": "/en/terms",
-      "destination": "/nutzungsbestimmungen/",
+      "destination": "/en/terms-of-use/",
       "type": 301
     },
     {
       "source": "/en/disclaimer",
-      "destination": "/impressum/",
+      "destination": "/en/legal-notice/",
       "type": 301
     },
     {
       "source": "/en/about",
-      "destination": "/about-us/",
-      "type": 301
-    },
-    {
-      "source": "/en/contact",
-      "destination": "/kontakt/",
-      "type": 301
-    },
-    {
-      "source": "/en/industries",
-      "destination": "/branchen/",
+      "destination": "/en/about-us/",
       "type": 301
     },
     {
       "source": "/en/industries/*",
-      "destination": "/branchen/",
+      "destination": "/en/industries/",
       "type": 301
     },
     {
       "source": "/en/insights",
-      "destination": "/branchen/",
+      "destination": "/en/industries/",
       "type": 301
     },
     {
       "source": "/en/insights/*",
-      "destination": "/branchen/",
+      "destination": "/en/industries/",
       "type": 301
     },
     {
       "source": "/en/join-us",
-      "destination": "/karriere/",
+      "destination": "/en/careers/",
       "type": 301
     },
     {
       "source": "/en/solutions",
-      "destination": "/portfolio/",
+      "destination": "/en/services/",
       "type": 301
     },
     {
       "source": "/en/solutions/*",
-      "destination": "/portfolio/",
+      "destination": "/en/services/",
       "type": 301
     },
     {
       "source": "/en/vacancies",
-      "destination": "/karriere/",
+      "destination": "/en/careers/",
       "type": 301
     },
     {
       "source": "/en/vacancies/*",
-      "destination": "/karriere/",
+      "destination": "/en/careers/",
       "type": 301
     },
     {
       "source": "/en/team-member",
-      "destination": "/about-us/#management",
+      "destination": "/en/about-us/#management",
       "type": 301
     },
     {
       "source": "/en/team-member/*",
-      "destination": "/about-us/#management",
-      "type": 301
-    },
-    {
-      "source": "/en",
-      "destination": "/",
-      "type": 301
-    },
-    {
-      "source": "/en/*",
-      "destination": "/",
+      "destination": "/en/about-us/#management",
       "type": 301
     }
   ],
