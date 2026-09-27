@@ -1,8 +1,8 @@
-// Usage: node tools/visual/smoke.mjs [--out=smoke.json] [--widths=320,390,700,1000,1240,1400] [--routes=all|core]
+// Usage: node tools/visual/smoke.mjs [--out=smoke.json] [--widths=320,390,700,1000,1240,1400] [--routes=all|core] [--hyphenation-deadline=180000] [--no-hyphenation]
 // Functional + platform smoke over the served site. Exit 1 on any failure.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
-import { BASE, CORE, allRoutes, slug, launch, pool, settle } from './lib.mjs';
+import { BASE, CORE, allRoutes, slug, launch, pool, settle, hyphenationReady } from './lib.mjs';
 
 const args = process.argv.slice(2);
 const opt = k => args.find(a => a.startsWith(`--${k}=`))?.split('=')[1];
@@ -12,6 +12,8 @@ const AXE = readFileSync(createRequire(import.meta.url).resolve('axe-core/axe.mi
 const fails = [], info = {};
 const fail = m => fails.push(m);
 const browser = await launch();
+// Starts now, awaited before the 200% stage (see lib.mjs); usually ready by then.
+const hyphenation = hyphenationReady(browser, { deadlineMs: Number(opt('hyphenation-deadline') ?? 180000) });
 
 async function open(route, width, { bypassCSP = false, motion = 'no-preference' } = {}) {
   const page = await browser.newPage();
@@ -106,10 +108,19 @@ for (const [w, dpr] of [[1400, 1], [390, 2]]) for (const r of CORE) {
 }
 
 // 2d. 200% text: no content in main may extend past the viewport (WCAG 1.4.4/1.4.10).
-await pool(routes.flatMap(r => [390, 1400].map(w => ({ r, w }))), 4, async ({ r, w }) => {
+// Headings never break mid-word and rely on German hyphenation, so the page must be
+// hyphenating before this measures anything; otherwise the failures would be about
+// the runner, not the site. Card headings without hyphenation are backlog B-47.
+// --no-hyphenation is the opt-in worst case (a browser without a German dictionary):
+// auto-hyphenation is switched off after load, `hyphens: none` rules are kept.
+const noHyphenation = args.includes('--no-hyphenation');
+info.hyphenation = await hyphenation;
+if (!info.hyphenation.ok) fail(`German hyphenation unavailable after ${info.hyphenation.seconds}s; 200% text gate not run (${routes.length} routes × 2 widths untested)`);
+else await pool(routes.flatMap(r => [390, 1400].map(w => ({ r, w }))), 4, async ({ r, w }) => {
   const page = await browser.newPage(); await page.setCacheEnabled(false);
   const cdp = await page.createCDPSession(); await cdp.send('Page.setFontSizes', { fontSizes: { standard: 32 } });
   await page.setViewport({ width: w, height: 900 }); await page.goto(BASE + r, { waitUntil: 'networkidle0' });
+  if (noHyphenation) await page.evaluate(() => { for (const e of document.querySelectorAll('main, main *')) if (getComputedStyle(e).hyphens === 'auto') e.style.setProperty('hyphens', 'manual', 'important'); });
   const over = await page.evaluate(() => [...document.querySelectorAll('main *')].filter(e => { const b = e.getBoundingClientRect(); return b.width && b.right > innerWidth + 0.5 && !e.closest('.legal-table'); })
     .slice(0, 2).map(e => `${e.tagName.toLowerCase()}.${[...e.classList].slice(0, 2).join('.')} to x=${Math.round(e.getBoundingClientRect().right)}`));
   for (const o of over) fail(`${slug(r)}@${w} 200% text: ${o} (viewport ${w})`);
@@ -225,7 +236,7 @@ for (const [name, route, fn] of flows) for (const w of [390, 1000, 1400]) {
 }
 await browser.close();
 if (opt('out')) writeFileSync(opt('out'), JSON.stringify({ fails, info }, null, 1));
-console.log(`# smoke: ${routes.length} routes × ${widths.length} widths, axe ${routes.length}×2, 200% text ${routes.length}×2, keyboard 7×2, no-JS text ${CORE.length}, ${flows.length} flows ×3 widths`);
+console.log(`# smoke: ${routes.length} routes × ${widths.length} widths, axe ${routes.length}×2, 200% text ${routes.length}×2 (hyphenation ready after ${info.hyphenation.seconds}s${noHyphenation ? ', then forced OFF' : ''}), keyboard 7×2, no-JS text ${CORE.length}, ${flows.length} flows ×3 widths`);
 console.log(`image KiB (max ${Math.max(...Object.values(info.imageKiB || {0: 0}))} of 750): ${JSON.stringify(info.imageKiB)}`);
 console.log(`font KiB (max ${Math.max(...Object.values(info.fontKiB || {0: 0}))} of 100)`);
 console.log(`nav at 1240: ${JSON.stringify(Object.entries(info.navAt1240 || {}).reduce((m, [, v]) => (m[v] = (m[v] || 0) + 1, m), {}))}`);

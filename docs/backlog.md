@@ -153,6 +153,12 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   Acceptance: Page.setFontSizes 32 at 390: no element in main past x=390 on
   / and /kontakt/; default size visual:diff 0.
   Agents: design-system-engineer -> frontend-engineer -> a11y-perf-reviewer -> qa-reviewer.
+  Note (2026-09-26, PR #14): the gate assumes German hyphenation. On the
+  Linux runner Chrome downloads the dictionary ~65 s after launch, so the
+  first documents measured were un-hyphenated (PR #12 red on home only;
+  #13's 12vw cap on .display-large fixed that route, not the cause). The
+  smoke now waits for hyphenation before the 200% stage and fails loudly if
+  it never arrives. The un-hyphenated browser is B-53.
 
 - B-26 Smoke covers every route (S, T) - DONE (415609e)
   axe on 24 routes x 390/1400, a 200%-text check, and a Tab walk (trap / no
@@ -359,3 +365,14 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   /branchen/#referenzen (labels unchanged). Case studies stay at
   /case-studies/<slug>/. "Weiter entdecken" drops its Case Studies link
   (Branchen covers it). Smoke/lib route lists updated.
+
+- B-53 Card headings without a hyphenation dictionary at 200% text (S, A) - TODO,
+  owner asked 2026-09-27 to fix it: with auto-hyphenation off
+  (npm run smoke -- --no-hyphenation, main 01e21b2) 11 h3s on 9 routes
+  overflow at 390 with 32px text (/branchen/ project cards x2, eight
+  case-study pages, worst x=481). Affects Linux Chrome before its
+  dictionary component arrives and offline installs; Firefox, Safari and
+  Android Chrome ship German hyphenation. Fix: cap those h3s by the
+  viewport like #13 did for .display-large (min(size, Nvw)) so the cap
+  never binds at default size. Acceptance: --no-hyphenation smoke PASS at
+  390 and 1400; default size visual:diff 0; before/after crops at 390/200%.
