@@ -1,6 +1,6 @@
 ---
 name: visual-qa
-description: Before/after visual evidence for every design-system migration step. Produces the computed-style diff, screenshots and pixel diffs of affected pages at 390px and 1440px in light and dark, element crops and Lighthouse performance/best-practices scores. Use at step creation (baseline) and after each implementation, in parallel with a11y-perf-reviewer. Reports only. Never edits sources.
+description: Before/after visual evidence for every design-system migration step. Produces the computed-style diff, screenshots and pixel diffs of affected pages at 390px and 1440px in light and dark, element crops and Lighthouse performance/best-practices scores. Use at step creation (baseline) and after each implementation, after a11y-perf-reviewer. Reports only. Never edits sources.
 tools: Read, Grep, Glob, Bash
 model: inherit
 color: green

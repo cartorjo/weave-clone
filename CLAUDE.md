@@ -186,15 +186,15 @@ Hand-off rules
    merge commit.
 2. visual-qa captures the baseline from the untouched worktree before the
    implementer starts.
-3. One implementer per step. Token work is always serial. Leaf families run in
-   parallel worktrees only after the semantic layer has merged. The
-   implementer commits sources plus regenerated outputs (npm run build) on
+3. One step at a time, and one implementer per step. There is no parallel
+   work (owner 2026-09-27: only the resources needed, no parallel work), so
+   leaf families also run one after another. The implementer commits sources plus regenerated outputs (npm run build) on
    the step branch, runs npm run check on the clean tree, lists every
    deletion, and returns its section.
 4. The coordinator runs npm run build:dist once and serves the step and base
-   ports. Then it dispatches, in parallel: a11y-perf-reviewer, visual-qa, and
-   bundle-analyst (when the step deletes anything or changes CSS, JS, fonts or
-   packages). qa-reviewer goes last. Reviewers return reports, and the
+   ports. Then it dispatches, one after another: a11y-perf-reviewer,
+   visual-qa, and bundle-analyst (when the step deletes anything or changes
+   CSS, JS, fonts or packages). qa-reviewer goes last. Reviewers return reports, and the
    coordinator pastes each under "## <agent>" in DS-<n>.md.
 5. On FAIL the step goes back to the implementer, at most twice, then it's
    BLOCKED. An interactive replacement merges only on a11y PASS. A deletion
@@ -203,7 +203,8 @@ Hand-off rules
    regenerates outputs with npm run build (never hand-merge css/site.css,
    *.html or sitemap.xml) and reruns the gates. Evidence from before the
    rebase doesn't count. Each step is one squash commit:
-   "<type>(ds): <summary> [DS-<n>]". After the merge, the coordinator checks
+   "<type>(ds): <summary> [DS-<n>]", merged with `npm run merge -- <pr>`.
+   After the merge, the coordinator checks
    the Railway deploy and commits the docs/PROGRESS.md update, and docs-writer
    appends to docs/design-system-migration-log.md.
 7. Evidence goes to /Users/jose/workspace/emposo-new-website/ds-migration-run/
