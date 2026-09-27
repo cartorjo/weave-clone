@@ -4,7 +4,7 @@
 //   - <html lang="en">, the canonical is the English URL, and hreflang names
 //     both twins (reciprocal once English is published);
 //   - no English page links to a German page path;
-//   - DE and EN twins share one tag skeleton: the same elements with the same
+//   - DE and EN twins (except the verbatim legal documents) share one tag skeleton: the same elements with the same
 //     classes and ids in the same order, so only text, hrefs and localized
 //     attributes differ. Layout parity holds by construction.
 // Reports the German fallbacks still in the English build (.i18n/untranslated.json);
@@ -30,6 +30,11 @@ const LOCALIZED_ATTRS = /\s(?:href|alt|aria-label|title|content|placeholder|href
 const skeleton = html => [...html.replace(/<link rel="alternate"[^>]*>/g, '').replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '').matchAll(/<\/?[a-z][a-z0-9-]*(?:\s[^>]*)?>/g)]
   .map(([tag]) => tag.replace(LOCALIZED_ATTRS, '').replace(/\s+/g, ' '));
 
+// Legal documents are Hays' own texts in each language, reproduced verbatim
+// (owner decision 2026-09-27), not translations of our markup: they keep every
+// check except the shared tag skeleton.
+const VERBATIM_LEGAL = new Set(['impressum/index.html', 'datenschutzerklaerung/index.html', 'nutzungsbestimmungen/index.html']);
+
 let pairs = 0;
 for (const page of pages) {
   const enOut = page.out === '404.html' ? 'en/404.html' : outOf(localizePath(pathOf(page.out), 'en'));
@@ -48,7 +53,7 @@ for (const page of pages) {
   for (const [, href] of en.matchAll(/href="(\/[^"#?]*)/g)) {
     if (!href.startsWith('/en/') && !/^\/(assets|css|js)\//.test(href)) failures.push(`${enOut}: links to German path ${href}`);
   }
-  const a = skeleton(de), b = skeleton(en);
+  const a = VERBATIM_LEGAL.has(page.out) ? [] : skeleton(de), b = VERBATIM_LEGAL.has(page.out) ? [] : skeleton(en);
   const at = a.findIndex((tag, i) => tag !== b[i]);
   if (at !== -1 || a.length !== b.length) {
     const i = at === -1 ? Math.min(a.length, b.length) : at;
