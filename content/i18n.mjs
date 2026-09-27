@@ -87,6 +87,7 @@ export function dePath(path) {
 export const STRINGS = {
   de: {
     'skip': 'Zum Inhalt springen',
+    'lang.label': 'Sprache:',
     'logo.label': 'Emposo — Startseite',
     'nav.label': 'Hauptnavigation',
     'nav.portfolio': 'Leistungen',
@@ -200,6 +201,7 @@ export const STRINGS = {
   // American English, following the approved glossary (docs/i18n-glossary.md).
   en: {
     'skip': "Skip to content",
+    'lang.label': 'Language:',
     'logo.label': "Emposo — Home",
     'nav.label': "Main navigation",
     'nav.portfolio': "Services",
