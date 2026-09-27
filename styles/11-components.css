@@ -182,11 +182,3 @@ svg:dir(rtl) { direction: ltr; }
 .lang-switch__region { color: color-mix(in srgb, var(--color-ink) 62%, transparent); }
 /* In the mobile panel: a pill aligned with the links' text, not a full-width row. */
 .mobile-menu__panel a.lang-switch--menu { align-self: flex-start; justify-self: start; width: max-content; border-bottom: 0; display: inline-flex; margin: var(--space-4) var(--space-6) 0; padding: var(--space-2) var(--space-4); }
-
-/* Footer certificate badges (owner 2026-09-27): white medal over the standard,
-   on the navy footer. Neutral mark by design: certified organizations may not
-   use the ISO logo itself. */
-.cert-badges { display: flex; flex-wrap: wrap; gap: var(--space-8); list-style: none; margin: var(--space-8) 0 0; padding: 0; }
-.cert-badge { align-items: center; color: var(--color-on-dark); display: flex; flex-direction: column; font-size: var(--text-body-sm); font-weight: 500; gap: var(--space-2); }
-.cert-badge__icon { display: inline-flex; height: var(--space-12); width: var(--space-12); }
-.cert-badge__icon svg { height: 100%; width: 100%; }
