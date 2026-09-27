@@ -114,6 +114,10 @@ Delegation map:
   approval recorded.
 - No new third-party requests, no copy changes, tokens only.
 - docs/backlog.md and, if components changed, docs/components.md updated.
+- Merge only after the PR's checks are green: `npm run merge -- <pr>` runs
+  `gh pr checks <pr> --watch --fail-fast` and squash-merges only on success.
+  Never `gh pr merge` by hand while a check is pending or red (#12 was merged
+  red on 2026-09-26). If main moved, rebase and let the checks run again first.
 
 ## Design-system migration (from 2026-09-27)
 Brief, verbatim: docs/design-system-brief.md (agents cite it as "brief §n").
