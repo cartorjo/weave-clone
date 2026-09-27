@@ -7,7 +7,7 @@ export const REPO = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..')
 export const BASE = process.env.BASE || 'http://localhost:8080';
 export const CHROME = process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 
-export const CORE = ['/', '/portfolio/', '/branchen/', '/case-studies/', '/case-studies/data2ai-platform/', '/about-us/', '/karriere/', '/kontakt/', '/404.html'];
+export const CORE = ['/', '/portfolio/', '/branchen/', '/case-studies/data2ai-platform/', '/about-us/', '/karriere/', '/kontakt/', '/404.html'];
 
 export async function allRoutes() {
   const pages = (await import(pathToFileURL(`${REPO}/pages.mjs`).href + `?t=${process.hrtime.bigint()}`)).default;

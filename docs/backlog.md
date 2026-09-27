@@ -16,6 +16,7 @@ decisions below.
 - #4597ce stays as --color-info.
 - Filter values without a reference are disabled, not hidden (26.09., B-42).
 - Industries and the project list stay together on /branchen/ (27.09., B-44 reverted).
+- No /case-studies/ listing page (27.09., B-52): /branchen/ is the one project list.
 - No gray state-layer bubble on hover/press and no tap highlight (27.09., B-51).
 - Spacing tokenized as shipped (--space-legacy-*); an 8px snap is B-18.
 - Industry tiles are static content, not links (24.09).
@@ -350,3 +351,11 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   layer (ink overlay pill on press, and on hover for logo, expander, selected
   chip) is removed, and -webkit-tap-highlight-color is transparent. Rest
   state unchanged (visual:diff 0); focus rings and bespoke hovers stay.
+
+- B-52 Remove the /case-studies/ listing page (S) - DONE, owner request
+  2026-09-27: /case-studies/ 301 -> /branchen/ (and the /insights legacy
+  301s now land there), dropped from the sitemap and manifest. Every
+  "Alle Projekte" link and the case-study breadcrumb "Projekte" go to
+  /branchen/#referenzen (labels unchanged). Case studies stay at
+  /case-studies/<slug>/. "Weiter entdecken" drops its Case Studies link
+  (Branchen covers it). Smoke/lib route lists updated.
