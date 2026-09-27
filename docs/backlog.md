@@ -15,6 +15,8 @@ decisions below.
 - Required form fields unmarked; only "(optional)" is marked.
 - #4597ce stays as --color-info.
 - Filter values without a reference are disabled, not hidden (26.09., B-42).
+- Industries and the project list stay together on /branchen/ (27.09., B-44 reverted).
+- No gray state-layer bubble on hover/press and no tap highlight (27.09., B-51).
 - Spacing tokenized as shipped (--space-legacy-*); an 8px snap is B-18.
 - Industry tiles are static content, not links (24.09).
 - Karriere gets an application route to info@emposo.eu (2026-09-25; this
@@ -321,10 +323,10 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   time, labels unchanged; they re-enable when a matching reference is added.
 - B-43 Breadcrumb as nav landmark (S) - DONE, owner approved 2026-09-26: nav
   aria-label "Brotkrümelnavigation" > ol, aria-current on the page label; pixel-identical (0 of 67 shots changed).
-- B-44 One listing URL (M) - DONE, owner approved 2026-09-26: /branchen/ keeps
-  the industries; its project section links "Alle Projekte" to /case-studies/,
-  the only filterable list; the homepage "Alle Referenzen" link points there.
-  Smoke/contrast/crops moved their filter checks to /case-studies/.
+- B-44 One listing URL (M) - REVERTED by owner 2026-09-27: done in #29
+  (/branchen/ industries + link, list only on /case-studies/), then the owner
+  asked for industries and projects together on /branchen/ again. Both pages
+  keep the filterable list; do not re-propose.
 - B-50 Metadata for the 15 B-48 cases (S) - NEEDS-OWNER: their descriptions
   are the short headlines (56-80 chars) and 8 titles exceed 60 characters.
   Same treatment as B-22 (drafts from on-page sentences, drop "| Case Study"
@@ -342,3 +344,9 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   throttle). Smoke now waits for fonts, eager images and two frames before
   axe and reruns axe once on violations; a real contrast bug fails both runs
   (negative-tested: 34 failures, 0 marked as flake).
+
+- B-51 Remove the gray state layer (S, A) - DONE, owner feedback 2026-09-27
+  ("when I click an element, thereafter appears a gray bubble"): the M3 state
+  layer (ink overlay pill on press, and on hover for logo, expander, selected
+  chip) is removed, and -webkit-tap-highlight-color is transparent. Rest
+  state unchanged (visual:diff 0); focus rings and bespoke hovers stay.

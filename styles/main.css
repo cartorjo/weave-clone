@@ -222,9 +222,6 @@
   /* Read by js/07-countup.js (ease-out cubic in JS, which cannot consume a
      CSS curve). Lenis smooth scroll runs at lerp 0.1 (js/00-core.js). */
   --duration-countup: 900ms;
-  /* State layers: content-color overlay opacity per interaction state. */
-  --state-hover: .08;
-  --state-press: .1;
   /* The one weight of orange accent rules (borders under/over figures, hints). */
   --rule-accent: 2px;
   /* Disabled controls (filter values without a reference): content opacity. */
@@ -252,6 +249,9 @@
 }
 /* Below the inline nav the header is 80px (same unlayered :root, so it wins). */
 @media (width < theme(--breakpoint-nav)) { :root { --header-h: 5rem; } }
+/* No gray tap flash on touch devices (owner feedback 2026-09-27); links and
+   buttons keep their own active/hover styles and the focus ring. */
+html { -webkit-tap-highlight-color: transparent; }
 
 /* ---- reset (verbatim from css/00-base.css §1) -----------------------------
    Tailwind's own reset (Preflight) is not imported (see header comment), so
