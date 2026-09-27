@@ -366,13 +366,17 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   /case-studies/<slug>/. "Weiter entdecken" drops its Case Studies link
   (Branchen covers it). Smoke/lib route lists updated.
 
-- B-53 Card headings without a hyphenation dictionary at 200% text (S, A) - TODO,
-  owner asked 2026-09-27 to fix it: with auto-hyphenation off
+- B-53 Card headings without a hyphenation dictionary at 200% text (S, A) - DONE
+  (PR #34), owner 2026-09-27 "do as you recommend": with auto-hyphenation off
   (npm run smoke -- --no-hyphenation, main 01e21b2) 11 h3s on 9 routes
-  overflow at 390 with 32px text (/branchen/ project cards x2, eight
-  case-study pages, worst x=481). Affects Linux Chrome before its
-  dictionary component arrives and offline installs; Firefox, Safari and
-  Android Chrome ship German hyphenation. Fix: cap those h3s by the
-  viewport like #13 did for .display-large (min(size, Nvw)) so the cap
-  never binds at default size. Acceptance: --no-hyphenation smoke PASS at
-  390 and 1400; default size visual:diff 0; before/after crops at 390/200%.
+  overflowed at 390 with 32px text (/branchen/ project cards, eight
+  case-study pages, worst x=516 for "Informationssicherheits-"). Affects Linux
+  Chrome before its dictionary component arrives and offline installs;
+  Firefox, Safari and Android Chrome ship German hyphenation. Fix:
+  .reference-card h3 gets overflow-wrap: anywhere, a last-resort break that
+  hyphenation always pre-empts, so a hyphenating browser renders exactly as
+  before (computed-style diff 0 on 108 page@width files). The viewport cap
+  (min(size, 8.5vw), as #13) was built and rejected: at 200% it shrank the
+  title to 33px under the 35px lede, for every browser. Evidence:
+  --no-hyphenation smoke PASS 36 routes; crops b53-crops/ in the local docs
+  repo (before: title clipped at x=516; after: breaks inside the word).
