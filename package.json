@@ -22,7 +22,7 @@
     "copy:accept": "node tools/check-copy.mjs --accept",
     "check:meta": "node tools/check-meta.mjs",
     "smoke": "node tools/visual/smoke.mjs",
-    "merge": "sh -c 'gh pr checks \"$0\" --watch --fail-fast && gh pr merge \"$0\" --squash --delete-branch'",
+    "merge": "sh tools/merge.sh",
     "visual:snapshot": "node tools/visual/snapshot.mjs",
     "visual:diff": "node tools/visual/diff.mjs",
     "visual:pixdiff": "node tools/visual/pixdiff.mjs",
