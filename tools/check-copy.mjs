@@ -11,7 +11,12 @@
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import pages from '../pages.mjs';
+import pagesDe from '../pages.mjs';
+import { pagesEn } from '../pages.en.mjs';
+import { PUBLISHED } from '../content/i18n.mjs';
+
+// Once English is published its pages join the gate (docs/i18n.md).
+const pages = [...pagesDe, ...(PUBLISHED.includes('en') ? pagesEn(pagesDe) : [])];
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const baselinePath = resolve(root, 'tools', 'copy-baseline.json');

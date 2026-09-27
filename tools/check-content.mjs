@@ -1,5 +1,6 @@
 // Verify the generated site as a connected set of documents. No server needed.
 import { readFileSync, existsSync, realpathSync, statSync, readdirSync } from 'node:fs';
+import { PUBLISHED } from '../content/i18n.mjs';
 import { gzipSync } from 'node:zlib';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -67,7 +68,9 @@ for (const dir of ['pages', 'sections']) for (const f of readdirSync(resolve(roo
 const serveConfig = JSON.parse(readFileSync(resolve(root,'serve.json'),'utf8'));
 const redirects = serveConfig.redirects || [];
 const pageFile = pathname => { const p = decodeURIComponent(pathname); return p.endsWith('/') ? p.slice(1)+'index.html' : p.slice(1); };
-const isPage = pathname => existsSync(resolve(root, pageFile(pathname)));
+// The English preview build (en/, git-ignored) is not shipped until English
+// is published (docs/i18n.md), so it does not count as a live page before then.
+const isPage = pathname => (!pathname.startsWith('/en/') || PUBLISHED.includes('en')) && existsSync(resolve(root, pageFile(pathname)));
 for (const {source, destination} of redirects) {
   const target = new URL(destination, 'https://local.test');
   if (!isPage(target.pathname)) failures.push(`serve.json: redirect ${source} → missing ${destination}`);

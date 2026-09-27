@@ -11,7 +11,7 @@
     "build:img": "node tools/optimize-images.mjs",
     "build:share": "node tools/share-images.mjs",
     "build:brand-img": "node tools/optimize-brand-images.mjs",
-    "check": "npm run build && npm run check:content && npm run check:meta && npm run check:copy && git diff --exit-code",
+    "check": "npm run build && npm run check:content && npm run check:meta && npm run check:copy && npm run check:i18n && git diff --exit-code",
     "watch:html": "node --watch --watch-path=sections --watch-path=pages --watch-path=partials --watch-path=js assemble.mjs",
     "build": "npm run assemble && npm run build:css",
     "serve": "serve . -l 8080",
@@ -28,7 +28,9 @@
     "visual:pixdiff": "node tools/visual/pixdiff.mjs",
     "css:shadowed": "node tools/visual/shadowed.mjs",
     "visual:components": "node tools/visual/components.mjs",
-    "contrast": "node tools/visual/contrast.mjs"
+    "contrast": "node tools/visual/contrast.mjs",
+    "check:i18n": "node tools/check-i18n.mjs",
+    "build:en": "EN=1 node assemble.mjs"
   },
   "dependencies": {
     "serve": "^14.2.6"
