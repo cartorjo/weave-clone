@@ -176,7 +176,7 @@ const flows = [
     const a = await page.evaluate(() => ({ href: document.activeElement?.getAttribute('href'), txt: document.activeElement?.textContent.trim() }));
     if (a.href !== '#main') return `first Tab stop is ${JSON.stringify(a)}, expected skip link`;
   }],
-  ...['/case-studies/'].map(route => ['filters', route, async (page) => {
+  ...['/branchen/', '/case-studies/'].map(route => ['filters', route, async (page) => {
     const before = await page.evaluate(() => ({ chips: document.querySelectorAll('.filter-button').length, visible: [...document.querySelectorAll('[data-project]')].filter(p => !p.hidden).length, total: document.querySelectorAll('[data-project]').length }));
     if (!before.chips) return 'no filter chips';
     const target = await page.evaluate(() => { const b = [...document.querySelectorAll('.filter-button[data-filter-value]')].find(b => b.dataset.filterValue !== 'all' && !b.disabled); b.scrollIntoView({ block: 'center' }); return b.dataset.filterGroup + '=' + b.dataset.filterValue; });
