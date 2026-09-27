@@ -29,3 +29,11 @@ Outputs
 
 Definition of done
 - qa-reviewer PASS recorded in the handoff, npm run check exit 0, backlog and docs/components.md updated where relevant.
+
+Design-system migration (DS-<n> steps)
+Follow CLAUDE.md, "Design-system migration", and the brief in docs/design-system-brief.md:
+- Every message to the owner starts with the progress bar line.
+- Stop for the owner after Phases 1, 2 and 3.
+- Mirror to docs/PROGRESS.md on every state change.
+- Use the DS hand-off rules and the DS template in docs/handoffs/README.md.
+For DS steps, Process steps 3 and 7 above don't apply. The commit format is "<type>(ds): <summary> [DS-<n>]", and progress goes in docs/PROGRESS.md, not the backlog.

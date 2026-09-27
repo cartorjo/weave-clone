@@ -42,7 +42,7 @@ See @README.md for build details. Backlog: @docs/backlog.md. Components:
 - content/render.mjs - shared renderers (the component layer); variants are
   parameters, never copied markup (e.g. cta(name), chip(), picture()).
 - styles/main.css - tokens (@theme: colors, type roles, breakpoints, radius;
-  :root: --space-* steps, motion, state layer, scrims). Component canon:
+  :root: --space-* steps, motion, scrims). Component canon:
   styles/11-components.css (imported last). 07-10 hold older per-area CSS.
 - docs/components.md - component canon and contracts (German; owned by
   design-system-engineer). Contract template at its end.
@@ -114,3 +114,97 @@ Delegation map:
   approval recorded.
 - No new third-party requests, no copy changes, tokens only.
 - docs/backlog.md and, if components changed, docs/components.md updated.
+
+## Design-system migration (from 2026-09-27)
+Brief, verbatim: docs/design-system-brief.md (agents cite it as "brief §n").
+Goal: move the UI layer off Material 3 naming and patterns onto composable
+headless primitives and a Tailwind v4 semantic-token system. Copy and visual
+design intent don't change, and the site stays deployable after every step.
+Steps are Kind R (visual:diff 0). A step becomes Kind A only through a new owner
+decision.
+
+Roster (definitions in .claude/agents/)
+- auditor: read-only inventory and scoring.
+- token-architect: token work, strictly serial.
+- tooling-engineer: replaces tailwind-migrator (no v3->v4 upgrade needed).
+  Tailwind plumbing, lint, CI, harness.
+- component-refactorer: one instance per leaf family.
+- interactive-refactorer: the interactive components.
+- a11y-perf-reviewer: the brief's a11y-reviewer.
+- visual-qa, bundle-analyst, docs-writer.
+- qa-reviewer: final gate.
+
+Repo adaptation of brief §2 (owner confirmed 2026-09-27)
+- No component framework (static HTML from assemble.mjs, vanilla JS).
+  Interactive components are hand-built primitives on native elements and
+  WAI-ARIA APG patterns, with Headless UI v2's data-* contract, listed as
+  maintained components.
+- Parts, cva variants and cn run at build time in content/render.mjs. cn is
+  tailwind-merge extended with every custom @theme key. Attribute passthrough
+  stands in for ref forwarding.
+- No new runtime JS dependency without owner approval.
+- Tailwind is already v4.3 and CSS-first, so there's no upgrade step. Numeric
+  --spacing-<n> stays forbidden.
+- Owner decisions, 2026-09-27:
+  - Roboto stays as the brand face: a documented brand exception, so
+    criterion 1 is scored at most 4.
+  - The supplied Hays Glow icons stay; no lucide.
+  - [data-theme="dark"] scopes today's navy sections. The page-level
+    prefers-color-scheme fallback is built dark-ready but stays off until the
+    owner approves a dark design.
+  - The tokens README is styles/README.md.
+  - Every DS step is Kind R.
+- Ownership until Phase 5 closes: styles/, content/render.mjs,
+  docs/components.md and tools/visual/ change through DS steps. Tech-track
+  changes to them land on main between steps, after checking with the
+  coordinator, and open steps rebase onto them. token-architect.md supersedes
+  design-system-engineer's token rules.
+
+Progress bar (brief §5)
+- Every coordinator message to the owner starts with
+  `[<20 chars: # done, - left>] <int>% | Phase <p>/5 | step <s>/<t>: <name>`,
+  plus ` | WAITING FOR APPROVAL` while waiting.
+- Weights: P1 5, P2 15, P3 10, P4 65, P5 5. P4 is split by the approved
+  diff-size estimates; when the plan changes, recompute and say so in the line.
+- A step counts only once it's merged with build, lint, tests, a11y and visual
+  QA passed.
+- The coordinator stops for the owner after Phases 1, 2 and 3.
+- The line and a per-step checklist are mirrored to docs/PROGRESS.md on every
+  state change: opened, in review, FAIL, BLOCKED, NEEDS-OWNER, waiting, merged.
+- One report line per completed step.
+- Subagents never print the bar or edit docs/PROGRESS.md.
+
+Hand-off rules
+1. Open a step. The coordinator creates branch ds/<n>-<slug> in worktree
+   ../weave-clone-ds-<n> from current origin/main, runs npm ci there and
+   records the exit code. It then writes docs/handoffs/DS-<n>.md from the DS
+   template in docs/handoffs/README.md. DS-<n>.md stays untracked until the
+   merge commit.
+2. visual-qa captures the baseline from the untouched worktree before the
+   implementer starts.
+3. One implementer per step. Token work is always serial. Leaf families run in
+   parallel worktrees only after the semantic layer has merged. The
+   implementer commits sources plus regenerated outputs (npm run build) on
+   the step branch, runs npm run check on the clean tree, lists every
+   deletion, and returns its section.
+4. The coordinator runs npm run build:dist once and serves the step and base
+   ports. Then it dispatches, in parallel: a11y-perf-reviewer, visual-qa, and
+   bundle-analyst (when the step deletes anything or changes CSS, JS, fonts or
+   packages). qa-reviewer goes last. Reviewers return reports, and the
+   coordinator pastes each under "## <agent>" in DS-<n>.md.
+5. On FAIL the step goes back to the implementer, at most twice, then it's
+   BLOCKED. An interactive replacement merges only on a11y PASS. A deletion
+   needs bundle-analyst's proof, or it becomes NEEDS-OWNER.
+6. Merge. Branches land one at a time. Each one rebases onto origin/main,
+   regenerates outputs with npm run build (never hand-merge css/site.css,
+   *.html or sitemap.xml) and reruns the gates. Evidence from before the
+   rebase doesn't count. Each step is one squash commit:
+   "<type>(ds): <summary> [DS-<n>]". After the merge, the coordinator checks
+   the Railway deploy and commits the docs/PROGRESS.md update, and docs-writer
+   appends to docs/design-system-migration-log.md.
+7. Evidence goes to /Users/jose/workspace/emposo-new-website/ds-migration-run/
+   <DS-n>/ in the local docs repo (gitignored), never into this repo.
+8. tooling-engineer's harness step comes before the first token step:
+   --scheme, 1440 px, pinned Lighthouse, fail on missing selectors. Until the
+   owner approves a page-level dark theme, "dark" means the [data-theme="dark"]
+   scopes captured with --scheme=dark.
