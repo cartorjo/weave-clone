@@ -4,7 +4,13 @@
 import { cpSync, mkdirSync, rmSync, existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import pages from '../pages.mjs';
+import pagesDe from '../pages.mjs';
+import { pagesEn } from '../pages.en.mjs';
+import { PUBLISHED } from '../content/i18n.mjs';
+
+// Every published language ships: the English twins live under en/
+// (docs/i18n.md). Missing them made /en/ and the language switch 404.
+const pages = [...pagesDe, ...(PUBLISHED.includes('en') ? pagesEn(pagesDe) : [])];
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = join(root, 'dist');
@@ -33,4 +39,8 @@ if (!indexable) {
   writeFileSync(join(dist, 'serve.json'), JSON.stringify(config, null, 2) + '\n');
 }
 if (!existsSync(join(dist, '404.html'))) throw new Error('dist: 404.html missing');
+// Every page the site links to must be in the webroot: the gates check the
+// repository, and the repository is not what the host serves.
+const missing = pages.filter(page => !existsSync(join(dist, page.out))).map(page => page.out);
+if (missing.length) throw new Error(`dist: ${missing.length} published page(s) missing: ${missing.slice(0, 5).join(', ')}`);
 console.log(`dist: ${pages.length} pages + css, js, assets — ${indexable ? 'INDEXABLE' : 'noindex (set INDEXABLE=true to publish)'}`);
