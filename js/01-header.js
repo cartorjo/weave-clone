@@ -12,7 +12,9 @@
 
     if (menu) {
       menu.addEventListener('toggle', function () {
-        menu.querySelector('summary').setAttribute('aria-label', menu.open ? 'Menü schließen' : 'Menü öffnen');
+        // The page language picks the label (docs/i18n.md).
+        var en = document.documentElement.lang === 'en';
+        menu.querySelector('summary').setAttribute('aria-label', menu.open ? (en ? 'Close menu' : 'Menü schließen') : (en ? 'Open menu' : 'Menü öffnen'));
       });
       menu.addEventListener('keydown', function (event) {
         if (event.key === 'Escape') {

@@ -28,8 +28,12 @@ const LOCALIZED_ATTRS = /\s(?:href|alt|aria-label|title|content|placeholder|href
 // Tag skeleton: element names plus class/id, in document order. Text and
 // localized attribute values are dropped; alternate links are head metadata,
 // and the language switch exists only on published pairs.
-const skeleton = html => [...html.replace(/<link rel="alternate"[^>]*>/g, '').replace(/<a class="lang-switch[\s\S]*?<\/a>/g, '').replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '').matchAll(/<\/?[a-z][a-z0-9-]*(?:\s[^>]*)?>/g)]
-  .map(([tag]) => tag.replace(LOCALIZED_ATTRS, '').replace(/\s+/g, ' '));
+// Text-length rules, not markup: the long-metric class (> 8 characters) and
+// the 48-word management teaser, whose paragraph count follows the wording
+// (each run of bio paragraphs collapses to one).
+const skeleton = html => [...html.replace(/(?:<p class="management-card__bio">(?:(?!<\/p>)[\s\S])*<\/p>)+/g, '<p class="management-card__bio"></p>').replace(/<link rel="alternate"[^>]*>/g, '').replace(/<a class="lang-switch[\s\S]*?<\/a>/g, '').replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '').matchAll(/<\/?[a-z][a-z0-9-]*(?:\s[^>]*)?>/g)]
+  .map(([tag]) => tag.replace(LOCALIZED_ATTRS, '').replace(/\s+/g, ' ').replace(/ class="(?:result-metric__word|page-hero__metric--word)"/, ''))
+  ;
 
 // Legal documents are Hays' own texts in each language, reproduced verbatim
 // (owner decision 2026-09-27), not translations of our markup: they keep every
