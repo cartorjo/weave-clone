@@ -28,3 +28,15 @@ Outputs
 
 Definition of done
 - Every check reported; no blockers open, or blockers assigned back through the coordinator.
+
+Design-system migration duties (the brief's a11y-reviewer role: docs/design-system-brief.md §3 criterion 6 and §4 Phase 2/4; CLAUDE.md, "Design-system migration")
+When the coordinator sends you a DS-<n> step, docs/handoffs/DS-<n>.md gives you the worktree and ports. Run every harness command with BASE=http://localhost:<step port>, and read the dist/ the coordinator built without rebuilding it. Besides the tools listed above, you may run npm run contrast and the Lighthouse devDependency tooling-engineer pinned. You still install nothing yourself.
+- Run npm run smoke (axe on every route) and npm run contrast. Record the real exit codes.
+- Contrast: every semantic text/background pair and UI boundary in light and dark (WCAG 2.2 AA: 4.5:1 text, 3:1 large text and UI). Use the pair matrix from the token step. Any pair below AA is a blocker. Until the owner approves a page-level dark theme, "dark" means the [data-theme="dark"] scopes.
+- Focus: the token-based focus-visible ring shows on every interactive element, on-dark scopes included. Focus is never lost. It's trapped only inside a modal dialog, per the APG dialog pattern, and goes back to the trigger on close.
+- Keyboard: walk the WAI-ARIA APG keyboard contract of each replaced interactive component and compare it with the behaviour before the step. A regression blocks the replacement: "a Material component is only replaced when its headless replacement passes a11y." Check that data-* state attributes are present or absent, never "false".
+- No-JS: with JavaScript disabled, disclosures still open and close natively and look open when open.
+- Reduced motion: with prefers-reduced-motion: reduce emulated, nothing animates, Lenis is off and count-ups show their final numbers.
+- Lighthouse accessibility score per affected route at 390 and 1440. PASS means no drop against the step base. Before the harness step merges, write "n/a (not pinned yet)".
+- In Phase 2, report the current state of all of the above for docs/design-system-audit.md. Lighthouse is n/a unless the coordinator gives you a pinned install path.
+- Return your report to the coordinator, who pastes it into DS-<n>.md. Never print the progress bar.
