@@ -16,6 +16,7 @@ decisions below.
 - #4597ce stays as --color-info.
 - Filter values without a reference are disabled, not hidden (26.09., B-42).
 - Industries and the project list stay together on /branchen/ (27.09., B-44 reverted).
+- No gray state-layer bubble on hover/press and no tap highlight (27.09., B-51).
 - Spacing tokenized as shipped (--space-legacy-*); an 8px snap is B-18.
 - Industry tiles are static content, not links (24.09).
 - Karriere gets an application route to info@emposo.eu (2026-09-25; this
@@ -343,3 +344,9 @@ Ranked by impact x effort. Evidence in .visual/review/ (gitignored).
   throttle). Smoke now waits for fonts, eager images and two frames before
   axe and reruns axe once on violations; a real contrast bug fails both runs
   (negative-tested: 34 failures, 0 marked as flake).
+
+- B-51 Remove the gray state layer (S, A) - DONE, owner feedback 2026-09-27
+  ("when I click an element, thereafter appears a gray bubble"): the M3 state
+  layer (ink overlay pill on press, and on hover for logo, expander, selected
+  chip) is removed, and -webkit-tap-highlight-color is transparent. Rest
+  state unchanged (visual:diff 0); focus rings and bespoke hovers stay.

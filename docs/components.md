@@ -173,7 +173,7 @@ source or content/site-data.mjs (never from the renderer).
 - Renderer: chip() inside filters(); JS js/06-work.js
 - CSS: 11-components.css -> .filter-button, __check
 - Props: group, value, label; the first chip of a group ("Alle") starts selected
-- States: rest (3.17:1 outline), hover (15% lemon tint, unselected only), selected (lemon + ink outline + check), selected hover/press (state layer), focus-visible
+- States: rest (3.17:1 outline), hover (15% lemon tint, unselected only), selected (lemon + ink outline + check), focus-visible
 - Accessibility: buttons with aria-pressed inside role=group; one Tab stop per group, Arrow/Home/End move; the filter bar is .js-only (without JS all projects show)
 - Status: active
 
@@ -182,7 +182,7 @@ source or content/site-data.mjs (never from the renderer).
 - Renderer: projectCards(selection, filterable, collage)
 - CSS: 10-feedback.css -> .reference-card, __copy, __meta; .result-metric
 - Props (data): slug, name, headline, industry, discipline label, metric, label, image
-- States: rest, hover/focus-visible = navy invert with --invert-bleed halo, press (state layer), image zoom 1.03 on hover
+- States: rest, hover/focus-visible = navy invert with --invert-bleed halo, image zoom 1.03 on hover
 - Variants: grid, collage (mixed sizes), filterable (data-project attributes)
 - Accessibility: one link per card; photo decorative (alt=""), the title names the link
 - Status: active
@@ -213,7 +213,7 @@ source or content/site-data.mjs (never from the renderer).
 - Purpose: the canonical "Mehr lesen" disclosure (management cards, job postings).
 - CSS: 11-components.css -> .expander, __open, __close
 - Slots: summary (open/close labels + screen-reader " – <name>"), body
-- States: closed, open (+ rotates 45°), hover (state layer), focus-visible, press
+- States: closed, open (+ rotates 45°), focus-visible
 - Accessibility: native details/summary; accessible name includes the item
 - Status: active
 
@@ -260,7 +260,7 @@ source or content/site-data.mjs (never from the renderer).
 - Purpose: the global footer (partials/footer.html), on every page.
 - CSS: 08-editorial.css / 10-feedback.css `.site-footer`, `__top`, `__brand`, `__contact`, `__bottom`.
 - Slots: brand (logo SVG + screen-reader name), two labelled navs, contact column, bottom row (copyright + legal links).
-- States: links hover lemon, focus-visible ring, press (state layer).
+- States: links hover lemon, focus-visible ring.
 - Accessibility: contentinfo landmark without a redundant label; every link >= 44px tall.
 - Status: active. Known: copyright sits ~13px above the legal links' baseline (B-40).
 
