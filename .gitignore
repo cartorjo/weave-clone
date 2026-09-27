@@ -12,6 +12,5 @@ dist/
 # Visual/smoke harness output (tools/visual/)
 .visual/
 
-# English build (EN=1) until the owner publishes the English copy (docs/i18n.md)
-/en/
+# English fallback catalogue written by assemble.mjs (docs/i18n.md)
 /.i18n/
