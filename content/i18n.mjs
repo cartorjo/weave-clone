@@ -10,7 +10,10 @@
 // Paths are copy too: the English slugs below are proposals until approved.
 
 export const DEFAULT_LOCALE = 'de';
-export const PUBLISHED = ['de'];
+// I18N_PREVIEW_PUBLISHED=1 builds as if English were published (switch and
+// hreflang on German pages too), for review screenshots only. Never commit its
+// output: a normal build restores the German pages.
+export const PUBLISHED = process.env.I18N_PREVIEW_PUBLISHED === '1' ? ['de', 'en'] : ['de'];
 export const BUILD_EN = process.env.EN === '1' || PUBLISHED.includes('en');
 
 // German path -> English path. Case studies map through CASE_SLUGS.

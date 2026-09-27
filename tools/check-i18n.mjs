@@ -26,8 +26,9 @@ const pathOf = out => out === 'index.html' ? '/' : `/${out.replace(/index\.html$
 const outOf = path => `${path.replace(/^\//, '')}index.html`;
 const LOCALIZED_ATTRS = /\s(?:href|alt|aria-label|title|content|placeholder|hreflang|lang|srcset|sizes|action|value|datetime|data-filter-value)="[^"]*"/g;
 // Tag skeleton: element names plus class/id, in document order. Text and
-// localized attribute values are dropped; alternate links are head metadata.
-const skeleton = html => [...html.replace(/<link rel="alternate"[^>]*>/g, '').replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '').matchAll(/<\/?[a-z][a-z0-9-]*(?:\s[^>]*)?>/g)]
+// localized attribute values are dropped; alternate links are head metadata,
+// and the language switch exists only on published pairs.
+const skeleton = html => [...html.replace(/<link rel="alternate"[^>]*>/g, '').replace(/<a class="lang-switch[\s\S]*?<\/a>/g, '').replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '').matchAll(/<\/?[a-z][a-z0-9-]*(?:\s[^>]*)?>/g)]
   .map(([tag]) => tag.replace(LOCALIZED_ATTRS, '').replace(/\s+/g, ' '));
 
 // Legal documents are Hays' own texts in each language, reproduced verbatim
@@ -50,7 +51,9 @@ for (const page of pages) {
       if (PUBLISHED.includes('en') && !de.includes(`hreflang="${lang}" href="${href}"`)) failures.push(`${page.out}: missing hreflang ${lang} -> ${href}`);
     }
   }
-  for (const [, href] of en.matchAll(/href="(\/[^"#?]*)/g)) {
+  for (const [tag, href] of en.matchAll(/<a\b[^>]*href="(\/[^"#?]*)[^>]*>/g)) {
+    // The language switch declares its target language; every other link must stay English.
+    if (/\bhreflang="de"/.test(tag)) continue;
     if (!href.startsWith('/en/') && !/^\/(assets|css|js)\//.test(href)) failures.push(`${enOut}: links to German path ${href}`);
   }
   const a = VERBATIM_LEGAL.has(page.out) ? [] : skeleton(de), b = VERBATIM_LEGAL.has(page.out) ? [] : skeleton(en);

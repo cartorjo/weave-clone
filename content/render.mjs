@@ -68,6 +68,12 @@ export function pageHero({ id, crumb, parent, modifier, figureClass, copy, figur
 // Released certifications (owner 2026-09-25; TISAX is an assessment, shown
 // as a label). The one list behind every trust strip.
 const certifications = ['ISO 9001', 'ISO 37301', 'TISAX'];
+// Footer certificate badges (owner 2026-09-27): the ISO certifications only;
+// TISAX is an assessment and stays a trust-strip label. A neutral medal, not
+// the ISO logo, which certified organizations may not use.
+function certBadges() {
+  return `<ul class="cert-badges">${certifications.filter(c => c.startsWith('ISO ')).map(c => `<li class="cert-badge"><span class="cert-badge__icon" aria-hidden="true">{{icon:award-line}}</span><span>${c}</span></li>`).join('')}</ul>`;
+}
 function trustStrip() {
   return `<div class="trust-strip">${certifications.map(c => `<span>${c}</span>`).join('')}</div>`;
 }
@@ -276,6 +282,7 @@ export function fragment(name) {
   switch (name) {
     case 'industry-cards': return industryCards();
     case 'trust-strip': return trustStrip();
+    case 'cert-badges': return certBadges();
     case 'cta-portfolio': return cta('portfolio');
     case 'cta-karriere': return cta('karriere');
     case 'company-facts': return companyFacts();

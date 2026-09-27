@@ -197,9 +197,25 @@ const alternates = page => {
   return [[ 'de', de ], [ 'en', en ], [ 'x-default', de ]].map(([lang, p]) => `  <link rel="alternate" hreflang="${lang}" href="${SITE_ORIGIN}${canonicalPath(p.out)}">\n`).join('');
 };
 
+// The language switch (owner design 2026-09-27): a plain link to the twin page,
+// named in the target language, with the grid globe. It appears once both
+// languages are published; before that only the English preview carries it,
+// so the German output stays byte-identical. The names are endonyms, the same
+// in both locales, as the owner supplied them.
+const SWITCH_LABEL = { en: '<span>English</span> <span class="lang-switch__region">United States</span>', de: '<span>Deutsch</span>' };
+const langSwitch = (page, slot) => {
+  const twin = pages.find(p => p !== page && (p.twinOut === page.out || page.twinOut === p.out));
+  if (!twin || !(published(twin) || page.locale !== 'de')) return '';
+  const path = canonicalPath(twin.out) ?? (twin.locale === 'de' ? '/' : '/en/');
+  const cls = slot === 'header' ? 'lang-switch max-nav:hidden min-h-11' : 'lang-switch lang-switch--menu min-h-11';
+  return `<a class="${cls}" href="${path}" hreflang="${twin.locale}" lang="${twin.locale}"><span class="lang-switch__icon" aria-hidden="true">${icon('globe-grid-line')}</span>${SWITCH_LABEL[twin.locale]}</a>`;
+};
+
 for (const page of pages) {
   setLocale(page.locale);
-  const headerInlined = localizeTokens(inlinePartials(header), page.locale);
+  const headerInlined = localizeTokens(inlinePartials(header), page.locale)
+    // An absent switch leaves no trace, not even its line, so German output is unchanged.
+    .replace(/\n[ ]*\{\{LANGSWITCH:([a-z]+)\}\}/g, (_, slot) => { const html = langSwitch(page, slot); return html ? `\n${slot === 'header' ? '    ' : '        '}${html}` : ''; });
   const footerInlined = localizeTokens(inlinePartials(footer), page.locale);
   let body = localizeTokens(inlinePartials(pageContent(page)), page.locale);
   // English bodies keep German source paths; the route map localizes them.

@@ -170,3 +170,23 @@ svg:dir(rtl) { direction: ltr; }
    headline-sm role and a wrapping row of text links. */
 .explore__title { font-size: var(--text-headline-sm); font-weight: 400; line-height: var(--leading-title); }
 .explore__links { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-8); list-style: none; margin: var(--space-6) 0 0; padding: 0; }
+
+/* Language switch (owner design 2026-09-27): a pill link to the twin page, a
+   faint ink tint over --color-paper (the header ground); hover deepens the ground and adds the outer ring, focus uses
+   the site-wide two-tone ring. Plain link, no JS; state from :hover and
+   :focus-visible only. The region name reads in muted ink. */
+.lang-switch { align-items: center; background: color-mix(in srgb, var(--color-ink) 6%, var(--color-paper)); border-radius: var(--radius-full); color: var(--color-ink); display: inline-flex; font-size: var(--text-body-sm); font-weight: 400; gap: var(--space-2); padding: var(--space-2) var(--space-4); text-decoration: none; transition: background-color var(--duration-fast) var(--ease-em), box-shadow var(--duration-fast) var(--ease-em); white-space: nowrap; }
+.lang-switch:hover { background: color-mix(in srgb, var(--color-ink) 11%, var(--color-paper)); box-shadow: 0 0 0 2px var(--color-bg), 0 0 0 3px var(--color-line); }
+.lang-switch__icon { display: inline-flex; height: 1.1em; width: 1.1em; }
+.lang-switch__icon svg { height: 100%; width: 100%; }
+.lang-switch__region { color: color-mix(in srgb, var(--color-ink) 62%, transparent); }
+/* In the mobile panel: a pill aligned with the links' text, not a full-width row. */
+.mobile-menu__panel a.lang-switch--menu { align-self: flex-start; justify-self: start; width: max-content; border-bottom: 0; display: inline-flex; margin: var(--space-4) var(--space-6) 0; padding: var(--space-2) var(--space-4); }
+
+/* Footer certificate badges (owner 2026-09-27): white medal over the standard,
+   on the navy footer. Neutral mark by design: certified organizations may not
+   use the ISO logo itself. */
+.cert-badges { display: flex; flex-wrap: wrap; gap: var(--space-8); list-style: none; margin: var(--space-8) 0 0; padding: 0; }
+.cert-badge { align-items: center; color: var(--color-on-dark); display: flex; flex-direction: column; font-size: var(--text-body-sm); font-weight: 500; gap: var(--space-2); }
+.cert-badge__icon { display: inline-flex; height: var(--space-12); width: var(--space-12); }
+.cert-badge__icon svg { height: 100%; width: 100%; }
