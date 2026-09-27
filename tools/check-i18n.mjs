@@ -31,7 +31,7 @@ const LOCALIZED_ATTRS = /\s(?:href|alt|aria-label|title|content|placeholder|href
 // Text-length rules, not markup: the long-metric class (> 8 characters) and
 // the 48-word management teaser, whose paragraph count follows the wording
 // (each run of bio paragraphs collapses to one).
-const skeleton = html => [...html.replace(/(?:<p class="management-card__bio">(?:(?!<\/p>)[\s\S])*<\/p>)+/g, '<p class="management-card__bio"></p>').replace(/<link rel="alternate"[^>]*>/g, '').replace(/<a class="lang-switch[\s\S]*?<\/a>/g, '').replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '').matchAll(/<\/?[a-z][a-z0-9-]*(?:\s[^>]*)?>/g)]
+const skeleton = html => [...html.replace(/(?:<p class="management-card__bio">(?:(?!<\/p>)[\s\S])*<\/p>)+/g, '<p class="management-card__bio"></p>').replace(/<link rel="alternate"[^>]*>/g, '').replace(/<details class="lang-switch[\s\S]*?<\/details>/g, '').replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '').matchAll(/<\/?[a-z][a-z0-9-]*(?:\s[^>]*)?>/g)]
   .map(([tag]) => tag.replace(LOCALIZED_ATTRS, '').replace(/\s+/g, ' ').replace(/ class="(?:result-metric__word|page-hero__metric--word)"/, ''))
   ;
 

@@ -197,18 +197,22 @@ const alternates = page => {
   return [[ 'de', de ], [ 'en', en ], [ 'x-default', de ]].map(([lang, p]) => `  <link rel="alternate" hreflang="${lang}" href="${SITE_ORIGIN}${canonicalPath(p.out)}">\n`).join('');
 };
 
-// The language switch (owner design 2026-09-27): a plain link to the twin page,
-// named in the target language, with the grid globe. It appears once both
-// languages are published; before that only the English preview carries it,
-// so the German output stays byte-identical. The names are endonyms, the same
-// in both locales, as the owner supplied them.
-const SWITCH_LABEL = { en: '<span>English</span> <span class="lang-switch__region">United States</span>', de: '<span>Deutsch</span>' };
+// The language switch (owner design 2026-09-27, revised the same day): a
+// disclosure button naming the current language; it opens a small menu with
+// both languages, the current one marked. Native <details>, so it works
+// without JS; js/01-header.js adds Escape/outside-click closing and limits the
+// cross-document view transition to language switches. Language names are
+// endonyms, the same in both locales. Only rendered once English is published.
+const LANG_NAME = { de: 'Deutsch', en: 'English' };
 const langSwitch = (page, slot) => {
   const twin = pages.find(p => p !== page && (p.twinOut === page.out || page.twinOut === p.out));
   if (!twin || !(published(twin) || page.locale !== 'de')) return '';
-  const path = canonicalPath(twin.out) ?? (twin.locale === 'de' ? '/' : '/en/');
-  const cls = slot === 'header' ? 'lang-switch max-nav:hidden min-h-11' : 'lang-switch lang-switch--menu min-h-11';
-  return `<a class="${cls}" href="${path}" hreflang="${twin.locale}" lang="${twin.locale}"><span class="lang-switch__icon" aria-hidden="true">${icon('globe-grid-line')}</span>${SWITCH_LABEL[twin.locale]}</a>`;
+  const here = canonicalPath(page.out) ?? (page.locale === 'de' ? '/' : '/en/');
+  const there = canonicalPath(twin.out) ?? (twin.locale === 'de' ? '/' : '/en/');
+  const options = [[page.locale, here], [twin.locale, there]].sort(([a], [b]) => (a === 'de' ? -1 : 1) - (b === 'de' ? -1 : 1))
+    .map(([lang, path]) => `<li><a class="lang-switch__option min-h-11" href="${path}" hreflang="${lang}" lang="${lang}"${lang === page.locale ? ' aria-current="true"' : ' data-lang-option'}>${LANG_NAME[lang]}</a></li>`).join('');
+  const cls = slot === 'header' ? 'lang-switch max-nav:hidden' : 'lang-switch lang-switch--menu';
+  return `<details class="${cls}" data-lang-switch><summary class="lang-switch__button min-h-11"><span class="lang-switch__icon" aria-hidden="true">${icon('globe-grid-line')}</span><span class="sr-only">${t(page.locale, 'lang.label')} </span><span>${LANG_NAME[page.locale]}</span></summary><ul class="lang-switch__menu">${options}</ul></details>`;
 };
 
 for (const page of pages) {
