@@ -11,7 +11,6 @@ const caseMeta = {
   'engineering-wissensbasis': { description: 'Von Wochen auf Stunden: Engineering-Wissen wird ausführbar. Eine vernetzte Wissensbasis senkt den Aufwand bei Testspezifikationen um 83 %, voll nachvollziehbar.' },
   'rechenzentrums-umzug': { description: 'Transformation ohne eine Minute migrationsbedingten Stillstand: Ein Rechenzentrum zieht um, während Produktion und Logistik durchgängig verfügbar bleiben.' },
   'mlops-medizinprodukte': { description: 'KI-Modelle regulatorisch sicher und schneller aktualisieren: MLOps für Medizinprodukte mit über 70 % weniger Prüfaufwand und Updates in Tagen statt Wochen.' },
-  'wissens-assistent': { description: 'Technisches Wissen in Sekunden statt Tagen verfügbar: Ein Wissens-Assistent spart in der Engineering-Arbeit bis zu 80.000 EUR Rechercheaufwand pro Monat.' },
   'multi-site-transition': { description: '27+ Beauftragungen termingerecht und auditfest abgenommen: ein Transition-Programm über mehrere Standorte, mit Rollout-Blueprint für weitere Standorte.' },
   'homologationstests': { description: 'Markteinführung über mehrere Fahrzeugwellen abgesichert: Zulassungs- und Homologationstests mit eingehaltenen Terminen und revisionssicheren Nachweisen.' },
   'managed-service': { description: 'Langfristige Betriebssicherheit mit klaren SLAs: ein Managed Service seit 2018, mit über 8 Jahren stabilem Betrieb und ohne SLA-Verletzungen im Energiesektor.' },

@@ -101,6 +101,7 @@ const column = value => Array.isArray(value)
   : `<p>${escape(value)}</p>`;
 
 function metric(project) {
+  if (!project.metric) return '';
   return `<div class="result-metric"><strong${project.metric.length>8?' class="result-metric__word"':''}>${escape(project.metric)}</strong><span>${escape(project.label)}</span></div>`;
 }
 export function projectCards(selection = data('projects'), filterable = false, collage = false) {
@@ -185,7 +186,7 @@ export function projectPage(slug) {
     ...data('projects').filter(other=>other.slug!==p.slug && other.discipline!==p.discipline && other.industry===p.industry),
     ...next,
   ])].slice(0,2);
-  return `${pageHero({ id: 'project-title', parent: ['/branchen/#referenzen', t('crumb.projects')], copy: `<p class="eyebrow eyebrow--light">${escape(p.industry)}</p><h1 class="display-large display-large--light" id="project-title">${escape(p.name)}</h1><p class="page-hero__intro">${escape(p.headline)}</p>`, figure: `${picture(p.image,'(max-width: 900px) 100vw, 50vw',true)}<div class="page-hero__metric"><strong${p.metric.length>8?' class="page-hero__metric--word"':''}>${escape(p.metric)}</strong><span>${escape(p.label)}</span></div>` })}
+  return `${pageHero({ id: 'project-title', parent: ['/branchen/#referenzen', t('crumb.projects')], copy: `<p class="eyebrow eyebrow--light">${escape(p.industry)}</p><h1 class="display-large display-large--light" id="project-title">${escape(p.name)}</h1><p class="page-hero__intro">${escape(p.headline)}</p>`, figure: `${picture(p.image,'(max-width: 900px) 100vw, 50vw',true)}${p.metric ? `<div class="page-hero__metric"><strong${p.metric.length>8?' class="page-hero__metric--word"':''}>${escape(p.metric)}</strong><span>${escape(p.label)}</span></div>` : ''}` })}
   <section class="page-section"><div class="gutter"><div class="container"><h2 class="display-large" id="projekt-title">${t('project.section')}</h2><p class="section-lede">${escape(p.industry)} · ${escape(d.name)}</p>${p.facts ? `<ul class="result-list result-list--compact project-facts">${p.facts.map(f=>`<li>${escape(f)}</li>`).join('')}</ul>` : ''}<div class="company-values case-facets"><article><span class="company-values__icon" aria-hidden="true">{{icon:document-paper-line}}</span><h3>${t('project.challenge')}</h3>${column(p.challenge)}</article><article><span class="company-values__icon" aria-hidden="true">{{icon:lightbulb-shine-line}}</span><h3>${t('project.solution')}</h3>${column(p.solution)}</article><article><span class="company-values__icon" aria-hidden="true">{{icon:check-discount-line}}</span><h3>${t('project.result')}</h3><ul class="result-list">${p.results.map(r=>`<li>${escape(r)}</li>`).join('')}</ul></article></div><p class="section-more"><a class="text-link" href="${href(`/portfolio/#${d.slug}`)}">${escape(d.name)} ${arrow}</a></p></div></div></section>
   <section class="page-section page-section--paper"><div class="gutter"><div class="container"><p class="eyebrow">${t('project.more.eyebrow')}</p><h2 class="display-large">${t('project.more.title')}</h2>${projectCards(related)}<p class="section-more"><a class="text-link" href="${href('/branchen/#referenzen')}">${t('project.more.all')} ${arrow}</a></p></div></div></section>${cta()}`;
 }
