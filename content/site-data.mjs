@@ -29,7 +29,7 @@ export const projects = [
   {slug:'engineering-wissensbasis', name:'Vernetzte Engineering-Wissensbasis', headline:'Von Wochen auf Stunden: Engineering-Wissen wird ausführbar.', industry:'Automotive', filter:'industrial automotive', outcome:'transform', discipline:'ai-daten', image:'engineering-knowledge', metric:'83 %', label:'weniger Aufwand bei Testspezifikationen', challenge:'Engineering-Wissen muss für Testspezifikationen verfügbar und über die Entwicklung hinweg nachvollziehbar sein.', solution:'Eine vernetzte Wissensbasis macht Engineering-Wissen ausführbar und unterstützt die Erstellung von Testspezifikationen.', results:['83 % weniger Aufwand bei Testspezifikationen','Vollständige Traceability']},
   {slug:'rechenzentrums-umzug', name:'Rechenzentrums-Umzug ohne Stillstand', headline:'Transformation ohne eine Minute migrationsbedingten Stillstand.', industry:'Automotive', filter:'industrial automotive', outcome:'transform', discipline:'enterprise-services', image:'datacenter', metric:'0', label:'Minuten migrationsbedingter Stillstand', challenge:'Ein Rechenzentrum muss umziehen, während Produktion und Logistik durchgängig verfügbar bleiben.', solution:'Migration und Integration werden auf den fortlaufenden Betrieb von Produktion und Logistik ausgerichtet.', results:['Keine migrationsbedingte Betriebsunterbrechung','Produktion und Logistik durchgängig verfügbar']},
   {slug:'mlops-medizinprodukte', name:'MLOps für Medizinprodukte', headline:'KI-Modelle regulatorisch sicher und schneller aktualisieren.', industry:'Health & Pharma', filter:'health', outcome:'transform', discipline:'ai-daten', image:'pharma', metric:'>70 %', label:'weniger Prüfaufwand', challenge:'KI-Modelle für Medizinprodukte müssen aktualisiert und ihre Änderungen regulatorisch sicher geprüft werden.', solution:'MLOps verbindet die Aktualisierung der KI-Modelle mit den notwendigen Prüf- und Freigabeabläufen.', results:['Über 70 % weniger Prüfaufwand','Updates in Tagen statt Wochen']},
-  {slug:'wissens-assistent', name:'Wissens-Assistent Engineering', headline:'Technisches Wissen in Sekunden statt Tagen verfügbar.', industry:'Industrials & Manufacturing', filter:'industrial', outcome:'transform', discipline:'ai-daten', image:'software', metric:'80.000 €', label:'bis zu dieser Summe monatlich an Rechercheaufwand eingespart', challenge:'Die Recherche nach technischem Wissen bindet Zeit in der täglichen Engineering-Arbeit.', solution:'Ein Wissens-Assistent macht technisches Wissen für die tägliche Anwendung verfügbar.', results:['Technisches Wissen in Sekunden statt Tagen verfügbar','Bis zu 80.000 EUR Rechercheaufwand pro Monat eingespart']},
+  {slug:'wissens-assistent', name:'Wissens-Assistent Engineering', headline:'Technisches Wissen in Sekunden statt Tagen verfügbar.', industry:'Industrials & Manufacturing', filter:'industrial', outcome:'transform', discipline:'ai-daten', image:'software', metric:'', label:'', challenge:'Die Recherche nach technischem Wissen bindet Zeit in der täglichen Engineering-Arbeit.', solution:'Ein Wissens-Assistent macht technisches Wissen für die tägliche Anwendung verfügbar.', results:['Technisches Wissen in Sekunden statt Tagen verfügbar']},
   {slug:'multi-site-transition', name:'Multi-Site Transition Program', headline:'27+ Beauftragungen termingerecht und auditfest abgenommen.', industry:'Health & Pharma', filter:'health', outcome:'scale', discipline:'cyber-compliance', image:'pharma-transition', metric:'27+', label:'Beauftragungen termingerecht und auditfest abgenommen', challenge:'Ein Transition-Programm muss über mehrere Standorte hinweg termingerecht und auditfest umgesetzt werden.', solution:'Ein standortübergreifendes Programm führt die Beauftragungen zur Abnahme und schafft einen wiederverwendbaren Rollout-Blueprint.', results:['27+ Beauftragungen termingerecht und auditfest abgenommen','Quality-Team entlastet','Rollout-Blueprint für weitere Standorte etabliert']},
   {slug:'homologationstests', name:'Zulassungs- und Homologationstests', headline:'Markteinführung über mehrere Fahrzeugwellen abgesichert.', industry:'Automotive', filter:'industrial automotive', outcome:'optimize', discipline:'test-validierung', image:'vehicle-testing', metric:'Zulassung', label:'termingerecht abgesichert', challenge:'Mehrere Fahrzeugwellen benötigen belastbare Tests und Nachweise für ihre Markteinführung.', solution:'Zulassungs- und Homologationstests sichern die Freigaben mit vollständigen revisionssicheren Nachweisen ab.', results:['Zulassungstermine eingehalten','Vollständige revisionssichere Nachweise']},
   {slug:'managed-service', name:'Managed Service seit 2018', headline:'Langfristige Betriebssicherheit mit klaren SLAs.', industry:'Energy & Resources', filter:'energy', outcome:'optimize', discipline:'enterprise-services', image:'wind-energy', metric:'8+', label:'Jahre stabiler Betrieb', challenge:'Ein laufender Service braucht dauerhaft verlässliche Leistung und klar definierte Service-Level.', solution:'Ein langfristiger Managed Service übernimmt den Betrieb mit klar vereinbarten SLAs.', results:['Über 8 Jahre stabiler Betrieb','Keine SLA-Verletzungen']},
@@ -43,7 +43,6 @@ export const projects = [
       "Steuergeräte für V6- und V8-Motoren, Diesel und Otto, auch elektrifiziert",
       "Software-Inhaltsplanung, Änderungsdokumentation und Beifangbewertung als Werk",
       "Projekt: 36 Monate",
-      "ca. 880.000 €",
       "Einheitspreise, quartalsweise abgenommen",
     ],
     challenge:[
@@ -60,7 +59,6 @@ export const projects = [
     ],
     results:[
       "Alle Leistungspositionen 2023 bis 2025 quartalsweise abgenommen",
-      "Rahmenvertrag bis 11/2027 verlängert, Rahmenwert auf rund 1,6 Mio. € erhöht",
       "Übergabe und Abschlussdokumentation vertraglich verankert",
     ]},
   {slug:"gewichtsmanagement-sportwagen", name:"Gewichtsmanagement für Premium-Sportwagen", headline:"Gewichtsdaten über den gesamten Produktentstehungsprozess, seit 2016", industry:"Automotive", filter:"industrial automotive", outcome:"optimize verzahnen", discipline:"system-engineering", image:"gewichtsmanagement", metric:"10", label:"Jahre durchgehend beauftragt",
@@ -69,7 +67,6 @@ export const projects = [
       "Alle Baureihen: Basisumfang plus Derivate, zwölf Meilensteine je Fahrzeugprojekt",
       "Seit 2016 in Folge beauftragt",
       "Aktuelle Phase: 4 Geschäftsjahre",
-      "ca. 670.000 €",
       "Festpreis je Meilenstein mit Abnahme",
     ],
     challenge:[
@@ -94,7 +91,6 @@ export const projects = [
       "Werkrahmenvertrag seit 2019, Projekteinzelvertrag je Paket",
       "Risikoanalysen, Qualifizierungsdokumentation, SOPs, CAPA, Equipment, Methodenverifizierung",
       "Umfang: über 40 Qualitätspakete seit 2022",
-      "bis 170.000 € je Paket",
       "Abnahme alle zwei Monate",
     ],
     challenge:[
@@ -118,8 +114,6 @@ export const projects = [
       "Zwei Automobilhersteller, Premium und Volumen: Testspezifikation und Infotainment-Diagnose",
       "Ausgangsbasis: Spezifikationen, Testfälle und Diagnosedaten, rund 1.800 Testfälle",
       "Testfallgenerierung mit KI-Agenten auf der Emposo-Plattform Data2AI",
-      "Pilot 1: 3 Monate, ca. 50.000 €, abgenommen",
-      "Pilot 2: 6 Monate, ca. 33.000 €, läuft",
       "Festpreis",
     ],
     challenge:[
@@ -143,7 +137,6 @@ export const projects = [
       "Globaler Halbleiterhersteller, Dokumentations-Servicebereich der Entwicklung",
       "Handbücher, Datenblätter, Errata Sheets, Application Notes, Security Guidelines",
       "Migration ins XML/DITA-Redaktionssystem und Toolentwicklung für die Redaktion",
-      "Jahresabrufe seit 2020, aktuell 803.000 € pro Jahr",
       "Werk mit Rahmenabruf",
       "Abnahme je Ticket",
     ],
@@ -159,8 +152,6 @@ export const projects = [
       "Toolentwicklung: XSLT, DITA-Plug-ins, Word-Templates, Terminologiepflege",
     ],
     results:[
-      "Acht Jahresabrufe in Folge, Abruf 2026/27 mit 400.000 € bereits erteilt",
-      "Abrufvolumen von 59.000 € auf 803.000 € pro Jahr gewachsen",
       "Kunde zahlt nur abgenommene Pakete, keine Mindestabnahme, keine Fixkosten",
     ]},
   {slug:"projektsteuerung-chip-entwicklung", name:"Projektsteuerung für Chip-Entwicklungsprojekte", headline:"PMO als Werkleistung in eigenen Räumen, vier Folgepakete", industry:"Halbleiter", filter:"technology", outcome:"optimize", discipline:"engineering-services", image:"projektsteuerung", metric:"4", label:"Folgepakete zum Festpreis",
@@ -169,7 +160,6 @@ export const projects = [
       "Operatives Projektmanagement für bis zu sechs parallele Chip-Projekte",
       "Leistung in Emposo-Räumen, der Kunde stellt die IT-Zugänge",
       "März 2022 bis Dezember 2024, vier Pakete",
-      "ca. 680.000 €",
       "Festpreis, schriftliche Abnahme",
     ],
     challenge:[
@@ -184,7 +174,6 @@ export const projects = [
       "DFMEA-Koordination in Aris und PLATO, Plausibilitätsprüfung der Daten",
     ],
     results:[
-      "Vier Festpreispakete in Folge, Halbjahresvolumen von 68.000 € auf 189.000 €",
       "Jedes Paket schriftlich abgenommen, Mehrbedarf über Change Request",
       "Projektleiter entscheiden, der Meilensteinprozess läuft im Emposo-Projektbüro",
     ]},
@@ -194,7 +183,6 @@ export const projects = [
       "Auslagerung von Dreh-, Fräs- und Dreh-Fräs-Leistungen an externe Lieferanten",
       "Koordination von Produktion, Einkauf, Supply Chain, Qualität und Lieferanten vor Ort",
       "Projekt: ca. 5 Monate",
-      "ca. 75.000 €",
       "Festpreis, Werkabnahme gegen Lastenheft",
     ],
     challenge:[
@@ -218,8 +206,6 @@ export const projects = [
       "Globaler Technologiekonzern, Antriebstechnik, Umrichter für Motion Control",
       "2023: Projektierungshandbuch Industrial Security für zwei Softwarestände",
       "2025/26: Betriebsanleitungen zweier Umrichterfamilien, Emposo als Information Manager",
-      "2023 Kontingent 400 h, ca. 63.000 €",
-      "2025/26 Festpreis, ca. 197.000 €",
       "dritter Auftrag im Angebot",
     ],
     challenge:[
@@ -243,7 +229,6 @@ export const projects = [
       "Betreiber eines virtuellen Kraftwerks: rund 5.000 Anlagen mit etwa 5.000 MW (Kundenangabe)",
       "Weiterentwicklung der Plattform: Prognosen, Einsatzoptimierung, Kundenportal, öffentliche API",
       "Rahmenvertrag für agile Projekte mit Sprint-Einzelverträgen und Defektklassen",
-      "06/2022 bis 04/2025: 78 Sprints, 2,2 Mio. € Festpreis",
       "seit 2025 agiles Team, verlängert bis Ende 2026",
     ],
     challenge:[
@@ -258,7 +243,6 @@ export const projects = [
       "Übergang 04/2025 in die Fortführung ohne Unterbrechung, gleiche Projektleitung",
     ],
     results:[
-      "78 Sprints in 34 Monaten abgenommen, 2,2 Mio. € zum Festpreis",
       "Fortführung seit 2025 zweimal verlängert, aktuell bis Ende 2026",
       "Kunde beauftragt 2023 zusätzlich den Penetrationstest der Plattform",
     ]},
@@ -268,7 +252,6 @@ export const projects = [
       "Bis zu fünf Produktlinien parallel, je Linie ein festes Team aus Deutschland und Rumänien",
       "Rahmenvertrag für agile Entwicklung, eine Bestellung je Sprint von zwei bis drei Wochen",
       "Seit 03/2023 laufend, über 40 Monate",
-      "rund 4,3 Mio. € beauftragt",
       "Festpreis je Sprint mit Abnahme",
     ],
     challenge:[
@@ -292,7 +275,6 @@ export const projects = [
       "Globaler Automobilhersteller, Elektronik-Entwicklung Infotainment",
       "Rund 20 vernetzte Funktionen: 13 Parkfunktionen, 8 Online-Services, zwei Infotainment-Generationen",
       "Anforderungsanalyse, Testkonzept und Volltest, Lieferantenbetreuung mit Ticketbearbeitung",
-      "Rahmenkontrakt 2020 bis 2024, 10,7 Mio. €, 24 Abrufe",
       "Werkvertrag, Katalogpreis je Funktion, Abnahme je Paket",
     ],
     challenge:[
@@ -307,16 +289,13 @@ export const projects = [
       "Abnahme je Arbeitspaket, Meilenstein-Reviews je Quartal",
     ],
     results:[
-      "Kontrakt zweimal erweitert, Zielwert von 8,6 auf 10,7 Mio. €",
       "24 Abrufe abgenommen",
-      "Folgeaufträge 2025/26, dazu 5,9 Mio. € für die nächste Plattformgeneration",
     ]},
   {slug:"penetrationstests", name:"Penetrationstests für Mittelstand und KRITIS", headline:"30 Tests bei 19 Kunden seit 2023, von Steuergeräten bis Web-Anwendungen", industry:"Mittelstand & KRITIS", filter:"energy aerospace industrial technology health", outcome:"optimize", discipline:"cyber-compliance", image:"penetrationstests", metric:"30", label:"Tests bei 19 Kunden seit 2023",
     facts:[
       "19 Unternehmen aus Energie, Luftfahrt, Maschinenbau, Software, Gesundheitsabrechnung, Telekommunikation",
       "Recon, Blackbox, Greybox, Whitebox; Web, Infrastruktur, Active Directory, Steuergeräte und Hardware",
       "Eigene Pentester und Partner unter Emposo-Leitung, Permission to Attack als Vertragsanlage",
-      "23 Aufträge seit 09/2023, 4.000 bis 26.000 € je Test",
       "seit 2024 Festpreis",
       "Bericht und Retest",
     ],
@@ -342,7 +321,6 @@ export const projects = [
       "Cybersecurity-Monitoring für rund 20 Produktstände in vier Gerätefamilien",
       "Post-Market-Surveillance nach MDR und FDA, Arbeit nach der Software-SOP des Kunden",
       "Projekt: 6 Monate",
-      "ca. 250.000 €",
       "Werkvertrag, Festpreis in drei Paketen, monatliche Abnahme",
     ],
     challenge:[
@@ -366,7 +344,6 @@ export const projects = [
       "Risikomanagement in der Zentrale und zehn Tochtergesellschaften in Nordamerika und Asien",
       "Folgepaket: Begleitung eines SAP-Sicherheitsaudits über acht Systeme",
       "Februar bis Dezember 2024",
-      "ca. 250.000 €",
       "Rahmenvertrag Werkleistung, sieben Pakete mit Teilabnahme",
     ],
     challenge:[
@@ -391,7 +368,6 @@ export const projects = [
       "Fuzzing gegen Trusted Firmware-M (2024), TPM-Firmware (2025), Bluetooth-Stack (2026)",
       "Firmware-Rehosting, Schwachstellenberichte mit CVSS 3.1 und Proof of Concept",
       "Drei Aufträge 2024 bis 2026",
-      "ca. 235.000 €",
       "Festpreis mit messbaren Abnahmekriterien",
     ],
     challenge:[

@@ -33,10 +33,10 @@ write the wording you want instead.
 | German | English |
 |---|---|
 | `2.900+` | `2,900+` (the count-up script learns the comma) |
-| `80.000 €` / `80.000 EUR` | `€80,000` |
+| `1.000 €` / `1.000 EUR` | `€1,000` (reference cases name no € amounts, owner 2026-09-28) |
 | `>70 %`, `83 %` | `>70%`, `83%` |
 | `7×` | `7×` |
-| `ca. 880.000 €` | `approx. €880,000` |
+| `ca.` | `approx.` |
 | Qualifiers ("über", "bis zu") | kept exactly: "over", "up to" |
 
 ## 3. Page addresses
