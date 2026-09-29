@@ -1,6 +1,6 @@
 # Design-system migration: progress
 
-[####----------------] 20% | Phase 3/5 | step 1/3: plan
+[####----------------] 20% | Phase 3/5 | step 3/3: owner approval | WAITING FOR APPROVAL
 
 Weighting: Phase 1 = 5 %, Phase 2 = 15 %, Phase 3 = 10 %, Phase 4 = 65 % (split
 across the approved steps by diff-size estimate, set in Phase 3), Phase 5 = 5 %.
@@ -21,12 +21,17 @@ and it's merged. Partial steps count 0 %. Only the coordinator edits this file.
 - [x] 4. Owner reviewed the audit and merged it (PR #36, 2026-09-27). Scores: c1 3, c2 3, c3 2, c4 2, c5 1, c6 3, c7 2 = 16/35
 
 ## Phase 3: Plan (10 %)
-- [ ] 1. Plan: migration order, diff-size estimates, agent assignments, Phase 4 weights (on main 43154c9 or later)
-- [ ] 2. Plan review
-- [ ] 3. Owner approval
+- [x] 1. Plan drafted: docs/design-system-plan.md (paused 2026-09-27, resumed 2026-09-29)
+- [x] 2. Plan rebased onto origin/main 9545bc3 (after the English layer) and adversarially reviewed: 29 stale facts and 14 issues, all accepted
+- [ ] 3. Owner approval of the plan and of owner items O-1 to O-11 (waiting)
 
-## Phase 4: Implement (65 %)
-- (steps are set in Phase 3)
+## Phase 4: Implement (65 %), proposed and pending approval; weights by diff-size estimate
+- [ ] DS-01 Harness for both languages (4.2) · [ ] DS-02 A11y regression gates (3.5) · [ ] DS-03 Criterion-6 fixes, Kind A (0.7)
+- [ ] DS-04 One token source, M3 names (4.3) · [ ] DS-05 Semantic layer + navy dark scopes (2.5) · [ ] DS-06 cva/cn/parts helper (2.9)
+- [ ] DS-07 Lint ratchet in CI (3.5) · [ ] DS-08 Typography and links (5.9) · [ ] DS-09a Page frames (3.8) · [ ] DS-09b Legal and lists (4.1)
+- [ ] DS-10 Page hero and breadcrumb (3.8) · [ ] DS-11 Cards A and media (2.0) · [ ] DS-12a Cards B, portfolio/about (4.1) · [ ] DS-12b Cards B, home/404/karriere (2.7)
+- [ ] DS-13 Header/footer chrome, base, fonts, logo, icons (2.4) · [ ] DS-14 Disclosure incl. language switch (4.7) · [ ] DS-15 Form field (2.4)
+- [ ] DS-16 Filter chips (2.2) · [ ] DS-17 M3 guard, lint blocking, CI (1.4) · [ ] DS-18 Docs (3.9)
 
 ## Phase 5: Close (5 %)
 - [ ] Re-score, audit update, bundle delta, items still below 5 with follow-ups
@@ -45,3 +50,5 @@ and it's merged. Partial steps count 0 %. Only the coordinator edits this file.
   #32/#14/#33/#34 landed meanwhile, see the audit's delta note). Waiting for
   owner review.
 - 2026-09-27: owner merged the audit (PR #36). Phase 2 = 15 %, total 20 %.
+- 2026-09-27: 13 merged remote branches deleted (owner). Phase 3 paused by the owner.
+- 2026-09-29: Phase 3 resumed on origin/main 9545bc3; plan reviewed and revised (20 steps, 4,545 lines). Waiting for owner approval.
